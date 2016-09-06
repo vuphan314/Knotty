@@ -1,4 +1,5 @@
 # CS4365
+Knotty: a computer algebra system for knot theory
 
 ## KANBAN BOARD
 [Trello][trello]
