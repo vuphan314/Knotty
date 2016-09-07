@@ -1,5 +1,5 @@
-class Knot:
-    # some representation of a knot, such as a Laurent polynomial
-
-class Var:
-    # a data structure for variables `x`, `y`,...
+class Poly:
+    # a polynomial
+    
+class Var(Poly):
+    # a variable is a special polynomial

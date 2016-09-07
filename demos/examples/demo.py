@@ -1,12 +1,12 @@
 from .. import lib
 
 ########## ########## ########## ########## ########## ##########
-# constant tests
+# tests
 
 '''
-copy and paste into the Python interpreter to test constants:
+copy and paste the block below into the Python interpreter to test:
 
-pp(c)
+c.pp()
 
 (pp: pretty-print)
 '''
@@ -14,17 +14,22 @@ pp(c)
 ########## ########## ########## ########## ########## ##########
 # variable declarations
 
-x = Var()
+x = lib.Poly.Var()
 
 ########## ########## ########## ########## ########## ##########
 # function definitions
 
-# each function returns an instance of the class `Knot`
+'''
+each function
+- intakes `Var` parameters;
+- returns an instance of the class `Poly`
+'''
 
 def c():
-    return lib.Knot(0)
+    return lib.Poly(0)
 
 def T(n, x):
-    lib.Knot(2) if n = 0 else
-    lib.Knot(x) if n = 1 else
-    lib.subtr(lib.mult(lib.Knot(x), T(n - 2, x)), T(n - 2, x))
+    return \
+        lib.Poly(2) if lib.eq(lib.Poly(n), lib.Poly(0)) else
+        lib.Poly(x) if lib.eq(lib.Poly(n), lib.Poly(1)) else
+        lib.subtr(lib.mult(lib.Poly(x), T(n - 2, x)), T(n - 2, x))

@@ -1,8 +1,8 @@
-var x;
+var x
 
-let c = 0;
+let c = 0
 
 let T(n, x) =
     2 if n = 0 else
     x if n = 1 else
-    x * T(n - 1, x) - T(n - 2, x);
+    x * T(n - 1, x) - T(n - 2, x)
