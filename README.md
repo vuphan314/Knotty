@@ -5,7 +5,7 @@ Knotty: a computer algebra system for knot theory
 [Trello][trello]
 
 ## SUBMODULE
-The [generic parser][genparser] at `src/genparser/` was developed by Evgenii Balai.
+The [generic parser][genparser] (`src/genparser/`) is developed by Evgenii Balai.
 
 [trello]:
 https://trello.com/b/tCAfkInX
