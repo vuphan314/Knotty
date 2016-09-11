@@ -4,6 +4,14 @@ a computer algebra system for knot theory
 ## KANBAN BOARD
 [Trello][trello]
 
+## HOW TO CONTRIBUTE
+Windows Command Prompt example:
+```
+git clone --recursive https://github.com/vuphan314/CS4365
+
+git checkout brachzach
+```
+
 ## DESCRIPTION
 the Knotty system includes:
 - the Knotty language: a programming language for math, specializing in knot theory
@@ -32,5 +40,7 @@ The [generic parser][genparser] (`code/engine/parser/genparser/`) is developed b
 
 [trello]:
 https://trello.com/b/tCAfkInX
+[thisRepo]:
+https://github.com/vuphan314/CS4365
 [genparser]:
 https://github.com/iensen/genparser
