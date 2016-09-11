@@ -28,7 +28,7 @@ the Knotty system includes:
 	- a preview box: in which the simplified file is shown
 
 ## SUBMODULE
-The [generic parser][genparser] (`src/genparser/`) is developed by Evgenii Balai.
+The [generic parser][genparser] (`code/engine/parser/genparser/`) is developed by Evgenii Balai.
 
 [trello]:
 https://trello.com/b/tCAfkInX
