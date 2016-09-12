@@ -7,6 +7,6 @@ function T(n) :=
     x if n = 1 else
     x * T(n - 1) - T(n - 2)
 
-function test1 := T(2)
+function test1 := x^2 - 2
 
-function test2 := test1[x := im * x]
+function test2 := -x^2 - 2
