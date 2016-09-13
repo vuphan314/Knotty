@@ -1,0 +1,12 @@
+let c = im / 2
+
+let f1(x) = x^2 + c
+
+let f2(x, y) = f1(x) * f1(im * y)
+
+let s1(k) = sum[i in 0 ... k - 1][i * k] + f2(k, 0)
+
+let s2(k, t) =
+    t / im if k = 1 else
+    9 + k^2 if t = im / 3 else
+    s1(k) * im + f2(t, t^-1)

@@ -1,24 +1,20 @@
-constant k, n
+let A_1(n) = y^(n + 1)
 
-variable t, x, y
-
-function A_1(n) := y^(n + 1)
-
-function A_2(n) :=
+let A_2(n) =
     -(t^2 + t^-2) * y^n + t^-2 * y^(n + 2) + t^2 * x^2 * y^n +
     x^2 * y^(n + 1)
 
-function A_k(k, n) :=
+let A_k(k, n) =
     t^-2 * A(k - 1, n + 1) - t^-4 * A(k - 2, n) + t^2 * x^2 * y^n -
     t^-2 * x^2 * y^n + x^2 * y^(n + 1)
 
-function A(k, n) :=
+let A(k, n) =
     A_1(n) if k = 1 else
     A_2(n) if k = 2 else
     A_k(k, n)
 
-function test1 := A(3, -2)
+let test1 = A(3, -2)
 
-function test2 := test1[t := im * t]
+let test2 = test1[t = im * t]
 
-function test3 := A(4, 5)[y := -1, x := -y]
+let test3 = A(4, 5)[y = -1, x = -y]

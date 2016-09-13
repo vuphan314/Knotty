@@ -1,16 +1,10 @@
 # KNOTTY
 a computer algebra system for knot theory
 
-## KANBAN BOARD
-[Trello][trello]
-
-## HOW TO CONTRIBUTE
-Windows Command Prompt example:
-```
-git clone --recursive https://github.com/vuphan314/CS4365
-
-git checkout brachzach
-```
+## GOAL
+to verify some computations in these papers (published in the Journal of Knot Theory and Its Ramifications):
+- [(2, 2*p + 1)-torus knot][paperTorus]
+- [figure-eight knot][paperFigure8]
 
 ## DESCRIPTION
 the Knotty system includes:
@@ -20,27 +14,43 @@ the Knotty system includes:
 		-	example:
 			```
 			let p(x) = (1 + x) * (x^-1 + 1) - 3
-
 			let c = p(1)
 			```
 	- returns a simplified file (in the Knotty language)
 		-	example:
 			```
 			let p(x) = x - 1 + x^-1
-
 			let c = 1
 			```
-- the Knotty webapp includes:
-	- a text box: in which the user can type a source file
-	- a button: when clicked will simplify the source file (by invoking the Knotty engine)
-	- a preview box: in which the simplified file is shown
+- the Knotty webapp
+	-	includes:
+		- a text box: in which the user can type a source file
+		- a button: when clicked will simplify the source file (by invoking the Knotty engine)
+		- a preview box: in which the simplified file is shown
+	-	is similar to the [SPARC webapp][sparcWeb]
+
+## KANBAN BOARD
+[Trello][trello]
+
+## HOW TO CONTRIBUTE
+Windows Command Prompt example:
+```
+git clone --recursive https://github.com/vuphan314/CS4365
+git checkout brachzach
+```
 
 ## SUBMODULE
-The [generic parser][genparser] (`code/engine/parser/genparser/`) is developed by Evgenii Balai.
+The [generic parser][gitmodules] is developed by [Evgenii Balai][evgenii].
 
+[paperTorus]:
+http://www.math.ttu.edu/~rgelca/gs6.pdf
+[paperFigure8]:
+http://www.math.ttu.edu/~rgelca/jr5.pdf
+[sparcWeb]:
+http://ec2-52-25-88-7.us-west-2.compute.amazonaws.com/
 [trello]:
 https://trello.com/b/tCAfkInX
-[thisRepo]:
-https://github.com/vuphan314/CS4365
-[genparser]:
-https://github.com/iensen/genparser
+[gitmodules]:
+https://github.com/vuphan314/CS4365/blob/master/.gitmodules
+[evgenii]:
+https://github.com/iensen
