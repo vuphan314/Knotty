@@ -14,12 +14,14 @@ the Knotty system includes:
 		-	example:
 			```
 			let p(x) = (1 + x) * (x^-1 + 1) - 3
+			
 			let c = p(1)
 			```
 	- returns a simplified file (in the Knotty language)
 		-	example:
 			```
 			let p(x) = x - 1 + x^-1
+			
 			let c = 1
 			```
 - the Knotty webapp
@@ -36,6 +38,7 @@ the Knotty system includes:
 Windows Command Prompt example:
 ```
 git clone --recursive https://github.com/vuphan314/CS4365
+
 git checkout brachzach
 ```
 
