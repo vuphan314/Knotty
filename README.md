@@ -4,9 +4,10 @@
 a computer algebra system for knot theory
 
 ## GOAL
-to verify some computations in these papers (published in the Journal of Knot Theory and Its Ramifications):
-- [(2, 2*p + 1)-torus knot][paperTorus]
-- [figure-eight knot][paperFigure8]
+to assist mathematicians with symbolic computation
+- example: verification of some formulas in these papers (published in the Journal of Knot Theory and Its Ramifications):
+	- [(2, 2*p + 1)-torus knot][paperTorus]
+	- [figure-eight knot][paperFigure8]
 
 ## DESCRIPTION
 the Knotty system includes:
@@ -33,8 +34,9 @@ the Knotty system includes:
 		- a preview box: in which the simplified file is shown
 	-	is similar to the [SPARC webapp][sparcWeb]
 
-## KANBAN BOARD
-[Trello][trello]
+## LINKS
+- [kanban][trello]
+- [documentation][onedrive]
 
 ## HOW TO CONTRIBUTE
 Windows Command Prompt example:
@@ -51,10 +53,15 @@ The [generic parser][gitmodules] is developed by [Evgenii Balai][evgenii].
 http://www.math.ttu.edu/~rgelca/gs6.pdf
 [paperFigure8]:
 http://www.math.ttu.edu/~rgelca/jr5.pdf
+
 [sparcWeb]:
 http://ec2-52-25-88-7.us-west-2.compute.amazonaws.com/
+
 [trello]:
 https://trello.com/b/tCAfkInX
+[onedrive]:
+https://1drv.ms/f/s!Asl14HFRStFKgZlSAvo01o3toU9ISg
+
 [gitmodules]:
 https://github.com/vuphan314/CS4365/blob/master/.gitmodules
 [evgenii]:
