@@ -1,5 +1,5 @@
-class Val:
+import sympy
 
-class Constant(Val):
-
-class Variable(Val):
+def eq(a, b):
+    diff = sympy.simplify(a - b)
+    return diff == 0

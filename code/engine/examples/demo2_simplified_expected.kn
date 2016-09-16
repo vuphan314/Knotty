@@ -1,0 +1,13 @@
+def T(n, x)
+    let ret_n_0 = 2
+    let ret_n_1 = x
+    ret
+        ret_n_0 if n = 0 else
+        ret_n_1 if n = 1 else
+        x * T(n - 1, x) - T(n - 2, x)
+
+var x
+
+def test1 ret x^2 - 2
+
+def test2 ret -x^2 - 2
