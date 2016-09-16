@@ -1,8 +1,13 @@
-let T(n, x) =
-    2 if n = 0 else
-    x if n = 1 else
-    x * T(n - 1, x) - T(n - 2, x)
+def T(n, x)
+    let ret_n_0 = 2
+    let ret_n_1 = x
+    ret
+        ret_n_0 if n = 0 else
+        ret_n_1 if n = 1 else
+        x * T(n - 1, x) - T(n - 2, x)
 
-let test1 = T(2, x)
+var x
 
-let test2 = T(2, im * x)
+def test1 ret T(2, x)
+
+def test2 ret T(2, im * x)

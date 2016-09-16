@@ -8,4 +8,6 @@ def T(n, x)
 
 var x
 
-def test2 ret T(2, im * x)
+def test1 ret x**2 - 2
+
+def test2 ret -x**2 - 2

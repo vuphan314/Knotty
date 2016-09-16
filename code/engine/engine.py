@@ -1,7 +1,5 @@
-import sys
-import os
-
-def createAnotherFile():
+def makeAnotherFile():
+    import sys, os
     args = sys.argv
     if len(args) == 1:
         mess = '\nexample invocation:\n\n\t'
@@ -21,4 +19,4 @@ def createAnotherFile():
         print('\nOVERWROTE/created ' + pathSimplified)
 
 if __name__ == '__main__':
-    createAnotherFile()
+    makeAnotherFile()
