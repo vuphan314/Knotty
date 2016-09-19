@@ -1,0 +1,28 @@
+statements(stats T) ::= statement(T)
+statements(stats T cut_root(Ts)) ::= statement(T) statements(Ts)
+
+statement(T) ::= var_decl(T)
+statement(T) ::= fun_def(T)
+
+var_decl(T) ::= keyword_variable var(T)
+
+fun_def(funDef T T2) ::= keyword_define formal_fun_expr(T) fun_def_body(T2)
+
+formal_fun_expr(T) ::= fun_name(T)
+formal_fun_expr(T T2) ::= fun_name(T) left_paren formal_params(T2) right_paren
+
+fun_def_body(T) ::= return_clause(T)
+fun_def_body(T T2) ::= let_clauses(T) return_clause(T2)
+
+let_clause(T T2) ::= keyword_let local_value(T) op_equal term(T2)
+
+formal_params(T) ::= formal_param(T)
+formal_params(T Ts) ::= formal_param(T) comma formal_params(Ts)
+
+let_clauses(T) ::= let_clause(T)
+let_clauses(T Ts) ::= let_clause(T) let_clauses(Ts)
+
+var(T) ::= id(T)
+formal_param(T) ::= id(T)
+local_value(T) ::= id(T)
+

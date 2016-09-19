@@ -1,0 +1,28 @@
+keyword_variable = var
+
+keyword_define = def
+keyword_let = let
+keyword_return = ret
+keyword_if = if
+keyword_else = else
+
+keyword_true = true
+keyword_false = false
+
+id = [a-zA-Z][\w]*
+
+op_equal = =
+op_unequal = /=
+
+op_plus = \+
+op_minus = -
+op_mult = \*
+op_div = /
+op_exp = \^
+
+comma = ,
+
+left_paren = \(
+right_paren = \)
+
+spaces = \s+
