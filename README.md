@@ -17,14 +17,14 @@ the Knotty system includes:
 		-	example:
 			```
 			let p(x) = (1 + x) * (x^-1 + 1) - 3
-			
+
 			let c = p(1)
 			```
 	- returns a simplified file (in the Knotty language)
 		-	example:
 			```
 			let p(x) = x - 1 + x^-1
-			
+
 			let c = 1
 			```
 - the Knotty webapp
@@ -38,16 +38,26 @@ the Knotty system includes:
 - [kanban][trello]
 - [documentation][onedrive]
 
-## HOW TO CONTRIBUTE
-Windows Command Prompt example:
+## SETUP GUIDE
+- install the latest version of [Python][pythonDownload]
+- command-line interface:
+	```
+	pip install mpmath
+
+	pip install sympy
+	```
+
+## CONTRIBUTION GUIDE
+command-line interface:
 ```
 git clone --recursive https://github.com/vuphan314/CS4365
 
 git checkout brachzach
 ```
 
-## SUBMODULE
-The [generic parser][gitmodules] is developed by [Evgenii Balai][evgenii].
+## ACKNOWLEDGEMENT
+- Git submodule: [generic parser][gitmodules] by [Evgenii Balai][evgeniiGithub]
+- Python library: [SymPy][sympyHome] by the SymPy Development Team
 
 [paperTorus]:
 http://www.math.ttu.edu/~rgelca/gs6.pdf
@@ -62,7 +72,12 @@ https://trello.com/b/tCAfkInX
 [onedrive]:
 https://1drv.ms/f/s!Asl14HFRStFKgZlSAvo01o3toU9ISg
 
+[pythonDownload]:
+https://www.python.org/downloads/
+
 [gitmodules]:
 https://github.com/vuphan314/CS4365/blob/master/.gitmodules
-[evgenii]:
+[evgeniiGithub]:
 https://github.com/iensen
+[sympyHome]:
+http://www.sympy.org/en/index.html
