@@ -1,27 +1,27 @@
-def c1 ret 1
+def c1 return 1
 
 def c2
     let tmp = c1
-    ret c1 + c1
+    return c1 + c1
 
-def c3 ret
+def c3 return
     c1 + c2 if c1 * 2 = c2 else
     c1 - c2
 
-def f1(x) ret x^2
+def f1(x) return x^2
 
 def f2(x1, x2)
     let tmp1 = f1(x1)
     let tmp2 = f1(c3)
-    ret
+    return
         tmp1 / tmp2 if x1 /= x2 else
         f1(x2) if x1 = c2 else
         c3
 
 var x
 
-def test1 ret f2(2, x)
+def test1 return f2(2, x)
 
 var y
 
-def test2 ret f2(y, im * x)
+def test2 return f2(y, im * x)

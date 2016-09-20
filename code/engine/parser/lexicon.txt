@@ -1,28 +1,37 @@
-keyword_variable = var
+key_var = var
+key_def = def
 
-keyword_define = def
-keyword_let = let
-keyword_return = ret
-keyword_if = if
-keyword_else = else
+key_let = let
+key_return = return
 
-keyword_true = true
-keyword_false = false
+key_if = if
+key_else = else
 
-id = [a-zA-Z][\w]*
+key_truth = true|false
 
-op_equal = =
-op_unequal = /=
+op_or = or
+op_and = and
+op_not = not
+
+op_eq = =
+op_uneq = /=
 
 op_plus = \+
 op_minus = -
+
 op_mult = \*
 op_div = /
+op_mod = mod
+
 op_exp = \^
 
-comma = ,
+sep_comma = ,
 
-left_paren = \(
-right_paren = \)
+l_paren = \(
+r_paren = \)
+
+kn_numeral = \d+
+
+kn_id = [a-zA-Z][\w]*
 
 spaces = \s+
