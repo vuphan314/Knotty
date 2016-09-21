@@ -9,17 +9,35 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
-    private string pythonPath = @"C:\Python27\python.exe";
-    private string enginePath = @"C:\Python27\engine.py";
-    private string demoPath = @"C:\Python27\examples\demo.kn";
+    private readonly string pythonPath = @"C:\Python27\python.exe";
+    private readonly string enginePath = @"C:\Python27\engine.py";
+    private readonly string demoPath = @"C:\Python27\examples\demo.kn";
+    private readonly string scriptsPath = @"C:\scripts\";
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.QueryString["scriptId"] != null)
+        {
+            var file = @"C:\scripts\" + Request.QueryString["scriptId"];
 
+            if (!File.Exists(file)) return;
+
+            txtInput.Text = string.Empty;
+            foreach (var lineRead in File.ReadAllLines(file))
+                txtInput.Text += lineRead + "\n";
+        }
+
+        recentFiles.Text = string.Empty;
+        foreach (var file in Directory.GetFiles(scriptsPath).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(15))
+        {
+            recentFiles.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
+        }
     }
 
     protected void SubmitClick(object sender, EventArgs e)
     {
+        SaveInputToFile();
+
         //Waiting for a real, working version of the engine
 
         //var pInfo = new ProcessStartInfo
@@ -101,9 +119,7 @@ public partial class _Default : System.Web.UI.Page
             txtInput.Text = string.Empty;
 
             foreach (var lineRead in File.ReadAllLines(demoPath))
-            {
                 txtInput.Text += lineRead + "\n";
-            }
 
             lblOutput.Text += "Demo file loaded...<br>";
         }
@@ -114,5 +130,10 @@ public partial class _Default : System.Web.UI.Page
         }
 
         return true;
+    }
+
+    private void SaveInputToFile()
+    {
+        File.WriteAllText(scriptsPath + DateTime.UtcNow.ToFileTime().ToString() + ".kn", txtInput.Text);
     }
 }
