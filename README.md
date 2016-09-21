@@ -19,6 +19,7 @@ the Knotty system includes:
 			let p(x) = (1 + x) * (x^-1 + 1) - 3
 
 			let c = p(1)
+
 			```
 	- returns a simplified file (in the Knotty language)
 		-	example:
@@ -26,6 +27,7 @@ the Knotty system includes:
 			let p(x) = x - 1 + x^-1
 
 			let c = 1
+
 			```
 - the Knotty webapp
 	-	includes:
@@ -45,6 +47,7 @@ the Knotty system includes:
 	pip install mpmath
 
 	pip install sympy
+
 	```
 
 ## CONTRIBUTION GUIDE
@@ -53,33 +56,37 @@ the Knotty system includes:
 	- browse directory (Windows Command Prompt):
 		```
 		cd/d <parent_dir_of_repo>
+
 		```
 		example: my `<parent_dir_of_repo>` is `D:\git`
 	- clone repository and switch to your branch:
-		```	
+		```
 		git clone --recursive https://github.com/vuphan314/CS4365
-	
+
 		cd CS4365
 
 		git checkout <branch_name>
+
 		```
 		where `<branch_name>` is `branchzach`, `branchpaul`, or `branchadrian`
 - each following time:
 	-	browse directory and update repository:
 		```
 		cd/d <dir_of_repo>
-		
+
 		git pull
+
 		```
 		example: my `<dir_of_repo>` is `D:\git\CS4365`
 	- create/change your folders/files
 	- tell Git:
 		```
 		git add --all
-		
+
 		git commit --all --message "say what you did"
-		
+
 		git push
+
 		```
 
 ## ACKNOWLEDGEMENT
