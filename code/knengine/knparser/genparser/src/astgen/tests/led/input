@@ -1,0 +1,3 @@
+currentPlayerDisplay := 
+   {((100,450),15,"x's Turn")} if currentPlayer='x';
+   {((100,450),15,"o's Turn")} if currentPlayer='o'

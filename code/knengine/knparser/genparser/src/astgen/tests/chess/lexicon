@@ -1,0 +1,16 @@
+figure = K|Q|R|B|N
+file = [a-h]
+rank = [1-8]
+cell = [a-h][1-8]
+capture_char = x
+dot = \.
+en_passant = e\.p\.
+natural_number = [1-9][0-9]*
+move_id = [1-9][0-9]*\.
+long_castling = 0-0-0
+short_castling = 0-0
+plus = \+
+pound_sign = #
+end = 1-0|1/2-1/2|0-1
+spaces = \s+
+

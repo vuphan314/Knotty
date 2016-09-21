@@ -1,0 +1,7 @@
+expr(T1) ::= T1
+T2(mult Op1 Op2) ::= T3(Op1) mult_op T2(Op2)
+T2(T3) ::= T3
+T1(add M1 M2) ::= T2(M1) add_op T1(M2)
+T1(T2) ::= T2
+T3(expr) ::= left_paren expr right_paren
+T3(num) ::= num
