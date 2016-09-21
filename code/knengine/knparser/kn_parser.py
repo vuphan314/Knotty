@@ -4,8 +4,8 @@ from genparser.src.astgen.parsing import lexer, parser
 def kn_parse(input_path: str) -> dict:
     """Return lexing sequence and ast."""
     knparser_path = 'knparser/' # working dir: knengine/
-    lexicon_file = knparser_path + 'lexicon.txt'
-    grammar_file = knparser_path + 'grammar.txt'
+    lexicon_file = knparser_path + 'kn_lexicon.txt'
+    grammar_file = knparser_path + 'kn_grammar.txt'
 
     lexer_inst = lexer.Lexer(lexicon_file)
     allowed_terminals = lexer_inst.lexicon_dict.keys()
