@@ -20,8 +20,12 @@ kn_term(T) ::= cond_term(T)
 
 cond_term(condTerm T T2 T3) ::= uncond_term(T) key_if bool_term(T2) key_else kn_term(T3)
 
+uncond_term(T) ::= inner_uncond_term(T)
 uncond_term(T) ::= ar_term(T)
 uncond_term(T) ::= bool_term(T)
+
+inner_uncond_term(T) ::= named_expr(T)
+inner_uncond_term(T) ::= l_paren uncond_term(T) r_paren
 
 bool_term(T) ::= bool_term_1(T)
 
@@ -34,15 +38,15 @@ bool_term_2(T) ::= bool_term_3(T)
 bool_term_3(opNot T) ::= op_not bool_term_4(T)
 bool_term_3(T) ::= bool_term_4(T)
 
-bool_term_4(T) ::= comp_bool_term(T)
 bool_term_4(T) ::= inner_bool_term(T)
-
-comp_bool_term(opEq T T2) ::= ar_term(T) op_eq ar_term(T2)
-comp_bool_term(opUneq T T2) ::= ar_term(T) op_uneq ar_term(T2)
+bool_term_4(T) ::= comp_bool_term(T)
 
 inner_bool_term(T) ::= key_truth(T)
 inner_bool_term(T) ::= named_expr(T)
 inner_bool_term(T) ::= l_paren bool_term(T) r_paren
+
+comp_bool_term(opEq T T2) ::= ar_term(T) op_eq ar_term(T2)
+comp_bool_term(opUneq T T2) ::= ar_term(T) op_uneq ar_term(T2)
 
 ar_term(T) ::= ar_term_1(T)
 
@@ -86,10 +90,10 @@ form_param(T) ::= kn_id(T)
 
 act_param(T) ::= kn_term(T)
 
-named_expr(T) ::= act_fun_expr(T)
-named_expr(T) ::= kn_var(T)
-named_expr(T) ::= kn_symbol
-
 kn_var(T) ::= kn_id(T)
-fun_name(T) ::= kn_id(T)
 kn_symbol(T) ::= kn_id(T)
+fun_name(T) ::= kn_id(T)
+
+named_expr(T) ::= kn_var(T)
+named_expr(T) ::= kn_symbol(T)
+named_expr(T) ::= act_fun_expr(T)
