@@ -70,14 +70,17 @@ the Knotty system includes:
 		```
 		where `<branch_name>` is `branchzach`, `branchpaul`, or `branchadrian`
 - each following time:
-	-	browse directory and update repository:
+	-	browse directory:
 		```
 		cd/d <dir_of_repo>
 
+		```
+		example: my `<dir_of_repo>` is `D:\git\CS4365`
+	- update repository:
+		```
 		git pull
 
 		```
-		example: my `<dir_of_repo>` is `D:\git\CS4365`
 	- create/change your folders/files
 	- tell Git:
 		```
