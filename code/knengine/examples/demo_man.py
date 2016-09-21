@@ -1,34 +1,33 @@
+import sys
+sys.path.insert(0, '../kntranslator/')
+
 import sympy
 
+import kn_lib
+
 def T(n, x):
-    ret_n_0 = 2
-    ret_n_1 = x
     return \
-        ret_n_0 if lib.eq(n, 0) else \
-        ret_n_1 if lib.eq(n, 1) else \
+        2 if kn_lib.eq(n, 0) else \
+        x if kn_lib.eq(n, 1) else \
         x * T(n - 1, x) - T(n - 2, x)
 
-x = sympy.Symbol('x')
+sympy.var('x')
 
 def test1():
     return T(2, x)
 
 def test2():
-    return T(2, lib.im * x)
+    return T(2, kn_lib.im * x)
 
-def runTests():
+def get_output_string():
     tests = test1, test2
     st = '\n'
     for test in tests:
         st2 = str(test())
-        st += 'def ' + test.__name__ + ' ret ' + st2 + '\n\n'
+        st += 'def ' + test.__name__ + ' return ' + st2 + '\n\n'
     return st
 
 if __name__ == '__main__':
-    import sys
-    sys.path.append('../translator/')
-    import lib
-
-    st = runTests()
+    st = get_output_string()
     print(st)
-    input('`Enter` to quit')
+    input('(`Enter` to quit.)' '\n')

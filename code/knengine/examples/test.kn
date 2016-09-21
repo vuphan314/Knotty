@@ -1,1 +1,1 @@
-def c let tmp = 1 return tmp if true else -tmp
+def c let tmp = -1 return -tmp if true else 0

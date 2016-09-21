@@ -30,7 +30,7 @@ def get_output_string(input_path: str) -> str:
     """Return str (to be written in output file)."""
     lexed_parsed = kn_parser.kn_parse(input_path)
     parsed = lexed_parsed['parsed']
-    parsed = str(parsed)
+    parsed = str(parsed) + '\n'
     return parsed
 
 def get_output_path(input_path: str) -> str:
