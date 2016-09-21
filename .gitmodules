@@ -1,3 +1,0 @@
-[submodule "code/engine/parser/genparser"]
-	path = code/engine/parser/genparser
-	url = https://github.com/iensen/genparser
