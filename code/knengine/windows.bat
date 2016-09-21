@@ -2,9 +2,9 @@ goto starting
 
 :body
     set fold=examples\
-    set fil=demo
-    set fils=demo, demo2, test
-    for %%i in (%fils%) do (
+    set fil=oneliner
+    set fils=demo, demo2, empty, oneliner
+    for %%i in (%fil%) do (
         set base=%fold%%%~ni
         set kn=!base!.kn
         set txt=!base!_parsed_auto.txt

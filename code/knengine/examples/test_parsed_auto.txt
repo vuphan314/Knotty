@@ -1,1 +1,0 @@
-['knStats', ['funDef', ['formFunExpr', ('kn_id', 'c')], ['defBody', ['letCls', ['letCl', ('kn_id', 'tmp'), ['uMinus', ('kn_numeral', '1')]]], ['retCl', ['condTerm', ['uMinus', ('kn_id', 'tmp')], ('key_truth', 'true'), ('kn_numeral', '0')]]]]]

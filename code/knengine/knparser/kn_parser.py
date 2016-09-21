@@ -1,3 +1,4 @@
+from debugger import *
 from genparser.src.astgen.parsing import lexer, parser
 
 def kn_parse(input_path: str) -> dict:
@@ -11,6 +12,10 @@ def kn_parse(input_path: str) -> dict:
     parser_inst = parser.Parser(grammar_file, allowed_terminals)
 
     lexed = lexer_inst.get_lexing_sequence_from_file(input_path)
+    
     parsed = parser_inst.get_ast(lexed)
+    if parsed is not None:
+        parsed = list(parsed)
+        
     lexed_parsed = {'lexed': lexed, 'parsed': parsed}
     return lexed_parsed
