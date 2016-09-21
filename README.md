@@ -39,7 +39,7 @@ the Knotty system includes:
 - [documentation][onedrive]
 
 ## SETUP GUIDE
-- install the latest version of [Python][pythonDownload]
+- install latest [Python][pythonDownload]
 - command-line interface:
 	```
 	pip install mpmath
@@ -48,12 +48,39 @@ the Knotty system includes:
 	```
 
 ## CONTRIBUTION GUIDE
-command-line interface:
-```
-git clone --recursive https://github.com/vuphan314/CS4365
+- first time:
+	- install latest [Git][gitDownload]
+	- browse directory (Windows Command Prompt):
+		```
+		cd/d <parent_dir_of_repo>
+		```
+		example: my `<parent_dir_of_repo>` is `D:\git`
+	- clone repository and switch to your branch:
+		```	
+		git clone --recursive https://github.com/vuphan314/CS4365
+	
+		cd CS4365
 
-git checkout brachzach
-```
+		git checkout <branch_name>
+		```
+		where `<branch_name>` is `branchzach`, `branchpaul`, or `branchadrian`
+- each following time:
+	-	browse directory and update repository:
+		```
+		cd/d <dir_of_repo>
+		
+		git pull
+		```
+		example: my `<dir_of_repo>` is `D:\git\CS4365`
+	- create/change your folders/files
+	- tell Git:
+		```
+		git add --all
+		
+		git commit --all --message "say what you did"
+		
+		git push
+		```
 
 ## ACKNOWLEDGEMENT
 - Git submodule: [generic parser][gitmodules] by [Evgenii Balai][evgeniiGithub]
@@ -74,6 +101,9 @@ https://1drv.ms/f/s!Asl14HFRStFKgZlSAvo01o3toU9ISg
 
 [pythonDownload]:
 https://www.python.org/downloads/
+
+[gitDownload]:
+https://git-scm.com/downloads
 
 [gitmodules]:
 https://github.com/vuphan314/CS4365/blob/master/.gitmodules
