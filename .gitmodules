@@ -1,3 +1,0 @@
-[submodule "code/knengine/knparser/genparser"]
-	path = code/knengine/knparser/genparser
-	url = https://github.com/iensen/genparser
