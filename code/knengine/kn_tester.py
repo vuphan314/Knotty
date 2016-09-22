@@ -17,8 +17,9 @@ class KnTester(unittest.TestCase):
 
             input_path = kn_engine.examples_path + k
             output_list = kn_engine.get_output_list(input_path)
-            
+
             self.assertEqual(v, output_list)
 
 if __name__ == '__main__':
     unittest.main()
+    input('Key `Enter` to quit.' '\n')

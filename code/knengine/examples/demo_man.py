@@ -7,8 +7,8 @@ import kn_lib
 
 def T(n, x):
     return \
-        2 if kn_lib.eq(n, 0) else \
-        x if kn_lib.eq(n, 1) else \
+        2 if kn_lib.kn_eq(n, 0) else \
+        x if kn_lib.kn_eq(n, 1) else \
         x * T(n - 1, x) - T(n - 2, x)
 
 sympy.var('x')

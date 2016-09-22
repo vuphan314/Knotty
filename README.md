@@ -58,7 +58,7 @@ the Knotty system includes:
 		cd/d <parent_dir_of_repo>
 
 		```
-		example: my `<parent_dir_of_repo>` is `D:\git`
+		example: my `<parent_dir_of_repo>` is `D:/repos/`
 	- clone repository and switch to your branch:
 		```
 		git clone --recursive https://github.com/vuphan314/CS4365
@@ -75,7 +75,7 @@ the Knotty system includes:
 		cd/d <dir_of_repo>
 
 		```
-		example: my `<dir_of_repo>` is `D:\git\CS4365`
+		example: my `<dir_of_repo>` is `D:/repos/CS4365/`
 	- update repository:
 		```
 		git pull --prune
