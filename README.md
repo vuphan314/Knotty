@@ -49,59 +49,61 @@ the Knotty system includes:
 - `webapp/`: web application
 
 ## SETUP GUIDE
-- install latest [Python][pythonDownload]
-- command-line interface:
-	```
-	pip install mpmath
-
-	pip install sympy
-
-	git checkout tags/v0.1.0
-	
-	```
-	note: [all releases][githubReleases]
-
-## CONTRIBUTION GUIDE
 - first time:
-	- install latest [Git][gitDownload]
+	- install latest
+		-	[Python][pythonDownload]
+		-	[Git][gitDownload]
+	- command-line interface:
+		```
+		pip install mpmath
+
+		pip install sympy
+
+		```
 	- browse directory (Windows Command Prompt):
 		```
 		cd/d <parent_dir_of_repo>
 
 		```
 		example: my `<parent_dir_of_repo>` is `D:/repos/`
-	- clone repository and switch to your branch:
+	- clone repository:
 		```
 		git clone --recursive https://github.com/vuphan314/CS4365
 
-		cd CS4365
-
-		git checkout <branch_name>
-
 		```
-		where `<branch_name>` is `branchzach`, `branchpaul`, or `branchadrian`
 - each following time:
-	-	browse directory:
+	-	browse/update directory:
 		```
 		cd/d <dir_of_repo>
 
-		```
-		example: my `<dir_of_repo>` is `D:/repos/CS4365/`
-	- update repository:
-		```
 		git pull --prune
 
 		```
-	- create/change your folders/files
-	- tell Git:
+		example: my `<dir_of_repo>` is `D:/repos/CS4365/`
+	- browse tag:
 		```
-		git add --all
-
-		git commit --all --message "say what you did"
-
-		git push
+		git checkout tags/v0.1.0
 
 		```
+		note: [all releases][githubReleases]
+
+## CONTRIBUTION GUIDE
+- switch branch:
+	```
+	git checkout <branch_name>
+
+	```
+	where `<branch_name>` is `branchzach`, `branchpaul`, or `branchadrian`
+- create/change your folders/files
+- tell Git:
+	```
+	git add --all
+
+	git commit --all --message "say what you did"
+
+	git push
+
+	```
 
 ## ACKNOWLEDGEMENT
 - [Git submodule][gitmodules]: [generic parser][genparserSpec]
