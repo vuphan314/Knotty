@@ -1,0 +1,99 @@
+kn_stats(knStats T) ::= kn_stat(T)
+kn_stats(knStats T cut_root(Ts)) ::= kn_stat(T) kn_stats(Ts)
+
+kn_stat(T) ::= var_decl(T)
+kn_stat(T) ::= fun_def(T)
+
+var_decl(varDecl T) ::= key_var kn_var(T)
+
+fun_def(funDef T T2) ::= key_def form_fun_expr(T) def_body(T2)
+
+def_body(defBody T) ::= ret_cl(T)
+def_body(defBody T T2) ::= let_cls(T) ret_cl(T2)
+
+ret_cl(retCl T) ::= key_return kn_term(T)
+
+let_cl(letCl T T2) ::= key_let kn_symbol(T) op_eq kn_term(T2)
+
+kn_term(T) ::= uncond_term(T)
+kn_term(T) ::= cond_term(T)
+
+cond_term(condTerm T T2 T3) ::= uncond_term(T) key_if bool_term(T2) key_else kn_term(T3)
+
+uncond_term(T) ::= inner_uncond_term(T)
+uncond_term(T) ::= ar_term(T)
+uncond_term(T) ::= bool_term(T)
+
+inner_uncond_term(T) ::= named_expr(T)
+inner_uncond_term(T) ::= l_paren uncond_term(T) r_paren
+
+bool_term(T) ::= bool_term_1(T)
+
+bool_term_1(opOr T T2) ::= bool_term_1(T) op_or bool_term_2(T2)
+bool_term_1(T) ::= bool_term_2(T)
+
+bool_term_2(opAnd T T2) ::= bool_term_2(T) op_and bool_term_3(T2)
+bool_term_2(T) ::= bool_term_3(T)
+
+bool_term_3(opNot T) ::= op_not bool_term_4(T)
+bool_term_3(T) ::= bool_term_4(T)
+
+bool_term_4(T) ::= inner_bool_term(T)
+bool_term_4(T) ::= comp_bool_term(T)
+
+inner_bool_term(T) ::= key_truth(T)
+inner_bool_term(T) ::= named_expr(T)
+inner_bool_term(T) ::= l_paren bool_term(T) r_paren
+
+comp_bool_term(opEq T T2) ::= ar_term(T) op_eq ar_term(T2)
+comp_bool_term(opUneq T T2) ::= ar_term(T) op_uneq ar_term(T2)
+
+ar_term(T) ::= ar_term_1(T)
+
+ar_term_1(opPlus T T2) ::= ar_term_1(T) op_plus ar_term_2(T2)
+ar_term_1(bMinus T T2) ::= ar_term_1(T) op_minus ar_term_2(T2)
+ar_term_1(T) ::= ar_term_2(T)
+
+ar_term_2(opMult T T2) ::= ar_term_2(T) op_mult ar_term_3(T2)
+ar_term_2(opDiv T T2) ::= ar_term_2(T) op_div ar_term_3(T2)
+ar_term_2(opMod T T2) ::= ar_term_2(T) op_mod ar_term_3(T2)
+ar_term_2(T) ::= ar_term_3(T)
+
+ar_term_3(uMinus T) ::= op_minus ar_term_4(T)
+ar_term_3(T) ::= ar_term_4(T)
+
+ar_term_4(opExp T T2) ::= ar_term_5(T) op_exp ar_term_4(T2)
+ar_term_4(T) ::= ar_term_5(T)
+
+ar_term_5(T) ::= inner_ar_term(T)
+
+inner_ar_term(T) ::= kn_numeral(T)
+inner_ar_term(T) ::= named_expr(T)
+inner_ar_term(T) ::= l_paren ar_term(T) r_paren
+
+form_params(formParams T) ::= form_param(T)
+form_params(formParams T Ts) ::= form_param(T) sep_comma form_params(Ts)
+
+act_params(T) ::= act_param(T)
+act_params(actParams T Ts) ::= act_param(T) sep_comma act_params(Ts)
+
+let_cls(letCls T) ::= let_cl(T)
+let_cls(letCls T Ts) ::= let_cl(T) let_cls(Ts)
+
+form_fun_expr(formFunExpr T) ::= fun_name(T)
+form_fun_expr(formFunExpr T T2) ::= fun_name(T) l_paren form_params(T2) r_paren
+
+act_fun_expr(actFunExpr T) ::= fun_name(T)
+act_fun_expr(actFunExpr T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
+
+form_param(T) ::= kn_id(T)
+
+act_param(T) ::= kn_term(T)
+
+kn_var(T) ::= kn_id(T)
+kn_symbol(T) ::= kn_id(T)
+fun_name(T) ::= kn_id(T)
+
+named_expr(T) ::= kn_var(T)
+named_expr(T) ::= kn_symbol(T)
+named_expr(T) ::= act_fun_expr(T)

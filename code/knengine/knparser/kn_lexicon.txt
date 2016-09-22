@@ -1,0 +1,37 @@
+key_var = var
+key_def = def
+
+key_let = let
+key_return = return
+
+key_if = if
+key_else = else
+
+key_truth = true|false
+
+op_or = or
+op_and = and
+op_not = not
+
+op_eq = =
+op_uneq = /=
+
+op_plus = \+
+op_minus = -
+
+op_mult = \*
+op_div = /
+op_mod = mod
+
+op_exp = \^
+
+sep_comma = ,
+
+l_paren = \(
+r_paren = \)
+
+kn_numeral = \d+
+
+kn_id = [a-zA-Z][\w]*
+
+spaces = \s+
