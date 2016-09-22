@@ -78,7 +78,7 @@ the Knotty system includes:
 		example: my `<dir_of_repo>` is `D:\git\CS4365`
 	- update repository:
 		```
-		git pull
+		git pull --prune
 
 		```
 	- create/change your folders/files
