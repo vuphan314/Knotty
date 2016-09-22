@@ -3,19 +3,18 @@ goto starting
 :body
     set fold=examples\
     set fil=oneliner
-    set fils=demo, demo2, empty, oneliner
-    for %%i in (%fil%) do (
+    set fils=demo, empty, oneliner, syntax
+    for %%i in (%fils%) do (
         set base=%fold%%%~ni
         set kn=!base!.kn
         set txt=!base!_parsed_auto.txt
 
         set parse=%kn_engine% !kn!
 
-        REM echo !base!
+        echo !base!
 
         !parse!
         type !txt!
-
     )
     goto ending
 
