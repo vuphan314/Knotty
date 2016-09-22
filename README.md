@@ -73,7 +73,7 @@ the Knotty system includes:
 
     ```
 - each following time:
-  - browse/update directory:
+  - browse directory:
     ```
     cd/d <dir_of_repo>
 
