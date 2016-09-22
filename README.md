@@ -56,7 +56,10 @@ the Knotty system includes:
 
 	pip install sympy
 
+	git checkout tags/v0.1.0
+	
 	```
+	note: [all releases][githubReleases]
 
 ## CONTRIBUTION GUIDE
 - first time:
@@ -121,6 +124,9 @@ https://1drv.ms/f/s!Asl14HFRStFKgZlSAvo01o3toU9ISg
 
 [pythonDownload]:
 https://www.python.org/downloads/
+
+[githubReleases]:
+https://github.com/vuphan314/CS4365/releases
 
 [gitDownload]:
 https://git-scm.com/downloads
