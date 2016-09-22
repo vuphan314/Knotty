@@ -44,9 +44,9 @@ the Knotty system includes:
 - [documentation][onedrive]
 
 ## FILES
-- `code/`
-	-	`knengine/`: Knotty engine
-	- `webapp/`: web application
+`code/`
+-	`knengine/`: Knotty engine
+- `webapp/`: web application
 
 ## SETUP GUIDE
 - install latest [Python][pythonDownload]
