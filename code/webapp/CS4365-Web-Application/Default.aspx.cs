@@ -28,30 +28,28 @@ public partial class _Default : System.Web.UI.Page
         }
 
         recentFiles.Text = string.Empty;
-        foreach (var file in Directory.GetFiles(scriptsPath).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(15))
-        {
-            recentFiles.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
-        }
+        foreach (var file in Directory.GetFiles(scriptsPath).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
+            if (!file.Name.Contains("simplified"))
+                recentFiles.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
     }
 
     protected void SubmitClick(object sender, EventArgs e)
     {
-        SaveInputToFile();
+        var file = SaveInputToFile();
 
-        //Waiting for a real, working version of the engine
+        var pInfo = new ProcessStartInfo
+        {
+            FileName = pythonPath,
+            Arguments = $"{enginePath} {file}"
+        };
 
-        //var pInfo = new ProcessStartInfo
-        //{
-        //    FileName = pythonPath,
-        //    Arguments = $"{enginePath} {demoPath}"
-        //};
+        var p = new Process { StartInfo = pInfo };
 
-        //var p = new Process { StartInfo = pInfo };
+        p.Start();
 
-        //p.Start();
-
-        //foreach (var lineRead in File.ReadAllLines(demoPath))
-        //    lblOutput.Text += lineRead + "<br>";
+        lblOutput.Text = string.Empty;
+        foreach (var lineRead in File.ReadAllLines(file))
+            lblOutput.Text += lineRead + "<br>";
 
     }
     protected void TestClick(object sender, EventArgs e)
@@ -132,8 +130,10 @@ public partial class _Default : System.Web.UI.Page
         return true;
     }
 
-    private void SaveInputToFile()
+    private string SaveInputToFile()
     {
-        File.WriteAllText(scriptsPath + DateTime.UtcNow.ToFileTime().ToString() + ".kn", txtInput.Text);
+        var file = scriptsPath + DateTime.UtcNow.ToFileTime() + ".kn";
+        File.WriteAllText(file, txtInput.Text);
+        return file;
     }
 }
