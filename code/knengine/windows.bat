@@ -25,13 +25,19 @@ goto starting
 
 :bundling
     set spec_man=build.spec
-    
+    set dist_path=..\dist\
+    set knengine_path=%CD%
+
     set pyi_makespec=pyi-makespec %engine_py% -F
-    set pyi_bundle=pyinstaller %spec_man% --workpath=. --distpath=..
-    
-    REM %pyi_makespec%
-    %pyi_bundle%
-    
+    set pyi_bundle=pyinstaller %spec_man% --workpath=. --dist_path=%distpath%
+
+    %pyi_makespec%
+    REM %pyi_bundle%
+
+    REM cd %dist_path%
+    REM %engine_exe%
+    REM cd %knengine_path%
+
     goto ending
 
 :starting
@@ -39,6 +45,7 @@ goto starting
     cls
     setlocal enabledelayedexpansion
 
+    set engine_exe=engine.exe
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
 
