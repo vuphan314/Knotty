@@ -1,6 +1,6 @@
 import kn_engine
 
-which_engine = 'engine.py'
+which_engine = 'engine.exe'
 base_appendage = '_simplified.kn'
 
 if __name__ == '__main__':
