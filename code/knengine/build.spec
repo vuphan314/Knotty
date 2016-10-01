@@ -2,11 +2,13 @@
 
 block_cipher = None
 
-
+added_files = [
+    ('knparser\\*', 'knparser\\')
+  ]
 a = Analysis(['engine.py'],
              pathex=['D:\\repos\\CS4365\\code\\knengine'],
              binaries=None,
-             datas=None,
+             datas=added_files,
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],

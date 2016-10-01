@@ -25,18 +25,21 @@ goto starting
 
 :bundling
     set spec_man=build.spec
+    set spec_man_d=buildD.spec
     set dist_path=..\dist\
     set knengine_path=%CD%
 
-    set pyi_makespec=pyi-makespec %engine_py% -F
-    set pyi_bundle=pyinstaller %spec_man% --workpath=. --dist_path=%distpath%
+    set pyi_makespec=pyi-makespec %engine_py%
+    set pyi_bundle=pyinstaller %spec_man% --workpath=. --distpath=%dist_path%
+    set pyi_bundle_d=pyinstaller %spec_man_d% --workpath=. --distpath=%dist_path%
 
-    %pyi_makespec%
+    REM %pyi_makespec%
     REM %pyi_bundle%
+    REM %pyi_bundle_d%
 
-    REM cd %dist_path%
-    REM %engine_exe%
-    REM cd %knengine_path%
+    cd %dist_path%
+    %engine_exe%
+    cd %knengine_path%
 
     goto ending
 
