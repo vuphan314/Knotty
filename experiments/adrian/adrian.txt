@@ -1,3 +1,0 @@
-Testing commit with cmd line.
-
-Incorrect user name testing another push.
