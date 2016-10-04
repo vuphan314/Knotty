@@ -94,10 +94,9 @@ the Knotty system includes:
 ## CONTRIBUTION GUIDE
 - switch branch:
   ```
-  git checkout <branch_name>
+  git checkout branchzach
 
-  ```
-  where `<branch_name>` is `branchzach`, `branchpaul`, or `branchadrian`
+  ```  
 - create/change your folders/files
 - tell Git:
   ```
@@ -112,8 +111,7 @@ the Knotty system includes:
 ## ACKNOWLEDGEMENT
 - [Git submodule][gitmodules]: [generic parser][genparserSpec]
   - by [Evgenii Balai][evgeniiGithub]
-- Python library: [SymPy][sympyHome]
-  - by the SymPy Development Team
+- Python package: [SymPy][sympyHome]
 
 [paperTorus]:
 http://www.math.ttu.edu/~rgelca/gs6.pdf
