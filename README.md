@@ -15,7 +15,7 @@ the Knotty system includes:
 - the Knotty language: a programming language for math,
   specializing in knot theory
 - the Knotty engine:
-  - receives a source file (in the Knotty language)
+  - receives a Knotty program
     - example:
       ```
       def p(x) return (1 + x) * (x^-1 + 1) - 3
@@ -23,7 +23,7 @@ the Knotty system includes:
       def c return p(1)
 
       ```
-  - returns a simplified file (in the Knotty language)
+  - returns a simplified Knotty program
     - example:
       ```
       def p(x) return x - 1 + x^-1
@@ -33,16 +33,15 @@ the Knotty system includes:
       ```
 - the Knotty webapp
   - includes:
-    - a text box: in which the user can type a source file
-    - a button: when clicked will simplify the source file
-      (by invoking the Knotty engine)
-    - a preview box: in which the simplified file is shown
-  - is similar to the [SPARC webapp][sparcWeb]
+    - a text box: in which the user can type a Knotty program
+    - a button: when clicked will simplify the Knotty program
+      - by invoking the Knotty engine
+    - a preview box: in which the simplified Knotty program is shown
 
 ## LINKS
-- [demo webapp][demoWebapp]
-- [kanban][trello]
-- [documentation][onedrive]
+- [webapp][linkWebapp]
+- [kanban][linkTrello]
+- [documentation][linkOnedrive]
 
 ## FILES
 `code/`
@@ -96,7 +95,7 @@ the Knotty system includes:
   ```
   git checkout branchzach
 
-  ```  
+  ```
 - create/change your folders/files
 - tell Git:
   ```
@@ -118,14 +117,11 @@ http://www.math.ttu.edu/~rgelca/gs6.pdf
 [paperFigure8]:
 http://www.math.ttu.edu/~rgelca/jr5.pdf
 
-[sparcWeb]:
-http://ec2-52-25-88-7.us-west-2.compute.amazonaws.com/
-
-[demoWebapp]:
+[linkWebapp]:
 http://99.64.48.184/
-[trello]:
+[linkTrello]:
 https://trello.com/b/tCAfkInX
-[onedrive]:
+[linkOnedrive]:
 https://1drv.ms/f/s!Asl14HFRStFKgZlSCNCMQ4qIWcOoIg
 
 [pythonDownload]:

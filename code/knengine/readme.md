@@ -12,16 +12,16 @@ part of Knotty system
   - `examples/demo_man.py`
 
 ## HOW THE ENGINE WORKS
-- input: source Knotty program
+- input: Knotty program
 - output: simplified Knotty program
 - includes
   - parser:
-    - input: source Knotty program
+    - input: Knotty program
     - output: Knotty parse-tree (as Python nested list)
   - translator:
     - input: Knotty parse-tree
     - output: Python program that
-      - is equivalent to source Knotty program
+      - is equivalent to Knotty program
       - includes script to generate simplified Knotty program
 
 ## FILES
