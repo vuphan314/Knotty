@@ -3,7 +3,7 @@
 block_cipher = None
 
 added_files = [
-    ('knparser\\*', 'knparser\\')
+    ('knparser/*', 'knparser/')
   ]
 a = Analysis(['engine.py'],
              pathex=['D:\\repos\\CS4365\\code\\knengine'],
