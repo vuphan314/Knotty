@@ -33,7 +33,6 @@ goto starting
 
     REM %pyi_makespec%
     REM %pyi_bundle%
-    
     cd %dist_path% & %engine_exe% & cd %knengine_path%
 
     goto ending
