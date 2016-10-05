@@ -1,16 +1,15 @@
+import os
+
 from debugger import *
 from genparser.src.astgen.parsing import lexer, parser
-import os
+
 def kn_parse(input_path: str) -> dict:
     """Return lexing sequence and ast."""
-    # knparser_path = 'knparser/' # working dir: knengine/
-    knparser_path = '' # working dir: knengine/
-    lexicon_file = knparser_path + 'kn_lexicon.txt'
-    grammar_file = knparser_path + 'kn_grammar.txt'
+    lexicon_file = 'kn_lexicon.txt'
+    grammar_file = 'kn_grammar.txt'
 
-
-    lexicon_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), lexicon_file)
-    grammar_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), grammar_file)
+    lexicon_file = complete_path(lexicon_file)
+    grammar_file = complete_path(grammar_file)
 
     lexer_inst = lexer.Lexer(lexicon_file)
     allowed_terminals = lexer_inst.lexicon_dict.keys()
@@ -24,3 +23,12 @@ def kn_parse(input_path: str) -> dict:
 
     lexed_parsed = {'lexed': lexed, 'parsed': parsed}
     return lexed_parsed
+    
+def complete_path(incomplete_path: str) -> str:
+    """Add current directory to file name.
+    
+    Idea of Evgenii Balai.
+    """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    complete_path = os.path.join(current_dir, incomplete_path)
+    return complete_path

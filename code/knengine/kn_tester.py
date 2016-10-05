@@ -16,8 +16,8 @@ class KnTester(unittest.TestCase):
             v = file_tree_dict[k]
 
             input_path = kn_engine.examples_path + k
-            output_list = kn_engine.get_output_list(input_path)
-
+            output_list = kn_engine.get_output_tree(input_path)
+            
             self.assertEqual(v, output_list)
 
 if __name__ == '__main__':

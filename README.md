@@ -80,7 +80,7 @@ the Knotty system includes:
     example: my `<dir_of_repo>` is `D:/repos/CS4365/`
   - update repository:
     ```
-    git pull --prune
+    git pull
 
     ```
   - browse tag:

@@ -24,9 +24,9 @@ goto starting
     goto ending
 
 :bundling
-    set spec_man=build.spec
-    set work_path=.
-    set dist_path=..\dist\
+    set spec_man=engine_man.spec
+    set work_path=..\build\
+    set dist_path=..
     set knengine_path=%CD%
 
     set pyi_makespec=pyi-makespec %engine_py% -F
@@ -37,7 +37,7 @@ goto starting
 
     cd %dist_path%
     %engine_exe%
-    %engine_exe% ../knengine/examples/demo.kn
+    %engine_exe% knengine\examples\demo.kn
     cd %knengine_path%
 
     goto ending

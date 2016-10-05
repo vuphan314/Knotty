@@ -1,9 +1,7 @@
 import sys
-# sys.path.insert(1, 'knparser/')
 import os
 
 from debugger import *
-# from knparser import kn_parser
 import kn_parser
 
 which_engine = 'kn_engine.py'
