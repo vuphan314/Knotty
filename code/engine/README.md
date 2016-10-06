@@ -1,3 +1,10 @@
-# STANDALONE EXECUTABLE
+# ENGINE: STANDALONE EXECUTABLE
 
-source: `../knengine/`
+## DESCRIPTION
+Windows `engine.exe`:
+- shows instructions upon double-click
+- accepts any relative path to any text file
+- is independent of Python
+
+## SOURCE
+`../knengine/`

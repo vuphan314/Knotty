@@ -7,8 +7,8 @@ part of Knotty system
   py kn_tester.py
 
   ```
-- manual testing: double-click 
-  - `kn_engine.py` 
+- manual testing: double-click
+  - `kn_engine.py`
   - `examples/demo_man.py`
 
 ## HOW THE ENGINE WORKS
@@ -25,14 +25,14 @@ part of Knotty system
       - includes script to generate simplified Knotty program
 
 ## FILES
-- `kn_engine.py`: Knotty engine
-- `kn_tester.py`: unit-tester
 - `examples/`: note that
   - suffix `_man`: manually written
   - suffix `_auto`: automatically written
-- `knparser/`
-  - `kn_parser.py`: Knotty parser
-  - `kn_lexicon.txt`: Knotty parsing-expression lexicon
-  - `kn_grammar.txt`: Knotty parsing-expression grammar
 - `kntranslator/`:
   - `kn_lib.py`: Knotty library
+- `kn_engine.py`: Knotty engine
+- parsing:
+  - `kn_grammar.txt`: Knotty parsing-expression grammar
+  - `kn_lexicon.txt`: Knotty parsing-expression lexicon
+  - `kn_parser.py`: Knotty parser
+- `kn_tester.py`: Knotty unit-tester

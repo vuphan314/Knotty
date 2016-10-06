@@ -59,6 +59,8 @@ the Knotty system includes:
 
     pip install sympy
 
+    pip install pyinstaller
+
     ```
   - browse directory (Windows Command Prompt):
     ```
@@ -108,9 +110,12 @@ the Knotty system includes:
   ```
 
 ## ACKNOWLEDGEMENT
-- [Git submodule][gitmodules]: [generic parser][genparserSpec]
-  - by [Evgenii Balai][evgeniiGithub]
-- Python package: [SymPy][sympyHome]
+- [Git submodules][gitmodules]:
+  - [generic parser][genparserSpec]
+    - by [Evgenii Balai][evgeniiGithub]
+- Python packages:
+  - [SymPy][sympyHome]
+  - [PyInstaller][pyinstallerHome]
 
 [paperTorus]:
 http://www.math.ttu.edu/~rgelca/gs6.pdf
@@ -141,3 +146,5 @@ https://github.com/iensen
 
 [sympyHome]:
 http://www.sympy.org/en/index.html
+[pyinstallerHome]:
+http://www.pyinstaller.org/
