@@ -1,0 +1,3 @@
+# STANDALONE EXECUTABLE
+
+source: `../knengine/`
