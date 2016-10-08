@@ -1,4 +1,4 @@
-# KNOTTY ENGINE
+# KNOTTY ENGINE (SOURCE)
 part of Knotty system
 
 ## TEST GUIDE
@@ -36,3 +36,6 @@ part of Knotty system
   - `kn_lexicon.txt`: Knotty parsing-expression lexicon
   - `kn_parser.py`: Knotty parser
 - `kn_tester.py`: Knotty unit-tester
+
+## BINARY
+`../engine/`
