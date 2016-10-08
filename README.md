@@ -46,7 +46,8 @@ the Knotty system includes:
 
 ## FILES
 `code/`
-- `knengine/`: Knotty engine
+- `engine/`: engine (binary)
+- `knengine/`: Knotty engine (source)
 - `webapp/`: web application
 
 ## SETUP GUIDE
