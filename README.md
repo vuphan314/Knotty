@@ -39,6 +39,7 @@ the Knotty system includes:
     - a preview box: in which the simplified Knotty program is shown
 
 ## LINKS
+- [tags][linkTags]
 - [webapp][linkWebapp]
 - [kanban][linkTrello]
 - [documentation][linkOnedrive]
@@ -89,8 +90,7 @@ the Knotty system includes:
     ```
     git checkout tags/v0.1.0
 
-    ```
-    note: [all releases][githubReleases]
+    ```    
 
 ## CONTRIBUTION GUIDE
 - switch branch:
@@ -122,6 +122,8 @@ http://www.math.ttu.edu/~rgelca/gs6.pdf
 [paperFigure8]:
 http://www.math.ttu.edu/~rgelca/jr5.pdf
 
+[linkTags]:
+https://github.com/vuphan314/CS4365/releases
 [linkWebapp]:
 http://99.64.48.184/
 [linkTrello]:
@@ -133,9 +135,6 @@ https://1drv.ms/f/s!Asl14HFRStFKgZlSCNCMQ4qIWcOoIg
 https://www.python.org/downloads/
 [gitDownload]:
 https://git-scm.com/downloads
-
-[githubReleases]:
-https://github.com/vuphan314/CS4365/releases
 
 [gitmodules]:
 https://github.com/vuphan314/CS4365/blob/master/.gitmodules
