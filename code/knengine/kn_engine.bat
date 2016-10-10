@@ -53,8 +53,8 @@ goto starting
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
 
-    REM goto looping
-    goto bundling
+    goto looping
+    REM goto bundling
 
 :ending
     echo:
