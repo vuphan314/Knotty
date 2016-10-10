@@ -5,11 +5,30 @@ from debugger import *
 from genparser.src.astgen.parsing import lexer, parser
 
 def get_output_str(input_path: str) -> str:
-    output_list = get_output_tree(input_path)
-    output_str = str(output_list) + '\n'
+    output_tuple = get_output_tuple(input_path)
+    output_str = convert_tuple_to_str(output_tuple) + '\n'
     return output_str
 
-def get_output_tree(input_path: str) -> list:
+def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
+    tabs = my_tab * tab_count
+    st = tabs
+    if is_leaf(T):
+        st += str(T)
+    else:
+        st += "('" + T[0] + "'"
+        for t in T[1:]:
+            st2 = ',\n'
+            st2 += convert_tuple_to_str(t, tab_count = tab_count + 1)
+            st += st2
+        st += '\n' + tabs + ')'
+    return st
+
+my_tab = '  '
+
+def is_leaf(T: tuple) -> bool:
+    return isinstance(T[1], str)
+
+def get_output_tuple(input_path: str) -> list:
     """Return parse-tree (possibly None)."""
     lexed_parsed = kn_parse(input_path)
     parsed = lexed_parsed['parsed']
@@ -20,8 +39,8 @@ def kn_parse(input_path: str) -> dict:
     lexicon_file = 'kn_lexicon.txt'
     grammar_file = 'kn_grammar.txt'
 
-    lexicon_file = complete_path(lexicon_file)
-    grammar_file = complete_path(grammar_file)
+    lexicon_file = get_complete_path(lexicon_file)
+    grammar_file = get_complete_path(grammar_file)
 
     lexer_inst = lexer.Lexer(lexicon_file)
     allowed_terminals = lexer_inst.lexicon_dict.keys()
@@ -32,11 +51,12 @@ def kn_parse(input_path: str) -> dict:
     parsed = parser_inst.get_ast(lexed)
     if parsed is not None:
         parsed = list(parsed)
+        parsed = convert_list_to_tuple(parsed)
 
     lexed_parsed = {'lexed': lexed, 'parsed': parsed}
     return lexed_parsed
 
-def complete_path(incomplete_path: str) -> str:
+def get_complete_path(incomplete_path: str) -> str:
     """Add current directory to file name.
 
     Idea of Evgenii Balai.
@@ -44,6 +64,15 @@ def complete_path(incomplete_path: str) -> str:
     current_dir = os.path.dirname(os.path.abspath(__file__))
     complete_path = os.path.join(current_dir, incomplete_path)
     return complete_path
+
+def convert_list_to_tuple(T: list) -> tuple:
+    if isinstance(T, tuple):
+        return T
+    else: # list
+        T2 = T[0],
+        for t in T[1:]:
+            T2 += convert_list_to_tuple(t),
+        return T2
 
 if __name__ == '__main__':
     input_path = sys.argv[1]

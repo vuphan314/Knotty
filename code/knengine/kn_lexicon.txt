@@ -19,6 +19,12 @@ op_not = not
 op_eq = =
 op_uneq = /=
 
+op_gr = >
+op_less = <
+
+op_gr_eq = >=
+op_less_eq = <=
+
 op_plus = \+
 op_minus = -
 
@@ -33,7 +39,7 @@ sep_comma = ,
 l_paren = \(
 r_paren = \)
 
-kn_num = \d+
+kn_num = im|\d+
 kn_id = [a-zA-Z][\w]*
 
 spaces = \s+
