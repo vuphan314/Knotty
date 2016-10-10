@@ -1,11 +1,11 @@
 kn_stats(knStats T) ::= kn_stat(T)
 kn_stats(knStats T cut_root(Ts)) ::= kn_stat(T) kn_stats(Ts)
 
-kn_stat(T) ::= comp_stat(T)
+kn_stat(T) ::= compu_stat(T)
 kn_stat(T) ::= var_stat(T)
 kn_stat(T) ::= def_stat(T)
 
-comp_stat(compStat T) ::= key_comp kn_terms(T)
+compu_stat(compuStat T) ::= key_compu kn_terms(T)
 
 var_stat(varStat T) ::= key_var kn_vars(T)
 
@@ -38,14 +38,14 @@ bool_term_3(opNot T) ::= op_not bool_term_4(T)
 bool_term_3(T) ::= bool_term_4(T)
 
 bool_term_4(T) ::= inner_bool_term(T)
-bool_term_4(T) ::= comp_bool_term(T)
+bool_term_4(T) ::= compa_bool_term(T)
 
 inner_bool_term(T) ::= key_truth(T)
 inner_bool_term(T) ::= named_term(T)
 inner_bool_term(T) ::= l_paren bool_term(T) r_paren
 
-comp_bool_term(opEq T T2) ::= ar_term(T) op_eq ar_term(T2)
-comp_bool_term(opUneq T T2) ::= ar_term(T) op_uneq ar_term(T2)
+compa_bool_term(opEq T T2) ::= ar_term(T) op_eq ar_term(T2)
+compa_bool_term(opUneq T T2) ::= ar_term(T) op_uneq ar_term(T2)
 
 ar_term(T) ::= ar_term_1(T)
 

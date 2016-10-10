@@ -2,7 +2,7 @@ goto starting
 
 :looping
     set fold=examples\
-    set fil=demo
+    set fil=syntax
     set fils=demo, empty, oneliner, syntax
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
@@ -12,12 +12,15 @@ goto starting
 
         set engine_cmd=%engine_py% !kn!
         set kn_engine_cmd=%kn_engine_py% !kn!
+        set kn_parser_cmd=%kn_parser_py% !kn!
 
         REM !engine_cmd!
         REM type !kn_simplified!
 
         REM !kn_engine_cmd!
         REM type !txt!
+        
+        !kn_parser_cmd!
 
         echo:
     )
@@ -52,6 +55,7 @@ goto starting
 
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
+    set kn_parser_py=kn_parser.py
 
     goto looping
     REM goto bundling

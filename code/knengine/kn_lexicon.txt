@@ -1,4 +1,4 @@
-key_comp = compute
+key_compu = compute
 key_var = vary
 key_def = define
 
