@@ -5,8 +5,11 @@ from debugger import *
 from genparser.src.astgen.parsing import lexer, parser
 
 def get_output_str(input_path: str) -> str:
-    output_tuple = get_output_tuple(input_path)
-    output_str = convert_tuple_to_str(output_tuple) + '\n'
+    output_tree = get_output_tree(input_path)
+    if output_tree is None:
+        output_str = str(None)
+    else:
+        output_str = convert_tuple_to_str(output_tree) + '\n'
     return output_str
 
 def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
@@ -28,8 +31,8 @@ my_tab = '  '
 def is_leaf(T: tuple) -> bool:
     return isinstance(T[1], str)
 
-def get_output_tuple(input_path: str) -> list:
-    """Return parse-tree (possibly None)."""
+def get_output_tree(input_path: str) -> tuple:
+    """Return parse-tree as None/tuple."""
     lexed_parsed = kn_parse(input_path)
     parsed = lexed_parsed['parsed']
     return parsed
@@ -47,7 +50,7 @@ def kn_parse(input_path: str) -> dict:
     parser_inst = parser.Parser(grammar_file, allowed_terminals)
 
     lexed = lexer_inst.get_lexing_sequence_from_file(input_path)
-
+    
     parsed = parser_inst.get_ast(lexed)
     if parsed is not None:
         parsed = list(parsed)
