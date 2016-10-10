@@ -1,0 +1,24 @@
+('knStats',
+  ('compuStat',
+    ('knTerms',
+      ('condTerm',
+        ('kn_num', '1'),
+        ('opGr',
+          ('kn_id', 'x'),
+          ('kn_num', '0')
+        ),
+        ('condTerm',
+          ('kn_num', '0'),
+          ('opEq',
+            ('kn_id', 'x'),
+            ('kn_num', '0')
+          ),
+          ('uMinus',
+            ('kn_num', '1')
+          )
+        )
+      )
+    )
+  )
+)
+
