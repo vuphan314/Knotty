@@ -2,7 +2,7 @@ goto starting
 
 :looping
     set fold=examples\
-    set fil=syntax
+    set fil=tmp
     set fils=demo, empty, oneliner, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
@@ -20,8 +20,8 @@ goto starting
         REM !kn_engine_cmd!
         REM type !txt!
 
-        REM !kn_parser_cmd!
-        !kn_parser_cmd! > !txt! & !txt!
+        !kn_parser_cmd!
+        REM !kn_parser_cmd! > !txt! & !txt!
 
         echo:
     )
