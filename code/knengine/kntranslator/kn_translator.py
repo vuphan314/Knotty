@@ -3,19 +3,24 @@ from kntranslator import kn_lib
 
 ############################################################
 
+bool_helper_tuple = (
+    is_termimal,
+    is_funTerm,
+    is_collection)
+
+str_helper_tuple = (
+    translate_terminal,
+    translate_funTerm,
+    translate_collection)
+
+helper_pairs = dict(zip(bool_helper_tuple, str_helper_tuple))
+
 def translate_recur(T: tuple) -> str:
-    if is_termimal(T):
-        return translate_terminal(T)
-    elif is_funTerm(T):
-        st = translate_recur(T[1])
-        st2 = '('
-        if not is_nullary(T):
-            st2 += translate_recur(T[2])
-        st2 += ')'
-        return st + st2
-    todo param number of tabs
-    else:
-        return recur_str(translate_recur, T)
+    for bool_helper in bool_helper_tuple:
+        if bool_helper(T):
+            str_helper = helper_pairs[bool_helper]
+            return str_helper(T)
+    return recur_str(translate_recur, T)
 
 ############################################################
 # termimal translation
@@ -29,7 +34,11 @@ def translate_terminal(T: tuple) -> str:
 ############################################################
 # collection helper
 
-def get_comma_separated_collection(T: tuple) -> str:
+def is_collection(T: tuple) -> bool:
+    return T[0] in {
+        'knVars', 'knTerms', 'actParams', 'formParams'}
+
+def translate_collection(T: tuple) -> str:
     st = translate_recur(T[1])
     for t in T[2:]:
         st2 = ', ' + translate_recur(t)
@@ -41,6 +50,14 @@ def get_comma_separated_collection(T: tuple) -> str:
 
 def is_funTerm(T: tuple) -> bool:
     return T[0] in {'actFunTerm', 'formFunTerm'}
+
+def translate_funTerm(T):
+    st = translate_recur(T[1])
+    st2 = '('
+    if not is_nullary(T):
+        st2 += translate_recur(T[2])
+    st2 += ')'
+    return st + st2
 
 def is_nullary(T: tuple) -> bool:
     return len(T) == 2
