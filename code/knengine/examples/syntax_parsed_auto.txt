@@ -1,10 +1,7 @@
 ('knStats',
   ('compuStat',
     ('knTerms',
-      ('opMod',
-        ('kn_num', '1'),
-        ('kn_num', '2')
-      )
+      ('kn_num', 'im')
     )
   ),
   ('defStat',
@@ -42,7 +39,9 @@
     ('knTerms',
       ('actFunTerm',
         ('kn_id', 'f'),
-        ('kn_id', 'x')
+        ('actParams',
+          ('kn_id', 'x')
+        )
       )
     )
   ),
@@ -70,9 +69,11 @@
             ('opEq',
               ('actFunTerm',
                 ('kn_id', 'f2'),
-                ('opMod',
-                  ('kn_id', 'x'),
-                  ('kn_id', 'y')
+                ('actParams',
+                  ('opMod',
+                    ('kn_id', 'x'),
+                    ('kn_id', 'y')
+                  )
                 )
               ),
               ('opDiv',
@@ -129,10 +130,12 @@
             ('kn_id', 'y'),
             ('kn_id', 'z')
           ),
-          ('uMinus',
-            ('kn_id', 'x')
-          ),
-          ('kn_num', '2')
+          ('opPlus',
+            ('uMinus',
+              ('kn_id', 'x')
+            ),
+            ('kn_num', '2')
+          )
         )
       )
     )

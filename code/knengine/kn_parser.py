@@ -15,7 +15,7 @@ def get_output_str(input_path: str) -> str:
 def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
     tabs = my_tab * tab_count
     st = tabs
-    if is_leaf(T):
+    if is_termimal(T):
         st += str(T)
     else:
         st += "('" + T[0] + "'"
@@ -28,7 +28,7 @@ def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
 
 my_tab = '  '
 
-def is_leaf(T: tuple) -> bool:
+def is_termimal(T: tuple) -> bool:
     return isinstance(T[1], str)
 
 def get_output_tree(input_path: str) -> tuple:

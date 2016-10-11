@@ -50,8 +50,8 @@ compa_bool_term(opUneq T T2) ::= ar_term(T) op_uneq ar_term(T2)
 compa_bool_term(opGr T T2) ::= ar_term(T) op_gr ar_term(T2)
 compa_bool_term(opLess T T2) ::= ar_term(T) op_less ar_term(T2)
 
-compa_bool_term(opGrEq T T2) ::= ar_term(T) op_gr_eq ar_term(T2)
-compa_bool_term(opLessEq T T2) ::= ar_term(T) op_less_eq ar_term(T2)
+compa_bool_term(grEq T T2) ::= ar_term(T) op_gr_eq ar_term(T2)
+compa_bool_term(lessEq T T2) ::= ar_term(T) op_less_eq ar_term(T2)
 
 ar_term(T) ::= ar_term_1(T)
 
@@ -85,7 +85,7 @@ let_cls(letCls T cut_root(Ts)) ::= let_cl(T) let_cls(Ts)
 kn_terms(knTerms T) ::= kn_term(T)
 kn_terms(knTerms T cut_root(Ts)) ::= kn_term(T) sep_comma kn_terms(Ts)
 
-act_params(T) ::= act_param(T)
+act_params(actParams T) ::= act_param(T)
 act_params(actParams T cut_root(Ts)) ::= act_param(T) sep_comma act_params(Ts)
 
 form_params(formParams T) ::= form_param(T)
