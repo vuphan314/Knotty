@@ -20,8 +20,8 @@ goto starting
         REM !kn_engine_cmd!
         REM type !txt!
 
-        !kn_parser_cmd!
-        REM !kn_parser_cmd! > !txt! & !txt!
+        REM !kn_parser_cmd!
+        !kn_parser_cmd! > !txt! & type !txt!
 
         echo:
     )

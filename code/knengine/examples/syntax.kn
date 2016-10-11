@@ -1,6 +1,6 @@
 compute 1 % 2
 
-define c1 return 1
+define c1() return 1
 
 define f1(x) return x^2
 
