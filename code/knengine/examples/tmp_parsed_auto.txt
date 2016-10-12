@@ -1,29 +1,7 @@
 ('knStats',
-  ('defStat',
-    ('formFunTerm',
-      ('kn_id', 'c')
-    ),
-    ('defBody',
-      ('retCl',
-        ('condTerm',
-          ('kn_num', '1'),
-          ('opGr',
-            ('kn_id', 'x'),
-            ('kn_num', '0')
-          ),
-          ('condTerm',
-            ('kn_num', '0'),
-            ('opEq',
-              ('kn_id', 'x'),
-              ('kn_num', '0')
-            ),
-            ('uMinus',
-              ('kn_num', '1')
-            )
-          )
-        )
-      )
-    )
+  ('testStat',
+    ('kn_id', 'c'),
+    ('kn_num', '0')
   )
 )
 
