@@ -1,11 +1,14 @@
-key_compu = compute
 key_var = vary
-key_def = define
 
-key_ret = return
+key_def = define
 
 key_let = let
 key_be = be
+
+key_ret = return
+
+key_test = test
+key_pri = print
 
 key_if = if
 key_else = else
@@ -34,7 +37,7 @@ op_mod = %
 
 op_exp = \^
 
-sep_comma = ,
+kn_comma = ,
 
 l_paren = \(
 r_paren = \)

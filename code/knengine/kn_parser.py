@@ -50,7 +50,7 @@ def kn_parse(input_path: str) -> dict:
     parser_inst = parser.Parser(grammar_file, allowed_terminals)
 
     lexed = lexer_inst.get_lexing_sequence_from_file(input_path)
-    
+
     parsed = parser_inst.get_ast(lexed)
     if parsed is not None:
         parsed = list(parsed)

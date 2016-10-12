@@ -1,11 +1,8 @@
-kn_stats(knStats T) ::= kn_stat(T)
-kn_stats(knStats T cut_root(Ts)) ::= kn_stat(T) kn_stats(Ts)
+kn_pro(T) ::= kn_stats(T)
 
-kn_stat(T) ::= compu_stat(T)
 kn_stat(T) ::= var_stat(T)
 kn_stat(T) ::= def_stat(T)
-
-compu_stat(compuStat T) ::= key_compu kn_terms(T)
+kn_stat(T) ::= test_stat(T)
 
 var_stat(varStat T) ::= key_var kn_vars(T)
 
@@ -14,17 +11,16 @@ def_stat(defStat T T2) ::= key_def form_fun_term(T) def_body(T2)
 def_body(defBody T) ::= ret_cl(T)
 def_body(defBody T T2) ::= let_cls(T) ret_cl(T2)
 
-ret_cl(retCl T) ::= key_ret kn_term(T)
-
 let_cl(letCl T T2) ::= key_let kn_tmp(T) key_be kn_term(T2)
 
-kn_term(T) ::= inner_term(T)
-kn_term(T) ::= ar_term(T)
-kn_term(T) ::= bool_term(T)
-kn_term(condTerm T T2 T3) ::= kn_term(T) key_if bool_term(T2) key_else kn_term(T3)
+ret_cl(retCl T) ::= key_ret kn_term(T)
 
-inner_term(T) ::= named_term(T)
-inner_term(T) ::= l_paren kn_term(T) r_paren
+test_stat(testStat T T2) ::= key_test kn_test(T) key_pri kn_term(T2)
+
+kn_term(condTerm T T2 T3) ::= kn_term(T) key_if bool_term(T2) key_else kn_term(T3)
+kn_term(T) ::= bool_term(T)
+kn_term(T) ::= ar_term(T)
+kn_term(T) ::= inner_term(T)
 
 bool_term(T) ::= bool_term_1(T)
 
@@ -76,20 +72,26 @@ inner_ar_term(T) ::= kn_num(T)
 inner_ar_term(T) ::= named_term(T)
 inner_ar_term(T) ::= l_paren ar_term(T) r_paren
 
+inner_term(T) ::= named_term(T)
+inner_term(T) ::= l_paren kn_term(T) r_paren
+
+kn_stats(knStats T) ::= kn_stat(T)
+kn_stats(knStats T cut_root(Ts)) ::= kn_stat(T) kn_stats(Ts)
+
 kn_vars(knVars T) ::= kn_var(T)
-kn_vars(knVars T cut_root(Ts)) ::= kn_var(T) sep_comma kn_vars(Ts)
+kn_vars(knVars T cut_root(Ts)) ::= kn_var(T) kn_comma kn_vars(Ts)
 
 let_cls(letCls T) ::= let_cl(T)
 let_cls(letCls T cut_root(Ts)) ::= let_cl(T) let_cls(Ts)
 
 kn_terms(knTerms T) ::= kn_term(T)
-kn_terms(knTerms T cut_root(Ts)) ::= kn_term(T) sep_comma kn_terms(Ts)
+kn_terms(knTerms T cut_root(Ts)) ::= kn_term(T) kn_comma kn_terms(Ts)
 
 act_params(actParams T) ::= act_param(T)
-act_params(actParams T cut_root(Ts)) ::= act_param(T) sep_comma act_params(Ts)
+act_params(actParams T cut_root(Ts)) ::= act_param(T) kn_comma act_params(Ts)
 
 form_params(formParams T) ::= form_param(T)
-form_params(formParams T cut_root(Ts)) ::= form_param(T) sep_comma form_params(Ts)
+form_params(formParams T cut_root(Ts)) ::= form_param(T) kn_comma form_params(Ts)
 
 act_fun_term(actFunTerm T) ::= fun_name(T) l_paren r_paren
 act_fun_term(actFunTerm T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
@@ -101,10 +103,12 @@ act_param(T) ::= kn_term(T)
 
 form_param(T) ::= kn_id(T)
 
+kn_var(T) ::= kn_id(T)
 fun_name(T) ::= kn_id(T)
 kn_tmp(T) ::= kn_id(T)
-kn_var(T) ::= kn_id(T)
+kn_test(T) ::= kn_id(T)
 
-named_term(T) ::= act_fun_term(T)
-named_term(T) ::= kn_tmp(T)
 named_term(T) ::= kn_var(T)
+named_term(T) ::= act_fun_term(T)
+named_term(T) ::= form_param(T)
+named_term(T) ::= kn_tmp(T)
