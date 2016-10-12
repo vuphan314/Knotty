@@ -28,14 +28,15 @@ part of Knotty system
 - `examples/`: note that
   - suffix `_man`: manually written
   - suffix `_auto`: automatically written
-- `kntranslator/`:
-  - `kn_lib.py`: Knotty library
+- `kn_tester.py`: Knotty unit-tester
 - `kn_engine.py`: Knotty engine
 - parsing:
-  - `kn_grammar.txt`: Knotty parsing-expression grammar
   - `kn_lexicon.txt`: Knotty parsing-expression lexicon
+  - `kn_grammar.txt`: Knotty parsing-expression grammar
   - `kn_parser.py`: Knotty parser
-- `kn_tester.py`: Knotty unit-tester
+- translating:
+  - `kn_lib.py`: Knotty library
+  - `kn_translator`: Knotty translator
 
 ## BINARY
 `../engine/`

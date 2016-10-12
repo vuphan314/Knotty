@@ -3,12 +3,16 @@ import os
 
 from debugger import *
 import kn_parser
+import kn_translator
+
+############################################################
 
 which_engine = 'kn_engine.py'
 examples_path = 'examples/'
-base_appendage = '_parsed_auto.txt'
+base_appendage = '_auto.py'
 
-def write_output_file(which_engine: str, base_appendage: str) -> None:
+def write_output_file(
+    which_engine: str, base_appendage: str) -> None:
     """Receive input path as 1st command-line argument."""
     args = sys.argv
     if len(args) == 1:
@@ -24,17 +28,27 @@ def write_output_file(which_engine: str, base_appendage: str) -> None:
         input('Key `Enter` to quit.' '\n')
     else:
         input_path = sys.argv[1]
-        output_path = get_output_path(input_path, base_appendage)
-        output_str = kn_parser.get_output_str(input_path)
+        translate_str = get_translate_str(input_path)
+        output_path = get_output_path(
+            input_path, base_appendage)
         with open(output_path, 'w') as output_file:
-            output_file.write(output_str)
-        print('\n' 'OVERWROTE/created file ' + output_path + '.')
+            output_file.write(translate_str)
+        print(
+            '\n' 'OVERWROTE/created file ' + 
+            output_path + '.')
+
+def get_translate_str(input_path):
+    parse_tree = kn_parser.kn_parse(input_path)
+    translate_str = kn_translator.kn_translate(parse_tree)
+    return translate_str
 
 def get_output_path(input_path: str, base_appendage: str) -> str:
     """Return output path (aka appended base path)."""
     base_path = os.path.splitext(input_path)[0]
     output_path = base_path + base_appendage
     return output_path
+
+############################################################
 
 if __name__ == '__main__':
     write_output_file(which_engine, base_appendage)

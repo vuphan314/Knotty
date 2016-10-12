@@ -9,19 +9,20 @@ goto starting
         set kn=!base!.kn
         set kn_simplified=!base!_simplified.kn
         set txt=!base!_parsed_auto.txt
+        set py=!base!_auto.py
 
         set engine_cmd=%engine_py% !kn!
         set kn_engine_cmd=%kn_engine_py% !kn!
         set kn_parser_cmd=%kn_parser_py% !kn!
-
+        
         REM !engine_cmd!
         REM type !kn_simplified!
 
-        REM !kn_engine_cmd!
-        REM type !txt!
+        !kn_engine_cmd!
+        REM type !py!
 
         REM !kn_parser_cmd!
-        !kn_parser_cmd! > !txt! & type !txt!
+        REM !kn_parser_cmd! > !txt! & type !txt!
 
         echo:
     )

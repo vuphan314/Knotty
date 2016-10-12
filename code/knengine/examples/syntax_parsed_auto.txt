@@ -1,8 +1,7 @@
 ('knStats',
-  ('compuStat',
-    ('knTerms',
-      ('kn_num', 'im')
-    )
+  ('testStat',
+    ('kn_id', 'IU'),
+    ('kn_num', 'im')
   ),
   ('defStat',
     ('formFunTerm',
@@ -35,13 +34,12 @@
       ('kn_id', 'x')
     )
   ),
-  ('compuStat',
-    ('knTerms',
-      ('actFunTerm',
-        ('kn_id', 'f'),
-        ('actParams',
-          ('kn_id', 'x')
-        )
+  ('testStat',
+    ('kn_id', 'tF'),
+    ('actFunTerm',
+      ('kn_id', 'f'),
+      ('actParams',
+        ('kn_id', 'x')
       )
     )
   ),
@@ -117,8 +115,9 @@
       ('kn_id', 'z')
     )
   ),
-  ('compuStat',
-    ('knTerms',
+  ('testStat',
+    ('kn_id', 't1'),
+    ('opPlus',
       ('opMod',
         ('kn_id', 'y'),
         ('kn_id', 'z')
