@@ -1,9 +1,9 @@
-import sympy
+import sympy as sp
 
 ############################################################
 # imaginary unit
 
-im = sympy.I
+im = sp.I
 
 ############################################################
 # boolean operations
@@ -21,7 +21,7 @@ def opNot(a):
 # comparison boolean operations
 
 def opEq(a, b):
-    diff = sympy.simplify(a - b)
+    diff = sp.simplify(a - b)
     return diff == 0
 
 def opUneq(a, b):

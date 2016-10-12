@@ -1,7 +1,2 @@
-('knStats',
-  ('testStat',
-    ('kn_id', 'c'),
-    ('kn_num', '0')
-  )
-)
+examples\tmp.kn
 
