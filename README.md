@@ -52,9 +52,10 @@ the Knotty system includes:
 
 ## SETUP GUIDE
 - first time:
-  - install latest
-    - [Python][pythonDownload]
+  - install
     - [Git][gitDownload]
+    - [Python][pythonDownload]
+    - [TeX][texDownload] (2 hours)
   - command-line interface:
     ```
     pip install mpmath
@@ -132,10 +133,12 @@ https://trello.com/b/tCAfkInX
 [linkOnedrive]:
 https://1drv.ms/f/s!Asl14HFRStFKgZlSCNCMQ4qIWcOoIg
 
-[pythonDownload]:
-https://www.python.org/downloads/
 [gitDownload]:
 https://git-scm.com/downloads
+[pythonDownload]:
+https://www.python.org/downloads/
+[texDownload]:
+https://www.tug.org/texlive/acquire-netinstall.html
 
 [gitmodules]:
 https://github.com/vuphan314/CS4365/blob/master/.gitmodules
