@@ -6,6 +6,12 @@ import sympy as sp
 im = sp.I
 
 ############################################################
+# conditional term
+
+def condTerm(term1, bool_term, term2):
+    return term1 if bool_term else term2
+
+############################################################
 # boolean operations
 
 def opOr(a, b):

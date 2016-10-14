@@ -1,5 +1,6 @@
 import sympy
 
+from debugger import *
 import kn_parser
 import kn_lib
 
@@ -7,13 +8,19 @@ import kn_lib
 # top
 
 def kn_translate(T):
-    st = sympy_import + '\n\n'
+    st = '\n' + sympy_import + '\n\n'
     st += kn_lib_import + '\n\n'
-    st2 = translate_recur(T)
-    return st + st2
+    st += init_py_check_dict() + '\n\n'
+    st += translate_recur(T)
+    st += write_py_check_dict()
+    return st
 
 def translate_recur(T: tuple) -> str:
-    if kn_parser.is_termimal(T):
+    if T is None:
+        return str(T)
+    elif isinstance(T, str):
+        return T
+    elif kn_parser.is_termimal(T):
         return translate_terminal(T)
     else:
         st = T[0]
@@ -29,9 +36,14 @@ def translate_recur(T: tuple) -> str:
 # termimal translation
 
 def translate_terminal(T: tuple) -> str:
-    st = T[1]
-    if is_in_kn_lib(st):
-        st = call_kn_lib(st)
+    return T[1]
+
+############################################################
+# Knotty-variable translation
+
+def translate_varStat(T):
+    f = call_sympy('var')
+    st = apply_recur(f, T[1]) + '\n\n'
     return st
 
 ############################################################
@@ -40,16 +52,7 @@ def translate_terminal(T: tuple) -> str:
 def translate_collection(T: tuple) -> str:
     st = translate_recur(T[1])
     for t in T[2:]:
-        st2 = ', ' + translate_recur(t)
-        st += st2
-    return st
-
-############################################################
-# Knotty-variable translation
-
-def translate_varStat(T):
-    vars = translate_recur(T[1])
-    st = call_sympy('var') + "('" + vars + "')" '\n\n'
+        st += ', ' + translate_recur(t)
     return st
 
 ############################################################
@@ -62,11 +65,10 @@ def translate_defStat(T):
 
 def translate_funTerm(T):
     st = translate_recur(T[1])
-    st2 = '('
+    params = ()
     if not is_nullary(T):
-        st2 += translate_recur(T[2])
-    st2 += ')'
-    return st + st2
+        params = translate_recur(T[2]),
+    return apply_recur(T[1], params)
 
 def is_nullary(T: tuple) -> bool:
     return len(T) == 2
@@ -84,24 +86,47 @@ def translate_retCl(T):
     return st
 
 ############################################################
-# helper dictionaries
+# Knotty-check translation
 
-str_helper_dict = {
-    'varStat': translate_varStat,
-    'defStat': translate_defStat,
-    'letCl': translate_letCl,
-    'retCl': translate_retCl}
+py_check_dict_name = 'Knotty_checks'
 
-fs = frozenset
+def translate_checkStat(T):
+    key, value = [translate_recur(t) for t in T[1:]]
+    value = apply_recur(call_sympy('latex'), [value])
+    st = (
+        py_check_dict_name + "['" + key + "']"
+        ' = ' + value + '\n\n')
+    return st
 
-set_helper_dict = {
-    fs({'actFunTerm', 'formFunTerm'}):
-        translate_funTerm,
-    fs({'knVars', 'knTerms', 'actParams', 'formParams'}):
-        translate_collection}
+def init_py_check_dict() -> str:
+    return py_check_dict_name + ' = {}' '\n\n'
+
+py_check_str_name = 'check_string'
+py_check_key = 'check_name'
+
+def write_py_check_dict() -> str:
+    st = (
+        py_check_str_name +  " = ''\n"
+        'for ' + py_check_key + ' in ' +
+        py_check_dict_name + ':\n' + tab +
+            py_check_str_name + ' += ' +
+            py_check_key + " + ' is $$ ' + " +
+            py_check_dict_name + '[' + py_check_key + ']' +
+            " + ' $$'\n")
+    return st
 
 ############################################################
 # recursion helper
+
+def apply_recur(fun_name, param_seq) -> str:
+    fun_name = translate_recur(fun_name)
+    st = fun_name + '('
+    if len(param_seq) > 0:
+        st += translate_recur(param_seq[0])
+        for param in param_seq[1:]:
+            st += ', ' + translate_recur(param)
+    st += ')'
+    return st
 
 def recur_str(py_fun, T: tuple) -> str:
     st = ''
@@ -112,22 +137,42 @@ def recur_str(py_fun, T: tuple) -> str:
 ############################################################
 # Knotty-library helper
 
-kn_lib_names = dir(kn_lib)
-kn_lib_names = {
-    name for name in kn_lib_names if name[0] != '_'}
+def translate_kn_lib(T):
+    f = call_kn_lib(T[0])
+    params = T[1:]
+    return apply_recur(f, params)
 
-def is_in_kn_lib(name: str) -> bool:
-    return name in kn_lib_names
+kn_lib_attributes = dir(kn_lib)
+kn_lib_attributes = {
+    name for name in kn_lib_attributes if name[0] != '_'}
 
-kn_lib_alias = 'kl'
-sympy_alias = 'sp'
+kn_lib_name = kn_lib.__name__
+sympy_name = sympy.__name__
 
-kn_lib_import = (
-    'import ' + kn_lib.__name__ + ' as ' + kn_lib_alias)    
-sympy_import = (
-    'import ' + sympy.__name__ + ' as ' + sympy_alias)
+kn_lib_import = 'import ' + kn_lib_name
+sympy_import = 'import ' + sympy_name
 
 def call_kn_lib(name: str) -> str:
-    return kn_lib_alias + '.' + name
+    return kn_lib_name + '.' + name
 def call_sympy(name: str) -> str:
-    return sympy_alias + '.' + name
+    return sympy_name + '.' + name
+
+############################################################
+# helper dictionaries
+
+str_helper_dict = {
+    'varStat': translate_varStat,
+    'defStat': translate_defStat,
+    'letCl': translate_letCl,
+    'retCl': translate_retCl,
+    'checkStat': translate_checkStat}
+
+fs = frozenset
+
+set_helper_dict = {
+    fs({'actFunTerm', 'formFunTerm'}):
+        translate_funTerm,
+    fs({'knVars', 'knTerms', 'actParams', 'formParams'}):
+        translate_collection,
+    fs(kn_lib_attributes):
+        translate_kn_lib}

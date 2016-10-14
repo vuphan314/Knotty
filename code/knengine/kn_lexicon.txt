@@ -7,7 +7,7 @@ key_be = be
 
 key_ret = return
 
-key_test = test
+key_check = check
 key_pri = print
 
 key_if = if
