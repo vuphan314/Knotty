@@ -2,7 +2,7 @@ kn_pro(T) ::= kn_stats(T)
 
 kn_stat(T) ::= var_stat(T)
 kn_stat(T) ::= def_stat(T)
-kn_stat(T) ::= test_stat(T)
+kn_stat(T) ::= check_stat(T)
 
 var_stat(varStat T) ::= key_var kn_vars(T)
 
@@ -11,11 +11,11 @@ def_stat(defStat T T2) ::= key_def form_fun_term(T) def_body(T2)
 def_body(defBody T) ::= ret_cl(T)
 def_body(defBody T T2) ::= let_cls(T) ret_cl(T2)
 
-let_cl(letCl T T2) ::= key_let kn_tmp(T) key_be kn_term(T2)
+let_cl(letCl T T2) ::= key_let tmp_name(T) key_be kn_term(T2)
 
 ret_cl(retCl T) ::= key_ret kn_term(T)
 
-test_stat(testStat T T2) ::= key_test kn_test(T) key_pri kn_term(T2)
+check_stat(checkStat T T2) ::= key_check check_name(T) key_pri kn_term(T2)
 
 kn_term(condTerm T T2 T3) ::= kn_term(T) key_if bool_term(T2) key_else kn_term(T3)
 kn_term(T) ::= bool_term(T)
@@ -78,8 +78,8 @@ inner_term(T) ::= l_paren kn_term(T) r_paren
 kn_stats(knStats T) ::= kn_stat(T)
 kn_stats(knStats T cut_root(Ts)) ::= kn_stat(T) kn_stats(Ts)
 
-kn_vars(knVars T) ::= kn_var(T)
-kn_vars(knVars T cut_root(Ts)) ::= kn_var(T) kn_comma kn_vars(Ts)
+kn_vars(knVars T) ::= var_name(T)
+kn_vars(knVars T cut_root(Ts)) ::= var_name(T) kn_comma kn_vars(Ts)
 
 let_cls(letCls T) ::= let_cl(T)
 let_cls(letCls T cut_root(Ts)) ::= let_cl(T) let_cls(Ts)
@@ -103,12 +103,12 @@ act_param(T) ::= kn_term(T)
 
 form_param(T) ::= kn_id(T)
 
-kn_var(T) ::= kn_id(T)
-fun_name(T) ::= kn_id(T)
-kn_tmp(T) ::= kn_id(T)
-kn_test(T) ::= kn_id(T)
-
-named_term(T) ::= kn_var(T)
+named_term(T) ::= var_name(T)
 named_term(T) ::= act_fun_term(T)
 named_term(T) ::= form_param(T)
-named_term(T) ::= kn_tmp(T)
+named_term(T) ::= tmp_name(T)
+
+var_name(T) ::= kn_id(T)
+fun_name(T) ::= kn_id(T)
+tmp_name(T) ::= kn_id(T)
+check_name(T) ::= kn_id(T)

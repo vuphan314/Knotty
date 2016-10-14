@@ -1,7 +1,14 @@
-import sympy as sp
 
-import kn_lib as kl
+import sympy
 
-sp.var('x')
+import kn_lib
 
-print(x)
+Knotty_checks = {}
+
+
+
+Knotty_checks['t'] = sympy.latex(1)
+
+check_string = ''
+for check_name in Knotty_checks:
+    check_string += check_name + ' is $$ ' + Knotty_checks[check_name] + ' $$'
