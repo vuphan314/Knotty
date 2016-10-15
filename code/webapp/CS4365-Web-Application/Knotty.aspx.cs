@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Knotty : System.Web.UI.Page
 {
     private readonly string pythonPath = @"C:\Python27\python.exe";
     private readonly string enginePath = @"C:\Python27\engine.py";
