@@ -7,9 +7,7 @@ goto starting
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
         set kn=!base!.kn
-        set kn_simplified=!base!_simplified.kn
-        set txt=!base!_parsed_auto.txt
-        set py=!base!_auto.py
+        set py=!base!.py
 
         set engine_cmd=%engine_py% !kn!
         set kn_engine_cmd=%kn_engine_py% !kn!

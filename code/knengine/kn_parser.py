@@ -7,18 +7,19 @@ from genparser.src.astgen.parsing import lexer, parser
 ############################################################
 # top
 
-def kn_parse(input_path: str, get_tree = True) -> tuple:
-    parse_tree = get_parse_tree(input_path)
-    if get_tree:
-        return parse_tree
-    else:
-        parse_str = get_parse_str(parse_tree)
-        return parse_str
+def kn_parse(input_path: str) -> dict:
+    parse_tuple = get_parse_tuple(input_path)
+    parse_str = get_parse_str(parse_tuple)
+    parse_dict = {
+            'parse_tuple': parse_tuple,
+            'parse_str': parse_str
+        }
+    return parse_dict
 
 ############################################################
 # call Evgenii's generic parser
 
-def get_parse_tree(input_path: str) -> tuple:
+def get_parse_tuple(input_path: str) -> tuple:
     """Return parse-tree as tuple."""
     lexed_parsed = get_parse_dict(input_path)
     parsed = lexed_parsed['parsed']
@@ -66,12 +67,12 @@ def get_complete_path(incomplete_path: str) -> str:
 ############################################################
 # pretty string of tree
 
-def get_parse_str(parse_tree: str) -> str:
-    parse_str = convert_tuple_to_str(parse_tree) + '\n'
+def get_parse_str(parse_tuple: str) -> str:
+    parse_str = convert_tuple_to_str(parse_tuple) + '\n'
     return parse_str
 
-def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
-    tabs = txt_tab * tab_count
+def convert_tuple_to_str(T: tuple, tab_count = 1) -> str:
+    tabs = py_tab * tab_count
     st = tabs
     if is_termimal(T):
         st += str(T)
@@ -79,12 +80,14 @@ def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
         st += "('" + T[0] + "'"
         for t in T[1:]:
             st2 = ',\n'
-            st2 += convert_tuple_to_str(t, tab_count = tab_count + 1)
+            st2 += convert_tuple_to_str(
+                    t, tab_count = tab_count + 1
+                )
             st += st2
         st += '\n' + tabs + ')'
     return st
 
-txt_tab = ' ' * 2
+py_tab = ' ' * 4
 
 def is_termimal(T: tuple) -> bool:
     boo = (
