@@ -16,7 +16,6 @@ def get_tex(a) -> str:
 # Knotty-variable
 
 def make_vars(st: str):
-    tst(st)
     return sp.symbols(st)
 
 ############################################################

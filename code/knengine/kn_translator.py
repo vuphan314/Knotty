@@ -2,12 +2,13 @@ import sympy
 
 from debugger import *
 import kn_parser
+from kn_parser import py_tab
 import kn_lib
 
 ############################################################
 # top
 
-def kn_translate(T) -> str:
+def kn_translate(T: tuple) -> str:
     st = kn_lib_import + '\n\n'
     st += init_check_dict() + '\n\n'
     st += translate_recur(T)
@@ -42,7 +43,7 @@ def translate_varStat(T):
     vars = translate_recur(T[1])
     st = (
         vars + ' = ' + apply_recur(
-            call_kn_lib('make_var'),
+            call_kn_lib('make_vars'),
             [vars],
             sep_pair = "''"
             ) + '\n\n'
@@ -69,16 +70,14 @@ def translate_defStat(T):
 def translate_funTerm(T):
     return apply_recur(T[1], list(T[2:]))
 
-tab = ' ' * 4
-
 def translate_letCl(T):
     tmp, trm = [translate_recur(T[i]) for i in range(1, 3)]
-    st = tab + tmp + ' = ' + trm + '\n'
+    st = py_tab + tmp + ' = ' + trm + '\n'
     return st
 
 def translate_retCl(T):
     trm = translate_recur(T[1])
-    st = tab + 'return ' + trm + '\n\n'
+    st = py_tab + 'return ' + trm + '\n\n'
     return st
 
 ############################################################
@@ -108,15 +107,15 @@ check_string = ''
 
 for check_name in Knotty_checks:
     check_string += (
-        check_name + ' = ' '$$ ' +
-        Knotty_checks[check_name] + ' $$')
+            check_name + ' = ' '$$ ' +
+            Knotty_checks[check_name] + ' $$'
+        )
 
 def write_tex(tex_name: str) -> None:
     with open(tex_name) as tex_file:
         tex_file.write(check_string)
 
 write_tex()
-print('asddsaasd')
 '''
     return st
 
