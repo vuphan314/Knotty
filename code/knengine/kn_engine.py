@@ -12,7 +12,7 @@ examples_path = 'examples/'
 base_appendage = '_auto.py'
 
 def write_output_file(
-        which_engine: str, base_appendage: str
+            which_engine: str, base_appendage: str
         ) -> None:
     """Receive input path as 1st command-line argument."""
     args = sys.argv
@@ -46,7 +46,7 @@ def get_translate_str(input_path):
     return translate_str
 
 def get_output_path(
-        input_path: str, base_appendage: str
+            input_path: str, base_appendage: str
         ) -> str:
     """Return output path (aka appended base path)."""
     base_path = os.path.splitext(input_path)[0]
