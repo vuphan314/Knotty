@@ -19,7 +19,7 @@ def kn_parse(input_path: str, get_tree = True) -> tuple:
 # call Evgenii's generic parser
 
 def get_parse_tree(input_path: str) -> tuple:
-    """Return parse-tree as None/tuple."""
+    """Return parse-tree as tuple."""
     lexed_parsed = get_parse_dict(input_path)
     parsed = lexed_parsed['parsed']
     return parsed
@@ -39,9 +39,8 @@ def get_parse_dict(input_path: str) -> dict:
     lexed = lexer_inst.get_lexing_sequence_from_file(input_path)
 
     parsed = parser_inst.get_ast(lexed)
-    if parsed is not None:
-        parsed = list(parsed)
-        parsed = convert_list_to_tuple(parsed)
+    parsed = list(parsed)
+    parsed = convert_list_to_tuple(parsed)
 
     lexed_parsed = {'lexed': lexed, 'parsed': parsed}
     return lexed_parsed
@@ -68,10 +67,7 @@ def get_complete_path(incomplete_path: str) -> str:
 # pretty string of tree
 
 def get_parse_str(parse_tree: str) -> str:
-    if parse_tree is None:
-        parse_str = str(None)
-    else:
-        parse_str = convert_tuple_to_str(parse_tree) + '\n'
+    parse_str = convert_tuple_to_str(parse_tree) + '\n'
     return parse_str
 
 def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:

@@ -7,7 +7,7 @@ import kn_lib
 ############################################################
 # top
 
-def kn_translate(T):
+def kn_translate(T) -> str:
     st = kn_lib_import + '\n\n'
     st += init_py_check_dict() + '\n\n'
     st += translate_recur(T)
@@ -15,9 +15,7 @@ def kn_translate(T):
     return st
 
 def translate_recur(T: tuple) -> str:
-    if T is None:
-        return str(T)
-    elif isinstance(T, str):
+    if isinstance(T, str):
         return T
     elif kn_parser.is_termimal(T):
         return translate_terminal(T)
