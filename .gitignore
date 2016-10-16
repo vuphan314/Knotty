@@ -1,6 +1,52 @@
-#####################################################################
-# default ignores: Python
-#####################################################################
+############################################################
+# ignores: C#
+############################################################
+
+# export files
+*.exp
+
+# program database files
+*.pdb
+
+
+############################################################
+# GitHub default ignores: C++
+############################################################
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+
+############################################################
+# GitHub default ignores: Python
+############################################################
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -32,12 +78,7 @@ var/
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
-#####################################################################
-#####################################################################
-# Vu needs to manually edit the spec file
-#*.spec
-#####################################################################
-#####################################################################
+*.spec
 
 # Installer logs
 pip-log.txt
@@ -97,9 +138,10 @@ ENV/
 # Rope project settings
 .ropeproject
 
-#####################################################################
-# default ignores: TeX
-#####################################################################
+
+############################################################
+# GitHub default ignores: TeX
+############################################################
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

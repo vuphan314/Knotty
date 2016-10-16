@@ -1,44 +1,68 @@
 
 parse_tree = \
     ('knStats',
-        ('varStat',
-            ('knVars',
-                ('kn_id', 'x'),
-                ('kn_id', 'y')
+        ('defStat',
+            ('formFunTerm',
+                ('kn_id', 'fact'),
+                ('formParams',
+                    ('kn_id', 'n')
+                )
+            ),
+            ('defBody',
+                ('retCl',
+                    ('condTerm',
+                        ('kn_num', '1'),
+                        ('opEq',
+                            ('kn_id', 'n'),
+                            ('kn_num', '0')
+                        ),
+                        ('opMult',
+                            ('kn_id', 'n'),
+                            ('actFunTerm',
+                                ('kn_id', 'fact'),
+                                ('actParams',
+                                    ('bMinus',
+                                        ('kn_id', 'n'),
+                                        ('kn_num', '1')
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
             )
         ),
         ('checkStat',
-            ('kn_id', 't'),
-            ('opMult',
-                ('kn_id', 'x'),
-                ('kn_id', 'x')
+            ('kn_id', 'ch3'),
+            ('actFunTerm',
+                ('kn_id', 'fact'),
+                ('actParams',
+                    ('kn_num', '3')
+                )
             )
         )
     )
 
 import kn_lib
 
-
 Knotty_checks = {}
 
 
 
-x, y = kn_lib.make_vars('x, y')
+def fact(n):
+    return 1 if kn_lib.opEq(n, 0) else kn_lib.opMult(n, fact(kn_lib.bMinus(n, 1)))
 
 
-Knotty_checks[t] = kn_lib.get_tex(kn_lib.opMult(x, x))
+Knotty_checks['ch3'] = kn_lib.get_tex(fact(3))
 
 
 check_string = ''
 
 for check_name in Knotty_checks:
     check_string += (
-            check_name + ' = ' '$$ ' +
-            Knotty_checks[check_name] + ' $$'
+            check_name + ' = \n\t'
+            '$$ ' + Knotty_checks[check_name] + ' $$'
+            '\n\n'
         )
 
-def write_tex(tex_name: str) -> None:
-    with open(tex_name) as tex_file:
-        tex_file.write(check_string)
-
-write_tex()
+kn_lib.write_tex(check_string, r'examples\tmp.tex')

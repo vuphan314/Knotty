@@ -1,1 +1,1 @@
-def c let tmp = 1 return tmp if true else 0
+define c() let tmp be 1 return tmp if true else 0

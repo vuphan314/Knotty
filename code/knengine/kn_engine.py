@@ -27,20 +27,24 @@ def write_output_file(which_engine: str) -> None:
         input('Key `Enter` to quit.' '\n')
     else:
         kn_path = sys.argv[1]
+        py_path = append_base_path(kn_path, '.py')
+        tex_path = append_base_path(kn_path, '.tex')
 
         parse_dict = kn_parser.kn_parse(kn_path)
-        output_str = write_parse_tree(parse_dict)
-        output_str += write_translate_script(parse_dict)
+        output_str = write_py_parsed(parse_dict)
+        output_str += write_py_translated(
+                parse_dict, tex_path
+            )
 
-        py_path = append_base_path(kn_path, '.py')
-        with open(py_path, 'w') as output_file:
-            output_file.write(output_str)
-            # run_output_module(py_path)
+        with open(py_path, 'w') as py_file:
+            py_file.write(output_str)
+        run_py_module(py_path)
+
         print(
             '\n' 'OVERWROTE/created file ' +
             py_path + '.')
 
-def write_parse_tree(parse_dict: dict) -> str:
+def write_py_parsed(parse_dict: dict) -> str:
     parse_str = parse_dict['parse_str']
     st = '''
 parse_tree = \\
@@ -48,10 +52,12 @@ parse_tree = \\
 '''.format(parse_str = parse_str)
     return st
 
-def write_translate_script(parse_dict: dict) -> str:
+def write_py_translated(
+            parse_dict: dict, tex_path: str
+        ) -> str:
     parse_tuple = parse_dict['parse_tuple']
     translate_script = kn_translator.kn_translate(
-            parse_tuple
+            parse_tuple, tex_path
         )
     return translate_script
 
@@ -63,15 +69,14 @@ def append_base_path(
     py_path = base_path + base_appendage
     return py_path
 
-def run_output_module(py_path: str) -> None:
-    output_module = get_output_module(py_path)
-    importlib.import_module(output_module)
-    tst()
+def run_py_module(py_path: str) -> None:
+    py_module = get_py_module(py_path)
+    importlib.import_module(py_module)
 
-def get_output_module(py_path: str) -> str:
-    output_module = os.path.splitext(py_path)[0]
-    output_module = output_module.replace('\\', '.')
-    return output_module
+def get_py_module(py_path: str) -> str:
+    py_module = os.path.splitext(py_path)[0] # trim '.py'
+    py_module = py_module.replace('\\', '.')
+    return py_module
 
 ############################################################
 
