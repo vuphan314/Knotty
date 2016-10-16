@@ -14,13 +14,13 @@ goto starting
         set engine_cmd=%engine_py% !kn!
         set kn_engine_cmd=%kn_engine_py% !kn!
         set kn_parser_cmd=%kn_parser_py% !kn!
-        
+
         REM !engine_cmd!
         REM type !kn_simplified!
 
         !kn_engine_cmd!
         REM type !py!
-        %npp% !py!
+        REM %npp% !py!
 
         REM !kn_parser_cmd!
         REM !kn_parser_cmd! > !txt! & type !txt!
@@ -52,7 +52,7 @@ goto starting
     @echo off
     cls
     setlocal enabledelayedexpansion
-    
+
     set npp=notepad++
 
     set engine_path=..\engine\

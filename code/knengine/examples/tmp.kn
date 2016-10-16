@@ -1,1 +1,4 @@
-check t print 1
+asadasd
+vary x, y
+
+check t print x*x
