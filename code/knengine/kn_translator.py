@@ -8,8 +8,7 @@ import kn_lib
 # top
 
 def kn_translate(T):
-    st = '\n' + sympy_import + '\n\n'
-    st += kn_lib_import + '\n\n'
+    st = kn_lib_import + '\n\n'
     st += init_py_check_dict() + '\n\n'
     st += translate_recur(T)
     st += write_py_check_dict()
@@ -42,8 +41,8 @@ def translate_terminal(T: tuple) -> str:
 # Knotty-variable translation
 
 def translate_varStat(T):
-    f = call_sympy('var')
-    st = apply_recur(f, T[1]) + '\n\n'
+    f = call_kn_lib('make_var')
+    st = f + '(' + translate_recur(T[1]) + ')\n\n'
     return st
 
 ############################################################
@@ -92,7 +91,7 @@ py_check_dict_name = 'Knotty_checks'
 
 def translate_checkStat(T):
     key, value = [translate_recur(t) for t in T[1:]]
-    value = apply_recur(call_sympy('latex'), [value])
+    value = apply_recur(call_kn_lib('get_tex'), [value])
     st = (
         py_check_dict_name + "['" + key + "']"
         ' = ' + value + '\n\n')
@@ -101,29 +100,30 @@ def translate_checkStat(T):
 def init_py_check_dict() -> str:
     return py_check_dict_name + ' = {}' '\n\n'
 
-py_check_str_name = 'check_string'
-py_check_key = 'check_name'
-
 def write_py_check_dict() -> str:
-    st = (
-        py_check_str_name +  " = ''\n"
-        'for ' + py_check_key + ' in ' +
-        py_check_dict_name + ':\n' + tab +
-            py_check_str_name + ' += ' +
-            py_check_key + " + ' is $$ ' + " +
-            py_check_dict_name + '[' + py_check_key + ']' +
-            " + ' $$'\n")
+    st = '''
+check_string = ''
+
+for check_name in Knotty_checks:
+    check_string += (
+        check_name + ' = ' '$$ ' +
+        Knotty_checks[check_name] + ' $$')
+
+
+with open('bla.txt') as myfile:
+    myfile.write(check_string)
+'''
     return st
 
 ############################################################
 # recursion helper
 
-def apply_recur(fun_name, param_seq) -> str:
+def apply_recur(fun_name, param_tuple = ()) -> str:
     fun_name = translate_recur(fun_name)
     st = fun_name + '('
-    if len(param_seq) > 0:
-        st += translate_recur(param_seq[0])
-        for param in param_seq[1:]:
+    if param_tuple is not ():
+        st += translate_recur(param_tuple[0])
+        for param in param_tuple[1:]:
             st += ', ' + translate_recur(param)
     st += ')'
     return st
@@ -144,18 +144,16 @@ def translate_kn_lib(T):
 
 kn_lib_attributes = dir(kn_lib)
 kn_lib_attributes = {
-    name for name in kn_lib_attributes if name[0] != '_'}
+        name for name in kn_lib_attributes
+        if not name.startswith('_')
+    }
 
 kn_lib_name = kn_lib.__name__
-sympy_name = sympy.__name__
 
 kn_lib_import = 'import ' + kn_lib_name
-sympy_import = 'import ' + sympy_name
 
 def call_kn_lib(name: str) -> str:
     return kn_lib_name + '.' + name
-def call_sympy(name: str) -> str:
-    return sympy_name + '.' + name
 
 ############################################################
 # helper dictionaries

@@ -1,4 +1,20 @@
+'''Knotty library in Python.
+
+Translate Knotty operations to SymPy operations.
+'''
+
 import sympy as sp
+
+############################################################
+
+def get_tex(a) -> str:
+    return sp.latex(a)
+
+############################################################
+# Knotty-variable
+
+def make_var(st: str) -> None:
+    sp.var(st)
 
 ############################################################
 # imaginary unit

@@ -12,7 +12,8 @@ examples_path = 'examples/'
 base_appendage = '_auto.py'
 
 def write_output_file(
-    which_engine: str, base_appendage: str) -> None:
+        which_engine: str, base_appendage: str
+        ) -> None:
     """Receive input path as 1st command-line argument."""
     args = sys.argv
     if len(args) == 1:
@@ -33,8 +34,10 @@ def write_output_file(
             input_path, base_appendage)
         with open(output_path, 'w') as output_file:
             output_file.write(translate_str)
+            import importlib
+            importlib.import_module(output_path.replace('\\', '.')[:-3])
         print(
-            '\n' 'OVERWROTE/created file ' + 
+            '\n' 'OVERWROTE/created file ' +
             output_path + '.')
 
 def get_translate_str(input_path):
@@ -42,7 +45,9 @@ def get_translate_str(input_path):
     translate_str = kn_translator.kn_translate(parse_tree)
     return translate_str
 
-def get_output_path(input_path: str, base_appendage: str) -> str:
+def get_output_path(
+        input_path: str, base_appendage: str
+        ) -> str:
     """Return output path (aka appended base path)."""
     base_path = os.path.splitext(input_path)[0]
     output_path = base_path + base_appendage
