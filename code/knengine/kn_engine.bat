@@ -2,23 +2,24 @@ goto starting
 
 :looping
     set fold=examples\
-    set fil=tmp
-    set fils=demo, empty, oneliner, syntax, tmp
+    set fil=demo
+    set fils=demo, oneliner, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
-        set kn=!base!.kn
-        set py=!base!.py
+        set kn_file=!base!.kn
+        set py_file=!base!.py
+        set tex_file=!base!.tex
 
-        set engine_cmd=%engine_py% !kn!
-        set kn_engine_cmd=%kn_engine_py% !kn!
-        set kn_parser_cmd=%kn_parser_py% !kn!
+        set engine_cmd=%engine_py% !kn_file!
+        set kn_engine_cmd=%kn_engine_py% !kn_file!
+        set kn_parser_cmd=%kn_parser_py% !kn_file!
 
         REM !engine_cmd!
         REM type !kn_simplified!
 
         !kn_engine_cmd!
-        REM type !py!
-        REM %npp% !py!
+        REM %npp% !py_file!
+        REM %npp% !tex_file!
 
         REM !kn_parser_cmd!
         REM !kn_parser_cmd! > !txt! & type !txt!
@@ -27,7 +28,7 @@ goto starting
     )
     goto ending
 
-:bundling
+:py_installing
     set spec_man=engine_man.spec
     set work_path=%engine_path%build\
     set dist_path=%engine_path%
@@ -61,7 +62,7 @@ goto starting
     set kn_parser_py=kn_parser.py
 
     goto looping
-    REM goto bundling
+    REM goto py_installing
 
 :ending
     echo:

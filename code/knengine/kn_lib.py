@@ -8,6 +8,12 @@ Translate Knotty operations to SymPy operations.
 import sympy as sp
 
 ############################################################
+# TeX
+
+def write_tex(tex_str: str, tex_path: str) -> None:
+    tex_str += '\n\n' r'\end' '\n'
+    with open(tex_path, 'w') as tex_file:
+        tex_file.write(tex_str)
 
 def get_tex(a) -> str:
     return sp.latex(a)
@@ -24,10 +30,10 @@ def make_vars(st: str):
 im = sp.I
 
 ############################################################
-# conditional term
+# Knotty-bools
 
-def condTerm(term1, bool_term, term2):
-    return term1 if bool_term else term2
+true = True
+false = False
 
 ############################################################
 # boolean operations

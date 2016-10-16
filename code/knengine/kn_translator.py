@@ -2,17 +2,16 @@ import sympy
 
 from debugger import *
 import kn_parser
-from kn_parser import py_tab
 import kn_lib
 
 ############################################################
 # top
 
-def kn_translate(T: tuple) -> str:
-    st = kn_lib_import + '\n\n'
+def kn_translate(T: tuple, tex_path: str) -> str:
+    st = kn_lib_import + '\n'
     st += init_check_dict() + '\n\n'
     st += translate_recur(T)
-    st += write_check_dict()
+    st += write_check_dict(tex_path)
     return st
 
 def translate_recur(T: tuple) -> str:
@@ -20,6 +19,10 @@ def translate_recur(T: tuple) -> str:
         return T
     elif kn_parser.is_termimal(T):
         return translate_terminal(T)
+    elif T[0] == 'condTerm':
+        a, boo, b = [translate_recur(t) for t in T[1:]]
+        st = a + ' if ' + boo + ' else ' + b
+        return st
     else:
         st = T[0]
         if st in str_helper_dict:
@@ -34,7 +37,10 @@ def translate_recur(T: tuple) -> str:
 # termimal translation
 
 def translate_terminal(T: tuple) -> str:
-    return T[1]
+    st = T[1]
+    if st in kn_lib_attributes:
+        st = call_kn_lib(st)
+    return st
 
 ############################################################
 # Knotty-variable translation
@@ -63,21 +69,23 @@ def translate_collection(T: tuple) -> str:
 # Knotty-function translation
 
 def translate_defStat(T):
-    fun, trm = [translate_recur(T[i]) for i in range(1, 3)]
-    st = 'def ' + fun + ':\n' + trm
+    fun, ter = [translate_recur(T[i]) for i in range(1, 3)]
+    st = 'def ' + fun + ':\n' + ter
     return st
 
 def translate_funTerm(T):
     return apply_recur(T[1], list(T[2:]))
 
+py_tab = ' ' * 4
+
 def translate_letCl(T):
-    tmp, trm = [translate_recur(T[i]) for i in range(1, 3)]
-    st = py_tab + tmp + ' = ' + trm + '\n'
+    tmp, ter = [translate_recur(T[i]) for i in range(1, 3)]
+    st = py_tab + tmp + ' = ' + ter + '\n'
     return st
 
 def translate_retCl(T):
-    trm = translate_recur(T[1])
-    st = py_tab + 'return ' + trm + '\n\n'
+    ter = translate_recur(T[1])
+    st = py_tab + 'return ' + ter + '\n\n'
     return st
 
 ############################################################
@@ -87,7 +95,7 @@ def translate_checkStat(T):
     key, value = [translate_recur(t) for t in T[1:]]
     value = apply_recur(call_kn_lib('get_tex'), [value])
     st = '''
-Knotty_checks[{key}] = {value}
+Knotty_checks['{key}'] = {value}
 
 '''.format(key = key, value = value)
     return st
@@ -101,29 +109,26 @@ Knotty_checks = {}
 
 # write_tex = 'write_tex'
 
-def write_check_dict() -> str:
+def write_check_dict(tex_path: str) -> str:
     st = '''
 check_string = ''
 
 for check_name in Knotty_checks:
     check_string += (
-            check_name + ' = ' '$$ ' +
-            Knotty_checks[check_name] + ' $$'
+            check_name + ' = \\n\\t'
+            '$$ ' + Knotty_checks[check_name] + ' $$'
+            '\\n\\n'
         )
 
-def write_tex(tex_name: str) -> None:
-    with open(tex_name) as tex_file:
-        tex_file.write(check_string)
-
-write_tex()
-'''
+kn_lib.write_tex(check_string, r'{tex_path}')
+'''.format(tex_path = tex_path)
     return st
 
 ############################################################
 # recursion helper
 
 def apply_recur(
-        fun_name, param_seq = [], sep_pair = ''
+            fun_name, param_seq = [], sep_pair = ''
         ) -> str:
     st = ''
     if isinstance(param_seq, tuple):
@@ -159,10 +164,10 @@ kn_lib_attributes = {
 
 kn_lib_name = kn_lib.__name__
 
-kn_lib_import = 'import ' + kn_lib_name
-
 def call_kn_lib(name: str) -> str:
     return kn_lib_name + '.' + name
+
+kn_lib_import = 'import ' + kn_lib_name
 
 ############################################################
 # helper dictionaries

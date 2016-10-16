@@ -1,4 +1,4 @@
-test IU print im
+check IU print im
 
 define c1() return 1
 
@@ -6,25 +6,26 @@ define f1(x) return x^2
 
 vary x
 
-test tF print f(x)
+check f1x print f1(x)
 
 define f3(x, y)
     let z1 be 1
     let z2 be
         x / y
-            if f2(x % y) = 5 / 2 else
+            if f1(x % y) = 5 / 2 else
         1
-            if c1 = 3 else
+            if c1() = 3 else
         z1
     return
         z1 % z2
             if z1 = 4 else
         3
             if false else
-        3
+        im ^ 3
 
 vary y, z
 
-test t1 print
-    y % z +
-    f3(y % z, -x + 2)
+check t1 print
+    y % z + f3(y % z, -x + 2)
+        if true else
+    0

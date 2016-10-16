@@ -1,3 +1,7 @@
-vary x, y
+define fact(n)
+    return
+        1 if n = 0 else
+        n * fact(n - 1)
 
-check t print x*x
+check ch3
+    print fact(3)
