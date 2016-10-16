@@ -4,7 +4,7 @@ goto starting
     set fold=examples\
     set fil=demo
     set fils=demo, oneliner, syntax, tmp
-    for %%i in (%fil%) do (
+    for %%i in (%fils%) do (
         set base=%fold%%%~ni
         set kn_file=!base!.kn
         set py_file=!base!.py
@@ -12,7 +12,7 @@ goto starting
 
         set engine_cmd=%engine_py% !kn_file!
         set kn_engine_cmd=%kn_engine_py% !kn_file!
-        set kn_parser_cmd=%kn_parser_py% !kn_file!
+        set tex_cmd=pdftex !tex_file!
 
         REM !engine_cmd!
         REM type !kn_simplified!
@@ -21,8 +21,7 @@ goto starting
         REM %npp% !py_file!
         REM %npp% !tex_file!
 
-        REM !kn_parser_cmd!
-        REM !kn_parser_cmd! > !txt! & type !txt!
+        !tex_cmd!
 
         echo:
     )
@@ -59,7 +58,6 @@ goto starting
 
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
-    set kn_parser_py=kn_parser.py
 
     goto looping
     REM goto py_installing
