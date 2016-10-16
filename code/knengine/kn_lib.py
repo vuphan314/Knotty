@@ -15,8 +15,9 @@ def get_tex(a) -> str:
 ############################################################
 # Knotty-variable
 
-def make_var(st: str):
-    sp.var(st)
+def make_vars(st: str):
+    tst(st)
+    return sp.symbols(st)
 
 ############################################################
 # imaginary unit

@@ -87,7 +87,12 @@ def convert_tuple_to_str(T: tuple, tab_count = 0) -> str:
 txt_tab = ' ' * 2
 
 def is_termimal(T: tuple) -> bool:
-    return isinstance(T[1], str)
+    boo = (
+        isinstance(T, tuple) and
+        len(T) > 1 and
+        isinstance(T[1], str)
+        )
+    return boo
 
 ############################################################
 
