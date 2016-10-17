@@ -1,46 +1,42 @@
 
 parse_tree = \
   ('knStats',
-    ('defStat',
-      ('formFunTerm',
-        ('kn_id', 'c')
-      ),
-      ('defBody',
-        ('letCls',
-          ('letCl',
-            ('kn_id', 'tmp'),
+    ('checkStat',
+      ('kn_id', 'ch'),
+      ('condTerm',
+        ('key_truth', 'true'),
+        ('opEq',
+          ('opExp',
+            ('kn_num', 'im'),
+            ('kn_num', '2')
+          ),
+          ('uMinus',
             ('kn_num', '1')
           )
         ),
-        ('retCl',
-          ('condTerm',
-            ('kn_id', 'tmp'),
-            ('key_truth', 'true'),
-            ('kn_num', '0')
-          )
-        )
+        ('key_truth', 'false')
       )
     )
   )
 
 import kn_lib
 
-Knotty_checks = {}
+check_list = []
 
 
 
-def c():
-    tmp = 1
-    return tmp if kn_lib.true else 0
+
+check_list.append(('ch', kn_lib.get_tex(kn_lib.true if kn_lib.opEq(kn_lib.opExp(kn_lib.im, 2), kn_lib.uMinus(1)) else kn_lib.false)))
 
 
-check_string = ''
+check_str = ''
 
-for check_name in Knotty_checks:
-    check_string += (
-            check_name + ' = \n\t'
-            '$$ ' + Knotty_checks[check_name] + ' $$'
+for check_pair in check_list:
+    check_name, check_term = check_pair
+    check_str += (
+            check_name + ' = ' '\n\t'
+            '$$ ' + check_term + ' $$'
             '\n\n'
         )
 
-kn_lib.write_tex(check_string, r'examples\oneliner.tex')
+kn_lib.write_tex(check_str, r'examples/oneliner.tex')

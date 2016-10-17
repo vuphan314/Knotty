@@ -85,7 +85,7 @@ parse_tree = \
 
 import kn_lib
 
-Knotty_checks = {}
+check_list = []
 
 
 
@@ -95,19 +95,20 @@ def T(n, x):
 x = kn_lib.make_vars('x')
 
 
-Knotty_checks['test1'] = kn_lib.get_tex(T(2, x))
+check_list.append(('test1', kn_lib.get_tex(T(2, x))))
 
 
-Knotty_checks['test2'] = kn_lib.get_tex(T(2, kn_lib.opMult(kn_lib.im, x)))
+check_list.append(('test2', kn_lib.get_tex(T(2, kn_lib.opMult(kn_lib.im, x)))))
 
 
-check_string = ''
+check_str = ''
 
-for check_name in Knotty_checks:
-    check_string += (
-            check_name + ' = \n\t'
-            '$$ ' + Knotty_checks[check_name] + ' $$'
+for check_pair in check_list:
+    check_name, check_term = check_pair
+    check_str += (
+            check_name + ' = ' '\n\t'
+            '$$ ' + check_term + ' $$'
             '\n\n'
         )
 
-kn_lib.write_tex(check_string, r'examples\demo.tex')
+kn_lib.write_tex(check_str, r'examples/demo.tex')
