@@ -1,3 +1,7 @@
+'''Knotty engine (source).'''
+
+############################################################
+
 import sys
 import os
 import importlib
@@ -26,13 +30,13 @@ def write_output_files(kn_path: str) -> list:
         py_file.write(out_str)
 
     # write .tex
-    py_module = run_py_module(py_path)
-    
+    py_module = import_py_module(py_path)
+
     mess = '''
 OVERWROTE/created files {}, {}.
 '''.format(py_path, tex_path)
     print(mess)
-    
+
     return py_module.check_list
 
 ############################################################
@@ -55,18 +59,14 @@ def write_py_translated(
         )
     return translate_script
 
-def run_py_module(py_path: str):
-    py_module_name = get_py_module_name(py_path)
-    mod = importlib.import_module(py_module_name)
-    return mod
+def import_py_module(py_path: str):
+    py_dir, py_module_name = os.path.split(py_path)
+    py_module_name = os.path.splitext(py_module_name)[0]
 
-def get_py_module_name(py_path: str) -> str:
-    # trim '.py'
-    py_module_name = os.path.splitext(py_path)[0]
+    sys.path.insert(0, py_dir)    
+    py_module = __import__(py_module_name)
 
-    for sep in {'\\', '/'}:
-        py_module_name = py_module_name.replace(sep, '.')
-    return py_module_name
+    return py_module # <class 'module'>
 
 ############################################################
 # miscellaneous
@@ -81,6 +81,9 @@ def append_base_path(
 
 ############################################################
 
-if __name__ == '__main__':
+def main() -> None:
     kn_path = sys.argv[1]
     write_output_files(kn_path)
+
+if __name__ == '__main__':
+    main()

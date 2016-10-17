@@ -15,18 +15,17 @@ goto starting
         set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
         set tex_clean=latexmk -c
 
-        REM !engine_cmd!
+        !engine_cmd!
 
-        !kn_engine_cmd!
+        REM !kn_engine_cmd!
         REM %npp% !py_file!
         REM %npp% !tex_file!
 
         REM !tex_compile!
+        REM cd %fold% & !tex_clean! & cd ..
 
         echo:
     )
-    cd %fold% & !tex_clean! & cd ..
-
     goto ending
 
 :bundling
@@ -39,11 +38,9 @@ goto starting
     set pyi_bundle=pyinstaller %spec_man% --workpath=%work_path% --distpath=%dist_path%
 
     REM %pyi_makespec%
-    REM %pyi_bundle%
+    %pyi_bundle%
 
-    cd %dist_path%
-    %engine_exe% examples\demo.kn
-    cd %knengine_path%
+    REM cd %dist_path% & %engine_exe% demo.kn & cd %knengine_path%
 
     goto ending
 
@@ -60,8 +57,8 @@ goto starting
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
 
+    goto bundling
     goto looping
-    REM goto bundling
 
 :ending
     echo:

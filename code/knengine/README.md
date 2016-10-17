@@ -4,30 +4,32 @@ part of Knotty system
 ## TEST GUIDE
 - automatic unit-testing:
   ```
-  py kn_tester.py
+  kn_tester.py
 
   ```
-- manual testing: double-click
-  - `kn_engine.py`
-  - `examples/demo_man.py`
+- manual testing:
+  ```
+  kn_engine.py examples/demo.kn
+
+  ```
 
 ## HOW THE ENGINE WORKS
 - input: Knotty program
-- output: simplified Knotty program
+- output: TeX program
 - includes
   - parser:
     - input: Knotty program
-    - output: Knotty parse-tree (as Python nested list)
+    - output: Knotty parse-tree (as Python tuple)
   - translator:
     - input: Knotty parse-tree
     - output: Python program that
       - is equivalent to Knotty program
-      - includes script to generate simplified Knotty program
+      - includes script to generate TeX program
 
 ## FILES
-- `examples/`: note that
-  - suffix `_man`: manually written
-  - suffix `_auto`: automatically written
+- `examples/`:
+  - `*.kn` are manually written
+  - other files are generated
 - `kn_tester.py`: Knotty unit-tester
 - `kn_engine.py`: Knotty engine
 - parsing:

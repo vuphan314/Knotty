@@ -1,10 +1,20 @@
-# ENGINE (BINARY)
+# KNOTTY ENGINE (BINARY)
 
 ## DESCRIPTION
 Windows `engine.exe`:
-- shows instructions upon double-click
-- accepts any relative/absolute path to any text file
-- does not depend on Python
+- accepts any relative/absolute path
+  to any syntactically correct Knotty program
+- example session with Command Prompt:
+  ```
+  engine.exe examples/demo.kn
+
+  cd examples/
+  latexmk -pdf demo.tex
+  latexmk -c demo.tex
+
+  ```
+  - WARNING: the files `demo.(py|tex|pdf)`
+    will be OVERWRITTEN/created
 
 ## SOURCE
 `../knengine/`
