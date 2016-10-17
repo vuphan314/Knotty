@@ -1,10 +1,10 @@
 goto starting
 
 :looping
-    set fold=examples\
-    set fil=demo
+    set fold=examples/
+    set fil=oneliner
     set fils=demo, oneliner, syntax, tmp
-    for %%i in (%fils%) do (
+    for %%i in (%fil%) do (
         set base=%fold%%%~ni
         set kn_file=!base!.kn
         set py_file=!base!.py
@@ -12,7 +12,8 @@ goto starting
 
         set engine_cmd=%engine_py% !kn_file!
         set kn_engine_cmd=%kn_engine_py% !kn_file!
-        set tex_cmd=pdftex !tex_file!
+        set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
+        set tex_clean=latexmk -c
 
         REM !engine_cmd!
         REM type !kn_simplified!
@@ -21,7 +22,8 @@ goto starting
         REM %npp% !py_file!
         REM %npp% !tex_file!
 
-        !tex_cmd!
+        !tex_compile!
+        cd %fold% & !tex_clean! & cd ..
 
         echo:
     )

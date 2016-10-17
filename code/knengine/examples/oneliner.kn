@@ -1,1 +1,1 @@
-define c() let tmp be 1 return tmp if true else 0
+check ch print true if im ^ 2 = -1 else false

@@ -75,7 +75,8 @@ def run_py_module(py_path: str) -> None:
 
 def get_py_module(py_path: str) -> str:
     py_module = os.path.splitext(py_path)[0] # trim '.py'
-    py_module = py_module.replace('\\', '.')
+    for sep in {'\\', '/'}:
+        py_module = py_module.replace(sep, '.')
     return py_module
 
 ############################################################

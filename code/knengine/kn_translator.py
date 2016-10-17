@@ -9,9 +9,9 @@ import kn_lib
 
 def kn_translate(T: tuple, tex_path: str) -> str:
     st = kn_lib_import + '\n'
-    st += init_check_dict() + '\n\n'
+    st += init_check_list() + '\n\n'
     st += translate_recur(T)
-    st += write_check_dict(tex_path)
+    st += write_check_str(tex_path)
     return st
 
 def translate_recur(T: tuple) -> str:
@@ -92,35 +92,36 @@ def translate_retCl(T):
 # Knotty-check translation
 
 def translate_checkStat(T):
-    key, value = [translate_recur(t) for t in T[1:]]
-    value = apply_recur(call_kn_lib('get_tex'), [value])
+    nam, ter = [translate_recur(t) for t in T[1:]]
+    ter = apply_recur(call_kn_lib('get_tex'), [ter])
     st = '''
-Knotty_checks['{key}'] = {value}
+check_list.append(('{nam}', {ter}))
 
-'''.format(key = key, value = value)
+'''.format(nam = nam, ter = ter)
     return st
 
-def init_check_dict() -> str:
+def init_check_list() -> str:
     st = '''
-Knotty_checks = {}
+check_list = []
 
 '''
     return st
 
 # write_tex = 'write_tex'
 
-def write_check_dict(tex_path: str) -> str:
+def write_check_str(tex_path: str) -> str:
     st = '''
-check_string = ''
+check_str = ''
 
-for check_name in Knotty_checks:
-    check_string += (
-            check_name + ' = \\n\\t'
-            '$$ ' + Knotty_checks[check_name] + ' $$'
+for check_pair in check_list:
+    check_name, check_term = check_pair
+    check_str += (
+            check_name + ' = ' '\\n\\t'
+            '$$ ' + check_term + ' $$'
             '\\n\\n'
         )
 
-kn_lib.write_tex(check_string, r'{tex_path}')
+kn_lib.write_tex(check_str, r'{tex_path}')
 '''.format(tex_path = tex_path)
     return st
 

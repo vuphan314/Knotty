@@ -154,12 +154,12 @@ parse_tree = \
 
 import kn_lib
 
-Knotty_checks = {}
+check_list = []
 
 
 
 
-Knotty_checks['IU'] = kn_lib.get_tex(kn_lib.im)
+check_list.append(('IU', kn_lib.get_tex(kn_lib.im)))
 
 def c1():
     return 1
@@ -170,7 +170,7 @@ def f1(x):
 x = kn_lib.make_vars('x')
 
 
-Knotty_checks['f1x'] = kn_lib.get_tex(f1(x))
+check_list.append(('f1x', kn_lib.get_tex(f1(x))))
 
 def f3(x, y):
     z1 = 1
@@ -180,16 +180,17 @@ def f3(x, y):
 y, z = kn_lib.make_vars('y, z')
 
 
-Knotty_checks['t1'] = kn_lib.get_tex(kn_lib.opPlus(kn_lib.opMod(y, z), f3(kn_lib.opMod(y, z), kn_lib.opPlus(kn_lib.uMinus(x), 2))) if kn_lib.true else 0)
+check_list.append(('t1', kn_lib.get_tex(kn_lib.opPlus(kn_lib.opMod(y, z), f3(kn_lib.opMod(y, z), kn_lib.opPlus(kn_lib.uMinus(x), 2))) if kn_lib.true else 0)))
 
 
-check_string = ''
+check_str = ''
 
-for check_name in Knotty_checks:
-    check_string += (
-            check_name + ' = \n\t'
-            '$$ ' + Knotty_checks[check_name] + ' $$'
+for check_pair in check_list:
+    check_name, check_term = check_pair
+    check_str += (
+            check_name + ' = ' '\n\t'
+            '$$ ' + check_term + ' $$'
             '\n\n'
         )
 
-kn_lib.write_tex(check_string, r'examples\syntax.tex')
+kn_lib.write_tex(check_str, r'examples/syntax.tex')

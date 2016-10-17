@@ -8,12 +8,30 @@ Translate Knotty operations to SymPy operations.
 import sympy as sp
 
 ############################################################
-# TeX
+# TeX output
 
 def write_tex(tex_str: str, tex_path: str) -> None:
-    tex_str += '\n\n' r'\end' '\n'
+    tex_str = make_latex(tex_str)
     with open(tex_path, 'w') as tex_file:
         tex_file.write(tex_str)
+
+def make_latex(tex_str: str) -> str:
+    st1 = r'''
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+'''
+    st2 = r'''
+\end{document}
+
+'''
+    return st1 + tex_str + st2
+
+############################################################
+# SymPy LaTeX
 
 def get_tex(a) -> str:
     return sp.latex(a)
