@@ -21,7 +21,7 @@ def translate_recur(T: tuple) -> str:
         return translate_terminal(T)
     elif T[0] == 'condTerm':
         a, boo, b = [translate_recur(t) for t in T[1:]]
-        st = a + ' if ' + boo + ' else ' + b
+        st = '(' + a + ' if ' + boo + ' else ' + b + ')'
         return st
     else:
         st = T[0]

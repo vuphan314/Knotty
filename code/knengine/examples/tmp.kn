@@ -1,7 +1,5 @@
-define fact(n)
+define sgn(x)
     return
-        1 if n = 0 else
-        n * fact(n - 1)
+        (1 if x > 0 else 0) if x = 0 else -1
 
-check ch3
-    print fact(3)
+check ch print sgn(6)

@@ -1,0 +1,12 @@
+define correctSign(x) return
+    1 if x > 0 else 0 if x = 0 else -1
+
+define incorrectSign(x) return
+    (1 if x > 0 else 0) if x = 0 else -1
+
+
+check correctResult print
+    correctSign(2)
+
+check incorrectResult print
+    incorrectSign(2)

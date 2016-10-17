@@ -43,6 +43,6 @@ l_paren = \(
 r_paren = \)
 
 kn_num = im|\d+
-kn_id = [a-zA-Z][\w]*
+kn_id = [a-zA-Z][a-zA-Z\d]*
 
 spaces = \s+
