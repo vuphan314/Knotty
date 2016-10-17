@@ -56,7 +56,7 @@ the Knotty system includes:
     - [Git][gitDownload]
     - [Python][pythonDownload]
     - [TeX][texDownload] (2 hours)
-    - [Sumatra][sumatraDowload]
+    - [Sumatra][sumatraDownload]
   - command-line interface:
     ```
     pip install mpmath
