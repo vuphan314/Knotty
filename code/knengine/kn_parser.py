@@ -60,10 +60,7 @@ def convert_list_to_tuple(T: list) -> tuple:
         return T2
 
 def get_complete_path(incomplete_path: str) -> str:
-    """Add current directory to file name.
-
-    Idea of Evgenii Balai.
-    """
+    """Add current directory to file name."""
     current_dir = os.path.dirname(os.path.abspath(__file__))
     complete_path = os.path.join(
             current_dir, incomplete_path

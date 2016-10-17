@@ -1,11 +1,13 @@
-def T(n, x)
+define T(n, x)
     return
         2 if n = 0 else
         x if n = 1 else
         x * T(n - 1, x) - T(n - 2, x)
 
-var x
+vary x
 
-def test1 return T(2, x)
+check check1
+    print T(2, x)
 
-def test2 return T(2, im * x)
+check check2
+    print T(2, im * x)
