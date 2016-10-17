@@ -3,41 +3,39 @@ parse_tree = \
   ('knStats',
     ('defStat',
       ('formFunTerm',
-        ('kn_id', 'fact'),
+        ('kn_id', 'sgn'),
         ('formParams',
-          ('kn_id', 'n')
+          ('kn_id', 'x')
         )
       ),
       ('defBody',
         ('retCl',
           ('condTerm',
-            ('kn_num', '1'),
-            ('opEq',
-              ('kn_id', 'n'),
+            ('condTerm',
+              ('kn_num', '1'),
+              ('opGr',
+                ('kn_id', 'x'),
+                ('kn_num', '0')
+              ),
               ('kn_num', '0')
             ),
-            ('opMult',
-              ('kn_id', 'n'),
-              ('actFunTerm',
-                ('kn_id', 'fact'),
-                ('actParams',
-                  ('bMinus',
-                    ('kn_id', 'n'),
-                    ('kn_num', '1')
-                  )
-                )
-              )
+            ('opEq',
+              ('kn_id', 'x'),
+              ('kn_num', '0')
+            ),
+            ('uMinus',
+              ('kn_num', '1')
             )
           )
         )
       )
     ),
     ('checkStat',
-      ('kn_id', 'ch3'),
+      ('kn_id', 'ch'),
       ('actFunTerm',
-        ('kn_id', 'fact'),
+        ('kn_id', 'sgn'),
         ('actParams',
-          ('kn_num', '3')
+          ('kn_num', '6')
         )
       )
     )
@@ -49,11 +47,11 @@ check_list = []
 
 
 
-def fact(n):
-    return 1 if kn_lib.opEq(n, 0) else kn_lib.opMult(n, fact(kn_lib.bMinus(n, 1)))
+def sgn(x):
+    return ((1 if kn_lib.opGr(x, 0) else 0) if kn_lib.opEq(x, 0) else kn_lib.uMinus(1))
 
 
-check_list.append(('ch3', kn_lib.sp_tex(fact(3))))
+check_list.append(('ch', kn_lib.sp_tex(sgn(6))))
 
 
 kn_lib.write_tex(check_list, r'examples/tmp.tex')
