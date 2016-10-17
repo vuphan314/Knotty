@@ -6,8 +6,8 @@ define T(n, x)
 
 vary x
 
-check test1
+check check1
     print T(2, x)
 
-check test2
+check check2
     print T(2, im * x)

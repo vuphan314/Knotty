@@ -2,7 +2,7 @@ goto starting
 
 :looping
     set fold=examples/
-    set fil=oneliner
+    set fil=demo
     set fils=demo, oneliner, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
@@ -16,20 +16,20 @@ goto starting
         set tex_clean=latexmk -c
 
         REM !engine_cmd!
-        REM type !kn_simplified!
 
         !kn_engine_cmd!
         REM %npp% !py_file!
         REM %npp% !tex_file!
 
-        !tex_compile!
-        cd %fold% & !tex_clean! & cd ..
+        REM !tex_compile!
 
         echo:
     )
+    cd %fold% & !tex_clean! & cd ..
+
     goto ending
 
-:py_installing
+:bundling
     set spec_man=engine_man.spec
     set work_path=%engine_path%build\
     set dist_path=%engine_path%
@@ -42,7 +42,6 @@ goto starting
     REM %pyi_bundle%
 
     cd %dist_path%
-    %engine_exe%
     %engine_exe% examples\demo.kn
     cd %knengine_path%
 
@@ -62,7 +61,7 @@ goto starting
     set kn_engine_py=kn_engine.py
 
     goto looping
-    REM goto py_installing
+    REM goto bundling
 
 :ending
     echo:

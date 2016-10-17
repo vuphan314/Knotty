@@ -8,41 +8,35 @@ import kn_translator
 
 ############################################################
 
-which_engine = 'kn_engine.py'
-examples_path = 'examples/'
+def write_output_files(kn_path: str) -> list:
+    """Receive in path as 1st command-line argument."""
+    py_path, tex_path = [
+                append_base_path(kn_path, ext)
+                for ext in ['.py', '.tex']
+            ]
 
-def write_output_file(which_engine: str) -> None:
-    """Receive input path as 1st command-line argument."""
-    args = sys.argv
-    if len(args) == 1:
-        demo_kn_path = examples_path + 'demo.kn'
-        demo_py_path = \
-            append_base_path(demo_kn_path, '.py')
-        mess = ('\n'
-            'Example invocation:' '\n\n\t' +
-            which_engine + ' ' + demo_kn_path + ' \n\n'
-            'The output file ' + demo_py_path + ' will be '
-            'OVERWRITTEN/created.' '\n')
-        print(mess)
-        input('Key `Enter` to quit.' '\n')
-    else:
-        kn_path = sys.argv[1]
-        py_path = append_base_path(kn_path, '.py')
-        tex_path = append_base_path(kn_path, '.tex')
+    parse_dict = kn_parser.kn_parse(kn_path)
+    out_str = write_py_parsed(parse_dict)
+    out_str += write_py_translated(
+            parse_dict, tex_path
+        )
 
-        parse_dict = kn_parser.kn_parse(kn_path)
-        output_str = write_py_parsed(parse_dict)
-        output_str += write_py_translated(
-                parse_dict, tex_path
-            )
+    # write .py
+    with open(py_path, 'w') as py_file:
+        py_file.write(out_str)
 
-        with open(py_path, 'w') as py_file:
-            py_file.write(output_str)
-        run_py_module(py_path)
+    # write .tex
+    py_module = run_py_module(py_path)
+    
+    mess = '''
+OVERWROTE/created files {}, {}.
+'''.format(py_path, tex_path)
+    print(mess)
+    
+    return py_module.check_list
 
-        print(
-            '\n' 'OVERWROTE/created file ' +
-            py_path + '.')
+############################################################
+# helper writers
 
 def write_py_parsed(parse_dict: dict) -> str:
     parse_str = parse_dict['parse_str']
@@ -61,25 +55,32 @@ def write_py_translated(
         )
     return translate_script
 
+def run_py_module(py_path: str):
+    py_module_name = get_py_module_name(py_path)
+    mod = importlib.import_module(py_module_name)
+    return mod
+
+def get_py_module_name(py_path: str) -> str:
+    # trim '.py'
+    py_module_name = os.path.splitext(py_path)[0]
+
+    for sep in {'\\', '/'}:
+        py_module_name = py_module_name.replace(sep, '.')
+    return py_module_name
+
+############################################################
+# miscellaneous
+
 def append_base_path(
             kn_path: str, base_appendage: str
         ) -> str:
-    """Return output path (aka appended base path)."""
+    """Return out path (aka appended base path)."""
     base_path = os.path.splitext(kn_path)[0]
-    py_path = base_path + base_appendage
-    return py_path
-
-def run_py_module(py_path: str) -> None:
-    py_module = get_py_module(py_path)
-    importlib.import_module(py_module)
-
-def get_py_module(py_path: str) -> str:
-    py_module = os.path.splitext(py_path)[0] # trim '.py'
-    for sep in {'\\', '/'}:
-        py_module = py_module.replace(sep, '.')
-    return py_module
+    appended_path = base_path + base_appendage
+    return appended_path
 
 ############################################################
 
 if __name__ == '__main__':
-    write_output_file(which_engine)
+    kn_path = sys.argv[1]
+    write_output_files(kn_path)

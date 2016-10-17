@@ -53,17 +53,7 @@ def fact(n):
     return 1 if kn_lib.opEq(n, 0) else kn_lib.opMult(n, fact(kn_lib.bMinus(n, 1)))
 
 
-check_list.append(('ch3', kn_lib.get_tex(fact(3))))
+check_list.append(('ch3', kn_lib.sp_tex(fact(3))))
 
 
-check_str = ''
-
-for check_pair in check_list:
-    check_name, check_term = check_pair
-    check_str += (
-            check_name + ' = ' '\n\t'
-            '$$ ' + check_term + ' $$'
-            '\n\n'
-        )
-
-kn_lib.write_tex(check_str, r'examples/tmp.tex')
+kn_lib.write_tex(check_list, r'examples/tmp.tex')

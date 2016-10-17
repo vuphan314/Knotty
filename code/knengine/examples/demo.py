@@ -59,7 +59,7 @@ parse_tree = \
       )
     ),
     ('checkStat',
-      ('kn_id', 'test1'),
+      ('kn_id', 'check1'),
       ('actFunTerm',
         ('kn_id', 'T'),
         ('actParams',
@@ -69,7 +69,7 @@ parse_tree = \
       )
     ),
     ('checkStat',
-      ('kn_id', 'test2'),
+      ('kn_id', 'check2'),
       ('actFunTerm',
         ('kn_id', 'T'),
         ('actParams',
@@ -95,20 +95,10 @@ def T(n, x):
 x = kn_lib.make_vars('x')
 
 
-check_list.append(('test1', kn_lib.get_tex(T(2, x))))
+check_list.append(('check1', kn_lib.sp_tex(T(2, x))))
 
 
-check_list.append(('test2', kn_lib.get_tex(T(2, kn_lib.opMult(kn_lib.im, x)))))
+check_list.append(('check2', kn_lib.sp_tex(T(2, kn_lib.opMult(kn_lib.im, x)))))
 
 
-check_str = ''
-
-for check_pair in check_list:
-    check_name, check_term = check_pair
-    check_str += (
-            check_name + ' = ' '\n\t'
-            '$$ ' + check_term + ' $$'
-            '\n\n'
-        )
-
-kn_lib.write_tex(check_str, r'examples/demo.tex')
+kn_lib.write_tex(check_list, r'examples/demo.tex')

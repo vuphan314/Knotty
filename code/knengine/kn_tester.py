@@ -1,25 +1,30 @@
+'''Unit-test.'''
+
+############################################################
+
 import unittest
 
 import kn_engine
 
-file_tree_dict = {
-        'empty.kn':
-            None,
+############################################################
+
+paths_lists = {
+        'demo.kn':
+            [('check1', 'x^{2} - 2'), ('check2', '- x^{2} - 2')],
         'oneliner.kn':
-            ['knStats', ['funDef', ['formFunExpr', ('kn_id', 'c')], ['defBody', ['letCls', ['letCl', ('kn_id', 'tmp'), ('kn_numeral', '1')]], ['retCl', ['condTerm', ('kn_id', 'tmp'), ('key_truth', 'true'), ('kn_numeral', '0')]]]]]
+            [('ch', '\\mathrm{True}')]
     }
 
 class KnTester(unittest.TestCase):
-
     def test_dict(self):
-        for k in file_tree_dict:
-            v = file_tree_dict[k]
+        for kn_path in paths_lists:
+            check_list_man = paths_lists[kn_path]
 
-            input_path = kn_engine.examples_path + k
-            output_list = kn_engine.get_output_tree(input_path)
+            check_list_auto = kn_engine.write_output_files(
+                    'examples/' + kn_path
+                )
             
-            self.assertEqual(v, output_list)
+            self.assertEqual(check_list_man, check_list_auto)
 
 if __name__ == '__main__':
     unittest.main()
-    input('Key `Enter` to quit.' '\n')

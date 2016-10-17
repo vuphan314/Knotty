@@ -8,12 +8,24 @@ Translate Knotty operations to SymPy operations.
 import sympy as sp
 
 ############################################################
-# TeX output
+# TeX out
 
-def write_tex(tex_str: str, tex_path: str) -> None:
-    tex_str = make_latex(tex_str)
+def write_tex(check_list: list, tex_path: str) -> None:
+    tex_str = get_tex_str(check_list)    
     with open(tex_path, 'w') as tex_file:
         tex_file.write(tex_str)
+
+def get_tex_str(check_list: list) -> str:
+    tex_str = ''
+    for check_pair in check_list:
+        nam, ter = check_pair
+        tex_str += '''
+{nam} = 
+    $$ {ter} $$
+    
+'''.format(nam = nam, ter = ter)
+    tex_str = make_latex(tex_str)
+    return tex_str
 
 def make_latex(tex_str: str) -> str:
     st1 = r'''
@@ -33,7 +45,7 @@ def make_latex(tex_str: str) -> str:
 ############################################################
 # SymPy LaTeX
 
-def get_tex(a) -> str:
+def sp_tex(a) -> str:
     return sp.latex(a)
 
 ############################################################

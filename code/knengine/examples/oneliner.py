@@ -26,17 +26,7 @@ check_list = []
 
 
 
-check_list.append(('ch', kn_lib.get_tex(kn_lib.true if kn_lib.opEq(kn_lib.opExp(kn_lib.im, 2), kn_lib.uMinus(1)) else kn_lib.false)))
+check_list.append(('ch', kn_lib.sp_tex(kn_lib.true if kn_lib.opEq(kn_lib.opExp(kn_lib.im, 2), kn_lib.uMinus(1)) else kn_lib.false)))
 
 
-check_str = ''
-
-for check_pair in check_list:
-    check_name, check_term = check_pair
-    check_str += (
-            check_name + ' = ' '\n\t'
-            '$$ ' + check_term + ' $$'
-            '\n\n'
-        )
-
-kn_lib.write_tex(check_str, r'examples/oneliner.tex')
+kn_lib.write_tex(check_list, r'examples/oneliner.tex')
