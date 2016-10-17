@@ -11,7 +11,7 @@ def kn_translate(T: tuple, tex_path: str) -> str:
     st = kn_lib_import + '\n'
     st += init_check_list() + '\n\n'
     st += translate_recur(T)
-    st += write_check_str(tex_path)
+    st += call_write_tex(tex_path)
     return st
 
 def translate_recur(T: tuple) -> str:
@@ -93,7 +93,7 @@ def translate_retCl(T):
 
 def translate_checkStat(T):
     nam, ter = [translate_recur(t) for t in T[1:]]
-    ter = apply_recur(call_kn_lib('get_tex'), [ter])
+    ter = apply_recur(call_kn_lib('sp_tex'), [ter])
     st = '''
 check_list.append(('{nam}', {ter}))
 
@@ -107,21 +107,9 @@ check_list = []
 '''
     return st
 
-# write_tex = 'write_tex'
-
-def write_check_str(tex_path: str) -> str:
+def call_write_tex(tex_path: str) -> str:
     st = '''
-check_str = ''
-
-for check_pair in check_list:
-    check_name, check_term = check_pair
-    check_str += (
-            check_name + ' = ' '\\n\\t'
-            '$$ ' + check_term + ' $$'
-            '\\n\\n'
-        )
-
-kn_lib.write_tex(check_str, r'{tex_path}')
+kn_lib.write_tex(check_list, r'{tex_path}')
 '''.format(tex_path = tex_path)
     return st
 

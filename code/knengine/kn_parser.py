@@ -21,11 +21,11 @@ def kn_parse(input_path: str) -> dict:
 
 def get_parse_tuple(input_path: str) -> tuple:
     """Return parse-tree as tuple."""
-    lexed_parsed = get_parse_dict(input_path)
+    lexed_parsed = get_lex_parse(input_path)
     parsed = lexed_parsed['parsed']
     return parsed
 
-def get_parse_dict(input_path: str) -> dict:
+def get_lex_parse(input_path: str) -> dict:
     """Return lexing sequence and ast."""
     lexicon_file = 'kn_lexicon.txt'
     grammar_file = 'kn_grammar.txt'
@@ -35,11 +35,15 @@ def get_parse_dict(input_path: str) -> dict:
 
     lexer_inst = lexer.Lexer(lexicon_file)
     allowed_terminals = lexer_inst.lexicon_dict.keys()
-    parser_inst = parser.Parser(grammar_file, allowed_terminals)
+    parser_inst = parser.Parser(
+            grammar_file, allowed_terminals
+        )
 
-    lexed = lexer_inst.get_lexing_sequence_from_file(input_path)
+    lexed = lexer_inst.get_lexing_sequence_from_file(
+            input_path
+        )
 
-    parsed = parser_inst.get_ast(lexed)
+    parsed = parser_inst.get_ast(lexed) # assume: not None
     parsed = list(parsed)
     parsed = convert_list_to_tuple(parsed)
 
@@ -61,7 +65,9 @@ def get_complete_path(incomplete_path: str) -> str:
     Idea of Evgenii Balai.
     """
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    complete_path = os.path.join(current_dir, incomplete_path)
+    complete_path = os.path.join(
+            current_dir, incomplete_path
+        )
     return complete_path
 
 ############################################################
