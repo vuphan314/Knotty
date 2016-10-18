@@ -28,7 +28,7 @@ goto starting
     )
     goto ending
 
-:bundling
+:building
     set spec_man=engine_man.spec
     set work_path=%engine_path%build\
     set dist_path=%engine_path%
@@ -57,7 +57,7 @@ goto starting
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
 
-    REM goto bundling
+    REM goto building
     goto looping
 
 :ending

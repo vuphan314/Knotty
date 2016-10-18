@@ -13,7 +13,7 @@ part of Knotty system
 
   ```
 
-## HOW THE ENGINE WORKS
+## HOW THE KNOTTY ENGINE WORKS
 - input: Knotty program
 - output: TeX program
 - includes:
@@ -28,7 +28,7 @@ part of Knotty system
 
 ## FILES
 - `examples/`:
-  - `*.kn` are manually written
+  - `*.kn` files are manually written
   - other files are generated
 - `kn_tester.py`: Knotty unit-tester
 - `kn_engine.py`: Knotty engine
@@ -41,4 +41,9 @@ part of Knotty system
   - `kn_translator`: Knotty translator
 
 ## BINARY
-`../engine/`
+- prebuilt for Windows: `../engine/`
+- to build from source for another OS:
+  ```
+  pyinstaller engine_man.spec --workpath=../engine/build/ --distpath=../engine/
+
+  ```
