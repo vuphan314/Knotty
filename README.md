@@ -25,18 +25,19 @@ the Knotty system includes:
       - by invoking the Knotty engine
     - a preview box: in which the TeX program is displayed
 
-## LINKS
-- [Notepad++ settings for Knotty language][linkNppXml]
-- [releases][linkTags]
-- [webapp][linkWebapp]
-- [kanban][linkTrello]
-- [documentation][linkOnedrive]
-
 ## FILES
 `code/`
 - `engine/`: engine (binary)
 - `knengine/`: Knotty engine (source)
 - `webapp/`: Knotty webapp
+
+## LINKS
+- [releases][linkTags]
+- [issues][linkIssues]
+- [Notepad++ settings for Knotty language][linkNppXml]
+- [webapp][linkWebapp]
+- [kanban][linkTrello]
+- [documentation][linkOnedrive]
 
 ## SETUP GUIDE
 - first time:
@@ -101,6 +102,8 @@ http://www.math.ttu.edu/~rgelca/jr5.pdf
 https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
 [linkTags]:
 https://github.com/vuphan314/CS4365/releases
+[linkIssues]:
+https://github.com/vuphan314/CS4365/issues
 [linkWebapp]:
 http://99.64.48.184/Knotty
 [linkTrello]:
