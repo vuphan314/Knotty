@@ -2,7 +2,7 @@ goto starting
 
 :looping
     set fold=examples/
-    set fil=precedence
+    set fil=syntax
     set fils=demo, oneliner, precedence, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
@@ -15,7 +15,7 @@ goto starting
         set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
         set tex_clean=latexmk -c
 
-        REM !engine_cmd!
+        !engine_cmd!
 
         REM !kn_engine_cmd!
         REM %npp% !py_file!
@@ -57,7 +57,7 @@ goto starting
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
 
-    goto bundling
+    REM goto bundling
     goto looping
 
 :ending

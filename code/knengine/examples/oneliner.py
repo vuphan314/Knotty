@@ -26,7 +26,7 @@ check_list = []
 
 
 
-check_list.append(('ch', kn_lib.sp_tex(kn_lib.true if kn_lib.opEq(kn_lib.opExp(kn_lib.im, 2), kn_lib.uMinus(1)) else kn_lib.false)))
+check_list.append(('ch', kn_lib.sp_tex((kn_lib.true if kn_lib.opEq(kn_lib.opExp(kn_lib.im, 2), kn_lib.uMinus(1)) else kn_lib.false))))
 
 
 kn_lib.write_tex(check_list, r'examples/oneliner.tex')
