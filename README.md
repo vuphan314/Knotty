@@ -26,6 +26,7 @@ the Knotty system includes:
     - a preview box: in which the TeX program is displayed
 
 ## LINKS
+- [Notepad++ settings for Knotty language][linkNppXml]
 - [tags][linkTags]
 - [webapp][linkWebapp]
 - [kanban][linkTrello]
@@ -113,6 +114,8 @@ http://www.math.ttu.edu/~rgelca/gs6.pdf
 [paperFigure8]:
 http://www.math.ttu.edu/~rgelca/jr5.pdf
 
+[linkNppXml]:
+https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
 [linkTags]:
 https://github.com/vuphan314/CS4365/releases
 [linkWebapp]:
