@@ -6,8 +6,8 @@ computer algebra system for knot theory
 ## GOAL
 to assist mathematicians with symbolic computation
 - example: verification of some formulas in these papers
-  (published in the Journal of Knot Theory and
-  Its Ramifications):
+  (published in the Journal of Knot Theory 
+  and Its Ramifications):
   - [(2, 2*p + 1)-torus knot][paperTorus]
   - [figure-eight knot][paperFigure8]
 
@@ -18,24 +18,24 @@ the Knotty system includes:
 - the Knotty engine:
   - receives a Knotty program
   - returns a TeX program
-- the Knotty webapp
+- the Knotty webapp:
   - includes:
     - a text box: in which the user can type a Knotty program
-    - a button: when clicked will output a TeX program
+    - a button: when clicked will generate a TeX program
       - by invoking the Knotty engine
     - a preview box: in which the TeX program is displayed
 
 ## LINKS
 - [Notepad++ settings for Knotty language][linkNppXml]
-- [tags][linkTags]
+- [releases][linkTags]
 - [webapp][linkWebapp]
 - [kanban][linkTrello]
 - [documentation][linkOnedrive]
 
 ## FILES
 `code/`
-- `engine/`: Knotty engine (binary)
 - `knengine/`: Knotty engine (source)
+- `engine/`: engine (binary)
 - `webapp/`: Knotty webapp
 
 ## SETUP GUIDE
@@ -44,7 +44,7 @@ the Knotty system includes:
     - [Git][gitDownload]
     - [Python][pythonDownload]
     - optional tex-to-pdf compilation:
-      - [TeX Live][texDownload] (2 hours)
+      - [TeX Live][texDownload] (~ 2 hours)
       - [Sumatra PDF][sumatraDownload]
   - command-line interface:
     ```
@@ -80,29 +80,12 @@ the Knotty system includes:
     ```
   - browse tag:
     ```
-    git checkout tags/v1.0.0
+    git checkout tags/v1.0.1
 
     ```
 
-## CONTRIBUTION GUIDE
-- switch branch:
-  ```
-  git checkout branchzach
-
-  ```
-- create/change your files
-- tell Git:
-  ```
-  git add --all
-
-  git commit --all --message "say what you did"
-
-  git push
-
-  ```
-
 ## ACKNOWLEDGEMENT
-- [Git submodule][gitmodules]:
+- [Git submodules][gitmodules]:
   - [generic parser][genparserSpec]
     - by [Evgenii Balai][evgeniiGithub]
 - Python packages:

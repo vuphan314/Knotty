@@ -1,4 +1,4 @@
-# KNOTTY ENGINE (BINARY)
+# ENGINE (BINARY)
 
 ## DESCRIPTION
 Windows `engine.exe`:
@@ -9,7 +9,7 @@ Windows `engine.exe`:
   engine.exe examples/demo.kn
 
   ```
-  - optionally:
+  - optional tex-to-pdf compilation:
     ```
     cd examples/
 
