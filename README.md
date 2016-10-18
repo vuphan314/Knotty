@@ -6,7 +6,7 @@ computer algebra system for knot theory
 ## GOAL
 to assist mathematicians with symbolic computation
 - example: verification of some formulas in these papers
-  (published in the Journal of Knot Theory 
+  (published in the Journal of Knot Theory
   and Its Ramifications):
   - [(2, 2*p + 1)-torus knot][paperTorus]
   - [figure-eight knot][paperFigure8]
@@ -34,8 +34,8 @@ the Knotty system includes:
 
 ## FILES
 `code/`
-- `knengine/`: Knotty engine (source)
 - `engine/`: engine (binary)
+- `knengine/`: Knotty engine (source)
 - `webapp/`: Knotty webapp
 
 ## SETUP GUIDE
