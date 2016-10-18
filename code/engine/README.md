@@ -22,6 +22,7 @@ Windows `engine.exe`:
     ```
   - WARNING: the files `demo.(py|tex|pdf)`
     will be OVERWRITTEN/created
+    WITHOUT CONFIRMATION
 
 ## SOURCE
 `../knengine/`
