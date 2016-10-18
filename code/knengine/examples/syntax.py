@@ -3,7 +3,16 @@ parse_tree = \
   ('knStats',
     ('checkStat',
       ('kn_id', 'IU'),
-      ('kn_num', 'im')
+      ('condTerm',
+        ('kn_num', 'im'),
+        ('opOr',
+          ('key_truth', 'true'),
+          ('opNot',
+            ('key_truth', 'false')
+          )
+        ),
+        ('kn_num', '1')
+      )
     ),
     ('defStat',
       ('formFunTerm',
@@ -159,7 +168,7 @@ check_list = []
 
 
 
-check_list.append(('IU', kn_lib.sp_tex(kn_lib.im)))
+check_list.append(('IU', kn_lib.sp_tex((kn_lib.im if kn_lib.opOr(kn_lib.true, kn_lib.opNot(kn_lib.false)) else 1))))
 
 def c1():
     return 1
@@ -174,13 +183,13 @@ check_list.append(('f1x', kn_lib.sp_tex(f1(x))))
 
 def f3(x, y):
     z1 = 1
-    z2 = kn_lib.opDiv(x, y) if kn_lib.opEq(f1(kn_lib.opMod(x, y)), kn_lib.opDiv(5, 2)) else 1 if kn_lib.opEq(c1(), 3) else z1
-    return kn_lib.opMod(z1, z2) if kn_lib.opEq(z1, 4) else 3 if kn_lib.false else kn_lib.opExp(kn_lib.im, 3)
+    z2 = (kn_lib.opDiv(x, y) if kn_lib.opEq(f1(kn_lib.opMod(x, y)), kn_lib.opDiv(5, 2)) else (1 if kn_lib.opEq(c1(), 3) else z1))
+    return (kn_lib.opMod(z1, z2) if kn_lib.opEq(z1, 4) else (3 if kn_lib.false else kn_lib.opExp(kn_lib.im, 3)))
 
 y, z = kn_lib.make_vars('y, z')
 
 
-check_list.append(('t1', kn_lib.sp_tex(kn_lib.opPlus(kn_lib.opMod(y, z), f3(kn_lib.opMod(y, z), kn_lib.opPlus(kn_lib.uMinus(x), 2))) if kn_lib.true else 0)))
+check_list.append(('t1', kn_lib.sp_tex((kn_lib.opPlus(kn_lib.opMod(y, z), f3(kn_lib.opMod(y, z), kn_lib.opPlus(kn_lib.uMinus(x), 2))) if kn_lib.true else 0))))
 
 
 kn_lib.write_tex(check_list, r'examples/syntax.tex')

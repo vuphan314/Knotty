@@ -1,4 +1,4 @@
-check IU print im
+check IU print im if true or not false else 1
 
 define c1() return 1
 

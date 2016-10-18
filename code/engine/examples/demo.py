@@ -90,7 +90,7 @@ check_list = []
 
 
 def T(n, x):
-    return 2 if kn_lib.opEq(n, 0) else x if kn_lib.opEq(n, 1) else kn_lib.bMinus(kn_lib.opMult(x, T(kn_lib.bMinus(n, 1), x)), T(kn_lib.bMinus(n, 2), x))
+    return (2 if kn_lib.opEq(n, 0) else (x if kn_lib.opEq(n, 1) else kn_lib.bMinus(kn_lib.opMult(x, T(kn_lib.bMinus(n, 1), x)), T(kn_lib.bMinus(n, 2), x))))
 
 x = kn_lib.make_vars('x')
 

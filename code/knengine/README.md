@@ -16,14 +16,14 @@ part of Knotty system
 ## HOW THE ENGINE WORKS
 - input: Knotty program
 - output: TeX program
-- includes
+- includes:
   - parser:
     - input: Knotty program
     - output: Knotty parse-tree (as Python tuple)
   - translator:
     - input: Knotty parse-tree
-    - output: Python program that
-      - is equivalent to Knotty program
+    - output: Python program that:
+      - is semantically equivalent to Knotty program
       - includes script to generate TeX program
 
 ## FILES
