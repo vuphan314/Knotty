@@ -1,3 +1,0 @@
-let p(x, y) = x^2 + y * 4 * im
-
-let c = p(-im, -3/4)

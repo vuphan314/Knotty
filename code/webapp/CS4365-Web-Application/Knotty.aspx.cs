@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class Knotty : System.Web.UI.Page
 {
@@ -40,8 +36,8 @@ public partial class Knotty : System.Web.UI.Page
 
         var pInfo = new ProcessStartInfo
         {
-            FileName = pythonPath,
-            Arguments = $"{enginePath} {file}"
+            FileName = enginePath,
+            Arguments = file
         };
 
         var p = new Process { StartInfo = pInfo };
