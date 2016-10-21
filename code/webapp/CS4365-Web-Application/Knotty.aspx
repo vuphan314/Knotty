@@ -34,7 +34,7 @@
                 </asp:TableCell>
                 <asp:TableCell runat="server" Width="20%" VerticalAlign="Top">
                     <asp:Panel ScrollBars="Horizontal" runat="server" ID="pnlRecent" Width="100%">
-                        <asp:Label runat="server" ID="lblRecent"></asp:Label>
+                        <asp:Label runat="server" ID="lblRecent" style="overflow: auto"></asp:Label>
                     </asp:Panel>
                 </asp:TableCell>
             </asp:TableRow>
