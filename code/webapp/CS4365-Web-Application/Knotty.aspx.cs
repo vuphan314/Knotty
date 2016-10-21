@@ -7,9 +7,9 @@ using Microsoft.Ajax.Utilities;
 public partial class Knotty : System.Web.UI.Page
 {
     private readonly string pythonPath = @"C:\Python27\python.exe";
-    private readonly string enginePath = @"C:\Users\zgrum\OneDrive\Documents\Visual Studio 2015\WebSites\CS4365\code\webapp\CS4365-Web-Application\engine.exe";
+    private readonly string enginePath = @"C:\inetpub\wwwroot\";
     private readonly string demoPath = @"C:\Python27\examples\demo.kn";
-    private readonly string scriptsPath = @"C:\Users\zgrum\OneDrive\Documents\Visual Studio 2015\WebSites\CS4365\code\webapp\CS4365-Web-Application\Queries\";
+    private readonly string scriptsPath = @"C:\inetpub\wwwroot\Queries\";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,7 +26,7 @@ public partial class Knotty : System.Web.UI.Page
         }
 
         lblRecent.Text = string.Empty;
-        foreach (var file in Directory.GetFiles(scriptsPath).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
+        foreach (var file in Directory.GetFiles(scriptsPath, "*.kn").Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
             if (!file.Name.Contains("simplified"))
                 lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";        
     }
@@ -37,17 +37,21 @@ public partial class Knotty : System.Web.UI.Page
 
         var pInfo = new ProcessStartInfo
         {
-            FileName = enginePath,
-            Arguments = file
+            FileName = "cd",
+            Arguments = $"{scriptsPath}; ..\\engine.exe " + file,
+            RedirectStandardOutput = true,
+            UseShellExecute = false
         };
 
         var p = new Process { StartInfo = pInfo };
 
         p.Start();
+        p.WaitForExit();
 
         lblOutput.Text = string.Empty;
-        foreach (var lineRead in File.ReadAllLines(file))
-            lblOutput.Text += lineRead + "<br>";
+        //foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
+        //    lblOutput.Text += lineRead + "<br>";
+        txtInput.Text = p.StandardOutput.ReadToEnd();
     }
     protected void TestClick(object sender, EventArgs e)
     {
