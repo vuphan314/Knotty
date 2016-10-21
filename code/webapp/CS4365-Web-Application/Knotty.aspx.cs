@@ -1,37 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Microsoft.Ajax.Utilities;
 
 public partial class Knotty : System.Web.UI.Page
 {
     private readonly string pythonPath = @"C:\Python27\python.exe";
-    private readonly string enginePath = @"C:\Python27\engine.py";
+    private readonly string enginePath = @"C:\inetpub\wwwroot\engine.exe";
     private readonly string demoPath = @"C:\Python27\examples\demo.kn";
-    private readonly string scriptsPath = @"C:\scripts\";
+    private readonly string scriptsPath = @"C:\inetpub\wwwroot\Queries\";
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Request.QueryString["scriptId"] != null)
         {
-            var file = @"C:\scripts\" + Request.QueryString["scriptId"];
+            var file = scriptsPath + Request.QueryString["scriptId"];
 
             if (!File.Exists(file)) return;
 
             txtInput.Text = string.Empty;
             foreach (var lineRead in File.ReadAllLines(file))
                 txtInput.Text += lineRead + "\n";
-            Request.QueryString["scriptId"] = null;
+            //Request.QueryString["scriptId"] = null;
         }
 
-        recentFiles.Text = string.Empty;
-        foreach (var file in Directory.GetFiles(scriptsPath).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
+        lblRecent.Text = string.Empty;
+        foreach (var file in Directory.GetFiles(scriptsPath, "*.kn").Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
             if (!file.Name.Contains("simplified"))
-                recentFiles.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
+                lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";        
     }
 
     protected void SubmitClick(object sender, EventArgs e)
@@ -40,19 +37,27 @@ public partial class Knotty : System.Web.UI.Page
 
         var pInfo = new ProcessStartInfo
         {
-            FileName = pythonPath,
-            Arguments = $"{enginePath} {file}"
+            FileName = enginePath,
+            Arguments = file
         };
 
         var p = new Process { StartInfo = pInfo };
 
         p.Start();
+        p.WaitForExit();
 
         lblOutput.Text = string.Empty;
-        foreach (var lineRead in File.ReadAllLines(file))
-            lblOutput.Text += lineRead + "<br>";
-
+        try
+        {
+            foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
+                lblOutput.Text += lineRead + "<br>";
+        }
+        catch
+        {
+            lblOutput.Text = "Error! Cannot find file '" + file.Replace(".kn", ".tex").Substring(file.LastIndexOf('\\') + 1) + "'";
+        }
     }
+
     protected void TestClick(object sender, EventArgs e)
     {
         lblOutput.Text = "Beginning Tests...<br>";
@@ -67,8 +72,8 @@ public partial class Knotty : System.Web.UI.Page
 
         var pInfo = new ProcessStartInfo
         {
-            FileName = pythonPath,
-            Arguments = $"{enginePath} {demoPath}"
+            FileName = enginePath,
+            Arguments = $"{demoPath}"
         };
 
         var p = new Process { StartInfo = pInfo };
@@ -133,7 +138,7 @@ public partial class Knotty : System.Web.UI.Page
 
     private string SaveInputToFile()
     {
-        var file = scriptsPath + DateTime.UtcNow.ToFileTime() + ".kn";
+        var file = scriptsPath + (!txtName.Text.IsNullOrWhiteSpace() ? txtName.Text + '_' : string.Empty) + DateTime.UtcNow.ToFileTime() + ".kn";
         File.WriteAllText(file, txtInput.Text);
         return file;
     }
