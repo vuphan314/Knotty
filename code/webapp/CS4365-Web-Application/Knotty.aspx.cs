@@ -49,9 +49,8 @@ public partial class Knotty : System.Web.UI.Page
         p.WaitForExit();
 
         lblOutput.Text = string.Empty;
-        //foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
-        //    lblOutput.Text += lineRead + "<br>";
-        txtInput.Text = p.StandardOutput.ReadToEnd();
+        foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
+            lblOutput.Text += lineRead + "<br>";
     }
     protected void TestClick(object sender, EventArgs e)
     {
