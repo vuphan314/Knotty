@@ -22,7 +22,7 @@
                 <asp:TableCell runat="server">Recent:</asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Width="40%"><asp:TextBox ID="txtName" Width="90%" runat="server">Query Title (optional)</asp:TextBox><br/><br/><asp:TextBox ID="txtInput" runat="server" Height="600px" Width="90%" TextMode="MultiLine"></asp:TextBox></asp:TableCell>
+                <asp:TableCell runat="server" Width="40%"><asp:TextBox ID="txtName" Width="90%"  runat="server" placeholder="Query Title (optional)"></asp:TextBox><br/><br/><asp:TextBox ID="txtInput" runat="server" Height="600px" Width="90%" TextMode="MultiLine"></asp:TextBox></asp:TableCell>
                 <asp:TableCell runat="server" Width="40%" VerticalAlign="Top"><asp:Label runat="server" ID="lblOutput"></asp:Label></asp:TableCell>
                 <asp:TableCell runat="server" Width="20%" ID="recentFiles" VerticalAlign="Top"></asp:TableCell>
             </asp:TableRow>

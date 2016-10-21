@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Ajax.Utilities;
 
 public partial class Knotty : System.Web.UI.Page
 {
@@ -27,7 +28,7 @@ public partial class Knotty : System.Web.UI.Page
         recentFiles.Text = string.Empty;
         foreach (var file in Directory.GetFiles(scriptsPath).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
             if (!file.Name.Contains("simplified"))
-                recentFiles.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
+                recentFiles.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";        
     }
 
     protected void SubmitClick(object sender, EventArgs e)
@@ -47,7 +48,6 @@ public partial class Knotty : System.Web.UI.Page
         lblOutput.Text = string.Empty;
         foreach (var lineRead in File.ReadAllLines(file))
             lblOutput.Text += lineRead + "<br>";
-
     }
     protected void TestClick(object sender, EventArgs e)
     {
@@ -129,7 +129,7 @@ public partial class Knotty : System.Web.UI.Page
 
     private string SaveInputToFile()
     {
-        var file = scriptsPath + DateTime.UtcNow.ToFileTime() + ".kn";
+        var file = scriptsPath + (!txtName.Text.IsNullOrWhiteSpace() ? txtName.Text + '_' : string.Empty) + DateTime.UtcNow.ToFileTime() + ".kn";
         File.WriteAllText(file, txtInput.Text);
         return file;
     }
