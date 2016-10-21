@@ -7,7 +7,7 @@ using Microsoft.Ajax.Utilities;
 public partial class Knotty : System.Web.UI.Page
 {
     private readonly string pythonPath = @"C:\Python27\python.exe";
-    private readonly string enginePath = @"C:\inetpub\wwwroot\";
+    private readonly string enginePath = @"C:\inetpub\wwwroot\engine.exe";
     private readonly string demoPath = @"C:\Python27\examples\demo.kn";
     private readonly string scriptsPath = @"C:\inetpub\wwwroot\Queries\";
 
@@ -37,8 +37,8 @@ public partial class Knotty : System.Web.UI.Page
 
         var pInfo = new ProcessStartInfo
         {
-            FileName = "cd",
-            Arguments = $"{scriptsPath}; ..\\engine.exe " + file,
+            FileName = enginePath,
+            Arguments = file,
             RedirectStandardOutput = true,
             UseShellExecute = false
         };
