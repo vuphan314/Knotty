@@ -38,9 +38,7 @@ public partial class Knotty : System.Web.UI.Page
         var pInfo = new ProcessStartInfo
         {
             FileName = enginePath,
-            Arguments = file,
-            RedirectStandardOutput = true,
-            UseShellExecute = false
+            Arguments = file
         };
 
         var p = new Process { StartInfo = pInfo };
@@ -52,6 +50,7 @@ public partial class Knotty : System.Web.UI.Page
         foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
             lblOutput.Text += lineRead + "<br>";
     }
+
     protected void TestClick(object sender, EventArgs e)
     {
         lblOutput.Text = "Beginning Tests...<br>";
