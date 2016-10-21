@@ -8,7 +8,7 @@ def tst(o = 'DEFAULT TEST STRING'):
     st = markerComment + '\nTEST\n' + st + '\n' + markerComment + '\n'
     print(st)
 
-########## ########## ########## ########## ########## ##########
+###########################################################
 '''
 raise error
 '''
@@ -19,7 +19,7 @@ def raiseError(o = 'DEFAULT ERROR MESSAGE'):
     raise NameError(st)
 err = raiseError
 
-########## ########## ########## ########## ########## ##########
+###########################################################
 '''
 mark start and end of wanted string
 '''
