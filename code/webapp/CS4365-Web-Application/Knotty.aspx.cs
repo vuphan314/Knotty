@@ -47,8 +47,15 @@ public partial class Knotty : System.Web.UI.Page
         p.WaitForExit();
 
         lblOutput.Text = string.Empty;
-        foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
-            lblOutput.Text += lineRead + "<br>";
+        try
+        {
+            foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
+                lblOutput.Text += lineRead + "<br>";
+        }
+        catch
+        {
+            lblOutput.Text = "Error! Cannot find file '" + file.Replace(".kn", ".tex").Substring(file.LastIndexOf('\\') + 1) + "'";
+        }
     }
 
     protected void TestClick(object sender, EventArgs e)
