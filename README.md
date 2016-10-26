@@ -25,13 +25,6 @@ the Knotty system includes:
       - by invoking the Knotty engine
     - a preview box: in which the TeX program is displayed
 
-## CONTRIBUTORS
-- [Vu Phan][vuCV] (regular)
-  - language
-  - engine
-- Zachariah Grummons (honorary)
-  - webapp
-
 ## FILES
 `code/`
 - `engine/`: engine (binary)
@@ -91,6 +84,13 @@ the Knotty system includes:
     git checkout tags/v1.0.1
 
     ```
+
+## CONTRIBUTORS
+- [Vu Phan][vuCV] (regular)
+  - language
+  - engine
+- Zachariah Grummons (honorary)
+  - webapp
 
 ## ACKNOWLEDGEMENT
 - [Git submodules][gitmodules]:
