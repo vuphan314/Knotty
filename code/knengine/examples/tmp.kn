@@ -1,5 +1,12 @@
-define sgn(x)
-    return
-        (1 if x > 0 else 0) if x = 0 else -1
+vary t, x, y
 
-check ch print sgn(6)
+define X(i)
+    return
+        -t^-2 - t^-2
+            if i = 0 else
+        -t^2 * x^2 - t^4 * y
+            if i = 1 else
+        t^2 *  y * X(i-1) - t^4 * X(i-2) - 2 * t^2 * x^2
+
+check x3
+    print X(3)

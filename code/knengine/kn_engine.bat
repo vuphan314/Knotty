@@ -2,8 +2,8 @@ goto starting
 
 :looping
     set fold=examples/
-    set fil=syntax
-    set fils=demo, oneliner, precedence, syntax, tmp
+    set fil=skein_X_i
+    set fils=demo, oneliner, precedence, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
         set kn_file=!base!.kn

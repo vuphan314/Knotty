@@ -63,7 +63,7 @@ ar_term_2(T) ::= ar_term_3(T)
 ar_term_3(uMinus T) ::= op_minus ar_term_4(T)
 ar_term_3(T) ::= ar_term_4(T)
 
-ar_term_4(opExp T T2) ::= ar_term_5(T) op_exp ar_term_4(T2)
+ar_term_4(opExp T T2) ::= ar_term_5(T) op_exp ar_term_3(T2)
 ar_term_4(T) ::= ar_term_5(T)
 
 ar_term_5(T) ::= inner_ar_term(T)

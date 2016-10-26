@@ -22,9 +22,7 @@ parse_tree = \
               ('uMinus',
                 ('opExp',
                   ('kn_id', 't'),
-                  ('uMinus',
-                    ('kn_num', '2')
-                  )
+                  ('kn_num', '2')
                 )
               ),
               ('opExp',
@@ -120,7 +118,7 @@ parse_tree = \
       )
     ),
     ('checkStat',
-      ('kn_id', 'x3'),
+      ('kn_id', 'X3'),
       ('actFunTerm',
         ('kn_id', 'X'),
         ('actParams',
@@ -139,10 +137,10 @@ check_list = []
 t, x, y = kn_lib.make_vars('t, x, y')
 
 def X(i):
-    return (kn_lib.bMinus(kn_lib.uMinus(kn_lib.opExp(t, kn_lib.uMinus(2))), kn_lib.opExp(t, kn_lib.uMinus(2))) if kn_lib.opEq(i, 0) else (kn_lib.bMinus(kn_lib.opMult(kn_lib.uMinus(kn_lib.opExp(t, 2)), kn_lib.opExp(x, 2)), kn_lib.opMult(kn_lib.opExp(t, 4), y)) if kn_lib.opEq(i, 1) else kn_lib.bMinus(kn_lib.bMinus(kn_lib.opMult(kn_lib.opMult(kn_lib.opExp(t, 2), y), X(kn_lib.bMinus(i, 1))), kn_lib.opMult(kn_lib.opExp(t, 4), X(kn_lib.bMinus(i, 2)))), kn_lib.opMult(kn_lib.opMult(2, kn_lib.opExp(t, 2)), kn_lib.opExp(x, 2)))))
+    return (kn_lib.bMinus(kn_lib.uMinus(kn_lib.opExp(t, 2)), kn_lib.opExp(t, kn_lib.uMinus(2))) if kn_lib.opEq(i, 0) else (kn_lib.bMinus(kn_lib.opMult(kn_lib.uMinus(kn_lib.opExp(t, 2)), kn_lib.opExp(x, 2)), kn_lib.opMult(kn_lib.opExp(t, 4), y)) if kn_lib.opEq(i, 1) else kn_lib.bMinus(kn_lib.bMinus(kn_lib.opMult(kn_lib.opMult(kn_lib.opExp(t, 2), y), X(kn_lib.bMinus(i, 1))), kn_lib.opMult(kn_lib.opExp(t, 4), X(kn_lib.bMinus(i, 2)))), kn_lib.opMult(kn_lib.opMult(2, kn_lib.opExp(t, 2)), kn_lib.opExp(x, 2)))))
 
 
-check_list.append(('x3', kn_lib.sp_tex(X(3))))
+check_list.append(('X3', kn_lib.sp_tex(X(3))))
 
 
-kn_lib.write_tex(check_list, r'examples/tmp.tex')
+kn_lib.write_tex(check_list, r'examples/skein_X_i.tex')
