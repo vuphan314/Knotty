@@ -26,8 +26,11 @@ the Knotty system includes:
     - a preview box: in which the TeX program is displayed
 
 ## CONTRIBUTORS
-- [Vu Phan][vuCV]: language/engine
-- Zachariah Grummons: webapp
+- [Vu Phan][vuCV] (regular)
+  - language
+  - engine
+- Zachariah Grummons (honorary)
+  - webapp
 
 ## FILES
 `code/`
