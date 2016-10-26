@@ -25,6 +25,10 @@ the Knotty system includes:
       - by invoking the Knotty engine
     - a preview box: in which the TeX program is displayed
 
+## CONTRIBUTORS
+- [Vu Phan][vuCV]: language/engine
+- Zachariah Grummons: webapp
+
 ## FILES
 `code/`
 - `engine/`: engine (binary)
@@ -97,6 +101,9 @@ the Knotty system includes:
 http://www.math.ttu.edu/~rgelca/gs6.pdf
 [paperFigure8]:
 http://www.math.ttu.edu/~rgelca/jr5.pdf
+
+[vuCV]:
+https://github.com/vuphan314/VU_PHAN/blob/master/README.md#top
 
 [linkNppXml]:
 https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
