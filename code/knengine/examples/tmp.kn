@@ -2,11 +2,23 @@ vary t, x, y
 
 define X(i)
     return
-        -t^-2 - t^-2
+        -t^2 - t^-2
             if i = 0 else
         -t^2 * x^2 - t^4 * y
             if i = 1 else
         t^2 *  y * X(i-1) - t^4 * X(i-2) - 2 * t^2 * x^2
 
-check x3
-    print X(3)
+check X6
+    print X(6)
+
+check X7
+    print X(7)
+
+check X8
+    print X(8)
+
+check X9
+    print X(9)
+
+check X10
+    print X(10)

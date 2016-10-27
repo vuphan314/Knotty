@@ -2,7 +2,7 @@ goto starting
 
 :looping
     set fold=examples/
-    set fil=skein_X_i
+    set fil=tmp
     set fils=demo, oneliner, precedence, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
@@ -57,7 +57,7 @@ goto starting
     set engine_py=engine.py
     set kn_engine_py=kn_engine.py
 
-    goto building
+    REM goto building
     goto looping
 
 :ending

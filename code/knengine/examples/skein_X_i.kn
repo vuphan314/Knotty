@@ -8,5 +8,20 @@ define X(i)
             if i = 1 else
         t^2 *  y * X(i-1) - t^4 * X(i-2) - 2 * t^2 * x^2
 
+check X0
+    print X(0)
+
+check X1
+    print X(1)
+
+check X2
+    print X(2)
+
 check X3
     print X(3)
+
+check X4
+    print X(4)
+
+check X5
+    print X(5)
