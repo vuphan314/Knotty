@@ -19,7 +19,7 @@ Windows standalone binary file `engine.exe`:
   - in File Explorer window:
     - click button `File` (top-left corner)
       - click button `Open command prompt`
-  - in Command Prompt window, type:
+  - in Command Prompt window, enter:
     ```
     engine demo.kn
 
