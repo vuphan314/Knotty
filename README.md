@@ -27,9 +27,9 @@ the Knotty system includes:
 
 ## FILES
 `code/`
+- `webapp/`: Knotty webapp
 - `engine/`: engine (binary)
 - `knengine/`: Knotty engine (source)
-- `webapp/`: Knotty webapp
 
 ## LINKS
 - [releases][linkTags]
