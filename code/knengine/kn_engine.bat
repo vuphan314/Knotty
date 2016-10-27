@@ -4,7 +4,7 @@ goto starting
     set fold=examples/
     set fil=tmp
     set fils=demo, oneliner, precedence, skein_X_i, syntax, tmp
-    for %%i in (%fils%) do (
+    for %%i in (%fil%) do (
         set base=%fold%%%~ni
         set kn_file=!base!.kn
         set py_file=!base!.py
@@ -21,10 +21,10 @@ goto starting
         REM %npp% !tex_file!
 
         !tex_compile!
+        cd %fold% & %tex_clean% & cd ..
 
         echo:
     )
-    cd %fold% & %tex_clean% & cd ..
     goto ending
 
 :building
