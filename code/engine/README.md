@@ -1,28 +1,50 @@
 <h6>top
 
 # ENGINE (BINARY)
+part of Knotty system
 
 ## DESCRIPTION
-Windows `engine.exe`:
+Windows standalone binary file `engine.exe`:
 - accepts any relative/absolute path
-  to any syntactically correct Knotty program
-- example session with Command Prompt:
-  ```
-  engine.exe examples/demo.kn
+  to any correct Knotty program
 
-  ```
-  - optional tex-to-pdf compilation:
+## USAGE
+- method 1:
+  - download [`engine.exe`][engineDownload]
+  - move downloaded `engine.exe` to directory `C:/Windows/`
+    (or anywhere else in environment variable `%PATH%`)
+  - browse directory containing Knotty file
+    - example:
+      `D:/repos/CS4365/code/engine/examples/demo.kn`
+  - in File Explorer window:
+    - click button `File` (top-left corner)
+      - click button `Open command prompt`
+  - in Command Prompt window, type:
+    ```
+    engine demo.kn
+
+    ```
+- method 2:
+  - Command Prompt:
     ```
     cd examples/
-
-    latexmk -pdf demo.tex
-
-    latexmk -c demo.tex
+    
+    call "../engine.exe" demo.kn
 
     ```
-  - WARNING: the files `demo.(py|tex|pdf)`
-    will be OVERWRITTEN/created
-    WITHOUT CONFIRMATION
+    - optional tex-to-pdf compilation:
+      ```
+      latexmk -pdf demo.tex
+
+      latexmk -c demo.tex
+
+      ```
+- WARNING: the files `demo.(py|tex|pdf)`
+  will be OVERWRITTEN/created
+  WITHOUT CONFIRMATION
 
 ## SOURCE
 `../knengine/`
+
+[engineDownload]:
+https://github.com/vuphan314/CS4365/blob/master/code/engine/engine.exe?raw=true

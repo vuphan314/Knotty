@@ -15,7 +15,7 @@ part of Knotty system
 
   ```
 
-## HOW THE KNOTTY ENGINE WORKS
+## DESCRIPTION
 - input: Knotty program
 - output: TeX program
 - includes:

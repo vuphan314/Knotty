@@ -39,7 +39,7 @@ the Knotty system includes:
 - [kanban][linkTrello]
 - [documentation][linkOnedrive]
 
-## SETUP GUIDE
+## USAGE
 - first time:
   - prerequisite installation:
     - [Git][gitDownload]
@@ -76,12 +76,12 @@ the Knotty system includes:
     example: my `<dir_of_repo>` is `D:/repos/CS4365/`
   - update repository:
     ```
-    git pull
+    git pull --tags
 
     ```
   - browse tag:
     ```
-    git checkout tags/v1.0.1
+    git checkout tags/v1.2.0
 
     ```
 
@@ -95,7 +95,7 @@ the Knotty system includes:
 ## ACKNOWLEDGEMENT
 - [Git submodules][gitmodules]:
   - [generic parser][genparserSpec]
-    - by [Evgenii Balai][evgeniiGithub]
+    - by Evgenii Balai
 - Python packages:
   - [SymPy][sympyHome]
   - [PyInstaller][pyinstallerHome]
@@ -134,8 +134,6 @@ https://www.sumatrapdfreader.org/download-free-pdf-viewer.html
 https://github.com/vuphan314/CS4365/blob/master/.gitmodules
 [genparserSpec]:
 https://github.com/iensen/genparser/blob/master/docs/main/astgen.pdf
-[evgeniiGithub]:
-https://github.com/iensen
 
 [sympyHome]:
 http://www.sympy.org/en/index.html
