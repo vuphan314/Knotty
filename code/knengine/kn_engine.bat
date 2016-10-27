@@ -4,7 +4,7 @@ goto starting
     set fold=examples/
     set fil=tmp
     set fils=demo, oneliner, precedence, skein_X_i, syntax, tmp
-    for %%i in (%fil%) do (
+    for %%i in (%fils%) do (
         set base=%fold%%%~ni
         set kn_file=!base!.kn
         set py_file=!base!.py
@@ -13,7 +13,6 @@ goto starting
         set engine_cmd=%engine_py% !kn_file!
         set kn_engine_cmd=%kn_engine_py% !kn_file!
         set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
-        set tex_clean=latexmk -c
 
         !engine_cmd!
 
@@ -22,10 +21,10 @@ goto starting
         REM %npp% !tex_file!
 
         !tex_compile!
-        cd %fold% & !tex_clean! & cd ..
 
         echo:
     )
+    cd %fold% & %tex_clean% & cd ..
     goto ending
 
 :building
@@ -50,6 +49,7 @@ goto starting
     setlocal enabledelayedexpansion
 
     set npp=notepad++
+    set tex_clean=latexmk -c
 
     set engine_path=..\engine\
     set engine_exe=engine.exe
