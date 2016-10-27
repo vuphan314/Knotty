@@ -27,7 +27,7 @@ Windows standalone binary file `engine.exe`:
 - method 2:
   - Command Prompt:
     ```
-    cd examples/
+    cd ./examples/
 
     call "../engine.exe" demo.kn
 
