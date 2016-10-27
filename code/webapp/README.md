@@ -18,9 +18,9 @@ open [this link][linkBinaryExamples]
   - in Knotty language
 - other files are generated
 
-linkWebapp:
+[linkWebapp]:
 http://99.64.48.184/Knotty
-linkOverleaf:
+[linkOverleaf]:
 https://www.overleaf.com
-linkBinaryExamples:
+[linkBinaryExamples]:
 https://github.com/vuphan314/CS4365/tree/master/code/engine/examples
