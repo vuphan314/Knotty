@@ -15,7 +15,7 @@ Windows standalone binary file `engine.exe`:
     (or anywhere else in environment variable `%PATH%`)
   - browse directory containing Knotty file
     - example:
-      `D:/repos/CS4365/code/engine/examples/demo.kn`
+      `D:/repos/CS4365/code/engine/examples/`
   - in File Explorer window:
     - click button `File` (top-left corner)
       - click button `Open command prompt`
@@ -28,7 +28,7 @@ Windows standalone binary file `engine.exe`:
   - Command Prompt:
     ```
     cd examples/
-    
+
     call "../engine.exe" demo.kn
 
     ```
