@@ -10,10 +10,12 @@ part of Knotty system
   - see a TeX program in the `Output` box
 - for optional tex-to-pdf compilation:
   - open [Overleaf][linkOverleaf]
-  - copy the TeX program from the previous `Output` box
-    - paste it into the left `Source` box
-  - in the pop-up `compile error` box,
-    - click the button `recompile from scratch`
+  - copy the previous TeX program from the Knotty `Output` box
+    - paste the copied TeX program into the Overleaf `Source` pane (left)
+      - overwriting the existing Overleaf TeX program
+  - in the Overleaf `compile error` pop-up message:
+    - click the `recompile from scratch` button
+  - see the pdf in the Overleaf `Preview` pane (right)
 
 ## EXAMPLES
 see [pre-compiled examples][linkBinaryExamples]
