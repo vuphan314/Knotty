@@ -10,3 +10,4 @@ part of Knotty system
   - see a TeX program in the `Output` box
 - for optional tex-to-pdf compilation:
   - open https://www.overleaf.com
+    - click button `CREATE A NEW PAPER`
