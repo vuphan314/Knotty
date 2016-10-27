@@ -49,6 +49,3 @@ part of Knotty system
   pyinstaller engine_man.spec --workpath=../engine/build/ --distpath=../engine/
 
   ```
-
-## CONTRIBUTORS
-- Vu Phan

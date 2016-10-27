@@ -10,6 +10,3 @@ part of Knotty system
   - see a TeX program in the `Output` box
 - optional tex-to-pdf compilation:
   - web-browse https://www.overleaf.com
-
-## CONTRIBUTORS
-- Zachariah Grummons

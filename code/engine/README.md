@@ -26,6 +26,3 @@ Windows `engine.exe`:
 
 ## SOURCE
 `../knengine/`
-
-## CONTRIBUTORS
-- Vu Phan
