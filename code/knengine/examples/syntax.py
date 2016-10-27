@@ -2,9 +2,12 @@
 parse_tree = \
   ('knStats',
     ('checkStat',
-      ('kn_id', 'IU'),
+      ('kn_id', 'imaginaryUnitSquared'),
       ('condTerm',
-        ('kn_num', 'im'),
+        ('opExp',
+          ('kn_num', 'im'),
+          ('kn_num', '2')
+        ),
         ('opOr',
           ('key_truth', 'true'),
           ('opNot',
@@ -35,7 +38,9 @@ parse_tree = \
         ('retCl',
           ('opExp',
             ('kn_id', 'x'),
-            ('kn_num', '2')
+            ('uMinus',
+              ('kn_num', '2')
+            )
           )
         )
       )
@@ -66,7 +71,10 @@ parse_tree = \
         ('letCls',
           ('letCl',
             ('kn_id', 'z1'),
-            ('kn_num', '1')
+            ('opDiv',
+              ('kn_num', '1'),
+              ('kn_id', 'x')
+            )
           ),
           ('letCl',
             ('kn_id', 'z2'),
@@ -168,13 +176,13 @@ check_list = []
 
 
 
-check_list.append(('IU', kn_lib.sp_tex((kn_lib.im if kn_lib.opOr(kn_lib.true, kn_lib.opNot(kn_lib.false)) else 1))))
+check_list.append(('imaginaryUnitSquared', kn_lib.sp_tex((kn_lib.opExp(kn_lib.im, 2) if kn_lib.opOr(kn_lib.true, kn_lib.opNot(kn_lib.false)) else 1))))
 
 def c1():
     return 1
 
 def f1(x):
-    return kn_lib.opExp(x, 2)
+    return kn_lib.opExp(x, kn_lib.uMinus(2))
 
 x = kn_lib.make_vars('x')
 
@@ -182,7 +190,7 @@ x = kn_lib.make_vars('x')
 check_list.append(('f1x', kn_lib.sp_tex(f1(x))))
 
 def f3(x, y):
-    z1 = 1
+    z1 = kn_lib.opDiv(1, x)
     z2 = (kn_lib.opDiv(x, y) if kn_lib.opEq(f1(kn_lib.opMod(x, y)), kn_lib.opDiv(5, 2)) else (1 if kn_lib.opEq(c1(), 3) else z1))
     return (kn_lib.opMod(z1, z2) if kn_lib.opEq(z1, 4) else (3 if kn_lib.false else kn_lib.opExp(kn_lib.im, 3)))
 
