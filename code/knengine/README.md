@@ -46,6 +46,9 @@ part of Knotty system
 - prebuilt for Windows: `../engine/`
 - to build from source for another OS:
   ```
-  pyinstaller engine_man.spec --workpath=../engine/build/ --distpath=../engine/
+  pyinstaller ./engine_man.spec --workpath=../engine/build/ --distpath=../engine/
 
   ```
+  - if you have successfully built a binary for your OS,
+    then please contribute the binary with a pull request
+    - we appriciate your help
