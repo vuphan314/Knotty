@@ -18,7 +18,7 @@ the Knotty system includes:
 - the Knotty engine:
   - receives a Knotty program
   - returns a TeX program
-- the Knotty webapp:
+- the Knotty web application:
   - includes:
     - a text box: in which the user can type a Knotty program
     - a button: when clicked will generate a TeX program
@@ -27,7 +27,7 @@ the Knotty system includes:
 
 ## FILES
 `code/`
-- `webapp/`: Knotty webapp
+- `webapp/`: web application
 - `engine/`: engine (binary)
 - `knengine/`: Knotty engine (source)
 
