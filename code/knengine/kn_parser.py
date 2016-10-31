@@ -74,7 +74,7 @@ def get_parse_str(parse_tuple: str) -> str:
     parse_str = convert_tuple_to_str(parse_tuple) + '\n'
     return parse_str
 
-def convert_tuple_to_str(T: tuple, tab_count = 1) -> str:
+def convert_tuple_to_str(T: tuple, tab_count=1) -> str:
     tabs = tree_tab * tab_count
     st = tabs
     if is_termimal(T):
@@ -84,7 +84,7 @@ def convert_tuple_to_str(T: tuple, tab_count = 1) -> str:
         for t in T[1:]:
             st2 = ',\n'
             st2 += convert_tuple_to_str(
-                    t, tab_count = tab_count + 1
+                    t, tab_count=tab_count+1
                 )
             st += st2
         st += '\n' + tabs + ')'
@@ -97,7 +97,7 @@ def is_termimal(T: tuple) -> bool:
         isinstance(T, tuple) and
         len(T) > 1 and
         isinstance(T[1], str)
-        )
+    )
     return boo
 
 ############################################################
