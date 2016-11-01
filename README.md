@@ -99,6 +99,12 @@ the Knotty system includes:
 - Python packages:
   - [SymPy][sympyHome]
   - [PyInstaller][pyinstallerHome]
+- TeX packages:
+  - geometry
+  - amsmath
+  - breqn
+- Knotty language influenced by: LED, SequenceL, Python, SQL
+- design document influenced by KaggleComp team
 
 [paperTorus]:
 http://www.math.ttu.edu/~rgelca/gs6.pdf
