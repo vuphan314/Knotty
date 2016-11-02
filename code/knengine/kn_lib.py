@@ -35,9 +35,9 @@ def make_latex(tex_str: str) -> str:
 
 \usepackage[hmargin = 0.5in, vmargin = 0.5in]{geometry}
 
-\usepackage{amsmath}
-
 \usepackage{breqn}
+
+\usepackage{amsmath}
 
 \begin{document}
 

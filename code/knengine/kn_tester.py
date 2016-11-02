@@ -9,11 +9,11 @@ import kn_engine
 ############################################################
 
 paths_lists = {
-        'demo.kn':
-            [('check1', 'x^{2} - 2'), ('check2', '- x^{2} - 2')],
-        'oneliner.kn':
-            [('ch', '\\mathrm{True}')]
-    }
+    'demo.kn':
+        [('check1', 'x^{2} - 2'), ('check2', '- x^{2} - 2')],
+    'oneliner.kn':
+        [('ch', '\\mathrm{True}')]
+}
 
 class KnTester(unittest.TestCase):
     def test_dict(self):
@@ -21,10 +21,12 @@ class KnTester(unittest.TestCase):
             check_list_man = paths_lists[kn_path]
 
             check_list_auto = kn_engine.write_output_files(
-                    'examples/' + kn_path
-                )
+                'examples/' + kn_path
+            )
             
-            self.assertEqual(check_list_man, check_list_auto)
+            self.assertEqual(
+                check_list_man, check_list_auto
+            )
 
 if __name__ == '__main__':
     unittest.main()

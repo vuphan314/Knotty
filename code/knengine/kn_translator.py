@@ -1,8 +1,6 @@
-import sympy
-
 from debugger import *
-import kn_parser
 import kn_lib
+import kn_parser
 
 ############################################################
 # top
@@ -52,8 +50,8 @@ def translate_varStat(T):
             call_kn_lib('make_vars'),
             [vars],
             sep_pair = "''"
-            ) + '\n\n'
-        )
+        ) + '\n\n'
+    )
     return st
 
 ############################################################
@@ -117,8 +115,8 @@ kn_lib.write_tex(check_list, r'{tex_path}')
 # recursion helper
 
 def apply_recur(
-            fun_name, param_seq = [], sep_pair = ''
-        ) -> str:
+    fun_name, param_seq = [], sep_pair = ''
+) -> str:
     st = ''
     if isinstance(param_seq, tuple):
         st += translate_recur(param_seq)
@@ -147,9 +145,9 @@ def translate_kn_lib(T):
 
 kn_lib_attributes = dir(kn_lib)
 kn_lib_attributes = {
-        name for name in kn_lib_attributes
-        if not name.startswith('_')
-    }
+    name for name in kn_lib_attributes
+    if not name.startswith('_')
+}
 
 kn_lib_name = kn_lib.__name__
 
@@ -166,7 +164,8 @@ str_helper_dict = {
     'defStat': translate_defStat,
     'letCl': translate_letCl,
     'retCl': translate_retCl,
-    'checkStat': translate_checkStat}
+    'checkStat': translate_checkStat
+}
 
 fs = frozenset
 
@@ -176,4 +175,5 @@ set_helper_dict = {
     fs({'knVars', 'knTerms', 'actParams', 'formParams'}):
         translate_collection,
     fs(kn_lib_attributes):
-        translate_kn_lib}
+        translate_kn_lib
+}

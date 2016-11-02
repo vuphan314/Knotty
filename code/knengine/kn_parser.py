@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 from debugger import *
 from genparser.src.astgen.parsing import lexer, parser
@@ -11,9 +11,9 @@ def kn_parse(input_path: str) -> dict:
     parse_tuple = get_parse_tuple(input_path)
     parse_str = get_parse_str(parse_tuple)
     parse_dict = {
-            'parse_tuple': parse_tuple,
-            'parse_str': parse_str
-        }
+        'parse_tuple': parse_tuple,
+        'parse_str': parse_str
+    }
     return parse_dict
 
 ############################################################
@@ -36,12 +36,12 @@ def get_lex_parse(input_path: str) -> dict:
     lexer_inst = lexer.Lexer(lexicon_file)
     allowed_terminals = lexer_inst.lexicon_dict.keys()
     parser_inst = parser.Parser(
-            grammar_file, allowed_terminals
-        )
+        grammar_file, allowed_terminals
+    )
 
     lexed = lexer_inst.get_lexing_sequence_from_file(
-            input_path
-        )
+        input_path
+    )
 
     parsed = parser_inst.get_ast(lexed) # assume: not None
     parsed = list(parsed)
@@ -63,8 +63,8 @@ def get_complete_path(incomplete_path: str) -> str:
     """Add current directory to file name."""
     current_dir = os.path.dirname(os.path.abspath(__file__))
     complete_path = os.path.join(
-            current_dir, incomplete_path
-        )
+        current_dir, incomplete_path
+    )
     return complete_path
 
 ############################################################
@@ -84,8 +84,8 @@ def convert_tuple_to_str(T: tuple, tab_count=1) -> str:
         for t in T[1:]:
             st2 = ',\n'
             st2 += convert_tuple_to_str(
-                    t, tab_count=tab_count+1
-                )
+                t, tab_count=tab_count+1
+            )
             st += st2
         st += '\n' + tabs + ')'
     return st
