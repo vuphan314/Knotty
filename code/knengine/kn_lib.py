@@ -5,7 +5,7 @@ Translate Knotty operations to SymPy operations.
 
 ############################################################
 
-import sympy as sp
+import sympy
 
 ############################################################
 # TeX out
@@ -52,18 +52,18 @@ def make_latex(tex_str: str) -> str:
 # SymPy LaTeX
 
 def sp_tex(a) -> str:
-    return sp.latex(a)
+    return sympy.latex(a)
 
 ############################################################
 # Knotty-variable
 
 def make_vars(st: str):
-    return sp.symbols(st)
+    return sympy.symbols(st)
 
 ############################################################
 # imaginary unit
 
-im = sp.I
+im = sympy.I
 
 ############################################################
 # Knotty-bools
@@ -87,7 +87,7 @@ def opNot(a):
 # comparison boolean operations
 
 def opEq(a, b):
-    diff = sp.simplify(a - b)
+    diff = sympy.simplify(a - b)
     return diff == 0
 
 def opUneq(a, b):

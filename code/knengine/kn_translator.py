@@ -5,10 +5,10 @@ import kn_parser
 ############################################################
 # top
 
-def kn_translate(T: tuple, tex_path: str) -> str:
+def kn_translate(parse_tuple: tuple, tex_path: str) -> str:
     st = kn_lib_import + '\n'
     st += init_check_list() + '\n\n'
-    st += translate_recur(T)
+    st += translate_recur(parse_tuple)
     st += call_write_tex(tex_path)
     return st
 
@@ -108,7 +108,7 @@ check_list = []
 def call_write_tex(tex_path: str) -> str:
     st = '''
 kn_lib.write_tex(check_list, r'{tex_path}')
-'''.format(tex_path = tex_path)
+'''.format(tex_path=tex_path)
     return st
 
 ############################################################

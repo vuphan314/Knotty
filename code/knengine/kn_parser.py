@@ -7,8 +7,8 @@ from genparser.src.astgen.parsing import lexer, parser
 ############################################################
 # top
 
-def kn_parse(input_path: str) -> dict:
-    parse_tuple = get_parse_tuple(input_path)
+def kn_parse(kn_path: str) -> dict:
+    parse_tuple = get_parse_tuple(kn_path)
     parse_str = get_parse_str(parse_tuple)
     parse_dict = {
         'parse_tuple': parse_tuple,
@@ -19,13 +19,13 @@ def kn_parse(input_path: str) -> dict:
 ############################################################
 # call Evgenii's generic parser
 
-def get_parse_tuple(input_path: str) -> tuple:
+def get_parse_tuple(kn_path: str) -> tuple:
     """Return parse-tree as tuple."""
-    lexed_parsed = get_lex_parse(input_path)
+    lexed_parsed = get_lex_parse(kn_path)
     parsed = lexed_parsed['parsed']
     return parsed
 
-def get_lex_parse(input_path: str) -> dict:
+def get_lex_parse(kn_path: str) -> dict:
     """Return lexing sequence and ast."""
     lexicon_file = 'kn_lexicon.txt'
     grammar_file = 'kn_grammar.txt'
@@ -40,7 +40,7 @@ def get_lex_parse(input_path: str) -> dict:
     )
 
     lexed = lexer_inst.get_lexing_sequence_from_file(
-        input_path
+        kn_path
     )
 
     parsed = parser_inst.get_ast(lexed) # assume: not None
@@ -103,6 +103,6 @@ def is_termimal(T: tuple) -> bool:
 ############################################################
 
 if __name__ == '__main__':
-    input_path = sys.argv[1]
-    parse_str = get_parse_str(input_path)
+    kn_path = sys.argv[1]
+    parse_str = get_parse_str(kn_path)
     print(parse_str)
