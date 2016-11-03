@@ -1,4 +1,6 @@
 
+lex_sequence = [('key_check', 'check'), ('kn_id', 'ch'), ('key_pri', 'print'), ('key_truth', 'true'), ('key_if', 'if'), ('kn_num', 'im'), ('op_exp', '^'), ('kn_num', '2'), ('op_eq', '='), ('op_minus', '-'), ('kn_num', '1'), ('key_else', 'else'), ('key_truth', 'false')]
+
 parse_tree = \
   ('knStats',
     ('checkStat',

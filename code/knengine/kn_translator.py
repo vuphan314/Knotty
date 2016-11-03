@@ -5,7 +5,7 @@ import kn_parser
 ############################################################
 # top
 
-def kn_translate(parse_tuple: tuple, tex_path: str) -> str:
+def translate_tree(parse_tuple: tuple, tex_path: str) -> str:
     st = kn_lib_import + '\n'
     st += init_check_list() + '\n\n'
     st += translate_recur(parse_tuple)
@@ -15,7 +15,7 @@ def kn_translate(parse_tuple: tuple, tex_path: str) -> str:
 def translate_recur(T: tuple) -> str:
     if isinstance(T, str):
         return T
-    elif kn_parser.is_termimal(T):
+    elif kn_parser.is_leaf(T):
         return translate_terminal(T)
     elif T[0] == 'condTerm':
         a, boo, b = [translate_recur(t) for t in T[1:]]
