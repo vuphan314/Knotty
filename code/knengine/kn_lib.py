@@ -10,9 +10,12 @@ import sympy as sp
 ############################################################
 # TeX out
 
-def write_tex_file(check_list: list, tex_path: str) -> None:
+def write_tex_file( 
+    check_list: list, tex_path: str, 
+    write_mode: str
+) -> None:
     tex_str = get_tex_str(check_list)
-    with open(tex_path, 'w') as tex_file:
+    with open(tex_path, write_mode) as tex_file:
         tex_file.write(tex_str)
 
 def get_tex_str(check_list: list) -> str:

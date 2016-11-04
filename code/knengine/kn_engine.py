@@ -2,6 +2,7 @@
 
 ############################################################
 
+import argparse
 import os
 import sys
 
@@ -11,7 +12,9 @@ import kn_translator
 
 ############################################################
 
-def write_output_files(kn_path: str) -> list:
+def write_output_files(
+    kn_path: str, force: bool, keep: bool
+) -> list:
     """Write Python file and then TeX file.
 
     Return check_list to be used by kn_tester.
@@ -24,24 +27,32 @@ def write_output_files(kn_path: str) -> list:
 
     syntax_dict = kn_parser.parse_file(kn_path)
 
-    py_str = write_py_parsed(syntax_dict)
-    py_str += write_py_translated(
-        syntax_dict, tex_path
+    write_mode = 'w' if force else 'x'
+
+    py_str = (
+        write_py_parsed(syntax_dict) +
+        write_py_translated(
+            syntax_dict, tex_path, write_mode
+        )
     )
 
     # write .py
-    with open(py_path, 'w') as py_file:
+    with open(py_path, write_mode) as py_file:
         py_file.write(py_str)
 
     # write .tex
-    py_module = import_py_module(py_path)
+    check_list = import_py_module(py_path).check_list
+
+    # remove .py
+    if not keep:
+        os.remove(py_path)
 
     msg = '''
 OVERWROTE/created files {}, {}.
 '''.format(py_path, tex_path)
     print(msg)
 
-    return py_module.check_list
+    return check_list
 
 ############################################################
 # helper writers
@@ -60,11 +71,11 @@ syntax_tree = \
     return st
 
 def write_py_translated(
-    syntax_dict: dict, tex_path: str
+    syntax_dict: dict, tex_path: str, write_mode: str
 ) -> str:
     syntax_tree = syntax_dict['syntax_tree']
     st = kn_translator.translate_tree(
-        syntax_tree, tex_path
+        syntax_tree, tex_path, write_mode
     )
     return st
 
@@ -93,9 +104,37 @@ def append_base_path(
 
 ############################################################
 
+tag_name = 'v1.2.0'
+tag_date = '2016-10-26'
+
+class ArgvParser:
+    def get_parsed_argv(self) -> argparse.Namespace:
+        argument_parser = argparse.ArgumentParser()
+
+        argument_parser.add_argument('Knotty_file')
+
+        argument_parser.add_argument(
+            '-f', '--force', action='store_true',
+            help='OVERWRITE existing .tex file'
+        )
+
+        argument_parser.add_argument(
+            '-k', '--keep', action='store_true',
+            help='keep .py file'
+        )
+
+        return argument_parser.parse_args()
+
+############################################################
+
 def main() -> None:
-    kn_path = sys.argv[1]
-    write_output_files(kn_path)
+    parsed_argv = ArgvParser().get_parsed_argv()
+
+    kn_path = parsed_argv.Knotty_file
+    force = parsed_argv.force
+    keep = parsed_argv.keep
+
+    write_output_files(kn_path, force, keep)
 
 if __name__ == '__main__':
     main()

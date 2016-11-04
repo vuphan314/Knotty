@@ -6,13 +6,13 @@ import kn_parser
 # top
 
 def translate_tree(
-    syntax_tree: tuple, tex_path: str
+    syntax_tree: tuple, tex_path: str, write_mode: str
 ) -> str:
     st = (
         kn_lib_import + '\n' +
         init_check_list() + '\n\n' +
         translate_recur(syntax_tree) +
-        call_write_tex(tex_path)
+        call_write_tex(tex_path, write_mode)
     )
     return st
 
@@ -109,10 +109,10 @@ check_list = []
 '''
     return st
 
-def call_write_tex(tex_path: str) -> str:
+def call_write_tex(tex_path: str, write_mode: str) -> str:
     st = '''
-kn_lib.write_tex_file(check_list, r'{tex_path}')
-'''.format(tex_path=tex_path)
+kn_lib.write_tex_file(check_list, r'{}', '{}')
+'''.format(tex_path, write_mode)
     return st
 
 ############################################################
