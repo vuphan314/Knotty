@@ -5,12 +5,12 @@ Translate Knotty operations to SymPy operations.
 
 ############################################################
 
-import sympy
+import sympy as sp
 
 ############################################################
 # TeX out
 
-def write_tex(check_list: list, tex_path: str) -> None:
+def write_tex_file(check_list: list, tex_path: str) -> None:
     tex_str = get_tex_str(check_list)
     with open(tex_path, 'w') as tex_file:
         tex_file.write(tex_str)
@@ -26,10 +26,10 @@ def get_tex_str(check_list: list) -> str:
 \end{{{env}}}
 
 '''.format(env='dmath*', nam=nam, ter=ter)
-    tex_str = make_latex(tex_str)
+    tex_str = add_tex_template(tex_str)
     return tex_str
 
-def make_latex(tex_str: str) -> str:
+def add_tex_template(tex_str: str) -> str:
     st1 = r'''
 \documentclass[letterpaper, 8pt]{extarticle}
 
@@ -52,18 +52,18 @@ def make_latex(tex_str: str) -> str:
 # SymPy LaTeX
 
 def sp_tex(a) -> str:
-    return sympy.latex(a)
+    return sp.latex(a)
 
 ############################################################
 # Knotty-variable
 
 def make_vars(st: str):
-    return sympy.symbols(st)
+    return sp.symbols(st)
 
 ############################################################
 # imaginary unit
 
-im = sympy.I
+im = sp.I
 
 ############################################################
 # Knotty-bools
@@ -87,7 +87,7 @@ def opNot(a):
 # comparison boolean operations
 
 def opEq(a, b):
-    diff = sympy.simplify(a - b)
+    diff = sp.simplify(a - b)
     return diff == 0
 
 def opUneq(a, b):

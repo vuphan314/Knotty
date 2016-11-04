@@ -5,18 +5,22 @@ import kn_parser
 ############################################################
 # top
 
-def translate_tree(parse_tuple: tuple, tex_path: str) -> str:
-    st = kn_lib_import + '\n'
-    st += init_check_list() + '\n\n'
-    st += translate_recur(parse_tuple)
-    st += call_write_tex(tex_path)
+def translate_tree(
+    syntax_tree: tuple, tex_path: str
+) -> str:
+    st = (
+        kn_lib_import + '\n' +
+        init_check_list() + '\n\n' +
+        translate_recur(syntax_tree) +
+        call_write_tex(tex_path)
+    )
     return st
 
 def translate_recur(T: tuple) -> str:
     if isinstance(T, str):
         return T
     elif kn_parser.is_leaf(T):
-        return translate_terminal(T)
+        return translate_leaf(T)
     elif T[0] == 'condTerm':
         a, boo, b = [translate_recur(t) for t in T[1:]]
         st = '(' + a + ' if ' + boo + ' else ' + b + ')'
@@ -32,9 +36,9 @@ def translate_recur(T: tuple) -> str:
             return recur_str(translate_recur, T)
 
 ############################################################
-# termimal translation
+# leaf translation
 
-def translate_terminal(T: tuple) -> str:
+def translate_leaf(T: tuple) -> str:
     st = T[1]
     if st in kn_lib_attributes:
         st = call_kn_lib(st)
@@ -67,7 +71,7 @@ def translate_collection(T: tuple) -> str:
 # Knotty-function translation
 
 def translate_defStat(T):
-    fun, ter = [translate_recur(T[i]) for i in range(1, 3)]
+    fun, ter = [translate_recur(t) for t in T[1:]]
     st = 'def ' + fun + ':\n' + ter
     return st
 
@@ -77,7 +81,7 @@ def translate_funTerm(T):
 py_tab = ' ' * 4
 
 def translate_letCl(T):
-    tmp, ter = [translate_recur(T[i]) for i in range(1, 3)]
+    tmp, ter = [translate_recur(t) for t in T[1:]]
     st = py_tab + tmp + ' = ' + ter + '\n'
     return st
 
@@ -93,9 +97,9 @@ def translate_checkStat(T):
     nam, ter = [translate_recur(t) for t in T[1:]]
     ter = apply_recur(call_kn_lib('sp_tex'), [ter])
     st = '''
-check_list.append(('{nam}', {ter}))
+check_list.append(('{}', {}))
 
-'''.format(nam = nam, ter = ter)
+'''.format(nam, ter)
     return st
 
 def init_check_list() -> str:
@@ -107,7 +111,7 @@ check_list = []
 
 def call_write_tex(tex_path: str) -> str:
     st = '''
-kn_lib.write_tex(check_list, r'{tex_path}')
+kn_lib.write_tex_file(check_list, r'{tex_path}')
 '''.format(tex_path=tex_path)
     return st
 

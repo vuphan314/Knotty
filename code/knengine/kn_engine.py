@@ -22,16 +22,16 @@ def write_output_files(kn_path: str) -> list:
         for ext in ['.py', '.tex']
     ]
 
-    parse_dict = kn_parser.parse_file(kn_path)
+    syntax_dict = kn_parser.parse_file(kn_path)
     
-    write_str = write_py_parsed(parse_dict)
-    write_str += write_py_translated(
-        parse_dict, tex_path
+    py_str = write_py_parsed(syntax_dict)
+    py_str += write_py_translated(
+        syntax_dict, tex_path
     )
 
     # write .py
     with open(py_path, 'w') as py_file:
-        py_file.write(write_str)
+        py_file.write(py_str)
 
     # write .tex
     py_module = import_py_module(py_path)
@@ -46,25 +46,25 @@ OVERWROTE/created files {}, {}.
 ############################################################
 # helper writers
 
-def write_py_parsed(parse_dict: dict) -> str:
-    lex_list = parse_dict['lex_list']
-    parse_str = parse_dict['parse_str']
+def write_py_parsed(syntax_dict: dict) -> str:
+    lexing_sequence = syntax_dict['lexing_sequence']
+    syntax_str = syntax_dict['syntax_str']
     
     st = r'''
-lex_sequence = {}
+lexing_sequence = {}
 
-parse_tree = \
+syntax_tree = \
 {}
-'''.format(lex_list, parse_str)
+'''.format(lexing_sequence, syntax_str)
 
     return st
 
 def write_py_translated(
-    parse_dict: dict, tex_path: str
+    syntax_dict: dict, tex_path: str
 ) -> str:
-    parse_tuple = parse_dict['parse_tuple']
+    syntax_tree = syntax_dict['syntax_tree']
     st = kn_translator.translate_tree(
-        parse_tuple, tex_path
+        syntax_tree, tex_path
     )
     return st
 
