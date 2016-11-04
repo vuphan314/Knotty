@@ -8,7 +8,6 @@ Translate Knotty operations to SymPy operations.
 import sympy as sp
 
 ############################################################
-# TeX out
 
 def write_tex_file( 
     check_list: list, tex_path: str, 

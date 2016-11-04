@@ -3,7 +3,6 @@ import kn_lib
 import kn_parser
 
 ############################################################
-# top
 
 def translate_tree(
     syntax_tree: tuple, tex_path: str, write_mode: str

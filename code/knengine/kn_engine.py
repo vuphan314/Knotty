@@ -2,6 +2,11 @@
 
 ############################################################
 
+TAG_NAME = 'v1.2.0'
+TAG_DATE = '2016-10-26'
+
+############################################################
+
 import argparse
 import os
 import sys
@@ -48,8 +53,8 @@ def write_output_files(
         os.remove(py_path)
 
     msg = '''
-OVERWROTE/created files {}, {}.
-'''.format(py_path, tex_path)
+OVERWROTE/created file {}.
+'''.format(tex_path)
     print(msg)
 
     return check_list
@@ -104,37 +109,47 @@ def append_base_path(
 
 ############################################################
 
-tag_name = 'v1.2.0'
-tag_date = '2016-10-26'
+class ArgvParser(argparse.ArgumentParser):
+    """Parse argument vector."""
+    def __init__(self):
+        super().__init__()
 
-class ArgvParser:
-    def get_parsed_argv(self) -> argparse.Namespace:
-        argument_parser = argparse.ArgumentParser()
+        self.add_argument('Knotty_file')
 
-        argument_parser.add_argument('Knotty_file')
-
-        argument_parser.add_argument(
+        self.add_argument(
             '-f', '--force', action='store_true',
-            help='OVERWRITE existing .tex file'
+            help='OVERWRITE existing .py and .tex files'
         )
 
-        argument_parser.add_argument(
+        self.add_argument(
             '-k', '--keep', action='store_true',
             help='keep .py file'
         )
 
-        return argument_parser.parse_args()
+############################################################
+
+def printWelcome():
+    st = '''
+Knotty engine {} built {}
+'''.format(TAG_NAME, TAG_DATE)
+    print(st)
+
+printWelcome()
 
 ############################################################
 
 def main() -> None:
-    parsed_argv = ArgvParser().get_parsed_argv()
+    argv_parser = ArgvParser()
+    if len(sys.argv) == 1:
+        argv_parser.print_help()
+    else:
+        parsed_argv = argv_parser.parse_args()
 
-    kn_path = parsed_argv.Knotty_file
-    force = parsed_argv.force
-    keep = parsed_argv.keep
+        kn_path = parsed_argv.Knotty_file
+        force = parsed_argv.force
+        keep = parsed_argv.keep
 
-    write_output_files(kn_path, force, keep)
+        write_output_files(kn_path, force, keep)
 
 if __name__ == '__main__':
     main()

@@ -5,7 +5,6 @@ from vu_toolkit.vu_debugger import *
 from genparser.src.astgen.parsing import ast, lexer, parser
 
 ############################################################
-# top
 
 def parse_file(kn_path: str) -> dict:
     syntax_dict = get_syntax_dict(kn_path)
