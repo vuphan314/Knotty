@@ -104,7 +104,7 @@ the Knotty system includes:
   - amsmath
   - breqn
 - Knotty language influenced by: LED, SequenceL, Python, SQL
-- design document influenced by KaggleComp team
+- design document influenced by [SE2 Machine Learning Team][teamML]
 
 [paperTorus]:
 http://www.math.ttu.edu/~rgelca/gs6.pdf
@@ -145,3 +145,6 @@ https://github.com/iensen/genparser/blob/master/docs/main/astgen.pdf
 http://www.sympy.org/en/index.html
 [pyinstallerHome]:
 http://www.pyinstaller.org/
+
+[teamML]:
+https://github.com/ASAAR/SE2-KaggleComp
