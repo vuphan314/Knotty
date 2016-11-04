@@ -1,7 +1,7 @@
 import os
 import sys
 
-from debugger import *
+from vu_toolkit.vu_debugger import *
 from genparser.src.astgen.parsing import ast, lexer, parser
 
 ############################################################

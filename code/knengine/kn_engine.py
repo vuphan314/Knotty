@@ -5,7 +5,7 @@
 import os
 import sys
 
-from debugger import *
+from vu_toolkit.vu_debugger import *
 import kn_parser
 import kn_translator
 
@@ -16,14 +16,14 @@ def write_output_files(kn_path: str) -> list:
 
     Return check_list to be used by kn_tester.
     """
-    
+
     py_path, tex_path = [
         append_base_path(kn_path, ext)
         for ext in ['.py', '.tex']
     ]
 
     syntax_dict = kn_parser.parse_file(kn_path)
-    
+
     py_str = write_py_parsed(syntax_dict)
     py_str += write_py_translated(
         syntax_dict, tex_path
@@ -49,7 +49,7 @@ OVERWROTE/created files {}, {}.
 def write_py_parsed(syntax_dict: dict) -> str:
     lexing_sequence = syntax_dict['lexing_sequence']
     syntax_str = syntax_dict['syntax_str']
-    
+
     st = r'''
 lexing_sequence = {}
 
@@ -83,8 +83,8 @@ def import_py_module(py_path: str):
 def append_base_path(
     kn_path: str, base_appendage: str
 ) -> str:
-    """Return output path. 
-    
+    """Return output path.
+
     (Base path appended with output ext.)
     """
     base_path = os.path.splitext(kn_path)[0]
