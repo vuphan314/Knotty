@@ -1,3 +1,6 @@
 [submodule "code/knengine/genparser"]
 	path = code/knengine/genparser
 	url = https://github.com/iensen/genparser
+[submodule "code/knengine/vu_toolkit"]
+	path = code/knengine/vu_toolkit
+	url = https://github.com/vuphan314/vu_toolkit
