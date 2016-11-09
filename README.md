@@ -76,12 +76,12 @@ the Knotty system includes:
     example: my `<dir_of_repo>` is `D:/repos/Knotty/`
   - update repository:
     ```
-    git pull --recurse
+    git pull --recurse-submodules
 
     ```
   - show tags:
     ```
-    git tags
+    git tag
     
     ```
   - browse tag:
