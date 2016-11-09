@@ -64,7 +64,7 @@ the Knotty system includes:
     example: my `<parent_dir_of_repo>` is `D:/repos/`
   - repository cloning:
     ```
-    git clone --recursive https://github.com/vuphan314/CS4365
+    git clone --recursive https://github.com/vuphan314/Knotty
 
     ```
 - each following time:
@@ -73,17 +73,23 @@ the Knotty system includes:
     cd/d <dir_of_repo>
 
     ```
-    example: my `<dir_of_repo>` is `D:/repos/CS4365/`
+    example: my `<dir_of_repo>` is `D:/repos/Knotty/`
   - update repository:
     ```
     git pull --recurse
 
     ```
+  - show tags:
+    ```
+    git tags
+    
+    ```
   - browse tag:
     ```
-    git checkout tags/v1.2.0
+    git checkout tags/<tag>
 
     ```
+    example: latest `<tag>` is `v1.2.0`
 
 ## CONTRIBUTORS
 - [Vu Phan][vuCV] (regular)
