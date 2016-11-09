@@ -32,12 +32,15 @@ the Knotty system includes:
 - `knengine/`: Knotty engine (source)
 
 ## LINKS
-- [releases][linkTags]
-- [issues][linkIssues]
+- [web application][linkWebapp]
+- [demo videos][linkPlaylist]
+- GitHub
+  - [releases][linkTags]
+  - [issues][linkIssues]
+- scrum
+  - [kanban][linkTrello]
+  - [documentation][linkOnedrive]
 - [Notepad++ settings for Knotty language][linkNppXml]
-- [webapp][linkWebapp]
-- [kanban][linkTrello]
-- [documentation][linkOnedrive]
 
 ## USAGE
 - first time:
@@ -120,6 +123,8 @@ http://www.math.ttu.edu/~rgelca/jr5.pdf
 [vuCV]:
 https://github.com/vuphan314/VU_PHAN/blob/master/README.md#top
 
+[linkPlaylist]:
+https://www.youtube.com/playlist?list=PLIJKsTidP3ztqjhlB3Rv1E5hAecfz8VNv
 [linkNppXml]:
 https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
 [linkTags]:
