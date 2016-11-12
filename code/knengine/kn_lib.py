@@ -57,6 +57,12 @@ def sp_tex(a) -> str:
     return sp.latex(a)
 
 ############################################################
+
+class SCC(sp.AtomicExpr):
+    """Simple-Closed-Curve with slope p'/q' on torus."""
+    pass
+
+############################################################
 # Knotty-variable
 
 def make_vars(st: str):
@@ -109,6 +115,9 @@ def lessEq(a, b):
 
 ############################################################
 # arithmetic operations
+
+def gcd(a, b):
+    return sp.gcd(a, b)
 
 def opPlus(a, b):
     return a + b
