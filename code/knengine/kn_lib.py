@@ -9,8 +9,8 @@ import sympy as sp
 
 ############################################################
 
-def write_tex_file( 
-    check_list: list, tex_path: str, 
+def write_tex_file(
+    check_list: list, tex_path: str,
     write_mode: str
 ) -> None:
     tex_str = get_tex_str(check_list)
@@ -33,13 +33,13 @@ def get_tex_str(check_list: list) -> str:
 
 def add_tex_template(tex_str: str) -> str:
     st1 = r'''
-\documentclass[letterpaper, 8pt]{extarticle}
+\documentclass[letterpaper, 10pt]{extarticle}
 
-\usepackage[hmargin = 0.5in, vmargin = 0.5in]{geometry}
-
-\usepackage{breqn}
+\usepackage[scale=0.9]{geometry}
 
 \usepackage{amsmath}
+
+\usepackage{breqn}
 
 \begin{document}
 

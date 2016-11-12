@@ -2,15 +2,15 @@ goto starting
 
 :looping
     set fold=examples/
-    set fil=syntax
-    set fils=demo, oneliner, precedence, skein_X_i, syntax, tmp
+    set fil=poly_T
+    set fils=demo, oneliner, poly_T, precedence, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
         set base=%fold%%%~ni
         set kn_file=!base!.kn
         set py_file=!base!.py
         set tex_file=!base!.tex
 
-        set engine_cmd=%engine_py% !kn_file!
+        set engine_cmd=%engine_py% -f -k !kn_file!
         set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
 
         !engine_cmd!
