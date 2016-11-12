@@ -13,7 +13,7 @@ goto starting
         set engine_cmd=%engine_py% -f -k !kn_file!
         set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
 
-        !engine_cmd!
+        REM !engine_cmd!
         REM %npp% !py_file!
         REM %npp% !tex_file!
 

@@ -8,11 +8,26 @@ define skein(p, q)
     let n be gcd(p, q)
     let p2 be p / n
     let q2 be q / n
-    let c be SCC(p2, q2)
-    return T(n, c)
+    let curve be SCC(p2, q2)
+    return T(n, curve)
+
+vary t
+define productToSum(p, q, r, s)
+    let determinant be p*s - q*r
+    let sk1 be skein(p+r, q+s)
+    let sk2 be skein(p-r, q-s)
+    return t^determinant * sk1 + t^-determinant * sk2
 
 vary x
-
 check T2x print T(2, x)
 
 check skeinP2Q2 print skein(2, 2)
+
+define product2211()
+    return skein(2, 2) * skein(1, 1)
+define sum2211()
+    return productToSum(2, 2, 1, 1)
+    
+check lhs print product2211()
+check rhs print sum2211()
+check lhsEqualRhs print product2211() = sum2211()
