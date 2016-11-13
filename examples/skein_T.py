@@ -46,8 +46,8 @@ check_list.append(('rhs', kn_lib.sp_tex(sum2211())))
 check_list.append(('lhsEqualRhs', kn_lib.sp_tex(kn_lib.opEq(product2211(), sum2211()))))
 
 
-kn_lib.write_tex_file(check_list, r'skein_T.tex', 'w')
-    
+kn_lib.write_tex_file(check_list, r'../examples/skein_T.tex', 'w')
+
 syntax_tree = \
   ('knStats',
     ('defStat',

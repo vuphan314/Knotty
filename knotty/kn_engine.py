@@ -10,6 +10,7 @@ TAG_DATE = '2016-11-13'
 import argparse
 import os
 import sys
+import time
 
 from vu_toolkit.vu_debugger import *
 import kn_parser
@@ -138,6 +139,8 @@ printWelcome()
 ############################################################
 
 def main() -> None:
+    time_start = time.time()
+
     argv_parser = ArgvParser()
     if len(sys.argv) == 1:
         argv_parser.print_help()
@@ -149,6 +152,9 @@ def main() -> None:
         keep = parsed_argv.keep
 
         write_output_files(kn_path, force, keep)
+
+    time_took = time.time() - time_start
+    print('Time took: {} seconds.'.format(time_took))
 
 if __name__ == '__main__':
     main()

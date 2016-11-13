@@ -1,7 +1,7 @@
 goto starting
 
 :looping
-    set fil=error
+    set fil=skein_T
     set fils=comment, demo, error, oneliner, poly_T, precedence, skein_T, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
@@ -12,7 +12,7 @@ goto starting
         set tex_compile=latexmk -pdf -outdir=%examples_path% !tex_file!
 
         !engine_cmd!
-        !tex_compile! & cd %examples_path% & %tex_clean% & cd ..
+        REM !tex_compile! & cd %examples_path% & %tex_clean% & cd ..
 
         echo:
     )
