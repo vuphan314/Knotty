@@ -103,4 +103,4 @@ check_list.append(('check1', kn_lib.sp_tex(T(2, x))))
 check_list.append(('check2', kn_lib.sp_tex(T(2, kn_lib.opMult(kn_lib.im, x)))))
 
 
-kn_lib.write_tex_file(check_list, r'examples/demo.tex', 'w')
+kn_lib.write_tex_file(check_list, r'../examples/demo.tex', 'w')
