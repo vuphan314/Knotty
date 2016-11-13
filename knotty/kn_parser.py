@@ -76,26 +76,28 @@ def get_syntax_tree(syntax_AST: ast.AST) -> tuple:
         syntax_list = ['None']
     else:
         syntax_list = list(syntax_AST)
-    syntax_tree = convert_list_to_tree(syntax_list)
+    syntax_tree = convert_syntax_list_to_tree(syntax_list)
     return syntax_tree
 
-def convert_list_to_tree(T: list) -> tuple:
+def convert_syntax_list_to_tree(T: list) -> tuple:
     if is_leaf(T):
         return T
     else:
         T2 = T[0],
         for t in T[1:]:
-            T2 += convert_list_to_tree(t),
+            T2 += convert_syntax_list_to_tree(t),
         return T2
 
 ############################################################
 # tuple to str
 
 def get_syntax_str(syntax_tree: tuple) -> str:
-    syntax_str = convert_tree_to_str(syntax_tree) + '\n'
+    syntax_str = convert_syntax_tree_to_str(syntax_tree)
     return syntax_str
 
-def convert_tree_to_str(T: tuple, tab_count=1) -> str:
+def convert_syntax_tree_to_str(
+    T: tuple, tab_count=1
+) -> str:
     tree_tab = ' ' * 2
     tabs = tree_tab * tab_count
     st = tabs
@@ -105,7 +107,7 @@ def convert_tree_to_str(T: tuple, tab_count=1) -> str:
         st += "('" + T[0] + "'"
         for t in T[1:]:
             st2 = ',\n'
-            st2 += convert_tree_to_str(
+            st2 += convert_syntax_tree_to_str(
                 t, tab_count=tab_count+1
             )
             st += st2

@@ -35,10 +35,9 @@ def write_output_files(
     write_mode = 'w' if force else 'x'
 
     py_str = (
-        write_py_parsed(syntax_dict) +
         write_py_translated(
             syntax_dict, tex_path, write_mode
-        )
+        ) + write_py_parsed(syntax_dict)
     )
 
     # write .py
@@ -66,12 +65,12 @@ def write_py_parsed(syntax_dict: dict) -> str:
     lexing_sequence = syntax_dict['lexing_sequence']
     syntax_str = syntax_dict['syntax_str']
 
-    st = r'''
-lexing_sequence = {}
-
+    st = r'''    
 syntax_tree = \
 {}
-'''.format(lexing_sequence, syntax_str)
+
+lexing_sequence = {}
+'''.format(syntax_str, lexing_sequence)
 
     return st
 
