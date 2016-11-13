@@ -21,7 +21,7 @@ class KnTester(unittest.TestCase):
             check_list_man = paths_lists[kn_path]
 
             check_list_auto = kn_engine.write_output_files(
-                'examples/' + kn_path,
+                '../examples/' + kn_path,
                 force=True, keep=True
             )
 
