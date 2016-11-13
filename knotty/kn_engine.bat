@@ -1,60 +1,59 @@
 goto starting
 
 :looping
-    set fold=../examples/
     set fil=tmp
     set fils=demo, oneliner, poly_T, precedence, skein_T, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
-        set base=%fold%%%~ni
+        set base=%examples_path%%%~ni
         set kn_file=!base!.kn
         set py_file=!base!.py
         set tex_file=!base!.tex
 
-        set engine_cmd=%engine_py% -f -k !kn_file!
-        set tex_compile=latexmk -pdf -outdir=%fold% !tex_file!
+        set engine_cmd=%kn_engine% -f -k !kn_file!
+        set tex_compile=latexmk -pdf -outdir=%examples_path% !tex_file!
 
         !engine_cmd!
         REM %npp% !py_file!
         REM %npp% !tex_file!
 
         !tex_compile!
-        cd %fold% & %tex_clean% & cd ..
+        cd %examples_path% & %tex_clean% & cd ..
 
         echo:
     )
     goto ending
 
 :building
-    set spec_man=engine_man.spec
-    set work_path=%engine_path%build\
-    set dist_path=%engine_path%
-    set knengine_path=%CD%
+    set spec_man=knotty_man.spec
+    set work_path=%bin_path%build\
+    set dist_path=%bin_path%
+    set src_path=%CD%
 
-    set pyi_makespec=pyi-makespec %engine_py% -F
+    set pyi_makespec=pyi-makespec -F -n knotty %kn_engine% 
     set pyi_bundle=pyinstaller %spec_man% --workpath=%work_path% --distpath=%dist_path%
 
     REM %pyi_makespec%
     %pyi_bundle%
 
-    REM cd %dist_path% & %engine_exe% demo.kn & cd %knengine_path%
-
+    call "%dist_path%%knotty_exe%"
+    
     goto ending
 
 :starting
-    @echo off
     cls
+    @echo off
     setlocal enabledelayedexpansion
 
+    set kn_engine=kn_engine.py
+    set examples_path=..\examples\
+    set bin_path=..\bin\
+    set knotty_exe=knotty.exe
+    
     set npp=notepad++
     set tex_clean=latexmk -c
 
-    set engine_path=..\engine\
-    set engine_exe=engine.exe
-
-    set engine_py=engine.py
-
-    REM goto building
-    goto looping
+    goto building
+    REM goto looping
 
 :ending
     echo:
