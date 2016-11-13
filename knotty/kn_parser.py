@@ -85,16 +85,15 @@ def trim_comment_off_kn_str(kn_str: str) -> str:
             return st
 
 class KnottyError(Exception):
-    pass
+    """Base class."""
 
 class CommentError(KnottyError):
-    def __repr__(self):
+    """Checked before lexical error."""
+
+    def __str__(self):
         return '''
             Error: unclosed comment.
         '''
-
-    def __str__(self):
-        return self.__repr__()
 
 ############################################################
 

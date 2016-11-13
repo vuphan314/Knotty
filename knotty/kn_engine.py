@@ -65,7 +65,7 @@ def write_py_parsed(syntax_dict: dict) -> str:
     lexing_sequence = syntax_dict['lexing_sequence']
     syntax_str = syntax_dict['syntax_str']
 
-    st = r'''    
+    st = r'''
 syntax_tree = \
 {}
 

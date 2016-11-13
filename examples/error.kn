@@ -1,0 +1,28 @@
+/*
+    comment error:
+        unclosed comment
+*/
+
+/*
+    lexical error:
+        invalid lexeme
+*/
+/* $ */
+
+/*
+    syntactic error:
+        invalid lexing sequence
+*/
+vary let
+
+/*
+    semantic error:
+        invalid computation
+*/
+/* check c print 1/0 */
+
+/*
+    overwrite error:
+        TeX file already existing,
+        but not using "-f" option
+*/
