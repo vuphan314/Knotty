@@ -72,7 +72,10 @@ def trim_lexing_sequence(lexing_sequence: list) -> list:
 # AST to tuple
 
 def get_syntax_tree(syntax_AST: ast.AST) -> tuple:
-    syntax_list = list(syntax_AST)
+    if syntax_AST is None:
+        syntax_list = ['None']
+    else:
+        syntax_list = list(syntax_AST)
     syntax_tree = convert_list_to_tree(syntax_list)
     return syntax_tree
 
