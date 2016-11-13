@@ -1,0 +1,14 @@
+/* (comment-start sequence)
+
+A comment can span
+multiple lines.
+
+(comment-end sequence) */
+
+vary x, y
+
+check ch print
+    (x + y)^2 =
+        x^2 /* a comment can be placed anywhere */ +
+        2*x*y +
+        y^2

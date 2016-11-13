@@ -1,8 +1,8 @@
 goto starting
 
 :looping
-    set fil=tmp
-    set fils=demo, oneliner, poly_T, precedence, skein_T, skein_X_i, syntax, tmp
+    set fil=comment
+    set fils=comment, demo, oneliner, poly_T, precedence, skein_T, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn
@@ -25,7 +25,7 @@ goto starting
 
 :building
     set spec_man=knotty_man.spec
-    set work_path=%bin_path%build\
+    set work_path=%bin_path%build/
     set dist_path=%bin_path%
     set src_path=%CD%
 
@@ -45,15 +45,15 @@ goto starting
     setlocal enabledelayedexpansion
 
     set kn_engine=kn_engine.py
-    set examples_path=..\examples\
-    set bin_path=..\bin\
+    set examples_path=../examples/
+    set bin_path=../bin/
     set knotty_exe=knotty.exe
     
     set npp=notepad++
     set tex_clean=latexmk -c
 
-    goto building
-    REM goto looping
+    REM goto building
+    goto looping
 
 :ending
     echo:

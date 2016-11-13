@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 
 from vu_toolkit.vu_debugger import *
@@ -9,7 +10,7 @@ from genparser.src.astgen.parsing import ast, lexer, parser
 def parse_file(kn_path: str) -> dict:
     syntax_dict = get_syntax_dict(kn_path)
 
-    syntax_dict['lexing_sequence'] = trim_lexing_sequence(
+    syntax_dict['lexing_sequence'] = trim_space_off_lexing_sequence(
         syntax_dict['lexing_sequence']
     )
 
@@ -39,10 +40,8 @@ def get_syntax_dict(kn_path: str) -> dict:
         grammar_file, allowed_terminals
     )
 
-    lexing_sequence = (
-        lexer_instance.get_lexing_sequence_from_file(
-            kn_path
-        )
+    lexing_sequence = lexer_instance.get_lexing_sequence(
+        get_kn_str(kn_path)
     )
     syntax_AST = parser_instance.get_ast(lexing_sequence)
 
@@ -62,7 +61,46 @@ def get_complete_path(incomplete_path: str) -> str:
 
 ############################################################
 
-def trim_lexing_sequence(lexing_sequence: list) -> list:
+def get_kn_str(kn_path: str) -> str:
+    with open(kn_path) as kn_file:
+        st = kn_file.read()
+    st = trim_comment_off_kn_str(st)
+    return st
+
+def trim_comment_off_kn_str(kn_str: str) -> str:
+    comment_start = re.search('/\*', kn_str)
+    if comment_start is None:
+        return kn_str
+    else:
+        comment_end = re.compile('\*/').search(
+            kn_str, comment_start.end()
+        )
+        if comment_end is None:
+            raise CommentError
+        else:
+            left_half = kn_str[:comment_start.start()]
+            right_half = kn_str[comment_end.end():]
+            right_half = trim_comment_off_kn_str(right_half)
+            st = left_half + right_half
+            return st
+
+class KnottyError(Exception):
+    pass
+
+class CommentError(KnottyError):
+    def __repr__(self):
+        return '''
+            Error: unclosed comment.
+        '''
+
+    def __str__(self):
+        return self.__repr__()
+
+############################################################
+
+def trim_space_off_lexing_sequence(
+    lexing_sequence: list
+) -> list:
     lis = [
         tup for tup in lexing_sequence if tup[0] != 'spaces'
     ]
