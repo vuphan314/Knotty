@@ -1,4 +1,4 @@
-from vu_toolkit.vu_debugger import *
+from debugtools.debug_tool import *
 import kn_lib
 import kn_parser
 

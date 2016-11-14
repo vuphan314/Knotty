@@ -12,7 +12,7 @@ import os
 import sys
 import time
 
-from vu_toolkit.vu_debugger import *
+from debugtools.debug_tool import *
 import kn_parser
 import kn_translator
 

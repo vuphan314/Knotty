@@ -3,7 +3,7 @@ import re
 import sys
 
 from genparser.src.astgen.parsing import ast, lexer, parser
-from vu_toolkit.vu_debugger import *
+from debugtools.debug_tool import *
 import kn_handler
 
 ############################################################
