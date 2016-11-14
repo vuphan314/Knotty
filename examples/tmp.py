@@ -6,9 +6,9 @@ check_list = []
 
 
 kn_lib.write_tex_file(check_list, r'../examples/tmp.tex', 'w')
-    
+
 syntax_tree = \
-  ('None'
+  ('kn_root'
   )
 
-lexing_sequence = [('kn_id', 'this'), ('kn_id', 'is'), ('kn_id', 'wrong')]
+lexing_sequence = []

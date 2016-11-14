@@ -11,9 +11,9 @@ check_list.append(('ch', kn_lib.sp_tex(kn_lib.opEq(kn_lib.opExp(kn_lib.opPlus(x,
 
 
 kn_lib.write_tex_file(check_list, r'../examples/comment.tex', 'w')
-    
+
 syntax_tree = \
-  ('knStats',
+  ('kn_root',
     ('varStat',
       ('knVars',
         ('kn_id', 'x'),

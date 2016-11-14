@@ -11,7 +11,7 @@ check_list.append(('ch', kn_lib.sp_tex((kn_lib.true if kn_lib.opEq(kn_lib.opExp(
 kn_lib.write_tex_file(check_list, r'../examples/oneliner.tex', 'w')
 
 syntax_tree = \
-  ('knStats',
+  ('kn_root',
     ('checkStat',
       ('kn_id', 'ch'),
       ('condTerm',
