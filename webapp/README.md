@@ -5,20 +5,22 @@ part of Knotty system
 
 ## USAGE
 - open [the Knotty web application][linkWebapp]
-  - type a correct Knotty program in the big `Input` box
+  - type a Knotty program in the big `Input` box
   - click the `Submit` button (bottom-right corner)
   - see a TeX program in the `Output` box
 - for optional tex-to-pdf compilation:
   - open [Overleaf][linkOverleaf]
-  - copy the previous TeX program from the Knotty `Output` box
-    - paste the copied TeX program into the Overleaf `Source` pane (left)
+  - copy the previous TeX program 
+    from the Knotty `Output` box
+    - paste the copied TeX program 
+      into the Overleaf `Source` pane (left)
       - overwriting the existing Overleaf TeX program
   - in the Overleaf `compile error` pop-up message:
     - click the `recompile from scratch` button
   - see the pdf in the Overleaf `Preview` pane (right)
 
 ## EXAMPLES
-see [pre-compiled examples][linkBinaryExamples]
+see [pre-compiled examples][linkExamples]
 - `*.kn` files are manually written
   - in the Knotty language
 - other files are generated
@@ -27,5 +29,5 @@ see [pre-compiled examples][linkBinaryExamples]
 http://99.64.48.184/Knotty
 [linkOverleaf]:
 https://www.overleaf.com/docs?template=overleaf
-[linkBinaryExamples]:
-https://github.com/vuphan314/CS4365/tree/master/code/engine/examples
+[linkExamples]:
+https://github.com/vuphan314/Knotty/tree/master/examples

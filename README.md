@@ -26,10 +26,12 @@ the Knotty system includes:
     - a preview box: in which the TeX program is displayed
 
 ## FILES
-`code/`
+- `examples/`:
+  - `*.kn` files are manually written
+  - other files are generated
 - `webapp/`: web application
-- `engine/`: engine (binary)
-- `knengine/`: Knotty engine (source)
+- `bin/`: engine (binary)
+- `src/`: engine (source)
 
 ## LINKS
 - [web application][linkWebapp]
@@ -84,7 +86,7 @@ the Knotty system includes:
     ```
   - show tags:
     ```
-    git tag
+    git tag -n
     
     ```
   - browse tag:
@@ -92,7 +94,7 @@ the Knotty system includes:
     git checkout tags/<tag>
 
     ```
-    example: latest `<tag>` is `v1.2.0`
+    example: latest `<tag>` is `v1.4.0`
 
 ## CONTRIBUTORS
 - [Vu Phan][vuCV] (regular)
@@ -108,12 +110,9 @@ the Knotty system includes:
 - Python packages:
   - [SymPy][sympyHome]
   - [PyInstaller][pyinstallerHome]
-- TeX packages:
-  - geometry
-  - amsmath
-  - breqn
 - Knotty language influenced by: LED, SequenceL, Python, SQL
-- design document influenced by [SE2 Machine Learning Team][teamML]
+- design document influenced by 
+  [SE2 Machine Learning Team][teamML]
 
 [paperTorus]:
 http://www.math.ttu.edu/~rgelca/gs6.pdf

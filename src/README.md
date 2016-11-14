@@ -6,12 +6,12 @@ part of Knotty system
 ## TEST GUIDE
 - automatic unit-testing:
   ```
-  kn_tester.py
+  kn_testing.py
 
   ```
 - manual testing:
   ```
-  kn_engine.py examples/demo.kn
+  kn_engine.py -f -k ../examples/demo.kn
 
   ```
 
@@ -19,34 +19,31 @@ part of Knotty system
 - input: Knotty program
 - output: TeX program
 - includes:
-  - parser:
+  - parsing module:
     - input: Knotty program
     - output: Knotty parse-tree (as Python tuple)
-  - translator:
+  - translating module:
     - input: Knotty parse-tree
     - output: Python program that:
       - is semantically equivalent to Knotty program
       - includes script to generate TeX program
 
 ## FILES
-- `examples/`:
-  - `*.kn` files are manually written
-  - other files are generated
-- `kn_tester.py`: Knotty unit-tester
+- `kn_testing.py`: unit-testing module
 - `kn_engine.py`: Knotty engine
 - parsing:
   - `kn_lexicon.txt`: Knotty parsing-expression lexicon
   - `kn_grammar.txt`: Knotty parsing-expression grammar
-  - `kn_parser.py`: Knotty parser
+  - `kn_parsing.py`: parsing module
 - translating:
   - `kn_lib.py`: Knotty library
-  - `kn_translator`: Knotty translator
+  - `kn_translating`: translating module
 
 ## BINARY
-- prebuilt for Windows: `../engine/`
+- pre-built for Windows: `../bin/`
 - to build from source for another OS:
   ```
-  pyinstaller ./engine_man.spec --workpath=../engine/build/ --distpath=../engine/
+  pyinstaller knotty_man.spec --workpath=../bin/build/ --distpath=../bin/
 
   ```
   - if you have successfully built a binary for your OS,
