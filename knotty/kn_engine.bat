@@ -12,7 +12,7 @@ goto starting
         set tex_compile=latexmk -pdf -outdir=%examples_path% !tex_file!
 
         !kn_cmd!
-        REM !tex_compile! & cd %examples_path% & %tex_clean% & cd %src_path%
+        !tex_compile! & cd %examples_path% & %tex_clean% & cd %src_path%
 
         echo:
     )
@@ -46,8 +46,8 @@ goto starting
 
     set tex_clean=latexmk -c
 
-    REM goto building
-    goto looping
+    goto building
+    REM goto looping
 
 :ending
     echo:
