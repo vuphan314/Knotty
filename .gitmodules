@@ -1,0 +1,3 @@
+[submodule "src/genparser"]
+	path = src/genparser
+	url = https://github.com/iensen/genparser
