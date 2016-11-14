@@ -6,7 +6,7 @@
 *.exp
 
 # program database files
-*.pdb
+#*.pdb
 
 
 ############################################################
@@ -26,7 +26,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+#*.dll
 
 # Fortran module files
 *.mod
