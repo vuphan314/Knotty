@@ -5,7 +5,7 @@ part of Knotty system
 
 ## DESCRIPTION
 Windows standalone binary file:
-- accepts any relative/absolute path to any Knotty program
+- accepts relative/absolute path to Knotty program
 - invocation:
   ```
   $ knotty
@@ -25,6 +25,23 @@ Windows standalone binary file:
   Time taken: 0.01562356948852539 seconds.
 
   ```
+  - possible error:
+    ```
+    $ knotty
+    'knotty' is not recognized as an internal or external command,
+    operable program or batch file.
+
+    ```
+    - solution:
+      ```
+      $ "<path_to_knotty_exe>"
+
+      ```
+      - example:
+        ```
+        $ "C:/Users/Vu/Downloads/knotty"
+
+        ```
 
 ## USAGE
 - download latest [`knotty.exe`][linkReleases]
