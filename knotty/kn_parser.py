@@ -2,117 +2,190 @@ import os
 import re
 import sys
 
-from vu_toolkit.vu_debugger import *
 from genparser.src.astgen.parsing import ast, lexer, parser
+from vu_toolkit.vu_debugger import *
+import kn_handler
 
 ############################################################
 
 def parse_file(kn_path: str) -> dict:
-    syntax_dict = get_syntax_dict(kn_path)
+    """Return lexing_sequence, syntax_tree, syntax_str."""
 
-    syntax_dict['lexing_sequence'] = trim_space_off_lexing_sequence(
-        syntax_dict['lexing_sequence']
+    kn_parser_inst = KnParser(kn_path)
+
+    syntax_dict = {
+        'lexing_sequence':kn_parser_inst.lexing_sequence
+    }
+
+    syntax_tree = get_syntax_tree(
+        kn_parser_inst.syntax_list
     )
-
-    syntax_AST = syntax_dict.pop('syntax_AST')
-    syntax_tree = get_syntax_tree(syntax_AST)
-    syntax_dict['syntax_tree'] = syntax_tree
-
     syntax_str = get_syntax_str(syntax_tree)
-    syntax_dict['syntax_str'] = syntax_str
+
+    syntax_dict.update(
+        syntax_tree=syntax_tree, syntax_str=syntax_str
+    )
 
     return syntax_dict
 
 ############################################################
 # invoke Evgenii's generic parser
 
-def get_syntax_dict(kn_path: str) -> dict:
-    """Return lexing_sequence and syntax_AST."""
-    lexicon_file = 'kn_lexicon.txt'
-    grammar_file = 'kn_grammar.txt'
+class KnParser:
+    """Parse Knotty program."""
 
-    lexicon_file = get_complete_path(lexicon_file)
-    grammar_file = get_complete_path(grammar_file)
+    def __init__(self, kn_path: str):
+        self.kn_strs = KnPreprocessor(
+            kn_path
+        ).get_preprocessed()
 
-    lexer_instance = lexer.Lexer(lexicon_file)
-    allowed_terminals = lexer_instance.lexicon_dict.keys()
-    parser_instance = parser.Parser(
-        grammar_file, allowed_terminals
-    )
+        self.lexing_sequence = []
+        self.syntax_list = ['kn_root']
 
-    lexing_sequence = lexer_instance.get_lexing_sequence(
-        get_kn_str(kn_path)
-    )
-    syntax_AST = parser_instance.get_ast(lexing_sequence)
-
-    syntax_dict = {
-        'lexing_sequence': lexing_sequence,
-        'syntax_AST': syntax_AST
-    }
-    return syntax_dict
-
-def get_complete_path(incomplete_path: str) -> str:
-    """Add current directory to file name."""
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    complete_path = os.path.join(
-        current_dir, incomplete_path
-    )
-    return complete_path
-
-############################################################
-
-def get_kn_str(kn_path: str) -> str:
-    with open(kn_path) as kn_file:
-        st = kn_file.read()
-    st = trim_comment_off_kn_str(st)
-    return st
-
-def trim_comment_off_kn_str(kn_str: str) -> str:
-    comment_start = re.search('/\*', kn_str)
-    if comment_start is None:
-        return kn_str
-    else:
-        comment_end = re.compile('\*/').search(
-            kn_str, comment_start.end()
+        lexicon_file, grammar_file = map(
+            self.get_complete_path,
+            ['kn_lexicon.txt', 'kn_grammar.txt']
         )
-        if comment_end is None:
-            raise CommentError
+
+        self.lexer_inst = lexer.Lexer(lexicon_file)
+        self.parser_inst = parser.Parser(
+            grammar_file,
+            self.lexer_inst.lexicon_dict.keys()
+        )
+
+        self.parse_preprocessed()
+
+    def parse_preprocessed(self):
+        """Add to `lexing_sequence`, `syntax_list`.
+
+        Of `self`.
+        """
+
+        for st in self.kn_strs:
+            lex_list = self.get_spaceless_lexing_sequence(
+                self.lexer_inst.get_lexing_sequence(st)
+            )
+            self.lexing_sequence.extend(lex_list)
+
+            ast_inst = self.parser_inst.get_ast(lex_list)
+            if ast_inst is not None:
+                self.syntax_list.extend(
+                    ast_inst.children_list
+                )
+
+    @staticmethod
+    def get_spaceless_lexing_sequence(
+        lexing_sequence: list
+    ) -> list:
+        lis = [
+            tup for tup in lexing_sequence
+            if tup[0] != 'spaces'
+        ]
+        return lis
+
+    def get_syntax_dict(kn_path: str) -> dict:
+        """Return lexing_sequence and syntax_AST."""
+
+        syntax_dict = {
+            'lexing_sequence': lexing_sequence,
+            'syntax_AST': syntax_AST
+        }
+        return syntax_dict
+
+    @staticmethod
+    def get_complete_path(incomplete_path: str) -> str:
+        """Add current directory to file name."""
+
+        current_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )
+        complete_path = os.path.join(
+            current_dir, incomplete_path
+        )
+        return complete_path
+
+############################################################
+
+class KnPreprocessor:
+    """Trim comments and split into statements."""
+
+    def __init__(self, kn_path):
+        with open(kn_path) as kn_file:
+            st = kn_file.read()
+        self.kn_str = st
+        self.kn_strs = []
+
+    def get_preprocessed(self) -> list:
+        self.kn_str = self.get_uncommented(self.kn_str)
+        self.split_into_statements()
+        return self.kn_strs
+
+    def get_uncommented(self, kn_str: str) -> str:
+        """Recursively trim comments."""
+
+        comment_start = re.search(r'/\*', kn_str)
+        if comment_start is None:
+            return kn_str
         else:
-            left_half = kn_str[:comment_start.start()]
-            right_half = kn_str[comment_end.end():]
-            right_half = trim_comment_off_kn_str(right_half)
-            st = left_half + right_half
-            return st
+            comment_end = re.compile(r'\*/').search(
+                kn_str, comment_start.end()
+            )
+            if comment_end is None:
+                raise kn_handler.PreprocessingError(
+                    'Unclosed comment.'
+                )
+            else:
+                left_half = kn_str[:comment_start.start()]
+                right_half = kn_str[comment_end.end():]
+                right_half = self.get_uncommented(right_half)
+                st = left_half + right_half
+                return st
 
-class KnottyError(Exception):
-    """Base class."""
+    def split_into_statements(self) -> None:
+        """Add to `self.kn_strs`.
 
-class CommentError(KnottyError):
-    """Checked before lexical error."""
+        Leave `self.kn_str` intact.
+        """
 
-    def __str__(self):
-        return '''
-            Error: unclosed comment.
-        '''
+        stmt_keywords = re.compile(
+            r'\b(vary|define|check)\b'
+        )
+
+        st = self.kn_str # immutable str
+
+        first_stmt = stmt_keywords.search(st)
+        if first_stmt is None:
+            if not self.is_all_space(st):
+                raise kn_handler.PreprocessingError(
+                    'Nonspace character found '
+                    'before first statement keyword.'
+                )
+        else:
+            current_stmt = first_stmt
+
+            done = False
+            while not done: # shorten `st`
+                next_stmt = stmt_keywords.search(
+                    st, current_stmt.end()
+                )
+                if next_stmt is None:
+                    self.kn_strs.append(st)
+                    done = True
+                else:
+                    splitting_index = next_stmt.start()
+                    self.kn_strs.append(
+                        st[:splitting_index]
+                    )
+                    st = st[splitting_index:]
+
+    @staticmethod
+    def is_all_space(st: str) -> bool:
+        return st == '' or st.isspace()
 
 ############################################################
+# list to tree
 
-def trim_space_off_lexing_sequence(
-    lexing_sequence: list
-) -> list:
-    lis = [
-        tup for tup in lexing_sequence if tup[0] != 'spaces'
-    ]
-    return lis
-
-############################################################
-# AST to tuple
-
-def get_syntax_tree(syntax_AST: ast.AST) -> tuple:
-    if syntax_AST is None:
-        syntax_list = ['None']
-    else:
-        syntax_list = list(syntax_AST)
+def get_syntax_tree(syntax_list: list) -> tuple:
     syntax_tree = convert_syntax_list_to_tree(syntax_list)
     return syntax_tree
 
@@ -126,7 +199,7 @@ def convert_syntax_list_to_tree(T: list) -> tuple:
         return T2
 
 ############################################################
-# tuple to str
+# tree to str
 
 def get_syntax_str(syntax_tree: tuple) -> str:
     syntax_str = convert_syntax_tree_to_str(syntax_tree)

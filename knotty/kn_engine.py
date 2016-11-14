@@ -1,4 +1,4 @@
-'''Knotty engine (source).'''
+"""Knotty engine."""
 
 ############################################################
 
@@ -153,8 +153,8 @@ def main() -> None:
 
         write_output_files(kn_path, force, keep)
 
-    time_took = time.time() - time_start
-    print('Time took: {} seconds.'.format(time_took))
+    time_taken = time.time() - time_start
+    print('Time taken: {} seconds.'.format(time_taken))
 
 if __name__ == '__main__':
     main()
