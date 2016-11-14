@@ -46,7 +46,7 @@ goto starting
 
     set tex_clean=latexmk -c
 
-    REM goto building
+    goto building
     goto looping
 
 :ending
