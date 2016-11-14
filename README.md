@@ -26,12 +26,11 @@ the Knotty system includes:
     - a preview box: in which the TeX program is displayed
 
 ## FILES
-- `examples/`:
-  - `*.kn` files are manually written
-  - other files are generated
-- `webapp/`: web application
-- `bin/`: engine (binary)
-- `src/`: engine (source)
+- `examples/`
+- `webapp/`
+- engine:
+  - `bin/`
+  - `src/`
 
 ## LINKS
 - [web application][linkWebapp]
@@ -87,7 +86,7 @@ the Knotty system includes:
   - show tags:
     ```
     git tag -n
-    
+
     ```
   - browse tag:
     ```
@@ -111,7 +110,7 @@ the Knotty system includes:
   - [SymPy][sympyHome]
   - [PyInstaller][pyinstallerHome]
 - Knotty language influenced by: LED, SequenceL, Python, SQL
-- design document influenced by 
+- design document influenced by
   [SE2 Machine Learning Team][teamML]
 
 [paperTorus]:

@@ -65,8 +65,9 @@ Windows standalone binary file:
 
     ```
 
-## SOURCE
-`../src/`
+## FILES
+- `../examples/`
+- `../src/`
 
 [linkReleases]:
 https://github.com/vuphan314/Knotty/releases

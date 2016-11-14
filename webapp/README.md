@@ -19,11 +19,8 @@ part of Knotty system
     - click the `recompile from scratch` button
   - see the pdf in the Overleaf `Preview` pane (right)
 
-## EXAMPLES
-see [pre-compiled examples][linkExamples]
-- `*.kn` files are manually written
-  - in the Knotty language
-- other files are generated
+## LINKS
+[examples][linkExamples]
 
 [linkWebapp]:
 http://99.64.48.184/Knotty

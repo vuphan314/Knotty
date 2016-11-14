@@ -32,8 +32,8 @@ part of Knotty system
 - `kn_testing.py`: unit-testing module
 - `kn_engine.py`: Knotty engine
 - parsing:
-  - `kn_lexicon.txt`: Knotty parsing-expression lexicon
-  - `kn_grammar.txt`: Knotty parsing-expression grammar
+  - `kn_lexicon.txt`: parsing-expression lexicon
+  - `kn_grammar.txt`: parsing-expression grammar
   - `kn_parsing.py`: parsing module
 - translating:
   - `kn_lib.py`: Knotty library
