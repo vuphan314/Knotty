@@ -97,10 +97,10 @@ the Knotty system includes:
     example: latest `<tag>` is `v1.4.0`
 
 ## CONTRIBUTORS
-- [Vu Phan][vuCV] (regular)
+- [Vu Phan][linkVu] (regular)
   - language
   - engine
-- Zachariah Grummons (honorary)
+- [Zachariah Grummons][linkZach] (honorary)
   - webapp
 
 ## ACKNOWLEDGEMENT
@@ -119,8 +119,10 @@ http://www.math.ttu.edu/~rgelca/gs6.pdf
 [paperFigure8]:
 http://www.math.ttu.edu/~rgelca/jr5.pdf
 
-[vuCV]:
+[linkVu]:
 https://github.com/vuphan314/VU_PHAN/blob/master/README.md#top
+[linkZach]:
+https://github.com/twibird
 
 [linkPlaylist]:
 https://www.youtube.com/playlist?list=PLIJKsTidP3ztqjhlB3Rv1E5hAecfz8VNv
