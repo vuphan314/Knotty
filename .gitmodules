@@ -1,6 +1,0 @@
-[submodule "knotty/genparser"]
-	path = knotty/genparser
-	url = https://github.com/iensen/genparser
-[submodule "knotty/vu_toolkit"]
-	path = knotty/vu_toolkit
-	url = https://github.com/vuphan314/vu_toolkit
