@@ -13,8 +13,8 @@ import sys
 import time
 
 from debugtools.debug_tool import *
-import kn_parser
-import kn_translator
+import kn_parsing
+import kn_translating
 
 ############################################################
 
@@ -31,7 +31,7 @@ def write_output_files(
         for ext in ['.py', '.tex']
     ]
 
-    syntax_dict = kn_parser.parse_file(kn_path)
+    syntax_dict = kn_parsing.parse_file(kn_path)
 
     write_mode = 'w' if force else 'x'
 
@@ -79,7 +79,7 @@ def write_py_translated(
     syntax_dict: dict, tex_path: str, write_mode: str
 ) -> str:
     syntax_tree = syntax_dict['syntax_tree']
-    st = kn_translator.translate_tree(
+    st = kn_translating.translate_tree(
         syntax_tree, tex_path, write_mode
     )
     return st
@@ -111,6 +111,7 @@ def append_base_path(
 
 class ArgvParser(argparse.ArgumentParser):
     """Parse argument vector."""
+
     def __init__(self):
         super().__init__()
 

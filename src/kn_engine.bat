@@ -1,7 +1,7 @@
 goto starting
 
 :looping
-    set fil=error
+    set fil=skein_T
     set fils=comment, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X_i, syntax, tmp
     for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
@@ -37,7 +37,7 @@ goto starting
     @echo off
     setlocal enabledelayedexpansion
 
-    set src_path=D:/repos/Knotty/knotty/
+    set src_path=D:/repos/Knotty/src/
     set examples_path=../examples/
     set bin_path=../bin/
 
@@ -46,8 +46,8 @@ goto starting
 
     set tex_clean=latexmk -c
 
-    goto building
-    REM goto looping
+    REM goto building
+    goto looping
 
 :ending
     echo:

@@ -2,23 +2,23 @@ import os
 import re
 import sys
 
-from genparser.src.astgen.parsing import ast, lexer, parser
+from genparser.src.astgen.parsing import lexer, parser
 from debugtools.debug_tool import *
-import kn_handler
+import kn_handling
 
 ############################################################
 
 def parse_file(kn_path: str) -> dict:
     """Return lexing_sequence, syntax_tree, syntax_str."""
 
-    kn_parser_inst = KnParser(kn_path)
+    kn_parser = KnParser(kn_path)
 
     syntax_dict = {
-        'lexing_sequence':kn_parser_inst.lexing_sequence
+        'lexing_sequence': kn_parser.lexing_sequence
     }
 
     syntax_tree = get_syntax_tree(
-        kn_parser_inst.syntax_list
+        kn_parser.syntax_list
     )
     syntax_str = get_syntax_str(syntax_tree)
 
@@ -35,9 +35,7 @@ class KnParser:
     """Parse Knotty program."""
 
     def __init__(self, kn_path: str):
-        self.kn_strs = KnPreprocessor(
-            kn_path
-        ).get_preprocessed()
+        self.kn_strs = KnPreprocessor(kn_path).kn_strs
 
         self.lexing_sequence = []
         self.syntax_list = ['kn_root']
@@ -53,21 +51,21 @@ class KnParser:
             self.lexer_inst.lexicon_dict.keys()
         )
 
-        self.parse_preprocessed()
+        self.do_parsing()
 
-    def parse_preprocessed(self):
+    def do_parsing(self):
         """Add to `lexing_sequence`, `syntax_list`.
 
         Of `self`.
         """
 
         for st in self.kn_strs:
-            lex_list = self.get_spaceless_lexing_sequence(
+            lis = self.get_spaceless_lexing_sequence(
                 self.lexer_inst.get_lexing_sequence(st)
             )
-            self.lexing_sequence.extend(lex_list)
+            self.lexing_sequence.extend(lis)
 
-            ast_inst = self.parser_inst.get_ast(lex_list)
+            ast_inst = self.parser_inst.get_ast(lis)
             if ast_inst is not None:
                 self.syntax_list.extend(
                     ast_inst.children_list()
@@ -82,15 +80,6 @@ class KnParser:
             if tup[0] != 'spaces'
         ]
         return lis
-
-    def get_syntax_dict(kn_path: str) -> dict:
-        """Return lexing_sequence and syntax_AST."""
-
-        syntax_dict = {
-            'lexing_sequence': lexing_sequence,
-            'syntax_AST': syntax_AST
-        }
-        return syntax_dict
 
     @staticmethod
     def get_complete_path(incomplete_path: str) -> str:
@@ -114,11 +103,11 @@ class KnPreprocessor:
             st = kn_file.read()
         self.kn_str = st
         self.kn_strs = []
+        self.do_preprocessing()
 
-    def get_preprocessed(self) -> list:
+    def do_preprocessing(self) -> None:
         self.kn_str = self.get_uncommented(self.kn_str)
         self.split_into_statements()
-        return self.kn_strs
 
     def get_uncommented(self, kn_str: str) -> str:
         """Recursively trim comments."""
@@ -131,7 +120,7 @@ class KnPreprocessor:
                 kn_str, comment_start.end()
             )
             if comment_end is None:
-                raise kn_handler.PreprocessingError(
+                raise kn_handling.PreprocessingError(
                     'Unclosed comment.'
                 )
             else:
@@ -156,7 +145,7 @@ class KnPreprocessor:
             if not self.is_all_space(
                 st[:first_stmt.start()]
             ):
-                raise kn_handler.PreprocessingError(
+                raise kn_handling.PreprocessingError(
                     'Nonspace character found '
                     'before first statement keyword.'
                 )
@@ -184,29 +173,25 @@ class KnPreprocessor:
 ############################################################
 # list to tree
 
-def get_syntax_tree(syntax_list: list) -> tuple:
-    syntax_tree = convert_syntax_list_to_tree(syntax_list)
-    return syntax_tree
+def get_syntax_tree(T: list) -> tuple:
+    """From syntax_list."""
 
-def convert_syntax_list_to_tree(T: list) -> tuple:
     if is_leaf(T):
         return T
     else:
         T2 = T[0],
         for t in T[1:]:
-            T2 += convert_syntax_list_to_tree(t),
+            T2 += get_syntax_tree(t),
         return T2
 
 ############################################################
 # tree to str
 
-def get_syntax_str(syntax_tree: tuple) -> str:
-    syntax_str = convert_syntax_tree_to_str(syntax_tree)
-    return syntax_str
-
-def convert_syntax_tree_to_str(
+def get_syntax_str(
     T: tuple, tab_count=1
 ) -> str:
+    """From syntax_tree."""
+
     tree_tab = ' ' * 2
     tabs = tree_tab * tab_count
     st = tabs
@@ -216,7 +201,7 @@ def convert_syntax_tree_to_str(
         st += "('" + T[0] + "'"
         for t in T[1:]:
             st2 = ',\n'
-            st2 += convert_syntax_tree_to_str(
+            st2 += get_syntax_str(
                 t, tab_count=tab_count+1
             )
             st += st2
@@ -224,6 +209,7 @@ def convert_syntax_tree_to_str(
     return st
 
 ############################################################
+# tree helpers
 
 def is_leaf(T: tuple) -> bool:
     boo = (

@@ -1,6 +1,6 @@
 from debugtools.debug_tool import *
 import kn_lib
-import kn_parser
+import kn_parsing
 
 ############################################################
 
@@ -18,7 +18,7 @@ def translate_tree(
 def translate_recur(T: tuple) -> str:
     if isinstance(T, str):
         return T
-    elif kn_parser.is_leaf(T):
+    elif kn_parsing.is_leaf(T):
         return translate_leaf(T)
     elif T[0] == 'condTerm':
         a, boo, b = [translate_recur(t) for t in T[1:]]
