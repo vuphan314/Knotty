@@ -1,3 +1,15 @@
+/*
+
+link: http://www.math.ttu.edu/~rgelca/gn2.pdf
+
+paper:
+    SOME RESULTS ABOUT THE KAUFFMAN BRACKET SKEIN
+    MODULE OF THE TWIST KNOT EXTERIOR
+
+Lemma 1 (page 4)
+
+*/
+
 vary t, x, y
 
 define X(i)

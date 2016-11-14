@@ -1,8 +1,8 @@
 goto starting
 
 :looping
-    set fil=skein_T
-    set fils=comment, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X_i, syntax, tmp
+    set fil=skein_X
+    set fils=comment, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X, syntax, tmp
     for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn
@@ -46,7 +46,7 @@ goto starting
 
     set tex_clean=latexmk -c
 
-    goto building
+    REM goto building
     goto looping
 
 :ending

@@ -28,7 +28,7 @@ check_list.append(('X4', kn_lib.sp_tex(X(4))))
 check_list.append(('X5', kn_lib.sp_tex(X(5))))
 
 
-kn_lib.write_tex_file(check_list, r'skein_X.tex', 'w')
+kn_lib.write_tex_file(check_list, r'../examples/skein_X.tex', 'w')
 
 syntax_tree = \
   ('kn_root',
