@@ -1,3 +1,6 @@
 [submodule "src/genparser"]
 	path = src/genparser
 	url = https://github.com/iensen/genparser
+[submodule "src/debugtools"]
+	path = src/debugtools
+	url = https://github.com/vuphan314/debugtools
