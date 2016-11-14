@@ -1,19 +1,25 @@
 /*
-    comment error:
-        unclosed comment
+    preprocessing error:
+        forgetting to close comment
 */
+
+/*
+    preprocessing error:
+        nonspace before 1st statement keyword
+*/
+/* 0 vary x */
 
 /*
     lexical error:
         invalid lexeme
 */
-/* $ */
+/* vary $ */
 
 /*
     syntactic error:
-        invalid lexing sequence
+        cannot parse
 */
-vary let
+/* vary vary */
 
 /*
     semantic error:
@@ -23,6 +29,6 @@ vary let
 
 /*
     overwrite error:
-        TeX file already existing,
+        Python/TeX files already existing,
         but not using "-f" option
 */

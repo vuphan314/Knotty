@@ -49,7 +49,7 @@ check_list.append(('lhsEqualRhs', kn_lib.sp_tex(kn_lib.opEq(product2211(), sum22
 kn_lib.write_tex_file(check_list, r'../examples/skein_T.tex', 'w')
 
 syntax_tree = \
-  ('knStats',
+  ('kn_root',
     ('defStat',
       ('formFunTerm',
         ('kn_id', 'T'),

@@ -70,7 +70,7 @@ class KnParser:
             ast_inst = self.parser_inst.get_ast(lex_list)
             if ast_inst is not None:
                 self.syntax_list.extend(
-                    ast_inst.children_list
+                    ast_inst.children_list()
                 )
 
     @staticmethod
@@ -150,33 +150,32 @@ class KnPreprocessor:
         stmt_keywords = re.compile(
             r'\b(vary|define|check)\b'
         )
-
         st = self.kn_str # immutable str
-
         first_stmt = stmt_keywords.search(st)
-        if first_stmt is None:
-            if not self.is_all_space(st):
+        if first_stmt is not None:
+            if not self.is_all_space(
+                st[:first_stmt.start()]
+            ):
                 raise kn_handler.PreprocessingError(
                     'Nonspace character found '
                     'before first statement keyword.'
                 )
-        else:
-            current_stmt = first_stmt
-
-            done = False
-            while not done: # shorten `st`
-                next_stmt = stmt_keywords.search(
-                    st, current_stmt.end()
-                )
-                if next_stmt is None:
-                    self.kn_strs.append(st)
-                    done = True
-                else:
-                    splitting_index = next_stmt.start()
-                    self.kn_strs.append(
-                        st[:splitting_index]
+            else:
+                current_stmt = first_stmt
+                done = False
+                while not done: # shorten `st`
+                    next_stmt = stmt_keywords.search(
+                        st, current_stmt.end()
                     )
-                    st = st[splitting_index:]
+                    if next_stmt is None:
+                        self.kn_strs.append(st.strip())
+                        done = True
+                    else:
+                        splitting_index = next_stmt.start()
+                        self.kn_strs.append(
+                            st[:splitting_index].strip()
+                        )
+                        st = st[splitting_index:]
 
     @staticmethod
     def is_all_space(st: str) -> bool:
