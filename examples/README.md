@@ -3,7 +3,7 @@
 # KNOTTY EXAMPLES
 notable:
 - `skein_T.*`
-- `skein_X_i.*`
+- `skein_X.*`
 - `error.*`
 
 ## FILES
