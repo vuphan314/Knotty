@@ -1,6 +1,7 @@
 /*
 
-link: http://www.math.ttu.edu/~rgelca/gs6.pdf
+link: 
+http://www.math.ttu.edu/~rgelca/gs6.pdf
 
 paper:
     THE NONCOMMUTATIVE A-IDEAL OF A (2, 2p + 1)-TORUS
@@ -20,7 +21,9 @@ define skein(p, q)
     let n be gcd(p, q)
     let p2 be p / n
     let q2 be q / n
-    let curve be SCC(p2, q2)
+    let curve be 
+        SCC(p2, q2)
+        /* simple closed curve of slope p2/q2 on torus */
     return T(n, curve)
 
 vary t
