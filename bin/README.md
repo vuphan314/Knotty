@@ -4,7 +4,7 @@
 part of Knotty system
 
 ## DESCRIPTION
-Windows standalone binary file:
+Windows/Ubuntu standalone binary:
 - accepts relative/absolute path to Knotty program
 - invocation:
   ```
@@ -44,8 +44,8 @@ Windows standalone binary file:
         ```
 
 ## USAGE
-- download latest [`knotty.exe`][linkReleases]
-- move downloaded `knotty.exe` to directory `C:/Windows/`
+- download [latest binary][linkReleases]
+- move downloaded binary to directory `C:/Windows/`
   (or anywhere else in environment variable `%PATH%`)
 - browse directory containing Knotty file
   - example: `../examples/`
