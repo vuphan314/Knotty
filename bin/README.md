@@ -45,8 +45,8 @@ Windows/Ubuntu standalone binary:
 
 ## USAGE
 - download [latest binary][linkReleases]
-- move downloaded binary to directory `C:/Windows/`
-  (or anywhere else in environment variable `%PATH%`)
+- move downloaded binary to directory `C:/Windows/` (Ubuntu: `/bin/`)
+  - or anywhere else in environment variable `%PATH%` (Ubuntu: `$PATH`)
 - browse directory containing Knotty file
   - example: `../examples/`
 - in File Explorer window:
@@ -59,9 +59,9 @@ Windows/Ubuntu standalone binary:
   ```
   - optional tex-to-pdf compilation:
     ```
-    latexmk -pdf demo.tex
+    latexmk -pdf demo
 
-    latexmk -c demo.tex
+    latexmk -c
 
     ```
 
