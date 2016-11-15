@@ -40,10 +40,10 @@ part of Knotty system
   - `kn_translating`: translating module
 
 ## BINARY
-- pre-built for Windows: `../bin/`
+- pre-built for Windows/Ubuntu: `../bin/`
 - to build from source for another OS:
   ```
-  pyinstaller knotty_man.spec --workpath=../bin/build/ --distpath=../bin/
+  python3 pyinstaller/pyinstaller.py knotty_man.spec
 
   ```
   - if you have successfully built a binary for your OS,
