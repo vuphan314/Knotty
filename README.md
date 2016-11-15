@@ -34,7 +34,9 @@ the Knotty system includes:
 
 ## LINKS
 - [web application][linkWebapp]
-- [demo videos][linkPlaylist]
+- videos:
+  - [Dropbox][linkDropbox]
+  - [YouTube][linkYouTube]
 - GitHub
   - [releases][linkTags]
   - [issues][linkIssues]
@@ -56,8 +58,6 @@ the Knotty system includes:
     pip install mpmath
 
     pip install sympy
-
-    pip install pyinstaller
 
     ```
   - directory browsing (Windows Command Prompt):
@@ -93,7 +93,7 @@ the Knotty system includes:
     git checkout tags/<tag>
 
     ```
-    example: latest `<tag>` is `v1.4.0`
+    example: latest `<tag>` is `v1.5.0`
 
 ## CONTRIBUTORS
 - [Vu Phan][linkVu] (regular)
@@ -106,9 +106,9 @@ the Knotty system includes:
 - [Git submodules][gitmodules]:
   - [generic parser][genparserSpec]
     - by Evgenii Balai
-- Python packages:
-  - [SymPy][sympyHome]
   - [PyInstaller][pyinstallerHome]
+- Python package:
+  - [SymPy][sympyHome]
 - Knotty language influenced by: LED, SequenceL, Python, SQL
 - design document influenced by
   [SE2 Machine Learning Team][teamML]
@@ -123,7 +123,9 @@ https://github.com/vuphan314/VU_PHAN/blob/master/README.md#top
 [linkZach]:
 https://github.com/twibird
 
-[linkPlaylist]:
+[linkDropbox]:
+https://www.dropbox.com/sh/46ystk380ro5qd5/AABli7oycNvNQOjVeb8qeXbfa?dl=0
+[linkYouTube]:
 https://www.youtube.com/playlist?list=PLIJKsTidP3ztqjhlB3Rv1E5hAecfz8VNv
 [linkNppXml]:
 https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing

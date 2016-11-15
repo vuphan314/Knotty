@@ -10,7 +10,7 @@ Windows/Ubuntu standalone binary:
   ```
   $ knotty
 
-  Knotty engine v1.4.0 built 2016-11-13
+  Knotty engine v1.5.0 built 2016-11-14
 
   usage: knotty [-h] [-f] [-k] Knotty_file
 
@@ -22,10 +22,10 @@ Windows/Ubuntu standalone binary:
     -f, --force  OVERWRITE existing .py and .tex files
     -k, --keep   keep .py file
 
-  Time taken: 0.01562356948852539 seconds.
+  Time taken: 0.0 seconds.
 
   ```
-  - possible error:
+  - possible error (Windows):
     ```
     $ knotty
     'knotty' is not recognized as an internal or external command,
@@ -45,8 +45,19 @@ Windows/Ubuntu standalone binary:
 
 ## USAGE
 - download [latest binary][linkReleases]
-- move downloaded binary to directory `C:/Windows/` (Ubuntu: `/bin/`)
-  - or anywhere else in environment variable `%PATH%` (Ubuntu: `$PATH`)
+  - Ubuntu:
+    ```
+    chmod +x ~/Downloads/knotty
+    
+    ```
+- move downloaded binary to directory `C:/Windows/` 
+  - Ubuntu:
+    ```
+    sudo mv ~/Downloads/knotty /bin/
+    
+    ```
+  - or anywhere else in environment variable `%PATH%` 
+    (Ubuntu: `$PATH`)
 - browse directory containing Knotty file
   - example: `../examples/`
 - in File Explorer window:
