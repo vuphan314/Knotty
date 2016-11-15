@@ -50,13 +50,9 @@ Windows/Ubuntu standalone binary:
     chmod +x ~/Downloads/knotty
     
     ```
-- move downloaded binary to directory `C:/Windows/` 
-  - Ubuntu:
-    ```
-    sudo mv ~/Downloads/knotty /bin/
-    
-    ```
-  - or anywhere else in environment variable `%PATH%` 
+- move downloaded binary to directory `C:/Windows/`
+  (Ubuntu: `sudo mv ~/Downloads/knotty /bin/`)
+  - or anywhere else in environment variable `%PATH%`
     (Ubuntu: `$PATH`)
 - browse directory containing Knotty file
   - example: `../examples/`
