@@ -4,3 +4,6 @@
 [submodule "src/debugtools"]
 	path = src/debugtools
 	url = https://github.com/vuphan314/debugtools
+[submodule "src/pyinstaller"]
+	path = src/pyinstaller
+	url = https://github.com/pyinstaller/pyinstaller
