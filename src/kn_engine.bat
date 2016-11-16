@@ -1,7 +1,7 @@
 goto starting
 
 :looping
-    set fil=skein_X
+    set fil=skein_T
     set fils=comment, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X, syntax, tmp
     for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
