@@ -155,7 +155,7 @@ def main() -> None:
         write_output_files(kn_path, force, keep)
 
     time_taken = time.time() - time_start
-    print('\n' 'Time taken: {} seconds.'.format(time_taken))
+    print('\n' 'Time taken: {} seconds.\n'.format(time_taken))
 
 if __name__ == '__main__':
     main()
