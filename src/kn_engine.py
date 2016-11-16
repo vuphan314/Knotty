@@ -131,7 +131,7 @@ class ArgvParser(argparse.ArgumentParser):
 
 def printWelcome():
     st = '''
-Knotty engine {} built {}
+Knotty engine {}, built on {}
 '''.format(TAG_NAME, TAG_DATE)
     print(st)
 
