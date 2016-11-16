@@ -10,7 +10,7 @@ x, y = kn_lib.make_vars('x, y')
 check_list.append(('ch', kn_lib.sp_tex(kn_lib.opEq(kn_lib.opExp(kn_lib.opPlus(x, y), 2), kn_lib.opPlus(kn_lib.opPlus(kn_lib.opExp(x, 2), kn_lib.opMult(kn_lib.opMult(2, x), y)), kn_lib.opExp(y, 2))))))
 
 
-kn_lib.write_tex_file(check_list, r'comment.tex', 'w')
+kn_lib.write_tex_file(check_list, r'../examples/comment.tex', 'w')
 
 syntax_tree = \
   ('kn_root',

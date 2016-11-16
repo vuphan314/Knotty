@@ -12,7 +12,7 @@ goto starting
         set tex_compile=latexmk -pdf -outdir=%examples_path% !tex_file!
 
         !kn_cmd!
-        !tex_compile! & cd %examples_path% & %tex_clean% & cd %src_path%
+        REM !tex_compile! & cd %examples_path% & %tex_clean% & cd %src_path%
 
         echo:
     )
