@@ -119,7 +119,7 @@ http://www.math.ttu.edu/~rgelca/gs6.pdf
 http://www.math.ttu.edu/~rgelca/jr5.pdf
 
 [linkVu]:
-https://github.com/vuphan314/VU_PHAN/blob/master/README.md#top
+https://www.myweb.ttu.edu/vuphan/
 [linkZach]:
 https://github.com/twibird
 
