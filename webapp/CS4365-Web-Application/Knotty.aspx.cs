@@ -27,7 +27,10 @@ public partial class Knotty : System.Web.UI.Page
         lblRecent.Text = string.Empty;
         foreach (var file in Directory.GetFiles(scriptsPath, "*.kn").Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
             if (!file.Name.Contains("simplified"))
-                lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";        
+                lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";       
+        
+        if (IsPostBack)
+            txtOutput.Focus(); 
     }
 
     protected void SubmitClick(object sender, EventArgs e)

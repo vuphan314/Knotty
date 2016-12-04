@@ -7,9 +7,9 @@
     <title>Knotty - a computer algebra system designed for knot theory</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" DefaultFocus="txtName">
     <div>
-        <asp:Table runat="server" Width="75%" HorizontalAlign="Center" Font-Names="Calibri" CellSpacing="5">
+        <asp:Table runat="server" Width="75%" Height="90%" HorizontalAlign="Center" Font-Names="Calibri" CellSpacing="5">
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server" Font-Size="24" HorizontalAlign="Center" ColumnSpan="3">Knotty</asp:TableCell>
             </asp:TableRow>
@@ -27,19 +27,20 @@
                 <asp:TableCell runat="server">Recent:</asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Width="40%">
+                <asp:TableCell runat="server" Width="40%" Height="5%" VerticalAlign="Top">
                     <asp:TextBox ID="txtName" Width="90%"  runat="server" MaxLength="80" placeholder="Query Title (optional)"></asp:TextBox>
-                    <br/><br/>
-                    <asp:TextBox ID="txtInput" runat="server" Height="600px" Width="90%" TextMode="MultiLine"></asp:TextBox>
                 </asp:TableCell>
-                <asp:TableCell runat="server" Width="40%" VerticalAlign="Top">
-                    <asp:TextBox runat="server" ID="txtOutput" TextMode="MultiLine" Width="90%" Height="100%"></asp:TextBox>
+                <asp:TableCell runat="server" Width="40%" VerticalAlign="Top" RowSpan="2">
+                    <asp:TextBox runat="server" ID="txtOutput" TextMode="MultiLine" Width="90%" Height="100%" Enabled="False"></asp:TextBox>
                 </asp:TableCell>
-                <asp:TableCell runat="server" Width="20%" VerticalAlign="Top">
-                    <asp:Panel ScrollBars="Horizontal" runat="server" ID="pnlRecent" Width="100%">
-                        <asp:Label runat="server" ID="lblRecent"></asp:Label>
-                    </asp:Panel>
+                <asp:TableCell runat="server" Width="20%" Height="90%" VerticalAlign="Top" RowSpan="2">
+                    <asp:Label runat="server" ID="lblRecent"></asp:Label>
                 </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">     
+                <asp:TableCell runat="server">
+                    <asp:TextBox ID="txtInput" runat="server" Height="100%" Width="90%" TextMode="MultiLine"></asp:TextBox>
+                </asp:TableCell>               
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server"></asp:TableCell>
