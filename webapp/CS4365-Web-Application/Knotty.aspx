@@ -28,10 +28,10 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server" Width="40%" Height="5%" VerticalAlign="Top">
-                    <asp:TextBox ID="txtName" Width="90%"  runat="server" MaxLength="80" placeholder="Query Title (optional)"></asp:TextBox>
+                    <asp:TextBox ID="txtName" Width="90%" runat="server" MaxLength="80" placeholder="Query Title (optional)"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell runat="server" Width="40%" VerticalAlign="Top" RowSpan="2">
-                    <asp:TextBox runat="server" ID="txtOutput" TextMode="MultiLine" Width="90%" Height="100%" Enabled="False"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtOutput" TextMode="MultiLine" Width="90%" Height="100%" ReadOnly="True"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell runat="server" Width="20%" Height="90%" VerticalAlign="Top" RowSpan="2">
                     <asp:Label runat="server" ID="lblRecent"></asp:Label>
