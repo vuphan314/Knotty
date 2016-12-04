@@ -33,9 +33,7 @@
                     <asp:TextBox ID="txtInput" runat="server" Height="600px" Width="90%" TextMode="MultiLine"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell runat="server" Width="40%" VerticalAlign="Top">
-                    <asp:Panel ScrollBars="Vertical" runat="server" ID="pnlOutput" Width="100%">
-                        <asp:Label runat="server" ID="lblOutput"></asp:Label>
-                    </asp:Panel>
+                    <asp:TextBox runat="server" ID="txtOutput" TextMode="MultiLine" Width="90%" Height="100%"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell runat="server" Width="20%" VerticalAlign="Top">
                     <asp:Panel ScrollBars="Horizontal" runat="server" ID="pnlRecent" Width="100%">

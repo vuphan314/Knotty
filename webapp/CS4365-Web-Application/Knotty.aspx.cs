@@ -6,7 +6,7 @@ using Microsoft.Ajax.Utilities;
 
 public partial class Knotty : System.Web.UI.Page
 {
-    private readonly string enginePath = @"C:\inetpub\wwwroot\engine.exe";
+    private readonly string enginePath = @"C:\inetpub\wwwroot\knotty.exe";
     private readonly string demoPath = @"C:\Python27\examples\demo.kn";
     private readonly string scriptsPath = @"C:\inetpub\wwwroot\Queries\";
 
@@ -45,21 +45,22 @@ public partial class Knotty : System.Web.UI.Page
         p.Start();
         p.WaitForExit();
 
-        lblOutput.Text = string.Empty;
+        txtOutput.Text = string.Empty;
         try
         {
-            foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
-                lblOutput.Text += lineRead + "<br>";
+            txtOutput.Text = File.ReadAllText(file.Replace(".kn", ".tex"));
+            //foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
+            //    txtOutput.Text += lineRead + "<br>";
         }
         catch
         {
-            lblOutput.Text = "Error! Cannot find file '" + file.Replace(".kn", ".tex").Substring(file.LastIndexOf('\\') + 1) + "'";
+            txtOutput.Text = "Error! Cannot find file '" + file.Replace(".kn", ".tex").Substring(file.LastIndexOf('\\') + 1) + "'";
         }
     }
 
     protected void TestClick(object sender, EventArgs e)
     {
-        lblOutput.Text = "Beginning Tests...<br>";
+        txtOutput.Text = "Beginning Tests...<br>";
 
         if (!TestFiles())
             return;
@@ -67,7 +68,7 @@ public partial class Knotty : System.Web.UI.Page
         if (!TestLoadDemoFile())
             return;
         
-        lblOutput.Text += "Starting external Python process...<br><br>Results:<br>=========================<br>";
+        txtOutput.Text += "Starting external Python process...<br><br>Results:<br>=========================<br>";
 
         var pInfo = new ProcessStartInfo
         {
@@ -80,28 +81,28 @@ public partial class Knotty : System.Web.UI.Page
         p.Start();
 
         foreach (var lineRead in File.ReadAllLines(demoPath))
-            lblOutput.Text += lineRead + "<br>";
+            txtOutput.Text += lineRead + "<br>";
 
-        lblOutput.Text += "=========================<br>Testing finished, all tests successful.";
+        txtOutput.Text += "=========================<br>Testing finished, all tests successful.";
     }
 
     private bool TestFiles()
     {
-        lblOutput.Text += "Locating files...<br>";
+        txtOutput.Text += "Locating files...<br>";
 
         if (!File.Exists(enginePath))
         {
-            lblOutput.Text += "Error, cannot find Knotty engine in " + enginePath;
+            txtOutput.Text += "Error, cannot find Knotty engine in " + enginePath;
             return false;
         }
-        lblOutput.Text += "Found Knotty engine... (1/2)<br>";
+        txtOutput.Text += "Found Knotty engine... (1/2)<br>";
 
         if (!File.Exists(demoPath))
         {
-            lblOutput.Text += "Error, cannot find Knotty demo file in " + enginePath;
+            txtOutput.Text += "Error, cannot find Knotty demo file in " + enginePath;
             return false;
         }
-        lblOutput.Text += "Found Knotty demo file... (2/2)<br>All files found.<br>";
+        txtOutput.Text += "Found Knotty demo file... (2/2)<br>All files found.<br>";
 
         return true;
     }
@@ -110,18 +111,18 @@ public partial class Knotty : System.Web.UI.Page
     {
         try
         {
-            lblOutput.Text += "Loading demo file...<br>";
+            txtOutput.Text += "Loading demo file...<br>";
 
             txtInput.Text = string.Empty;
 
             foreach (var lineRead in File.ReadAllLines(demoPath))
                 txtInput.Text += lineRead + "\n";
 
-            lblOutput.Text += "Demo file loaded...<br>";
+            txtOutput.Text += "Demo file loaded...<br>";
         }
         catch (Exception)
         {
-            lblOutput.Text = "Error, something went wrong in TestLoadDemoFile()!";
+            txtOutput.Text = "Error, something went wrong in TestLoadDemoFile()!";
             return false;
         }
 
