@@ -6,8 +6,7 @@ using Microsoft.Ajax.Utilities;
 
 public partial class Knotty : System.Web.UI.Page
 {
-    private readonly string pythonPath = @"C:\Python27\python.exe";
-    private readonly string enginePath = @"C:\inetpub\wwwroot\knotty.exe";
+    private readonly string enginePath = @"C:\inetpub\wwwroot\engine.exe";
     private readonly string demoPath = @"C:\Python27\examples\demo.kn";
     private readonly string scriptsPath = @"C:\inetpub\wwwroot\Queries\";
 
@@ -28,7 +27,7 @@ public partial class Knotty : System.Web.UI.Page
         lblRecent.Text = string.Empty;
         foreach (var file in Directory.GetFiles(scriptsPath, "*.kn").Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
             if (!file.Name.Contains("simplified"))
-                lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
+                lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";        
     }
 
     protected void SubmitClick(object sender, EventArgs e)
@@ -67,7 +66,7 @@ public partial class Knotty : System.Web.UI.Page
 
         if (!TestLoadDemoFile())
             return;
-
+        
         lblOutput.Text += "Starting external Python process...<br><br>Results:<br>=========================<br>";
 
         var pInfo = new ProcessStartInfo
@@ -90,26 +89,19 @@ public partial class Knotty : System.Web.UI.Page
     {
         lblOutput.Text += "Locating files...<br>";
 
-        if (!File.Exists(pythonPath))
-        {
-            lblOutput.Text += "Error, cannot find Python executable in " + pythonPath;
-            return false;
-        }
-        lblOutput.Text += "Found Python executable... (1/3)<br>";
-
         if (!File.Exists(enginePath))
         {
             lblOutput.Text += "Error, cannot find Knotty engine in " + enginePath;
             return false;
         }
-        lblOutput.Text += "Found Knotty engine... (2/3)<br>";
+        lblOutput.Text += "Found Knotty engine... (1/2)<br>";
 
         if (!File.Exists(demoPath))
         {
             lblOutput.Text += "Error, cannot find Knotty demo file in " + enginePath;
             return false;
         }
-        lblOutput.Text += "Found Knotty demo file... (3/3)<br>All files found.<br>";
+        lblOutput.Text += "Found Knotty demo file... (2/2)<br>All files found.<br>";
 
         return true;
     }
