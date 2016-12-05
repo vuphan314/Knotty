@@ -11,7 +11,7 @@ notable:
   - `*.kn`
 - generated:
   - by `knotty`:
-    - `*.py` (auxiliary)
+    - `*.py` (intermediate)
     - `*.tex` (target)
   - by `latexmk`:
-    - `*.pdf`
+    - `pdfs/`
