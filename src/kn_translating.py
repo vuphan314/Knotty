@@ -20,6 +20,8 @@ def translate_recur(T: tuple) -> str:
         return T
     elif kn_parsing.is_leaf(T):
         return translate_leaf(T)
+    elif T[0] in bool_ops:
+        return translate_bool(T)
     elif T[0] == 'condTerm':
         a, boo, b = [translate_recur(t) for t in T[1:]]
         st = '(' + a + ' if ' + boo + ' else ' + b + ')'
@@ -33,6 +35,16 @@ def translate_recur(T: tuple) -> str:
                 if st in se:
                     return set_helper_dict[se](T)
             return recur_str(translate_recur, T)
+
+############################################################
+# boolean translation
+
+bool_ops = {'opOr': ' or ', 'opAnd': ' and '}
+
+def translate_bool(T):
+    op = bool_ops[T[0]]
+    a, b = map(translate_recur, T[1:])
+    return '(' + a + op + b + ')'
 
 ############################################################
 # leaf translation
@@ -184,7 +196,7 @@ fs = frozenset
 set_helper_dict = {
     fs({'actFunTerm', 'formFunTerm'}):
         translate_funTerm,
-    fs({'knVars', 'knTerms', 'actParams', 'formParams'}):
+    fs({'knUnknowns', 'knTerms', 'actParams', 'formParams'}):
         translate_collection,
     fs(kn_lib_attributes):
         translate_kn_lib

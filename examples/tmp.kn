@@ -1,1 +1,10 @@
-this is wrong
+function allTrue(
+    booleanFunction, currentIndex, baseIndex
+) return
+    currentIndex < baseIndex or
+    booleanFunction(currentIndex) and
+    allTrue(booleanFunction, currentIndex-1, baseIndex)
+
+function f(x) return x > 0
+
+check c := allTrue(f, 4, 1)

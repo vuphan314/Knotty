@@ -79,8 +79,8 @@ inner_term(T) ::= l_paren kn_term(T) r_paren
 kn_stats(knStats T) ::= kn_stat(T)
 kn_stats(knStats T cut_root(Ts)) ::= kn_stat(T) kn_stats(Ts)
 
-kn_unknowns(knVars T) ::= unknown_name(T)
-kn_unknowns(knVars T cut_root(Ts)) ::= unknown_name(T) kn_comma kn_unknowns(Ts)
+kn_unknowns(knUnknowns T) ::= unknown_name(T)
+kn_unknowns(knUnknowns T cut_root(Ts)) ::= unknown_name(T) kn_comma kn_unknowns(Ts)
 
 let_cls(letCls T) ::= let_cl(T)
 let_cls(letCls T cut_root(Ts)) ::= let_cl(T) let_cls(Ts)
