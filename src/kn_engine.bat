@@ -2,9 +2,9 @@
 goto starting
 
 :looping
-    set fil=companion
-    set fils=comment, companion, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X, syntax, tmp
-    for %%i in (%fils%) do (
+    set fil=poly_S
+    set fils=comment, companion, demo, empty, error, oneliner, poly_S, precedence, skein_T, skein_X, syntax, tmp
+    for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn
         set tex_file=!base!.tex

@@ -1,0 +1,19 @@
+function S(n, x)
+    return
+        1 if n = 0 else
+        x if n = 1 else
+        x * S(n - 1, x) - S(n - 2, x)
+
+unknown x
+
+check S2 :=
+    S(2, x)
+
+check S3 :=
+    S(3, x)
+
+check S4 :=
+    S(4, x)
+
+check S5 :=
+    S(5, x)

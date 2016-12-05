@@ -6,8 +6,8 @@ function T(n, x)
 
 unknown x
 
-check check1
-    := T(2, x)
+check check1 :=
+    T(2, x)
 
-check check2
-    := T(2, i * x)
+check check2 :=
+    T(2, i * x)
