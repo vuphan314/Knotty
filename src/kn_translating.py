@@ -69,7 +69,7 @@ def translate_collection(T: tuple) -> str:
 ############################################################
 # Knotty-function translation
 
-def translate_defStat(T):
+def translate_funStat(T):
     fun, ter = [translate_recur(t) for t in T[1:]]
     st = 'def ' + fun + ':\n' + ter
     return st
@@ -163,8 +163,8 @@ kn_lib_import = 'import ' + kn_lib_name
 # helper dictionaries
 
 str_helper_dict = {
-    'varStat': translate_varStat,
-    'defStat': translate_defStat,
+    'unknownStat': translate_varStat,
+    'funStat': translate_funStat,
     'letCl': translate_letCl,
     'retCl': translate_retCl,
     'checkStat': translate_checkStat

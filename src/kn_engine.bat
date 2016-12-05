@@ -1,18 +1,20 @@
+@echo off
 goto starting
 
 :looping
-    set fil=skein_T
-    set fils=comment, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X, syntax, tmp
+    set fil=companion
+    set fils=comment, companion, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X, syntax, tmp
     for %%i in (%fil%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn
         set tex_file=!base!.tex
 
         set kn_cmd=%kn_engine% -f -k !kn_file!
-        set tex_compile=latexmk -pdf -outdir=%examples_path% !tex_file!
+        set tex_compile=latexmk -pdf -outdir=%examples_path%out !tex_file!
 
         !kn_cmd!
-        REM !tex_compile! & cd %examples_path% & %tex_clean% & cd %src_path%
+        !tex_compile!
+        REM cd %examples_path% & %tex_clean% & cd %src_path%
 
         echo:
     )
@@ -34,7 +36,6 @@ goto starting
 
 :starting
     cls
-    @echo off
     setlocal enabledelayedexpansion
 
     set src_path=D:/repos/Knotty/src/
