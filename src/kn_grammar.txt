@@ -1,10 +1,13 @@
 kn_pro(T) ::= kn_stats(T)
 
 kn_stat(T) ::= unknown_stat(T)
+kn_stat(T) ::= const_stat(T)
 kn_stat(T) ::= fun_stat(T)
 kn_stat(T) ::= check_stat(T)
 
 unknown_stat(unknownStat T) ::= key_unknown kn_unknowns(T)
+
+const_stat(constStat T T2) ::= key_const const_name(T) colon_eq kn_term(T2)
 
 fun_stat(funStat T T2) ::= key_fun form_fun_term(T) fun_body(T2)
 
@@ -102,11 +105,13 @@ act_param(T) ::= kn_term(T)
 form_param(T) ::= kn_id(T)
 
 named_term(T) ::= unknown_name(T)
-named_term(T) ::= act_fun_term(T)
+named_term(T) ::= const_name(T)
 named_term(T) ::= form_param(T)
 named_term(T) ::= tmp_name(T)
+named_term(T) ::= act_fun_term(T)
 
 unknown_name(T) ::= kn_id(T)
+const_name(T) ::= kn_id(T)
 fun_name(T) ::= kn_id(T)
 tmp_name(T) ::= kn_id(T)
 check_name(T) ::= kn_id(T)

@@ -2,6 +2,8 @@ colon_eq = :=
 
 key_unknown = unknown
 
+key_const = constant
+
 key_fun = function
 key_let = let
 key_ret = return
