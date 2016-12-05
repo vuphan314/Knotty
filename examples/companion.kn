@@ -1,0 +1,101 @@
+unknown x, y
+
+constant c := 2 if true else 0 if false else x^2
+
+function f() return 0
+
+function g(x)
+    let fun := f
+    let y := 1 = 1
+    return y or fun()
+
+check ccc := c + 1
+
+/* ********************************* */
+
+check imaginaryUnitSquared :=
+    i^2
+        if true or not false else
+    1
+
+function c1() return 1
+
+check cc := c1()
+
+function f1(x) return x^-2
+
+function compose(fa, fb, x) return fa(fb(x))
+
+check cccc1a2 := compose(f1, f1, i)
+
+unknown x
+
+check f1x := f1(x)
+
+function f3(x, y)
+    let z1 := 1 / x
+    let z2 :=
+        x / y
+            if f1(x % y) = 5 / 2 else
+        1
+            if c1() = 3 else
+        z1
+    return
+        z1 % z2
+            if z1 = 4 else
+        3
+            if false else
+        i ^ 3
+
+unknown y, z
+
+check t1 :=
+    y % z + f3(y % z, -x + 2)
+        if true else
+    0
+/*
+
+link:
+http://www.math.ttu.edu/~rgelca/gs6.pdf
+
+paper:
+    THE NONCOMMUTATIVE A-IDEAL OF A (2, 2p + 1)-TORUS
+    KNOT DETERMINES ITS JONES POLYNOMIAL
+
+Section 2 (page 3)
+*/
+
+function T(n, x)
+    return
+        2 if n = 0 else
+        x if n = 1 else
+        x * T(n - 1, x) - T(n - 2, x)
+
+function skein(p, q)
+    let n := gcd(p, q)
+    let p2 := p / n
+    let q2 := q / n
+    let curve :=
+        SCC(p2, q2)
+    return T(n, curve)
+
+unknown t
+function productToSum(p, q, r, s)
+    let determinant := p*s - q*r
+    let sk1 := skein(p+r, q+s)
+    let sk2 := skein(p-r, q-s)
+    return t^determinant * sk1 + t^-determinant * sk2
+
+unknown x
+check T2x := T(2, x)
+
+check skein22 := skein(2, 2)
+
+function product2211()
+    return skein(2, 2) * skein(1, 1)
+function sum2211()
+    return productToSum(2, 2, 1, 1)
+
+check lhs := product2211()
+check rhs := sum2211()
+check lhsEqualRhs := product2211() = sum2211()

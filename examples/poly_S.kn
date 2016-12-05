@@ -1,19 +1,24 @@
-function S(n, x)
-    return
-        1 if n = 0 else
-        x if n = 1 else
-        x * S(n - 1, x) - S(n - 2, x)
+/*
+
+link:
+http://www.math.ttu.edu/~rgelca/gs6.pdf
+
+paper:
+    THE NONCOMMUTATIVE A-IDEAL OF A (2, 2p + 1)-TORUS
+    KNOT DETERMINES ITS JONES POLYNOMIAL
+
+Lemma 4.2 (page 9)
+
+*/
 
 unknown x
 
-check S2 :=
-    S(2, x)
+function S(n) return
+    1 if n = 0 else
+    x if n = 1 else
+    x * S(n - 1) - S(n - 2)
 
-check S3 :=
-    S(3, x)
-
-check S4 :=
-    S(4, x)
-
-check S5 :=
-    S(5, x)
+check S2 := S(2)
+check S3 := S(3)
+check S4 := S(4)
+check S5 := S(5)
