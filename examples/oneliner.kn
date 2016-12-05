@@ -1,1 +1,1 @@
-check ch print true if im ^ 2 = -1 else false
+check ch := true if i ^ 2 = -1 else false

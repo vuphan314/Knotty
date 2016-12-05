@@ -14,7 +14,7 @@ kn_lib.write_tex_file(check_list, r'../examples/comment.tex', 'w')
 
 syntax_tree = \
   ('kn_root',
-    ('varStat',
+    ('unknownStat',
       ('knVars',
         ('kn_id', 'x'),
         ('kn_id', 'y')
@@ -53,4 +53,4 @@ syntax_tree = \
     )
   )
 
-lexing_sequence = [('key_var', 'vary'), ('kn_id', 'x'), ('kn_comma', ','), ('kn_id', 'y'), ('key_check', 'check'), ('kn_id', 'ch'), ('key_pri', 'print'), ('l_paren', '('), ('kn_id', 'x'), ('op_plus', '+'), ('kn_id', 'y'), ('r_paren', ')'), ('op_exp', '^'), ('kn_num', '2'), ('op_eq', '='), ('kn_id', 'x'), ('op_exp', '^'), ('kn_num', '2'), ('op_plus', '+'), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'y'), ('op_plus', '+'), ('kn_id', 'y'), ('op_exp', '^'), ('kn_num', '2')]
+lexing_sequence = [('key_unknown', 'unknown'), ('kn_id', 'x'), ('kn_comma', ','), ('kn_id', 'y'), ('key_check', 'check'), ('kn_id', 'ch'), ('colon_eq', ':='), ('l_paren', '('), ('kn_id', 'x'), ('op_plus', '+'), ('kn_id', 'y'), ('r_paren', ')'), ('op_exp', '^'), ('kn_num', '2'), ('op_eq', '='), ('kn_id', 'x'), ('op_exp', '^'), ('kn_num', '2'), ('op_plus', '+'), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'y'), ('op_plus', '+'), ('kn_id', 'y'), ('op_exp', '^'), ('kn_num', '2')]

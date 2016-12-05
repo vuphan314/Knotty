@@ -11,9 +11,9 @@ Lemma 1 (page 4)
 
 */
 
-vary t, x, y
+unknown t, x, y
 
-define X(i)
+function X(i)
     return
         -t^2 - t^-2
             if i = 0 else
@@ -22,19 +22,19 @@ define X(i)
         t^2 *  y * X(i-1) - t^4 * X(i-2) - 2 * t^2 * x^2
 
 check X0
-    print X(0)
+    := X(0)
 
 check X1
-    print X(1)
+    := X(1)
 
 check X2
-    print X(2)
+    := X(2)
 
 check X3
-    print X(3)
+    := X(3)
 
 check X4
-    print X(4)
+    := X(4)
 
 check X5
-    print X(5)
+    := X(5)

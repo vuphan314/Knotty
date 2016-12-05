@@ -1,19 +1,19 @@
-define T(n, x)
+function T(n, x)
     return
         2 if n = 0 else
         x if n = 1 else
         x * T(n - 1, x) - T(n - 2, x)
 
-vary x
+unknown x
 
 check T2
-    print T(2, x)
+    := T(2, x)
 
 check T3
-    print T(3, x)
+    := T(3, x)
 
 check T4
-    print T(4, x)
+    := T(4, x)
 
 check T5
-    print T(5, x)
+    := T(5, x)

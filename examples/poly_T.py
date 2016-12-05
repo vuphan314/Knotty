@@ -26,7 +26,7 @@ kn_lib.write_tex_file(check_list, r'../examples/poly_T.tex', 'w')
 
 syntax_tree = \
   ('kn_root',
-    ('defStat',
+    ('funStat',
       ('formFunTerm',
         ('kn_id', 'T'),
         ('formParams',
@@ -34,7 +34,7 @@ syntax_tree = \
           ('kn_id', 'x')
         )
       ),
-      ('defBody',
+      ('funBody',
         ('retCl',
           ('condTerm',
             ('kn_num', '2'),
@@ -78,7 +78,7 @@ syntax_tree = \
         )
       )
     ),
-    ('varStat',
+    ('unknownStat',
       ('knVars',
         ('kn_id', 'x')
       )
@@ -125,4 +125,4 @@ syntax_tree = \
     )
   )
 
-lexing_sequence = [('key_def', 'define'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '2'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '1'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_var', 'vary'), ('kn_id', 'x'), ('key_check', 'check'), ('kn_id', 'T2'), ('key_pri', 'print'), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T3'), ('key_pri', 'print'), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '3'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T4'), ('key_pri', 'print'), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '4'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T5'), ('key_pri', 'print'), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '5'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')')]
+lexing_sequence = [('key_fun', 'function'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '2'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '1'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_unknown', 'unknown'), ('kn_id', 'x'), ('key_check', 'check'), ('kn_id', 'T2'), ('colon_eq', ':='), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T3'), ('colon_eq', ':='), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '3'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T4'), ('colon_eq', ':='), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '4'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T5'), ('colon_eq', ':='), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '5'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')')]

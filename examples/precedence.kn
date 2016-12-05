@@ -1,12 +1,12 @@
-define correctSign(x) return
+function correctSign(x) return
     1 if x > 0 else 0 if x = 0 else -1
 
-define incorrectSign(x) return
+function incorrectSign(x) return
     (1 if x > 0 else 0) if x = 0 else -1
 
 
-check correctResult print
+check correctResult :=
     correctSign(2)
 
-check incorrectResult print
+check incorrectResult :=
     incorrectSign(2)

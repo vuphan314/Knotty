@@ -4,20 +4,20 @@ goto starting
 :looping
     set fil=companion
     set fils=comment, companion, demo, empty, error, oneliner, poly_T, precedence, skein_T, skein_X, syntax, tmp
-    for %%i in (%fil%) do (
+    for %%i in (%fils%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn
         set tex_file=!base!.tex
 
         set kn_cmd=%kn_engine% -f -k !kn_file!
-        set tex_compile=latexmk -pdf -outdir=%examples_path%out !tex_file!
+        set tex_compile=latexmk -pdf -outdir=%examples_path% !tex_file!
 
         !kn_cmd!
         !tex_compile!
-        REM cd %examples_path% & %tex_clean% & cd %src_path%
 
         echo:
     )
+    REM cd %examples_path% & %tex_clean% & cd %src_path%
     goto ending
 
 :building
