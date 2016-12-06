@@ -130,9 +130,11 @@ class ArgvParser(argparse.ArgumentParser):
 ############################################################
 
 def printWelcome():
-    st = '''
-Knotty engine {}, built on {}
-'''.format(TAG_NAME, TAG_DATE)
+    st = (
+        '\n' 'Knotty engine {} ({})'.format(
+            TAG_NAME, TAG_DATE
+        ) + '\n'
+    )
     print(st)
 
 printWelcome()
