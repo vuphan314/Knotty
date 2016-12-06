@@ -15,7 +15,7 @@ kn_lib.write_tex_file(check_list, r'../examples/comment.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 'x'),
         ('kn_id', 'y')
       )

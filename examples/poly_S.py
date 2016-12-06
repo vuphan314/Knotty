@@ -41,7 +41,7 @@ kn_lib.write_tex_file(check_list, r'../examples/poly_S.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'allTrue'),
         ('formParams',
           ('kn_id', 'booleanFunction'),
@@ -57,13 +57,13 @@ syntax_tree = \
               ('kn_id', 'baseIndex')
             ),
             ('opAnd',
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'booleanFunction'),
                 ('actParams',
                   ('kn_id', 'currentIndex')
                 )
               ),
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'allTrue'),
                 ('actParams',
                   ('kn_id', 'booleanFunction'),
@@ -85,7 +85,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'S'),
         ('formParams',
           ('kn_id', 'n')
@@ -109,7 +109,7 @@ syntax_tree = \
                 ('bMinus',
                   ('opMult',
                     ('kn_id', 'x'),
-                    ('actFunTerm',
+                    ('actFunExpr',
                       ('kn_id', 'S'),
                       ('actParams',
                         ('bMinus',
@@ -119,7 +119,7 @@ syntax_tree = \
                       )
                     )
                   ),
-                  ('actFunTerm',
+                  ('actFunExpr',
                     ('kn_id', 'S'),
                     ('actParams',
                       ('bMinus',
@@ -136,7 +136,7 @@ syntax_tree = \
                 ('bMinus',
                   ('opMult',
                     ('kn_id', 'x'),
-                    ('actFunTerm',
+                    ('actFunExpr',
                       ('kn_id', 'S'),
                       ('actParams',
                         ('opPlus',
@@ -146,7 +146,7 @@ syntax_tree = \
                       )
                     )
                   ),
-                  ('actFunTerm',
+                  ('actFunExpr',
                     ('kn_id', 'S'),
                     ('actParams',
                       ('opPlus',
@@ -163,7 +163,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'equalityS'),
         ('formParams',
           ('kn_id', 'n')
@@ -172,7 +172,7 @@ syntax_tree = \
       ('funBody',
         ('retCl',
           ('opEq',
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'S'),
               ('actParams',
                 ('uMinus',
@@ -181,7 +181,7 @@ syntax_tree = \
               )
             ),
             ('uMinus',
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'S'),
                 ('actParams',
                   ('bMinus',
@@ -207,7 +207,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'verifiedEqualityS'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'allTrue'),
         ('actParams',
           ('kn_id', 'equalityS'),
@@ -217,7 +217,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'sumS'),
         ('formParams',
           ('kn_id', 'p'),
@@ -233,7 +233,7 @@ syntax_tree = \
               ('kn_num', '1')
             ),
             ('opPlus',
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'S'),
                 ('actParams',
                   ('bMinus',
@@ -251,7 +251,7 @@ syntax_tree = \
                   )
                 )
               ),
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'sumS'),
                 ('actParams',
                   ('kn_id', 'p'),
@@ -267,7 +267,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'sumEqualRatio'),
         ('formParams',
           ('kn_id', 'p')
@@ -276,7 +276,7 @@ syntax_tree = \
       ('funBody',
         ('retCl',
           ('opEq',
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'sumS'),
               ('actParams',
                 ('kn_id', 'p'),
@@ -288,7 +288,7 @@ syntax_tree = \
             ),
             ('opDiv',
               ('uMinus',
-                ('actFunTerm',
+                ('actFunExpr',
                   ('kn_id', 'S'),
                   ('actParams',
                     ('bMinus',
@@ -301,7 +301,7 @@ syntax_tree = \
                   )
                 )
               ),
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'S'),
                 ('actParams',
                   ('kn_num', '1')
@@ -322,7 +322,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'verifiedSumEqualRatio'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'allTrue'),
         ('actParams',
           ('kn_id', 'sumEqualRatio'),

@@ -5,7 +5,7 @@ check_list = []
 
 
 
-check_list.append(('imaginaryUnitSquared', kn_lib.sp_tex((kn_lib.opExp(kn_lib.i, 2) if kn_lib.opOr(kn_lib.true, kn_lib.opNot(kn_lib.false)) else 1))))
+check_list.append(('imaginaryUnitSquared', kn_lib.sp_tex((kn_lib.opExp(kn_lib.i, 2) if (kn_lib.true or kn_lib.opNot(kn_lib.false)) else 1))))
 
 def c1():
     return 1
@@ -50,7 +50,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'c1')
       ),
       ('funBody',
@@ -60,7 +60,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'f1'),
         ('formParams',
           ('kn_id', 'x')
@@ -78,13 +78,13 @@ syntax_tree = \
       )
     ),
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 'x')
       )
     ),
     ('checkStat',
       ('kn_id', 'f1x'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'f1'),
         ('actParams',
           ('kn_id', 'x')
@@ -92,7 +92,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'f3'),
         ('formParams',
           ('kn_id', 'x'),
@@ -116,7 +116,7 @@ syntax_tree = \
                 ('kn_id', 'y')
               ),
               ('opEq',
-                ('actFunTerm',
+                ('actFunExpr',
                   ('kn_id', 'f1'),
                   ('actParams',
                     ('opMod',
@@ -133,7 +133,7 @@ syntax_tree = \
               ('condTerm',
                 ('kn_num', '1'),
                 ('opEq',
-                  ('actFunTerm',
+                  ('actFunExpr',
                     ('kn_id', 'c1')
                   ),
                   ('kn_num', '3')
@@ -166,7 +166,7 @@ syntax_tree = \
       )
     ),
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 'y'),
         ('kn_id', 'z')
       )
@@ -179,7 +179,7 @@ syntax_tree = \
             ('kn_id', 'y'),
             ('kn_id', 'z')
           ),
-          ('actFunTerm',
+          ('actFunExpr',
             ('kn_id', 'f3'),
             ('actParams',
               ('opMod',

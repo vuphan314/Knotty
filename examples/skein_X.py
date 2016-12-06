@@ -30,7 +30,7 @@ kn_lib.write_tex_file(check_list, r'../examples/skein_X.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 't'),
         ('kn_id', 'x'),
         ('kn_id', 'y')
@@ -38,7 +38,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'X0'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'X'),
         ('actParams',
           ('kn_num', '0')
@@ -47,7 +47,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'X1'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'X'),
         ('actParams',
           ('kn_num', '1')
@@ -56,7 +56,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'X2'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'X'),
         ('actParams',
           ('kn_num', '2')
@@ -65,7 +65,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'X3'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'X'),
         ('actParams',
           ('kn_num', '3')
@@ -74,7 +74,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'X4'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'X'),
         ('actParams',
           ('kn_num', '4')
@@ -83,7 +83,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'X5'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'X'),
         ('actParams',
           ('kn_num', '5')

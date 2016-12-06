@@ -21,7 +21,7 @@ kn_lib.write_tex_file(check_list, r'../examples/demo.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'T'),
         ('formParams',
           ('kn_id', 'n'),
@@ -45,7 +45,7 @@ syntax_tree = \
               ('bMinus',
                 ('opMult',
                   ('kn_id', 'x'),
-                  ('actFunTerm',
+                  ('actFunExpr',
                     ('kn_id', 'T'),
                     ('actParams',
                       ('bMinus',
@@ -56,7 +56,7 @@ syntax_tree = \
                     )
                   )
                 ),
-                ('actFunTerm',
+                ('actFunExpr',
                   ('kn_id', 'T'),
                   ('actParams',
                     ('bMinus',
@@ -73,13 +73,13 @@ syntax_tree = \
       )
     ),
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 'x')
       )
     ),
     ('checkStat',
       ('kn_id', 'check1'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'T'),
         ('actParams',
           ('kn_num', '2'),
@@ -89,7 +89,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'check2'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'T'),
         ('actParams',
           ('kn_num', '2'),

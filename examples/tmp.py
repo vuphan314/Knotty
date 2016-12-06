@@ -19,7 +19,7 @@ kn_lib.write_tex_file(check_list, r'../examples/tmp.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'allTrue'),
         ('formParams',
           ('kn_id', 'booleanFunction'),
@@ -35,13 +35,13 @@ syntax_tree = \
               ('kn_id', 'baseIndex')
             ),
             ('opAnd',
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'booleanFunction'),
                 ('actParams',
                   ('kn_id', 'currentIndex')
                 )
               ),
-              ('actFunTerm',
+              ('actFunExpr',
                 ('kn_id', 'allTrue'),
                 ('actParams',
                   ('kn_id', 'booleanFunction'),
@@ -58,7 +58,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'f'),
         ('formParams',
           ('kn_id', 'x')
@@ -75,7 +75,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'c'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'allTrue'),
         ('actParams',
           ('kn_id', 'f'),

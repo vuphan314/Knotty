@@ -51,7 +51,7 @@ kn_lib.write_tex_file(check_list, r'../examples/skein_T.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'T'),
         ('formParams',
           ('kn_id', 'n'),
@@ -75,7 +75,7 @@ syntax_tree = \
               ('bMinus',
                 ('opMult',
                   ('kn_id', 'x'),
-                  ('actFunTerm',
+                  ('actFunExpr',
                     ('kn_id', 'T'),
                     ('actParams',
                       ('bMinus',
@@ -86,7 +86,7 @@ syntax_tree = \
                     )
                   )
                 ),
-                ('actFunTerm',
+                ('actFunExpr',
                   ('kn_id', 'T'),
                   ('actParams',
                     ('bMinus',
@@ -103,7 +103,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'skein'),
         ('formParams',
           ('kn_id', 'p'),
@@ -114,7 +114,7 @@ syntax_tree = \
         ('letCls',
           ('letCl',
             ('kn_id', 'n'),
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'gcd'),
               ('actParams',
                 ('kn_id', 'p'),
@@ -138,7 +138,7 @@ syntax_tree = \
           ),
           ('letCl',
             ('kn_id', 'curve'),
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'SCC'),
               ('actParams',
                 ('kn_id', 'p2'),
@@ -148,7 +148,7 @@ syntax_tree = \
           )
         ),
         ('retCl',
-          ('actFunTerm',
+          ('actFunExpr',
             ('kn_id', 'T'),
             ('actParams',
               ('kn_id', 'n'),
@@ -159,12 +159,12 @@ syntax_tree = \
       )
     ),
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 't')
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'productToSum'),
         ('formParams',
           ('kn_id', 'p'),
@@ -190,7 +190,7 @@ syntax_tree = \
           ),
           ('letCl',
             ('kn_id', 'sk1'),
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'skein'),
               ('actParams',
                 ('opPlus',
@@ -206,7 +206,7 @@ syntax_tree = \
           ),
           ('letCl',
             ('kn_id', 'sk2'),
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'skein'),
               ('actParams',
                 ('bMinus',
@@ -244,13 +244,13 @@ syntax_tree = \
       )
     ),
     ('unknownStat',
-      ('knVars',
+      ('knUnknowns',
         ('kn_id', 'x')
       )
     ),
     ('checkStat',
       ('kn_id', 'T2x'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'T'),
         ('actParams',
           ('kn_num', '2'),
@@ -260,7 +260,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'skein22'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'skein'),
         ('actParams',
           ('kn_num', '2'),
@@ -269,20 +269,20 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'product2211')
       ),
       ('funBody',
         ('retCl',
           ('opMult',
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'skein'),
               ('actParams',
                 ('kn_num', '2'),
                 ('kn_num', '2')
               )
             ),
-            ('actFunTerm',
+            ('actFunExpr',
               ('kn_id', 'skein'),
               ('actParams',
                 ('kn_num', '1'),
@@ -294,12 +294,12 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'sum2211')
       ),
       ('funBody',
         ('retCl',
-          ('actFunTerm',
+          ('actFunExpr',
             ('kn_id', 'productToSum'),
             ('actParams',
               ('kn_num', '2'),
@@ -313,23 +313,23 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'lhs'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'product2211')
       )
     ),
     ('checkStat',
       ('kn_id', 'rhs'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'sum2211')
       )
     ),
     ('checkStat',
       ('kn_id', 'lhsEqualRhs'),
       ('opEq',
-        ('actFunTerm',
+        ('actFunExpr',
           ('kn_id', 'product2211')
         ),
-        ('actFunTerm',
+        ('actFunExpr',
           ('kn_id', 'sum2211')
         )
       )

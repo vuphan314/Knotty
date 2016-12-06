@@ -22,7 +22,7 @@ kn_lib.write_tex_file(check_list, r'../examples/precedence.tex', 'w')
 syntax_tree = \
   ('kn_root',
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'correctSign'),
         ('formParams',
           ('kn_id', 'x')
@@ -51,7 +51,7 @@ syntax_tree = \
       )
     ),
     ('funStat',
-      ('formFunTerm',
+      ('formFunExpr',
         ('kn_id', 'incorrectSign'),
         ('formParams',
           ('kn_id', 'x')
@@ -81,7 +81,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'correctResult'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'correctSign'),
         ('actParams',
           ('kn_num', '2')
@@ -90,7 +90,7 @@ syntax_tree = \
     ),
     ('checkStat',
       ('kn_id', 'incorrectResult'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'incorrectSign'),
         ('actParams',
           ('kn_num', '2')
