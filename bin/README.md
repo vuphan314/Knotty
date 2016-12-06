@@ -66,9 +66,7 @@ Windows/Ubuntu standalone binary:
   ```
   - optional tex-to-pdf compilation:
     ```
-    latexmk -pdf demo
-
-    latexmk -c
+    latexmk -outdir=pdfs -pdf demo
 
     ```
 

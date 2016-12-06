@@ -40,7 +40,7 @@ part of Knotty system
   - `kn_translating`: translating module
 
 ## BINARY
-- pre-built for Windows/Ubuntu: `../bin/`
+- prebuilt for Windows/Ubuntu: `../bin/`
 - to build from source for another OS:
   ```
   python3 pyinstaller/pyinstaller.py knotty_man.spec
@@ -48,4 +48,4 @@ part of Knotty system
   ```
   - if you have successfully built a binary for your OS,
     then please contribute the binary with a pull request
-    - we appriciate your help
+    - we appreciate your help

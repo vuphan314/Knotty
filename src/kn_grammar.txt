@@ -1,4 +1,4 @@
-kn_pro(T) ::= kn_stats(T)
+kn_prog(T) ::= kn_stats(T)
 
 kn_stat(T) ::= unknown_stat(T)
 kn_stat(T) ::= const_stat(T)
@@ -9,7 +9,7 @@ unknown_stat(unknownStat T) ::= key_unknown kn_unknowns(T)
 
 const_stat(constStat T T2) ::= key_const const_name(T) colon_eq kn_term(T2)
 
-fun_stat(funStat T T2) ::= key_fun form_fun_term(T) fun_body(T2)
+fun_stat(funStat T T2) ::= key_fun form_fun_expr(T) fun_body(T2)
 
 fun_body(funBody T) ::= ret_cl(T)
 fun_body(funBody T T2) ::= let_cls(T) ret_cl(T2)
@@ -94,11 +94,11 @@ act_params(actParams T cut_root(Ts)) ::= act_param(T) kn_comma act_params(Ts)
 form_params(formParams T) ::= form_param(T)
 form_params(formParams T cut_root(Ts)) ::= form_param(T) kn_comma form_params(Ts)
 
-act_fun_term(actFunTerm T) ::= fun_name(T) l_paren r_paren
-act_fun_term(actFunTerm T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
+act_fun_expr(actFunExpr T) ::= fun_name(T) l_paren r_paren
+act_fun_expr(actFunExpr T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
 
-form_fun_term(formFunTerm T) ::= fun_name(T) l_paren r_paren
-form_fun_term(formFunTerm T T2) ::= fun_name(T) l_paren form_params(T2) r_paren
+form_fun_expr(formFunExpr T) ::= fun_name(T) l_paren r_paren
+form_fun_expr(formFunExpr T T2) ::= fun_name(T) l_paren form_params(T2) r_paren
 
 act_param(T) ::= kn_term(T)
 
@@ -108,7 +108,8 @@ named_term(T) ::= unknown_name(T)
 named_term(T) ::= const_name(T)
 named_term(T) ::= form_param(T)
 named_term(T) ::= tmp_name(T)
-named_term(T) ::= act_fun_term(T)
+named_term(T) ::= act_fun_expr(T)
+named_term(T) ::= fun_name(T)
 
 unknown_name(T) ::= kn_id(T)
 const_name(T) ::= kn_id(T)

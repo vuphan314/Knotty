@@ -10,7 +10,7 @@ goto starting
         set tex_file=!base!.tex
 
         set kn_cmd=%kn_engine% -f -k !kn_file!
-        set tex_compile=latexmk -pdf -outdir=%examples_path%pdfs !tex_file!
+        set tex_compile=latexmk -outdir=%examples_path%pdfs -pdf !tex_file!
 
         !kn_cmd!
         !tex_compile!

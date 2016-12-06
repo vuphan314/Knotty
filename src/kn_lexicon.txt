@@ -21,20 +21,16 @@ op_not = not
 
 op_eq = =
 op_uneq = /=
-
 op_gr = >
 op_less = <
-
 op_gr_eq = >=
 op_less_eq = <=
 
 op_plus = \+
 op_minus = -
-
 op_mult = \*
 op_div = /
 op_mod = %
-
 op_exp = \^
 
 kn_comma = ,

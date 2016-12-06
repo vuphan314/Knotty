@@ -94,7 +94,7 @@ def translate_funStat(T):
     st = 'def ' + fun + ':' '\n' + ter
     return st
 
-def translate_funTerm(T):
+def translate_funExpr(T):
     return apply_recur(T[1], list(T[2:]))
 
 py_tab = ' ' * 4
@@ -194,8 +194,8 @@ str_helper_dict = {
 fs = frozenset
 
 set_helper_dict = {
-    fs({'actFunTerm', 'formFunTerm'}):
-        translate_funTerm,
+    fs({'actFunExpr', 'formFunExpr'}):
+        translate_funExpr,
     fs({'knUnknowns', 'knTerms', 'actParams', 'formParams'}):
         translate_collection,
     fs(kn_lib_attributes):
