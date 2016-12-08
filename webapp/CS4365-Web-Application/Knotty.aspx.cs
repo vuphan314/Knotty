@@ -27,6 +27,7 @@ public partial class Knotty : System.Web.UI.Page
 
         lblRecent.Text = string.Empty;
         lblRecentDl.Text = string.Empty;
+
         foreach (
             var file in
                 Directory.GetFiles(scriptsPath, "*.kn")
@@ -35,8 +36,18 @@ public partial class Knotty : System.Web.UI.Page
                     .Take(30))
         {
             lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
-            lblRecentDl.Text +=
-                $"<a href=\"Queries/{file.Name.Replace(".kn", ".tex")}\">.tex</a> | <a href=\"Queries/{file.Name.Replace(".kn", ".zip")}\">.kn + .tex</a><br>";
+            var tex = file.Name.Replace(".kn", ".tex");
+            var zip = file.Name.Replace(".kn", ".zip");
+            if (File.Exists(scriptsPath + tex))
+            {
+                lblRecentDl.Text += $"<a href=\"Queries/{tex}\">.tex</a>";
+                if (File.Exists(scriptsPath + zip))
+                    lblRecentDl.Text += $" | <a href=\"Queries/{zip}\">.kn + .tex</a><br>";
+                else
+                    lblRecentDl.Text += "<br>";
+            }
+            else if (File.Exists(scriptsPath + zip))
+                lblRecentDl.Text += $"<a href=\"Queries/{zip}\">.kn + .tex</a><br>";
         }
 
         if (IsPostBack)
