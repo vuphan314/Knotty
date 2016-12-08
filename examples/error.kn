@@ -7,25 +7,25 @@
     preprocessing error:
         nonspace before 1st statement keyword
 */
-/* 0 vary x */
+/* 0 unknown x */
 
 /*
     lexical error:
         invalid lexeme
 */
-/* vary $ */
+/* unknown $ */
 
 /*
     syntactic error:
         cannot parse
 */
-/* vary vary */
+/* unknown unknown */
 
 /*
     semantic error:
         invalid computation
 */
-/* check c print 1/0 */
+/* check c := 1/0 */
 
 /*
     overwrite error:

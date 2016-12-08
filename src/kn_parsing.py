@@ -137,7 +137,7 @@ class KnPreprocessor:
         """
 
         stmt_keywords = re.compile(
-            r'\b(vary|define|check)\b'
+            r'\b(unknown|constant|function|check)\b'
         )
         st = self.kn_str # immutable str
         first_stmt = stmt_keywords.search(st)

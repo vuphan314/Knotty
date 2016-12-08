@@ -1,13 +1,13 @@
-define T(n, x)
+function T(n, x)
     return
         2 if n = 0 else
         x if n = 1 else
         x * T(n - 1, x) - T(n - 2, x)
 
-vary x
+unknown x
 
-check check1
-    print T(2, x)
+check check1 :=
+    T(2, x)
 
-check check2
-    print T(2, im * x)
+check check2 :=
+    T(2, i * x)

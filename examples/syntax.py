@@ -5,7 +5,7 @@ check_list = []
 
 
 
-check_list.append(('imaginaryUnitSquared', kn_lib.sp_tex((kn_lib.opExp(kn_lib.im, 2) if kn_lib.opOr(kn_lib.true, kn_lib.opNot(kn_lib.false)) else 1))))
+check_list.append(('imaginaryUnitSquared', kn_lib.sp_tex((kn_lib.opExp(kn_lib.i, 2) if (kn_lib.true or kn_lib.opNot(kn_lib.false)) else 1))))
 
 def c1():
     return 1
@@ -21,7 +21,7 @@ check_list.append(('f1x', kn_lib.sp_tex(f1(x))))
 def f3(x, y):
     z1 = kn_lib.opDiv(1, x)
     z2 = (kn_lib.opDiv(x, y) if kn_lib.opEq(f1(kn_lib.opMod(x, y)), kn_lib.opDiv(5, 2)) else (1 if kn_lib.opEq(c1(), 3) else z1))
-    return (kn_lib.opMod(z1, z2) if kn_lib.opEq(z1, 4) else (3 if kn_lib.false else kn_lib.opExp(kn_lib.im, 3)))
+    return (kn_lib.opMod(z1, z2) if kn_lib.opEq(z1, 4) else (3 if kn_lib.false else kn_lib.opExp(kn_lib.i, 3)))
 
 y, z = kn_lib.make_vars('y, z')
 
@@ -37,7 +37,7 @@ syntax_tree = \
       ('kn_id', 'imaginaryUnitSquared'),
       ('condTerm',
         ('opExp',
-          ('kn_num', 'im'),
+          ('kn_num', 'i'),
           ('kn_num', '2')
         ),
         ('opOr',
@@ -49,24 +49,24 @@ syntax_tree = \
         ('kn_num', '1')
       )
     ),
-    ('defStat',
-      ('formFunTerm',
+    ('funStat',
+      ('formFunExpr',
         ('kn_id', 'c1')
       ),
-      ('defBody',
+      ('funBody',
         ('retCl',
           ('kn_num', '1')
         )
       )
     ),
-    ('defStat',
-      ('formFunTerm',
+    ('funStat',
+      ('formFunExpr',
         ('kn_id', 'f1'),
         ('formParams',
           ('kn_id', 'x')
         )
       ),
-      ('defBody',
+      ('funBody',
         ('retCl',
           ('opExp',
             ('kn_id', 'x'),
@@ -77,29 +77,29 @@ syntax_tree = \
         )
       )
     ),
-    ('varStat',
-      ('knVars',
+    ('unknownStat',
+      ('knUnknowns',
         ('kn_id', 'x')
       )
     ),
     ('checkStat',
       ('kn_id', 'f1x'),
-      ('actFunTerm',
+      ('actFunExpr',
         ('kn_id', 'f1'),
         ('actParams',
           ('kn_id', 'x')
         )
       )
     ),
-    ('defStat',
-      ('formFunTerm',
+    ('funStat',
+      ('formFunExpr',
         ('kn_id', 'f3'),
         ('formParams',
           ('kn_id', 'x'),
           ('kn_id', 'y')
         )
       ),
-      ('defBody',
+      ('funBody',
         ('letCls',
           ('letCl',
             ('kn_id', 'z1'),
@@ -116,7 +116,7 @@ syntax_tree = \
                 ('kn_id', 'y')
               ),
               ('opEq',
-                ('actFunTerm',
+                ('actFunExpr',
                   ('kn_id', 'f1'),
                   ('actParams',
                     ('opMod',
@@ -133,7 +133,7 @@ syntax_tree = \
               ('condTerm',
                 ('kn_num', '1'),
                 ('opEq',
-                  ('actFunTerm',
+                  ('actFunExpr',
                     ('kn_id', 'c1')
                   ),
                   ('kn_num', '3')
@@ -157,7 +157,7 @@ syntax_tree = \
               ('kn_num', '3'),
               ('key_truth', 'false'),
               ('opExp',
-                ('kn_num', 'im'),
+                ('kn_num', 'i'),
                 ('kn_num', '3')
               )
             )
@@ -165,8 +165,8 @@ syntax_tree = \
         )
       )
     ),
-    ('varStat',
-      ('knVars',
+    ('unknownStat',
+      ('knUnknowns',
         ('kn_id', 'y'),
         ('kn_id', 'z')
       )
@@ -179,7 +179,7 @@ syntax_tree = \
             ('kn_id', 'y'),
             ('kn_id', 'z')
           ),
-          ('actFunTerm',
+          ('actFunExpr',
             ('kn_id', 'f3'),
             ('actParams',
               ('opMod',
@@ -201,4 +201,4 @@ syntax_tree = \
     )
   )
 
-lexing_sequence = [('key_check', 'check'), ('kn_id', 'imaginaryUnitSquared'), ('key_pri', 'print'), ('kn_num', 'im'), ('op_exp', '^'), ('kn_num', '2'), ('key_if', 'if'), ('key_truth', 'true'), ('op_or', 'or'), ('op_not', 'not'), ('key_truth', 'false'), ('key_else', 'else'), ('kn_num', '1'), ('key_def', 'define'), ('kn_id', 'c1'), ('l_paren', '('), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '1'), ('key_def', 'define'), ('kn_id', 'f1'), ('l_paren', '('), ('kn_id', 'x'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'x'), ('op_exp', '^'), ('op_minus', '-'), ('kn_num', '2'), ('key_var', 'vary'), ('kn_id', 'x'), ('key_check', 'check'), ('kn_id', 'f1x'), ('key_pri', 'print'), ('kn_id', 'f1'), ('l_paren', '('), ('kn_id', 'x'), ('r_paren', ')'), ('key_def', 'define'), ('kn_id', 'f3'), ('l_paren', '('), ('kn_id', 'x'), ('kn_comma', ','), ('kn_id', 'y'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'z1'), ('key_be', 'be'), ('kn_num', '1'), ('op_div', '/'), ('kn_id', 'x'), ('key_let', 'let'), ('kn_id', 'z2'), ('key_be', 'be'), ('kn_id', 'x'), ('op_div', '/'), ('kn_id', 'y'), ('key_if', 'if'), ('kn_id', 'f1'), ('l_paren', '('), ('kn_id', 'x'), ('op_mod', '%'), ('kn_id', 'y'), ('r_paren', ')'), ('op_eq', '='), ('kn_num', '5'), ('op_div', '/'), ('kn_num', '2'), ('key_else', 'else'), ('kn_num', '1'), ('key_if', 'if'), ('kn_id', 'c1'), ('l_paren', '('), ('r_paren', ')'), ('op_eq', '='), ('kn_num', '3'), ('key_else', 'else'), ('kn_id', 'z1'), ('key_ret', 'return'), ('kn_id', 'z1'), ('op_mod', '%'), ('kn_id', 'z2'), ('key_if', 'if'), ('kn_id', 'z1'), ('op_eq', '='), ('kn_num', '4'), ('key_else', 'else'), ('kn_num', '3'), ('key_if', 'if'), ('key_truth', 'false'), ('key_else', 'else'), ('kn_num', 'im'), ('op_exp', '^'), ('kn_num', '3'), ('key_var', 'vary'), ('kn_id', 'y'), ('kn_comma', ','), ('kn_id', 'z'), ('key_check', 'check'), ('kn_id', 't1'), ('key_pri', 'print'), ('kn_id', 'y'), ('op_mod', '%'), ('kn_id', 'z'), ('op_plus', '+'), ('kn_id', 'f3'), ('l_paren', '('), ('kn_id', 'y'), ('op_mod', '%'), ('kn_id', 'z'), ('kn_comma', ','), ('op_minus', '-'), ('kn_id', 'x'), ('op_plus', '+'), ('kn_num', '2'), ('r_paren', ')'), ('key_if', 'if'), ('key_truth', 'true'), ('key_else', 'else'), ('kn_num', '0')]
+lexing_sequence = [('key_check', 'check'), ('kn_id', 'imaginaryUnitSquared'), ('colon_eq', ':='), ('kn_num', 'i'), ('op_exp', '^'), ('kn_num', '2'), ('key_if', 'if'), ('key_truth', 'true'), ('op_or', 'or'), ('op_not', 'not'), ('key_truth', 'false'), ('key_else', 'else'), ('kn_num', '1'), ('key_fun', 'function'), ('kn_id', 'c1'), ('l_paren', '('), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '1'), ('key_fun', 'function'), ('kn_id', 'f1'), ('l_paren', '('), ('kn_id', 'x'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'x'), ('op_exp', '^'), ('op_minus', '-'), ('kn_num', '2'), ('key_unknown', 'unknown'), ('kn_id', 'x'), ('key_check', 'check'), ('kn_id', 'f1x'), ('colon_eq', ':='), ('kn_id', 'f1'), ('l_paren', '('), ('kn_id', 'x'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'f3'), ('l_paren', '('), ('kn_id', 'x'), ('kn_comma', ','), ('kn_id', 'y'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'z1'), ('colon_eq', ':='), ('kn_num', '1'), ('op_div', '/'), ('kn_id', 'x'), ('key_let', 'let'), ('kn_id', 'z2'), ('colon_eq', ':='), ('kn_id', 'x'), ('op_div', '/'), ('kn_id', 'y'), ('key_if', 'if'), ('kn_id', 'f1'), ('l_paren', '('), ('kn_id', 'x'), ('op_mod', '%'), ('kn_id', 'y'), ('r_paren', ')'), ('op_eq', '='), ('kn_num', '5'), ('op_div', '/'), ('kn_num', '2'), ('key_else', 'else'), ('kn_num', '1'), ('key_if', 'if'), ('kn_id', 'c1'), ('l_paren', '('), ('r_paren', ')'), ('op_eq', '='), ('kn_num', '3'), ('key_else', 'else'), ('kn_id', 'z1'), ('key_ret', 'return'), ('kn_id', 'z1'), ('op_mod', '%'), ('kn_id', 'z2'), ('key_if', 'if'), ('kn_id', 'z1'), ('op_eq', '='), ('kn_num', '4'), ('key_else', 'else'), ('kn_num', '3'), ('key_if', 'if'), ('key_truth', 'false'), ('key_else', 'else'), ('kn_num', 'i'), ('op_exp', '^'), ('kn_num', '3'), ('key_unknown', 'unknown'), ('kn_id', 'y'), ('kn_comma', ','), ('kn_id', 'z'), ('key_check', 'check'), ('kn_id', 't1'), ('colon_eq', ':='), ('kn_id', 'y'), ('op_mod', '%'), ('kn_id', 'z'), ('op_plus', '+'), ('kn_id', 'f3'), ('l_paren', '('), ('kn_id', 'y'), ('op_mod', '%'), ('kn_id', 'z'), ('kn_comma', ','), ('op_minus', '-'), ('kn_id', 'x'), ('op_plus', '+'), ('kn_num', '2'), ('r_paren', ')'), ('key_if', 'if'), ('key_truth', 'true'), ('key_else', 'else'), ('kn_num', '0')]

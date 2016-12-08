@@ -2,8 +2,8 @@
 
 ############################################################
 
-TAG_NAME = 'v1.5.0'
-TAG_DATE = '2016-11-14'
+TAG_NAME = 'v2.0.0a'
+TAG_DATE = '2016-12-04'
 
 ############################################################
 
@@ -130,9 +130,11 @@ class ArgvParser(argparse.ArgumentParser):
 ############################################################
 
 def printWelcome():
-    st = '''
-Knotty engine {}, built on {}
-'''.format(TAG_NAME, TAG_DATE)
+    st = (
+        '\n' 'Knotty engine {} ({})'.format(
+            TAG_NAME, TAG_DATE
+        ) + '\n'
+    )
     print(st)
 
 printWelcome()
@@ -155,7 +157,9 @@ def main() -> None:
         write_output_files(kn_path, force, keep)
 
     time_taken = time.time() - time_start
-    print('\n' 'Time taken: {} seconds.\n'.format(time_taken))
+    print(
+        '\n' 'Time taken: {} seconds.\n'.format(time_taken)
+    )
 
 if __name__ == '__main__':
     main()

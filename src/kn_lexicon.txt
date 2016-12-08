@@ -1,14 +1,12 @@
-key_var = vary
+key_unknown = unknown
 
-key_def = define
+key_const = constant
 
+key_fun = function
 key_let = let
-key_be = be
-
 key_ret = return
 
 key_check = check
-key_pri = print
 
 key_if = if
 key_else = else
@@ -19,22 +17,20 @@ op_or = or
 op_and = and
 op_not = not
 
+colon_eq = :=
+
 op_eq = =
 op_uneq = /=
-
 op_gr = >
 op_less = <
-
 op_gr_eq = >=
 op_less_eq = <=
 
 op_plus = \+
 op_minus = -
-
 op_mult = \*
 op_div = /
 op_mod = %
-
 op_exp = \^
 
 kn_comma = ,
@@ -42,7 +38,7 @@ kn_comma = ,
 l_paren = \(
 r_paren = \)
 
-kn_num = im|\d+
+kn_num = i|\d+
 kn_id = [a-zA-Z][a-zA-Z\d]*
 
 spaces = \s+

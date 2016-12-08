@@ -5,10 +5,10 @@ multiple lines.
 
 (comment-end sequence) */
 
-vary x, y
+unknown x, y
 
-check ch print
+check ch :=
     (x + y)^2 =
-        x^2 /* a comment can be placed anywhere */ +
+        x^2 /* a comment can := placed anywhere */ +
         2*x*y +
         y^2
