@@ -138,4 +138,9 @@ public partial class Knotty : System.Web.UI.Page
         File.WriteAllText(file, txtInput.Text);
         return file;
     }
+
+    protected void Clear_OnClick(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.Url.GetLeftPart(UriPartial.Path));
+    }
 }

@@ -44,7 +44,11 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server" HorizontalAlign="Right"><asp:Button runat="server" Text="Submit" OnClick="SubmitClick"/><!-- &nbsp;&nbsp;<asp:Button runat="server" Text="Run Tests" OnClick="TestClick"/> --></asp:TableCell>
+                <asp:TableCell runat="server" HorizontalAlign="Right">
+                    <asp:Button runat="server" Text="Submit" OnClick="SubmitClick"/>
+                    <!-- &nbsp;&nbsp;<asp:Button runat="server" Text="Run Tests" OnClick="TestClick"/> -->
+                    <asp:Button runat="server" Text="Clear" OnClick="Clear_OnClick"/>
+                </asp:TableCell>
                 <asp:TableCell runat="server"></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
