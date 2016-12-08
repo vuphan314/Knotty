@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using Microsoft.Ajax.Utilities;
 
@@ -25,6 +26,7 @@ public partial class Knotty : System.Web.UI.Page
         }
 
         lblRecent.Text = string.Empty;
+        lblRecentDl.Text = string.Empty;
         foreach (
             var file in
                 Directory.GetFiles(scriptsPath, "*.kn")
@@ -43,12 +45,13 @@ public partial class Knotty : System.Web.UI.Page
 
     protected void SubmitClick(object sender, EventArgs e)
     {
-        var file = SaveInputToFile();
+        var knFile = SaveInputToFile();
+        var texFile = knFile.Replace(".kn", ".tex");
 
         var pInfo = new ProcessStartInfo
         {
             FileName = enginePath,
-            Arguments = file
+            Arguments = knFile
         };
 
         var p = new Process { StartInfo = pInfo };
@@ -56,16 +59,22 @@ public partial class Knotty : System.Web.UI.Page
         p.Start();
         p.WaitForExit();
 
+        using (ZipArchive zip = ZipFile.Open(knFile.Replace(".kn", ".zip"), ZipArchiveMode.Create))
+        {
+            zip.CreateEntryFromFile(knFile, knFile, CompressionLevel.Fastest);
+            zip.CreateEntryFromFile(texFile, texFile, CompressionLevel.Fastest);
+        }
+
         txtOutput.Text = string.Empty;
         try
         {
-            txtOutput.Text = File.ReadAllText(file.Replace(".kn", ".tex"));
+            txtOutput.Text = File.ReadAllText(texFile);
             //foreach (var lineRead in File.ReadAllLines(file.Replace(".kn", ".tex")))
             //    txtOutput.Text += lineRead + "<br>";
         }
         catch
         {
-            txtOutput.Text = "Error! Cannot find file '" + file.Replace(".kn", ".tex").Substring(file.LastIndexOf('\\') + 1) + "'";
+            txtOutput.Text = "Error! Cannot find file '" + knFile.Replace(".kn", ".tex").Substring(knFile.LastIndexOf('\\') + 1) + "'";
         }
     }
 

@@ -11,13 +11,13 @@
     <div>
         <asp:Table runat="server" Width="75%" Height="90%" HorizontalAlign="Center" Font-Names="Calibri" CellSpacing="5">
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Font-Size="24" HorizontalAlign="Center" ColumnSpan="3">Knotty</asp:TableCell>
+                <asp:TableCell runat="server" Font-Size="24" HorizontalAlign="Center" ColumnSpan="4">Knotty</asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Font-Size="18" HorizontalAlign="Center" ColumnSpan="3">a computer algebra system designed for knot theory</asp:TableCell>
+                <asp:TableCell runat="server" Font-Size="18" HorizontalAlign="Center" ColumnSpan="4">a computer algebra system designed for knot theory</asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Font-Size="12" HorizontalAlign="Center" ColumnSpan="3">
+                <asp:TableCell runat="server" Font-Size="12" HorizontalAlign="Center" ColumnSpan="4">
                     <a href="https://github.com/vuphan314/Knotty">github</a> | Author: <a href="https://github.com/vuphan314">Vu Phan</a> | Website: <a href="https://github.com/zgrummons">Zachariah Grummons</a>
                 </asp:TableCell>
             </asp:TableRow>
