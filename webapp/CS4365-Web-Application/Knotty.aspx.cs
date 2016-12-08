@@ -25,10 +25,18 @@ public partial class Knotty : System.Web.UI.Page
         }
 
         lblRecent.Text = string.Empty;
-        foreach (var file in Directory.GetFiles(scriptsPath, "*.kn").Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(30))
-            if (!file.Name.Contains("simplified"))
-                lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";       
-        
+        foreach (
+            var file in
+                Directory.GetFiles(scriptsPath, "*.kn")
+                    .Select(x => new FileInfo(x))
+                    .OrderByDescending(x => x.LastWriteTime)
+                    .Take(30))
+        {
+            lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
+            lblRecentDl.Text +=
+                $"<a href=\"Queries{file.Name.Replace(".kn", ".tex")}\">.tex</a> | <a href=\"Queries{file.Name.Replace(".kn", ".zip")}\">.kn + .tex</a><br>";
+        }
+
         if (IsPostBack)
             txtOutput.Focus(); 
     }
