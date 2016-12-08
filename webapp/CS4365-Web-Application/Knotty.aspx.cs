@@ -134,7 +134,7 @@ public partial class Knotty : System.Web.UI.Page
 
     private string SaveInputToFile()
     {
-        var file = scriptsPath + (!txtName.Text.IsNullOrWhiteSpace() ? txtName.Text + '_' : string.Empty) + DateTime.UtcNow.ToFileTime() + ".kn";
+        var file = scriptsPath + (!txtName.Text.IsNullOrWhiteSpace() ? txtName.Text.Replace(' ','_') + '_' : string.Empty) + DateTime.UtcNow.ToFileTime() + ".kn";
         File.WriteAllText(file, txtInput.Text);
         return file;
     }
