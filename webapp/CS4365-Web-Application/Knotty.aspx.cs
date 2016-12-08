@@ -34,7 +34,7 @@ public partial class Knotty : System.Web.UI.Page
         {
             lblRecent.Text += $"<a href=\"?scriptId={file.Name}\">{file.Name}</a><br>";
             lblRecentDl.Text +=
-                $"<a href=\"Queries{file.Name.Replace(".kn", ".tex")}\">.tex</a> | <a href=\"Queries{file.Name.Replace(".kn", ".zip")}\">.kn + .tex</a><br>";
+                $"<a href=\"Queries/{file.Name.Replace(".kn", ".tex")}\">.tex</a> | <a href=\"Queries/{file.Name.Replace(".kn", ".zip")}\">.kn + .tex</a><br>";
         }
 
         if (IsPostBack)

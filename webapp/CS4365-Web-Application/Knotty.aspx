@@ -28,16 +28,16 @@
                 <asp:TableCell runat="server">Download:</asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
-                <asp:TableCell runat="server" Width="40%" Height="5%" VerticalAlign="Top">
+                <asp:TableCell runat="server" Width="35%" Height="5%" VerticalAlign="Top">
                     <asp:TextBox ID="txtName" Width="90%" runat="server" MaxLength="80" placeholder="Query Title (optional)"></asp:TextBox>
                 </asp:TableCell>
-                <asp:TableCell runat="server" Width="40%" VerticalAlign="Top" RowSpan="2">
+                <asp:TableCell runat="server" Width="35%" VerticalAlign="Top" RowSpan="2">
                     <asp:TextBox runat="server" ID="txtOutput" TextMode="MultiLine" Width="90%" Height="100%" ReadOnly="True"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell runat="server" Width="20%" Height="90%" VerticalAlign="Top" RowSpan="2">
                     <asp:Label runat="server" ID="lblRecent"></asp:Label>
                 </asp:TableCell>
-                <asp:TableCell runat="server" VerticalAlign="Top" RowSpan="2">
+                <asp:TableCell runat="server" VerticalAlign="Top" Width="10%" RowSpan="2">
                     <asp:Label runat="server" ID="lblRecentDl"></asp:Label>
                 </asp:TableCell>
             </asp:TableRow>
