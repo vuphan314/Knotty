@@ -20,14 +20,15 @@ the Knotty system includes:
   - returns a TeX program
 - the Knotty web application:
   - includes:
-    - a text box: in which the user can type a Knotty program
+    - a text box: in which the user can type
+      a Knotty program
     - a button: when clicked will generate a TeX program
       - by invoking the Knotty engine
     - a preview box: in which the TeX program is displayed
 
 ## FILES
-- `examples/`
 - `spec/`
+- `examples/`
 - `webapp/`
 - engine:
   - `bin/`
