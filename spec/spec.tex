@@ -7,7 +7,7 @@
 
 \setlength{\parindent}{0pt}
 
-\setlength{\parskip}{10pt}
+\setlength{\parskip}{5pt}
 
 \usepackage{booktabs}
 
@@ -57,6 +57,8 @@
 \newcommand{\textdef}[1]{\textbf{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\kn}{\code{Knotty}}
+\newcommand{\kne}{\code{Knotty Engine}}
+\newcommand{\tex}{\TeX}
 
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\op}{\diamond}
@@ -83,7 +85,7 @@
 This document is the specification of the \kn{} language.
 \end{abstract}
 
-% \tableofcontents
+\tableofcontents
 
 \thispagestyle{fancy}
 
@@ -242,6 +244,8 @@ where $t_1$ \& $t_2$ are boolean terms and
 $\op \in \set{\code{or}, \code{and}}$.
 \end{itemize}
 
+\newpage
+
 \subsubsection{Terms}
 
 An \textdef{inner term}:
@@ -265,11 +269,11 @@ where $t_1$ \& $t_3$ are terms and $t_2$ is a boolean term.
 A \textdef{term} is an inner term, an arithmetic term,
 a boolean term, or a conditional term.
 
-\subsubsection{Unknown Statments}
+\subsubsection{Unknown Statements}
 
 An \textdef{unknown statement} has the form
 \begin{codeblock}
-unknown $u_1$,$\ldots$,$u_n$
+unknown $u_1$,$\ldots$, $u_n$
 \end{codeblock}
 where each $u_i$ is an unknown name ($n > 0$).
 
@@ -340,7 +344,7 @@ a check statement ($n \ge 0$).
 \subsection{Operations}
 
 \begin{tabular}{l|l}
-operator & meaning \\ \toprule
+Operator & Meaning \\ \toprule
 \code{or} & disjunction \\
 \code{and} & conjunction \\
 \code{not} & negation \\
@@ -355,16 +359,51 @@ operator & meaning \\ \toprule
 * & multiplication \\
 / & division \\
 \% & modulo \\
-\^{} & exponetiation \\
+\^{} & exponetiation
 \end{tabular}
 
 Note: parentheses override usual operator precedence.
 
+\subsection{Namespace}
+
+\begin{tabular}{l|l}
+Name & Scope \\ \toprule
+unknown & program \\
+constant & program \\
+function & program \\
+temporary & function
+\end{tabular}
+
 \subsection{Values}
 
-The value of the number \code{i} is the imaginary unit.
+The number \code{i} is the imaginary unit.
 
+An unknown name represents a complex number
+of unspecified value.
 
+A constant name represents the term
+in the corresponding constant statement.
+
+A function name represents the mapping
+defined in the corresponding function statement.
+
+A temporary name represents the term
+in the corresponding temporary clause.
+
+A check name represents the term
+in the corresponding check statement.
+
+\subsection{Input/Output}
+
+The \kne:
+\begin{itemize}
+\item
+accepts a \kn{} program
+\item
+generates a \tex{} program showing the check names and
+their corresponding values 
+as specified by the \kn{} program.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
