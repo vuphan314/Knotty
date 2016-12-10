@@ -2,9 +2,10 @@
 
 # KNOTTY EXAMPLES
 notable:
-- `skein_T.*`
-- `skein_X.*`
-- `error.*`
+- `poly_S`
+- `skein_T`
+- `skein_X`
+- `error`
 
 ## FILES
 - source:
