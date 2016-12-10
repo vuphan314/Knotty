@@ -44,7 +44,7 @@ goto starting
     set kn_engine=kn_engine.py
     set kn_exe=knotty.exe
 
-    REM goto building
+    goto building
     goto looping
 
 :ending
