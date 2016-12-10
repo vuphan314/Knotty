@@ -95,11 +95,9 @@ act_params(actParams T) ::= act_param(T)
 act_params(actParams T cut_root(Ts)) ::= act_param(T) kn_comma act_params(Ts)
 
 form_fun_expr(formFunExpr T T2) ::= fun_name(T) l_paren form_params(T2) r_paren
-
 act_fun_expr(actFunExpr T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
 
 form_param(T) ::= kn_id(T)
-
 act_param(T) ::= kn_term(T)
 
 named_term(T) ::= unknown_name(T)

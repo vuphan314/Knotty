@@ -1,13 +1,14 @@
 key_unknown = unknown
-
 key_const = constant
-
 key_fun = function
 key_let = let
 key_ret = return
-
 key_check = check
 
+kn_comma = ,
+l_paren = \(
+r_paren = \)
+colon_eq = :=
 key_if = if
 key_else = else
 
@@ -16,8 +17,6 @@ key_truth = true|false
 op_or = or
 op_and = and
 op_not = not
-
-colon_eq = :=
 
 op_eq = =
 op_uneq = /=
@@ -32,11 +31,6 @@ op_mult = \*
 op_div = /
 op_mod = %
 op_exp = \^
-
-kn_comma = ,
-
-l_paren = \(
-r_paren = \)
 
 kn_num = i|\d+
 kn_id = [a-zA-Z][a-zA-Z\d]*

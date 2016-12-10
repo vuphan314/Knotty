@@ -9,6 +9,8 @@
 
 \setlength{\parskip}{10pt}
 
+\usepackage{booktabs}
+
 \usepackage{enumitem}
 \setlist[itemize]{topsep=0pt, parsep=0pt, itemsep=0pt}
 
@@ -56,13 +58,16 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\kn}{\code{Knotty}}
 
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\op}{\diamond}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % environments
 
 \newenvironment{codeblock}
     {\begin{addmargin}{0.5in} \ttfamily}
-    {\end{addmargin} \par}
+    {\end{addmargin}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,11 +83,13 @@
 This document is the specification of the \kn{} language.
 \end{abstract}
 
-\tableofcontents
+% \tableofcontents
 
 \thispagestyle{fancy}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
 
 \section{Syntax}
 
@@ -90,23 +97,32 @@ This document is the specification of the \kn{} language.
 
 \subsection{Lexicon}
 
-These lexemes are \textdef{keywords}:
+These are \textdef{reserved lexemes}:
 \begin{codeblock}
 unknown constant function let return check \\
-if else true false or and not
+, ( ) := \\
+if else \\
+true false
+\end{codeblock}
+
+These are \textdef{operators}:
+\begin{codeblock}
+or and not \\
+= /= > < >= <= \\
++ - * / \% \^{}
 \end{codeblock}
 
 A \textdef{number} is either:
 \begin{itemize}
 \item \code{i}, or
-\item one or more consecutive digits
-(\code{0}-\code{9})
+\item one or more consecutive digits (\code{0}-\code{9})
 \end{itemize}
 
 An \textdef{identifier} is one letter
 (\code{a}-\code{z} or \code{A}-\code{Z})
 followed by zero or more letters and digits.
-Also, an identifier must not be a keyword.
+Also, an identifier must not be a reserved lexeme,
+an operator, or a number.
 
 Note: blank characters (spaces, tabs, newlines)
 are delimiters.
@@ -123,13 +139,232 @@ a \textdef{temporary name}, and a \textdef{check name}.
 
 \subsubsection{Named Terms}
 
-A \textdef{named term} is an unknown name, constant name,
-function name, formal parameter, temporary name, or
-actual function expression.
+A \textdef{named term} is an unknown name, a constant name,
+a function name, a formal parameter, a temporary name, or
+an actual function expression.
+
+\subsubsection{Parameters}
+
+A \textdef{formal parameter} is an identifier.
+An \textdef{actual parameter} is a term.
+
+\subsubsection{Function Expressions}
+
+A \textdef{formal function expression} has the form
+\begin{codeblock}
+$f$($p_1$,$\ldots$, $p_n$)
+\end{codeblock}
+where $f$ is a function name and
+each $p_i$ is a formal parameter ($n > 0$).
+
+An \textdef{actual function expression} has the same form,
+but with each $p_i$ being an actual parameter.
+
+\subsubsection{Arithmetic Terms}
+
+An \textdef{inner arithmetic term}:
+\begin{itemize}
+\item
+is a number, or
+\item
+is a named term, or
+\item
+has the form
+\begin{codeblock}
+($t$)
+\end{codeblock}
+where $t$ is an inner arithmetic term.
+\end{itemize}
+
+
+An \textdef{arithmetic term}:
+\begin{itemize}
+\item
+is an inner arithmetic term, or
+\item
+has the form
+\begin{codeblock}
+-$t$
+\end{codeblock}
+where $t$ is an arithmetic term, or
+\item
+has the form
+\begin{codeblock}
+$t_1 \op t_2$
+\end{codeblock}
+where $t_1$ \& $t_2$ are terms and
+$\op \in \set{+, -, *, /, \%, \hat~}$.
+\end{itemize}
+
+\subsubsection{Boolean Terms}
+
+A \textdef{comparison boolean term} has the form
+\begin{codeblock}
+$t_1 \op t_2$
+\end{codeblock}
+where $t_1$ \& $t_2$ are arithmetic terms and
+$\op \in \set{=, /=, >, <, >=, <=}$.
+
+An \textdef{inner boolean term}:
+\begin{itemize}
+\item
+is the keyword \code{true}, or
+\item
+is the keyword \code{false}, or
+\item
+is a named term, or
+\item
+has the form
+\begin{codeblock}
+($t$)
+\end{codeblock}
+where $t$ is an inner boolean term.
+\end{itemize}
+
+A \textdef{boolean term}:
+\begin{itemize}
+\item
+is a comparison boolean term, or
+\item
+is an inner boolean term, or
+\item
+has the form
+\begin{codeblock}
+not $t$
+\end{codeblock}
+where $t$ is a boolean term, or
+\item
+has the form
+\begin{codeblock}
+$t_1 \op t_2$
+\end{codeblock}
+where $t_1$ \& $t_2$ are boolean terms and
+$\op \in \set{\code{or}, \code{and}}$.
+\end{itemize}
+
+\subsubsection{Terms}
+
+An \textdef{inner term}:
+\begin{itemize}
+\item
+is a named term, or
+\item
+has the form
+\begin{codeblock}
+($t$)
+\end{codeblock}
+where $t$ is an inner term.
+\end{itemize}
+
+A \textdef{conditional term} has the form
+\begin{codeblock}
+$t_1$ if $t_2$ else $t_3$
+\end{codeblock}
+where $t_1$ \& $t_3$ are terms and $t_2$ is a boolean term.
+
+A \textdef{term} is an inner term, an arithmetic term,
+a boolean term, or a conditional term.
+
+\subsubsection{Unknown Statments}
+
+An \textdef{unknown statement} has the form
+\begin{codeblock}
+unknown $u_1$,$\ldots$,$u_n$
+\end{codeblock}
+where each $u_i$ is an unknown name ($n > 0$).
+
+\subsubsection{Constant Statements}
+
+A \textdef{constant statement} has the form
+\begin{codeblock}
+constant $c$ := $t$
+\end{codeblock}
+where $c$ is a constant name and $t$ is a term.
+
+\subsubsection{Function Statements}
+
+A \textdef{return clause} has the form
+\begin{codeblock}
+return $t$
+\end{codeblock}
+where $t$ is a term.
+
+A \textdef{let clause} has the form
+\begin{codeblock}
+let $tmp$ := $t$
+\end{codeblock}
+where $tmp$ is a temporary name and $t$ is a term.
+
+A \textdef{function statement} has the form
+\begin{codeblock}
+function $fe$
+    \begin{codeblock}
+    $lc_1 \\
+    \ldots \\
+    lc_n$ \\
+    $rc$
+    \end{codeblock}
+\end{codeblock}
+where $fe$ is a formal function expression,
+each $lc_i$ is a let clause ($n \ge 0$), and
+$rc$ is a return clause.
+
+\subsubsection{Check Statements}
+
+A \textdef{check statement} has the form
+\begin{codeblock}
+check $c$ := $t$
+\end{codeblock}
+where $c$ is a check name and $t$ is a term.
+
+\subsubsection{Program}
+
+A \textdef{program} has the form
+\begin{codeblock}
+$s_1 \\
+\ldots \\
+s_n$
+\end{codeblock}
+where each $s_i$ is an unknown statement,
+a constant statement, a function statement, or
+a check statement ($n \ge 0$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{codeblock}
+
+\end{codeblock}
+
 \section{Semantics}
+
+\subsection{Operations}
+
+\begin{tabular}{l|l}
+operator & meaning \\ \toprule
+\code{or} & disjunction \\
+\code{and} & conjunction \\
+\code{not} & negation \\
+= & equal \\
+/= & unequal \\
+\textgreater & greater \\
+\textless & less \\
+\textgreater= & greater or equal \\
+\textless= & less or equal \\
++ & plus \\
+- & unary or binary minus \\
+* & multiplication \\
+/ & division \\
+\% & modulo \\
+\^{} & exponetiation \\
+\end{tabular}
+
+Note: parentheses override usual operator precedence.
+
+\subsection{Values}
+
+The value of the number \code{i} is the imaginary unit.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
