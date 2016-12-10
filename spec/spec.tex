@@ -100,11 +100,11 @@ A \textdef{number} is either:
 \begin{itemize}
 \item \code{i}, or
 \item one or more consecutive digits
-(\code{0} to \code{9})
+(\code{0}-\code{9})
 \end{itemize}
 
 An \textdef{identifier} is one letter
-(\code{a} to \code{z} or \code{A} to \code{Z})
+(\code{a}-\code{z} or \code{A}-\code{Z})
 followed by zero or more letters and digits.
 Also, an identifier must not be a keyword.
 
@@ -114,6 +114,18 @@ are delimiters.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Grammar}
+
+\subsubsection{Names}
+
+An \textdef{unknown name} is an identifier.
+So is a \textdef{constant name}, a \textdef{function name},
+a \textdef{temporary name}, and a \textdef{check name}.
+
+\subsubsection{Named Terms}
+
+A \textdef{named term} is an unknown name, constant name,
+function name, formal parameter, temporary name, or
+actual function expression.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

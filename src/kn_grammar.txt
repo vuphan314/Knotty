@@ -88,28 +88,28 @@ let_cls(letCls T cut_root(Ts)) ::= let_cl(T) let_cls(Ts)
 kn_terms(knTerms T) ::= kn_term(T)
 kn_terms(knTerms T cut_root(Ts)) ::= kn_term(T) kn_comma kn_terms(Ts)
 
-act_params(actParams T) ::= act_param(T)
-act_params(actParams T cut_root(Ts)) ::= act_param(T) kn_comma act_params(Ts)
-
 form_params(formParams T) ::= form_param(T)
 form_params(formParams T cut_root(Ts)) ::= form_param(T) kn_comma form_params(Ts)
 
-act_fun_expr(actFunExpr T) ::= fun_name(T) l_paren r_paren
-act_fun_expr(actFunExpr T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
+act_params(actParams T) ::= act_param(T)
+act_params(actParams T cut_root(Ts)) ::= act_param(T) kn_comma act_params(Ts)
 
 form_fun_expr(formFunExpr T) ::= fun_name(T) l_paren r_paren
 form_fun_expr(formFunExpr T T2) ::= fun_name(T) l_paren form_params(T2) r_paren
 
-act_param(T) ::= kn_term(T)
+act_fun_expr(actFunExpr T) ::= fun_name(T) l_paren r_paren
+act_fun_expr(actFunExpr T T2) ::= fun_name(T) l_paren act_params(T2) r_paren
 
 form_param(T) ::= kn_id(T)
 
+act_param(T) ::= kn_term(T)
+
 named_term(T) ::= unknown_name(T)
 named_term(T) ::= const_name(T)
+named_term(T) ::= fun_name(T)
 named_term(T) ::= form_param(T)
 named_term(T) ::= tmp_name(T)
 named_term(T) ::= act_fun_expr(T)
-named_term(T) ::= fun_name(T)
 
 unknown_name(T) ::= kn_id(T)
 const_name(T) ::= kn_id(T)
