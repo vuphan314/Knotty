@@ -27,6 +27,7 @@ the Knotty system includes:
 
 ## FILES
 - `examples/`
+- `spec/`
 - `webapp/`
 - engine:
   - `bin/`
