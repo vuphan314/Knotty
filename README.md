@@ -95,7 +95,7 @@ the Knotty system includes:
     git checkout tags/<tag>
 
     ```
-    example: latest `<tag>` is `v1.5.0`
+    example: latest `<tag>` is `v2.0.0`
 
 ## CONTRIBUTORS
 - [Vu Phan][linkVu] (regular)
