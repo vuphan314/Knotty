@@ -1,10 +1,8 @@
-function allTrue(
-    booleanFunction, currentIndex, baseIndex
-) return
-    currentIndex < baseIndex or
-    booleanFunction(currentIndex) and
-    allTrue(booleanFunction, currentIndex-1, baseIndex)
-
-function f(x) return x > 0
-
-check c := allTrue(f, 4, 1)
+function X(i)
+    return
+        -t^2 - t^-2/*
+            if i = 0 else
+        -t^2 * x^2 - t^4 * y
+            if i = 1 else
+        t^2 *  y * X(i-1) - t^4 * X(i-2) - 2 * t^2 * x^2
+*/

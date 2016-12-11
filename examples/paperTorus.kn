@@ -1,0 +1,92 @@
+/*
+paper:
+THE NONCOMMUTATIVE A-IDEAL OF A (2, 2p + 1)-TORUS KNOT
+DETERMINES ITS JONES POLYNOMIAL
+
+http://www.math.ttu.edu/~rgelca/gs6.pdf
+*/
+
+unknown t, x
+
+/**********************************************************/
+/* Section 2 (page 3) */
+/**********************************************************/
+
+function T(n, x)
+    return
+        2 if n = 0 else
+        x if n = 1 else
+        x * T(n - 1, x) - T(n - 2, x)
+
+check T2x := T(2, x)
+
+/**********************************************************/
+
+function skein(p, q)
+    let n := gcd(p, q)
+    let p2 := p / n
+    let q2 := q / n
+    let curve :=
+        SCC(p2, q2)
+        /* simple closed curve of slope p2/q2 on torus */
+    return T(n, curve)
+
+check skein22 := skein(2, 2)
+
+/**********************************************************/
+
+function productToSum(p, q, r, s)
+    let determinant := p*s - q*r
+    let sk1 := skein(p+r, q+s)
+    let sk2 := skein(p-r, q-s)
+    return t^determinant * sk1 + t^-determinant * sk2
+
+function product2211()
+    return skein(2, 2) * skein(1, 1)
+function sum2211()
+    return productToSum(2, 2, 1, 1)
+
+check lhs := product2211()
+check rhs := sum2211()
+check lhsEqualRhs := product2211() = sum2211()
+
+/**********************************************************/
+/* Lemma 4.2 (page 9) */
+/**********************************************************/
+
+function allTrue(
+    booleanFunction, currentIndex, baseIndex
+) return
+    currentIndex < baseIndex or
+    booleanFunction(currentIndex) and
+    allTrue(booleanFunction, currentIndex-1, baseIndex)
+
+/**********************************************************/
+
+function S(n) return
+    1 if n = 0 else
+    x if n = 1 else
+    x * S(n-1) - S(n-2) if n > 0 else
+    x * S(n+1) - S(n+2)
+
+function equalityS(n) return S(-n) = -S(n-2)
+
+constant nMax := 5
+constant nMin := -nMax
+
+check verifiedEqualityS := allTrue(equalityS, nMax, nMin)
+
+/**********************************************************/
+
+function sumS(p, k) return
+    0 if k < 1 else
+    S(2*p - 4*k - 2) + sumS(p, k-1)
+
+function sumEqualRatio(p) return
+    sumS(p, p-1) = -S(2*p - 3)/S(1)
+
+constant pMax := 5
+constant pMin := 1
+
+check verifiedSumEqualRatio :=
+    allTrue(sumEqualRatio, pMax, pMin)

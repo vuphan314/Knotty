@@ -2,10 +2,10 @@
 
 # KNOTTY EXAMPLES
 notable:
-- `poly_S`
-- `skein_T`
-- `skein_X`
+- `paperTorus`
+- `paperTwist`
 - `error`
+- `comment`
 
 ## FILES
 - source:
@@ -15,4 +15,4 @@ notable:
     - `*.py` (intermediate)
     - `*.tex` (target)
   - by `latexmk`:
-    - `pdfs/`
+    - `*.pdf`

@@ -2,15 +2,15 @@
 goto starting
 
 :looping
-    set fil=poly_S
-    set fils=comment, companion, demo, empty, error, oneliner, poly_S, precedence, skein_T, skein_X, syntax, tmp
+    set fil=paperTwist
+    set fils=comment, demo, empty, error, oneliner, paperTorus, paperTwist, precedence, syntax, tmp
     for %%i in (%fils%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn
         set tex_file=!base!.tex
 
         set kn_cmd=%kn_engine% -f -k !kn_file!
-        set tex_compile=latexmk -outdir=%examples_path%pdfs -pdf !tex_file!
+        set tex_compile=latexmk -outdir=%examples_path% -pdf !tex_file!
 
         !kn_cmd!
         !tex_compile!
@@ -44,7 +44,7 @@ goto starting
     set kn_engine=kn_engine.py
     set kn_exe=knotty.exe
 
-    goto building
+    REM goto building
     goto looping
 
 :ending
