@@ -2,9 +2,9 @@
 
 # KNOTTY EXAMPLES
 notable:
-- `papers`
-- `error`
-- `comment`
+- `papers.*`
+- `error.*`
+- `comment.*`
 
 ## FILES
 - source:
