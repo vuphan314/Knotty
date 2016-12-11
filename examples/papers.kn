@@ -1,3 +1,36 @@
+/**********************************************************/
+/*
+paper:
+SOME RESULTS ABOUT THE KAUFFMAN BRACKET SKEIN MODULE
+OF THE TWIST KNOT EXTERIOR
+
+http://www.math.ttu.edu/~rgelca/gn2.pdf
+*/
+/**********************************************************/
+
+/**********************************************************/
+/* Lemma 1 (page 4) */
+/**********************************************************/
+
+unknown t, x, y
+
+function X(j)
+    /* use formal parameter `j`, not imaginary unit `i` */
+    return
+        -t^2 - t^-2
+            if j = 0 else
+        -t^2 * x^2 - t^4 * y
+            if j = 1 else
+        t^2 *  y * X(j-1) - t^4 * X(j-2) - 2 * t^2 * x^2
+
+check X0 := X(0)
+check X1 := X(1)
+check X2 := X(2)
+check X3 := X(3)
+check X4 := X(4)
+check X5 := X(5)
+
+/**********************************************************/
 /*
 paper:
 THE NONCOMMUTATIVE A-IDEAL OF A (2, 2p + 1)-TORUS KNOT
@@ -5,8 +38,7 @@ DETERMINES ITS JONES POLYNOMIAL
 
 http://www.math.ttu.edu/~rgelca/gs6.pdf
 */
-
-unknown t, x
+/**********************************************************/
 
 /**********************************************************/
 /* Section 2 (page 3) */

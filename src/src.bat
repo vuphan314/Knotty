@@ -2,8 +2,8 @@
 goto starting
 
 :looping
-    set fil=paperTwist
-    set fils=comment, demo, empty, error, oneliner, paperTorus, paperTwist, precedence, syntax, tmp
+    set fil=papers
+    set fils=comment, demo, empty, error, oneliner, papers, precedence, syntax, tmp
     for %%i in (%fils%) do (
         set base=%examples_path%%%~ni
         set kn_file=!base!.kn

@@ -3,6 +3,9 @@
 # KNOTTY
 computer algebra system for knot theory
 
+## EXAMPLES
+
+
 ## GOAL
 to assist mathematicians with symbolic computation
 - example: verification of some formulas in these papers

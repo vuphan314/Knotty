@@ -4,7 +4,28 @@ check_list = []
 
 
 
-t, x = kn_lib.make_vars('t, x')
+t, x, y = kn_lib.make_vars('t, x, y')
+
+def X(j):
+    return (kn_lib.bMinus(kn_lib.uMinus(kn_lib.opExp(t, 2)), kn_lib.opExp(t, kn_lib.uMinus(2))) if kn_lib.opEq(j, 0) else (kn_lib.bMinus(kn_lib.opMult(kn_lib.uMinus(kn_lib.opExp(t, 2)), kn_lib.opExp(x, 2)), kn_lib.opMult(kn_lib.opExp(t, 4), y)) if kn_lib.opEq(j, 1) else kn_lib.bMinus(kn_lib.bMinus(kn_lib.opMult(kn_lib.opMult(kn_lib.opExp(t, 2), y), X(kn_lib.bMinus(j, 1))), kn_lib.opMult(kn_lib.opExp(t, 4), X(kn_lib.bMinus(j, 2)))), kn_lib.opMult(kn_lib.opMult(2, kn_lib.opExp(t, 2)), kn_lib.opExp(x, 2)))))
+
+
+check_list.append(('X0', kn_lib.sp_tex(X(0))))
+
+
+check_list.append(('X1', kn_lib.sp_tex(X(1))))
+
+
+check_list.append(('X2', kn_lib.sp_tex(X(2))))
+
+
+check_list.append(('X3', kn_lib.sp_tex(X(3))))
+
+
+check_list.append(('X4', kn_lib.sp_tex(X(4))))
+
+
+check_list.append(('X5', kn_lib.sp_tex(X(5))))
 
 def T(n, x):
     return (2 if kn_lib.opEq(n, 0) else (x if kn_lib.opEq(n, 1) else kn_lib.bMinus(kn_lib.opMult(x, T(kn_lib.bMinus(n, 1), x)), T(kn_lib.bMinus(n, 2), x))))
@@ -73,14 +94,178 @@ pMin = 1
 check_list.append(('verifiedSumEqualRatio', kn_lib.sp_tex(allTrue(sumEqualRatio, pMax, pMin))))
 
 
-kn_lib.write_tex_file(check_list, r'../examples/paperTorus.tex', 'w')
+kn_lib.write_tex_file(check_list, r'../examples/papers.tex', 'w')
 
 syntax_tree = \
   ('kn_root',
     ('unknownStat',
       ('knUnknowns',
         ('kn_id', 't'),
-        ('kn_id', 'x')
+        ('kn_id', 'x'),
+        ('kn_id', 'y')
+      )
+    ),
+    ('funStat',
+      ('formFunExpr',
+        ('kn_id', 'X'),
+        ('formParams',
+          ('kn_id', 'j')
+        )
+      ),
+      ('funBody',
+        ('retCl',
+          ('condTerm',
+            ('bMinus',
+              ('uMinus',
+                ('opExp',
+                  ('kn_id', 't'),
+                  ('kn_num', '2')
+                )
+              ),
+              ('opExp',
+                ('kn_id', 't'),
+                ('uMinus',
+                  ('kn_num', '2')
+                )
+              )
+            ),
+            ('opEq',
+              ('kn_id', 'j'),
+              ('kn_num', '0')
+            ),
+            ('condTerm',
+              ('bMinus',
+                ('opMult',
+                  ('uMinus',
+                    ('opExp',
+                      ('kn_id', 't'),
+                      ('kn_num', '2')
+                    )
+                  ),
+                  ('opExp',
+                    ('kn_id', 'x'),
+                    ('kn_num', '2')
+                  )
+                ),
+                ('opMult',
+                  ('opExp',
+                    ('kn_id', 't'),
+                    ('kn_num', '4')
+                  ),
+                  ('kn_id', 'y')
+                )
+              ),
+              ('opEq',
+                ('kn_id', 'j'),
+                ('kn_num', '1')
+              ),
+              ('bMinus',
+                ('bMinus',
+                  ('opMult',
+                    ('opMult',
+                      ('opExp',
+                        ('kn_id', 't'),
+                        ('kn_num', '2')
+                      ),
+                      ('kn_id', 'y')
+                    ),
+                    ('actFunExpr',
+                      ('kn_id', 'X'),
+                      ('actParams',
+                        ('bMinus',
+                          ('kn_id', 'j'),
+                          ('kn_num', '1')
+                        )
+                      )
+                    )
+                  ),
+                  ('opMult',
+                    ('opExp',
+                      ('kn_id', 't'),
+                      ('kn_num', '4')
+                    ),
+                    ('actFunExpr',
+                      ('kn_id', 'X'),
+                      ('actParams',
+                        ('bMinus',
+                          ('kn_id', 'j'),
+                          ('kn_num', '2')
+                        )
+                      )
+                    )
+                  )
+                ),
+                ('opMult',
+                  ('opMult',
+                    ('kn_num', '2'),
+                    ('opExp',
+                      ('kn_id', 't'),
+                      ('kn_num', '2')
+                    )
+                  ),
+                  ('opExp',
+                    ('kn_id', 'x'),
+                    ('kn_num', '2')
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    ),
+    ('checkStat',
+      ('kn_id', 'X0'),
+      ('actFunExpr',
+        ('kn_id', 'X'),
+        ('actParams',
+          ('kn_num', '0')
+        )
+      )
+    ),
+    ('checkStat',
+      ('kn_id', 'X1'),
+      ('actFunExpr',
+        ('kn_id', 'X'),
+        ('actParams',
+          ('kn_num', '1')
+        )
+      )
+    ),
+    ('checkStat',
+      ('kn_id', 'X2'),
+      ('actFunExpr',
+        ('kn_id', 'X'),
+        ('actParams',
+          ('kn_num', '2')
+        )
+      )
+    ),
+    ('checkStat',
+      ('kn_id', 'X3'),
+      ('actFunExpr',
+        ('kn_id', 'X'),
+        ('actParams',
+          ('kn_num', '3')
+        )
+      )
+    ),
+    ('checkStat',
+      ('kn_id', 'X4'),
+      ('actFunExpr',
+        ('kn_id', 'X'),
+        ('actParams',
+          ('kn_num', '4')
+        )
+      )
+    ),
+    ('checkStat',
+      ('kn_id', 'X5'),
+      ('actFunExpr',
+        ('kn_id', 'X'),
+        ('actParams',
+          ('kn_num', '5')
+        )
       )
     ),
     ('funStat',
@@ -645,4 +830,4 @@ syntax_tree = \
     )
   )
 
-lexing_sequence = [('key_unknown', 'unknown'), ('kn_id', 't'), ('kn_comma', ','), ('kn_id', 'x'), ('key_fun', 'function'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '2'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '1'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T2x'), ('colon_eq', ':='), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'skein'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'q'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'n'), ('colon_eq', ':='), ('kn_id', 'gcd'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'q'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'p2'), ('colon_eq', ':='), ('kn_id', 'p'), ('op_div', '/'), ('kn_id', 'n'), ('key_let', 'let'), ('kn_id', 'q2'), ('colon_eq', ':='), ('kn_id', 'q'), ('op_div', '/'), ('kn_id', 'n'), ('key_let', 'let'), ('kn_id', 'curve'), ('colon_eq', ':='), ('kn_id', 'SCC'), ('l_paren', '('), ('kn_id', 'p2'), ('kn_comma', ','), ('kn_id', 'q2'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('kn_comma', ','), ('kn_id', 'curve'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'skein22'), ('colon_eq', ':='), ('kn_id', 'skein'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '2'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'productToSum'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'q'), ('kn_comma', ','), ('kn_id', 'r'), ('kn_comma', ','), ('kn_id', 's'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'determinant'), ('colon_eq', ':='), ('kn_id', 'p'), ('op_mult', '*'), ('kn_id', 's'), ('op_minus', '-'), ('kn_id', 'q'), ('op_mult', '*'), ('kn_id', 'r'), ('key_let', 'let'), ('kn_id', 'sk1'), ('colon_eq', ':='), ('kn_id', 'skein'), ('l_paren', '('), ('kn_id', 'p'), ('op_plus', '+'), ('kn_id', 'r'), ('kn_comma', ','), ('kn_id', 'q'), ('op_plus', '+'), ('kn_id', 's'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'sk2'), ('colon_eq', ':='), ('kn_id', 'skein'), ('l_paren', '('), ('kn_id', 'p'), ('op_minus', '-'), ('kn_id', 'r'), ('kn_comma', ','), ('kn_id', 'q'), ('op_minus', '-'), ('kn_id', 's'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 't'), ('op_exp', '^'), ('kn_id', 'determinant'), ('op_mult', '*'), ('kn_id', 'sk1'), ('op_plus', '+'), ('kn_id', 't'), ('op_exp', '^'), ('op_minus', '-'), ('kn_id', 'determinant'), ('op_mult', '*'), ('kn_id', 'sk2'), ('key_fun', 'function'), ('kn_id', 'product2211'), ('l_paren', '('), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'skein'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '2'), ('r_paren', ')'), ('op_mult', '*'), ('kn_id', 'skein'), ('l_paren', '('), ('kn_num', '1'), ('kn_comma', ','), ('kn_num', '1'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'sum2211'), ('l_paren', '('), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'productToSum'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '1'), ('kn_comma', ','), ('kn_num', '1'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'lhs'), ('colon_eq', ':='), ('kn_id', 'product2211'), ('l_paren', '('), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'rhs'), ('colon_eq', ':='), ('kn_id', 'sum2211'), ('l_paren', '('), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'lhsEqualRhs'), ('colon_eq', ':='), ('kn_id', 'product2211'), ('l_paren', '('), ('r_paren', ')'), ('op_eq', '='), ('kn_id', 'sum2211'), ('l_paren', '('), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'booleanFunction'), ('kn_comma', ','), ('kn_id', 'currentIndex'), ('kn_comma', ','), ('kn_id', 'baseIndex'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'currentIndex'), ('op_less', '<'), ('kn_id', 'baseIndex'), ('op_or', 'or'), ('kn_id', 'booleanFunction'), ('l_paren', '('), ('kn_id', 'currentIndex'), ('r_paren', ')'), ('op_and', 'and'), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'booleanFunction'), ('kn_comma', ','), ('kn_id', 'currentIndex'), ('op_minus', '-'), ('kn_num', '1'), ('kn_comma', ','), ('kn_id', 'baseIndex'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '1'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('key_if', 'if'), ('kn_id', 'n'), ('op_gr', '>'), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_plus', '+'), ('kn_num', '1'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_plus', '+'), ('kn_num', '2'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'equalityS'), ('l_paren', '('), ('kn_id', 'n'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'S'), ('l_paren', '('), ('op_minus', '-'), ('kn_id', 'n'), ('r_paren', ')'), ('op_eq', '='), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('key_const', 'constant'), ('kn_id', 'nMax'), ('colon_eq', ':='), ('kn_num', '5'), ('key_const', 'constant'), ('kn_id', 'nMin'), ('colon_eq', ':='), ('op_minus', '-'), ('kn_id', 'nMax'), ('key_check', 'check'), ('kn_id', 'verifiedEqualityS'), ('colon_eq', ':='), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'equalityS'), ('kn_comma', ','), ('kn_id', 'nMax'), ('kn_comma', ','), ('kn_id', 'nMin'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'sumS'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'k'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '0'), ('key_if', 'if'), ('kn_id', 'k'), ('op_less', '<'), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'S'), ('l_paren', '('), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'p'), ('op_minus', '-'), ('kn_num', '4'), ('op_mult', '*'), ('kn_id', 'k'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('op_plus', '+'), ('kn_id', 'sumS'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'k'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'sumEqualRatio'), ('l_paren', '('), ('kn_id', 'p'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'sumS'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'p'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('op_eq', '='), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'p'), ('op_minus', '-'), ('kn_num', '3'), ('r_paren', ')'), ('op_div', '/'), ('kn_id', 'S'), ('l_paren', '('), ('kn_num', '1'), ('r_paren', ')'), ('key_const', 'constant'), ('kn_id', 'pMax'), ('colon_eq', ':='), ('kn_num', '5'), ('key_const', 'constant'), ('kn_id', 'pMin'), ('colon_eq', ':='), ('kn_num', '1'), ('key_check', 'check'), ('kn_id', 'verifiedSumEqualRatio'), ('colon_eq', ':='), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'sumEqualRatio'), ('kn_comma', ','), ('kn_id', 'pMax'), ('kn_comma', ','), ('kn_id', 'pMin'), ('r_paren', ')')]
+lexing_sequence = [('key_unknown', 'unknown'), ('kn_id', 't'), ('kn_comma', ','), ('kn_id', 'x'), ('kn_comma', ','), ('kn_id', 'y'), ('key_fun', 'function'), ('kn_id', 'X'), ('l_paren', '('), ('kn_id', 'j'), ('r_paren', ')'), ('key_ret', 'return'), ('op_minus', '-'), ('kn_id', 't'), ('op_exp', '^'), ('kn_num', '2'), ('op_minus', '-'), ('kn_id', 't'), ('op_exp', '^'), ('op_minus', '-'), ('kn_num', '2'), ('key_if', 'if'), ('kn_id', 'j'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('op_minus', '-'), ('kn_id', 't'), ('op_exp', '^'), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'x'), ('op_exp', '^'), ('kn_num', '2'), ('op_minus', '-'), ('kn_id', 't'), ('op_exp', '^'), ('kn_num', '4'), ('op_mult', '*'), ('kn_id', 'y'), ('key_if', 'if'), ('kn_id', 'j'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 't'), ('op_exp', '^'), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'y'), ('op_mult', '*'), ('kn_id', 'X'), ('l_paren', '('), ('kn_id', 'j'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 't'), ('op_exp', '^'), ('kn_num', '4'), ('op_mult', '*'), ('kn_id', 'X'), ('l_paren', '('), ('kn_id', 'j'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('op_minus', '-'), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 't'), ('op_exp', '^'), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'x'), ('op_exp', '^'), ('kn_num', '2'), ('key_check', 'check'), ('kn_id', 'X0'), ('colon_eq', ':='), ('kn_id', 'X'), ('l_paren', '('), ('kn_num', '0'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'X1'), ('colon_eq', ':='), ('kn_id', 'X'), ('l_paren', '('), ('kn_num', '1'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'X2'), ('colon_eq', ':='), ('kn_id', 'X'), ('l_paren', '('), ('kn_num', '2'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'X3'), ('colon_eq', ':='), ('kn_id', 'X'), ('l_paren', '('), ('kn_num', '3'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'X4'), ('colon_eq', ':='), ('kn_id', 'X'), ('l_paren', '('), ('kn_num', '4'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'X5'), ('colon_eq', ':='), ('kn_id', 'X'), ('l_paren', '('), ('kn_num', '5'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '2'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '1'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'T2x'), ('colon_eq', ':='), ('kn_id', 'T'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_id', 'x'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'skein'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'q'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'n'), ('colon_eq', ':='), ('kn_id', 'gcd'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'q'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'p2'), ('colon_eq', ':='), ('kn_id', 'p'), ('op_div', '/'), ('kn_id', 'n'), ('key_let', 'let'), ('kn_id', 'q2'), ('colon_eq', ':='), ('kn_id', 'q'), ('op_div', '/'), ('kn_id', 'n'), ('key_let', 'let'), ('kn_id', 'curve'), ('colon_eq', ':='), ('kn_id', 'SCC'), ('l_paren', '('), ('kn_id', 'p2'), ('kn_comma', ','), ('kn_id', 'q2'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'T'), ('l_paren', '('), ('kn_id', 'n'), ('kn_comma', ','), ('kn_id', 'curve'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'skein22'), ('colon_eq', ':='), ('kn_id', 'skein'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '2'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'productToSum'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'q'), ('kn_comma', ','), ('kn_id', 'r'), ('kn_comma', ','), ('kn_id', 's'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'determinant'), ('colon_eq', ':='), ('kn_id', 'p'), ('op_mult', '*'), ('kn_id', 's'), ('op_minus', '-'), ('kn_id', 'q'), ('op_mult', '*'), ('kn_id', 'r'), ('key_let', 'let'), ('kn_id', 'sk1'), ('colon_eq', ':='), ('kn_id', 'skein'), ('l_paren', '('), ('kn_id', 'p'), ('op_plus', '+'), ('kn_id', 'r'), ('kn_comma', ','), ('kn_id', 'q'), ('op_plus', '+'), ('kn_id', 's'), ('r_paren', ')'), ('key_let', 'let'), ('kn_id', 'sk2'), ('colon_eq', ':='), ('kn_id', 'skein'), ('l_paren', '('), ('kn_id', 'p'), ('op_minus', '-'), ('kn_id', 'r'), ('kn_comma', ','), ('kn_id', 'q'), ('op_minus', '-'), ('kn_id', 's'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 't'), ('op_exp', '^'), ('kn_id', 'determinant'), ('op_mult', '*'), ('kn_id', 'sk1'), ('op_plus', '+'), ('kn_id', 't'), ('op_exp', '^'), ('op_minus', '-'), ('kn_id', 'determinant'), ('op_mult', '*'), ('kn_id', 'sk2'), ('key_fun', 'function'), ('kn_id', 'product2211'), ('l_paren', '('), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'skein'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '2'), ('r_paren', ')'), ('op_mult', '*'), ('kn_id', 'skein'), ('l_paren', '('), ('kn_num', '1'), ('kn_comma', ','), ('kn_num', '1'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'sum2211'), ('l_paren', '('), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'productToSum'), ('l_paren', '('), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '2'), ('kn_comma', ','), ('kn_num', '1'), ('kn_comma', ','), ('kn_num', '1'), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'lhs'), ('colon_eq', ':='), ('kn_id', 'product2211'), ('l_paren', '('), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'rhs'), ('colon_eq', ':='), ('kn_id', 'sum2211'), ('l_paren', '('), ('r_paren', ')'), ('key_check', 'check'), ('kn_id', 'lhsEqualRhs'), ('colon_eq', ':='), ('kn_id', 'product2211'), ('l_paren', '('), ('r_paren', ')'), ('op_eq', '='), ('kn_id', 'sum2211'), ('l_paren', '('), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'booleanFunction'), ('kn_comma', ','), ('kn_id', 'currentIndex'), ('kn_comma', ','), ('kn_id', 'baseIndex'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'currentIndex'), ('op_less', '<'), ('kn_id', 'baseIndex'), ('op_or', 'or'), ('kn_id', 'booleanFunction'), ('l_paren', '('), ('kn_id', 'currentIndex'), ('r_paren', ')'), ('op_and', 'and'), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'booleanFunction'), ('kn_comma', ','), ('kn_id', 'currentIndex'), ('op_minus', '-'), ('kn_num', '1'), ('kn_comma', ','), ('kn_id', 'baseIndex'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '1'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('key_if', 'if'), ('kn_id', 'n'), ('op_eq', '='), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('key_if', 'if'), ('kn_id', 'n'), ('op_gr', '>'), ('kn_num', '0'), ('key_else', 'else'), ('kn_id', 'x'), ('op_mult', '*'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_plus', '+'), ('kn_num', '1'), ('r_paren', ')'), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_plus', '+'), ('kn_num', '2'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'equalityS'), ('l_paren', '('), ('kn_id', 'n'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'S'), ('l_paren', '('), ('op_minus', '-'), ('kn_id', 'n'), ('r_paren', ')'), ('op_eq', '='), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_id', 'n'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('key_const', 'constant'), ('kn_id', 'nMax'), ('colon_eq', ':='), ('kn_num', '5'), ('key_const', 'constant'), ('kn_id', 'nMin'), ('colon_eq', ':='), ('op_minus', '-'), ('kn_id', 'nMax'), ('key_check', 'check'), ('kn_id', 'verifiedEqualityS'), ('colon_eq', ':='), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'equalityS'), ('kn_comma', ','), ('kn_id', 'nMax'), ('kn_comma', ','), ('kn_id', 'nMin'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'sumS'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'k'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_num', '0'), ('key_if', 'if'), ('kn_id', 'k'), ('op_less', '<'), ('kn_num', '1'), ('key_else', 'else'), ('kn_id', 'S'), ('l_paren', '('), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'p'), ('op_minus', '-'), ('kn_num', '4'), ('op_mult', '*'), ('kn_id', 'k'), ('op_minus', '-'), ('kn_num', '2'), ('r_paren', ')'), ('op_plus', '+'), ('kn_id', 'sumS'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'k'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('key_fun', 'function'), ('kn_id', 'sumEqualRatio'), ('l_paren', '('), ('kn_id', 'p'), ('r_paren', ')'), ('key_ret', 'return'), ('kn_id', 'sumS'), ('l_paren', '('), ('kn_id', 'p'), ('kn_comma', ','), ('kn_id', 'p'), ('op_minus', '-'), ('kn_num', '1'), ('r_paren', ')'), ('op_eq', '='), ('op_minus', '-'), ('kn_id', 'S'), ('l_paren', '('), ('kn_num', '2'), ('op_mult', '*'), ('kn_id', 'p'), ('op_minus', '-'), ('kn_num', '3'), ('r_paren', ')'), ('op_div', '/'), ('kn_id', 'S'), ('l_paren', '('), ('kn_num', '1'), ('r_paren', ')'), ('key_const', 'constant'), ('kn_id', 'pMax'), ('colon_eq', ':='), ('kn_num', '5'), ('key_const', 'constant'), ('kn_id', 'pMin'), ('colon_eq', ':='), ('kn_num', '1'), ('key_check', 'check'), ('kn_id', 'verifiedSumEqualRatio'), ('colon_eq', ':='), ('kn_id', 'allTrue'), ('l_paren', '('), ('kn_id', 'sumEqualRatio'), ('kn_comma', ','), ('kn_id', 'pMax'), ('kn_comma', ','), ('kn_id', 'pMin'), ('r_paren', ')')]
