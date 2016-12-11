@@ -120,7 +120,7 @@ https://github.com/vuphan314/Knotty/blob/master/examples/papers.kn
 [papersTEX]:
 https://github.com/vuphan314/Knotty/blob/master/examples/papers.tex
 [papersPDF]:
-https://github.com/vuphan314/Knotty/blob/master/examples/precedence.pdf
+https://github.com/vuphan314/Knotty/blob/master/examples/papers.pdf
 
 [linkVu]:
 https://www.myweb.ttu.edu/vuphan/
