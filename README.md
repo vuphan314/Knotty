@@ -1,18 +1,13 @@
 <h6>top
 
 # KNOTTY
-computer algebra system for knot theory
+computer algebra system for knot theory:
+assisting mathematicians with symbolic computation
 
 ## EXAMPLES
-
-
-## GOAL
-to assist mathematicians with symbolic computation
-- example: verification of some formulas in these papers
-  (published in the Journal of Knot Theory
-  and Its Ramifications):
-  - [(2, 2*p + 1)-torus knot][paperTorus]
-  - [figure-eight knot][paperFigure8]
+- [input file][papersKN] (Knotty language)
+- [output file][papersTEX] (TeX)
+  - [compiled pdf][papersPDF]
 
 ## DESCRIPTION
 the Knotty system includes:
@@ -30,22 +25,24 @@ the Knotty system includes:
     - a preview box: in which the TeX program is displayed
 
 ## FILES
-- `spec/`
 - `examples/`
-- `webapp/`
+- web application:
+  - `webapp/`
 - engine:
   - `bin/`
   - `src/`
+- language:
+  - `spec/`
 
 ## LINKS
 - [web application][linkWebapp]
 - videos:
   - [Dropbox][linkDropbox]
   - [YouTube][linkYouTube]
-- GitHub
+- GitHub:
   - [releases][linkTags]
   - [issues][linkIssues]
-- scrum
+- scrum:
   - [kanban][linkTrello]
   - [documentation][linkOnedrive]
 - [Notepad++ settings for Knotty language][linkNppXml]
@@ -105,7 +102,7 @@ the Knotty system includes:
   - language
   - engine
 - [Zachariah Grummons][linkZach] (honorary)
-  - webapp
+  - web application
 
 ## ACKNOWLEDGEMENT
 - [Git submodules][gitmodules]:
@@ -118,10 +115,12 @@ the Knotty system includes:
 - design document influenced by
   [SE2 Machine Learning Team][teamML]
 
-[paperTorus]:
-http://www.math.ttu.edu/~rgelca/gs6.pdf
-[paperFigure8]:
-http://www.math.ttu.edu/~rgelca/jr5.pdf
+[papersKN]:
+https://github.com/vuphan314/Knotty/blob/master/examples/papers.kn
+[papersTEX]:
+https://github.com/vuphan314/Knotty/blob/master/examples/papers.tex
+[papersPDF]:
+https://github.com/vuphan314/Knotty/blob/master/examples/precedence.pdf
 
 [linkVu]:
 https://www.myweb.ttu.edu/vuphan/

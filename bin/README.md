@@ -10,7 +10,7 @@ Windows/Ubuntu standalone binary:
   ```
   $ knotty
 
-  Knotty engine v1.5.0 built 2016-11-14
+  Knotty engine v2.0.0 (2016-12-10)
 
   usage: knotty [-h] [-f] [-k] Knotty_file
 
@@ -48,7 +48,7 @@ Windows/Ubuntu standalone binary:
   - Ubuntu:
     ```
     chmod +x ~/Downloads/knotty
-    
+
     ```
 - move downloaded binary to directory `C:/Windows/`
   (Ubuntu: `sudo mv ~/Downloads/knotty /bin/`)
@@ -66,7 +66,7 @@ Windows/Ubuntu standalone binary:
   ```
   - optional tex-to-pdf compilation:
     ```
-    latexmk -outdir=pdfs -pdf demo
+    latexmk -pdf demo
 
     ```
 
