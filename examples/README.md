@@ -2,8 +2,7 @@
 
 # KNOTTY EXAMPLES
 notable:
-- `paperTorus`
-- `paperTwist`
+- `papers`
 - `error`
 - `comment`
 
