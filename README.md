@@ -5,9 +5,9 @@ computer algebra system for knot theory:
 assisting mathematicians with symbolic computation
 
 ## EXAMPLES
-- [input file][papersKN] (Knotty language)
-- [output file][papersTEX] (TeX)
-  - [compiled pdf][papersPDF]
+- input [Knotty file][papersKN] ([language specification][specPDF])
+- output [TeX file][papersTEX]
+  - [PDF file][papersPDF]
 
 ## DESCRIPTION
 the Knotty system includes:
@@ -114,6 +114,9 @@ the Knotty system includes:
 - Knotty language influenced by: LED, SequenceL, Python, SQL
 - design document influenced by
   [SE2 Machine Learning Team][teamML]
+
+[specPDF]:
+https://github.com/vuphan314/Knotty/blob/master/spec/spec.pdf
 
 [papersKN]:
 https://github.com/vuphan314/Knotty/blob/master/examples/papers.kn
