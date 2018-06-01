@@ -65,7 +65,7 @@ the Knotty system includes:
     cd/d <parent_dir_of_repo>
 
     ```
-    example: my `<parent_dir_of_repo>` is `D:/repos/`
+    example: my `<parent_dir_of_repo>` is `D:/github/`
   - repository cloning:
     ```
     git clone --recursive https://github.com/vuphan314/Knotty
@@ -77,7 +77,7 @@ the Knotty system includes:
     cd/d <dir_of_repo>
 
     ```
-    example: my `<dir_of_repo>` is `D:/repos/Knotty/`
+    example: my `<dir_of_repo>` is `D:/github/Knotty/`
   - update repository:
     ```
     git pull --recurse-submodules
