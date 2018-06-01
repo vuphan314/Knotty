@@ -1,4 +1,4 @@
-<h6>top
+<!-- <h6>top -->
 
 # KNOTTY
 computer algebra system for knot theory:
@@ -36,9 +36,7 @@ the Knotty system includes:
 
 ## LINKS
 - [web application][linkWebapp]
-- videos:
-  - [Dropbox][linkDropbox]
-  - [YouTube][linkYouTube]
+- videos: [YouTube][linkYouTube]
 - GitHub:
   - [releases][linkTags]
   - [issues][linkIssues]
@@ -130,8 +128,6 @@ https://www.myweb.ttu.edu/vuphan/
 [linkZach]:
 https://github.com/twibird
 
-[linkDropbox]:
-https://www.dropbox.com/sh/46ystk380ro5qd5/AABli7oycNvNQOjVeb8qeXbfa?dl=0
 [linkYouTube]:
 https://www.youtube.com/playlist?list=PLIJKsTidP3ztqjhlB3Rv1E5hAecfz8VNv
 [linkNppXml]:
