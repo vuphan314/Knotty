@@ -113,54 +113,35 @@ the Knotty system includes:
 - design document influenced by
   [SE2 Machine Learning Team][teamML]
 
-[specPDF]:
-https://github.com/vuphan314/Knotty/blob/master/spec/spec.pdf
+[specPDF]:https://github.com/vuphan314/Knotty/blob/master/spec/spec.pdf
 
-[papersKN]:
-https://github.com/vuphan314/Knotty/blob/master/examples/papers.kn
-[papersTEX]:
-https://github.com/vuphan314/Knotty/blob/master/examples/papers.tex
-[papersPDF]:
-https://github.com/vuphan314/Knotty/blob/master/examples/papers.pdf
+[papersKN]:https://github.com/vuphan314/Knotty/blob/master/examples/papers.kn
+[papersTEX]:https://github.com/vuphan314/Knotty/blob/master/examples/papers.tex
+[papersPDF]:https://github.com/vuphan314/Knotty/blob/master/examples/papers.pdf
 
-[linkVu]:
-https://vuphan314.github.io/
-[linkZach]:
-https://github.com/twibird
+[linkVu]:https://vuphan314.github.io/
+[linkZach]:https://github.com/twibird
 
-[linkYouTube]:
-https://www.youtube.com/playlist?list=PLIJKsTidP3ztqjhlB3Rv1E5hAecfz8VNv
-[linkNppXml]:
-https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
-[linkTags]:
-https://github.com/vuphan314/CS4365/releases
-[linkIssues]:
-https://github.com/vuphan314/CS4365/issues
+[linkYouTube]:https://www.youtube.com/playlist?list=PLIJKsTidP3ztqjhlB3Rv1E5hAecfz8VNv
+[linkNppXml]:https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
+[linkTags]:https://github.com/vuphan314/CS4365/releases
+[linkIssues]:https://github.com/vuphan314/CS4365/issues
 [linkWebapp]:
 http://99.64.48.184/Knotty
-[linkTrello]:
-https://trello.com/b/tCAfkInX
-[linkOnedrive]:
-https://1drv.ms/f/s!Asl14HFRStFKgZlSCNCMQ4qIWcOoIg
+[linkTrello]:https://trello.com/b/tCAfkInX
+[linkOnedrive]:https://1drv.ms/f/s!Asl14HFRStFKgZlSCNCMQ4qIWcOoIg
 
-[gitDownload]:
-https://git-scm.com/downloads
-[pythonDownload]:
-https://www.python.org/downloads/
-[texDownload]:
-https://www.tug.org/texlive/acquire-netinstall.html
-[sumatraDownload]:
-https://www.sumatrapdfreader.org/download-free-pdf-viewer.html
+[gitDownload]:https://git-scm.com/downloads
+[pythonDownload]:https://www.python.org/downloads/
+[texDownload]:https://www.tug.org/texlive/acquire-netinstall.html
+[sumatraDownload]:https://www.sumatrapdfreader.org/download-free-pdf-viewer.html
 
-[gitmodules]:
-https://github.com/vuphan314/CS4365/blob/master/.gitmodules
-[genparserSpec]:
-https://github.com/iensen/genparser/blob/master/docs/main/astgen.pdf
+[gitmodules]:https://github.com/vuphan314/CS4365/blob/master/.gitmodules
+[genparserSpec]:https://github.com/iensen/genparser/blob/master/docs/main/astgen.pdf
 
 [sympyHome]:
 http://www.sympy.org/en/index.html
 [pyinstallerHome]:
 http://www.pyinstaller.org/
 
-[teamML]:
-https://github.com/ASAAR/SE2-KaggleComp
+[teamML]:https://github.com/ASAAR/SE2-KaggleComp
