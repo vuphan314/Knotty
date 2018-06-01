@@ -124,7 +124,7 @@ https://github.com/vuphan314/Knotty/blob/master/examples/papers.tex
 https://github.com/vuphan314/Knotty/blob/master/examples/papers.pdf
 
 [linkVu]:
-https://www.myweb.ttu.edu/vuphan/
+https://vuphan314.github.io/
 [linkZach]:
 https://github.com/twibird
 
