@@ -126,8 +126,7 @@ the Knotty system includes:
 [linkNppXml]:https://drive.google.com/file/d/0BwTmvmD-2eEwVmgtMFdhMXo4bVk/view?usp=sharing
 [linkTags]:https://github.com/vuphan314/CS4365/releases
 [linkIssues]:https://github.com/vuphan314/CS4365/issues
-[linkWebapp]:
-http://99.64.48.184/Knotty
+[linkWebapp]:http://99.64.48.184/Knotty
 [linkTrello]:https://trello.com/b/tCAfkInX
 [linkOnedrive]:https://1drv.ms/f/s!Asl14HFRStFKgZlSCNCMQ4qIWcOoIg
 
@@ -139,9 +138,7 @@ http://99.64.48.184/Knotty
 [gitmodules]:https://github.com/vuphan314/CS4365/blob/master/.gitmodules
 [genparserSpec]:https://github.com/iensen/genparser/blob/master/docs/main/astgen.pdf
 
-[sympyHome]:
-http://www.sympy.org/en/index.html
-[pyinstallerHome]:
-http://www.pyinstaller.org/
+[sympyHome]:http://www.sympy.org/en/index.html
+[pyinstallerHome]:http://www.pyinstaller.org/
 
 [teamML]:https://github.com/ASAAR/SE2-KaggleComp
