@@ -35,15 +35,15 @@ the Knotty system includes:
   - `spec/`
 
 ## LINKS
-- [web application][linkWebapp]
-- videos: [YouTube][linkYouTube]
+<!-- - [web application][linkWebapp] -->
+<!-- - videos: [YouTube][linkYouTube] -->
 - GitHub:
   - [releases][linkTags]
   - [issues][linkIssues]
 - scrum:
   - [kanban][linkTrello]
-  - [documentation][linkOnedrive]
-- [Notepad++ settings for Knotty language][linkNppXml]
+  <!-- - [documentation][linkOnedrive] -->
+<!-- - [Notepad++ settings for Knotty language][linkNppXml] -->
 
 ## USAGE
 - first time:
